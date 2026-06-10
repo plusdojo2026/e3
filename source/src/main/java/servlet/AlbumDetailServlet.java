@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class AlbumDetailServlet
  */
 @WebServlet("/AlbumDetailServlet")
 public class AlbumDetailServlet extends HttpServlet {
@@ -29,7 +29,8 @@ public class AlbumDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/albumDetail.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**
@@ -39,5 +40,5 @@ public class AlbumDetailServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
+	
 }
