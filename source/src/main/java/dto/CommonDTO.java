@@ -1,6 +1,8 @@
 package dto;
 
-public class CommonDTO {
+import java.io.Serializable;
+
+public class CommonDTO implements Serializable{
 	
 	//privateな変数
 	
