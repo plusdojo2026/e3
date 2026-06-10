@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>モノカチコレクション | 新規登録</title>
 </head>
 <body>
 
