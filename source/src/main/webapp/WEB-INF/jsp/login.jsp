@@ -5,9 +5,14 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>モノカチコレクション | ログイン</title>
 </head>
 <body>
-
+<h1>モノカチコレクション</h1>
+<form method="POST" action="/e3/LoginServlet">
+ユーザーID<input type="text" name="id">
+パスワード<input type="password" name="password">
+<input type="submit" name="login" value="ログイン"> 
+</form>
 </body>
 </html>
