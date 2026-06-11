@@ -19,7 +19,10 @@
 			  <img src="images/タイトルロゴ.png" alt="サイトタイトル">
 		</h1>
 	</header>
+	<!-- ヘッダー（ここまで） -->
+	
 	<!-- ヒーロー -->
+	<main>
 		<img src="images/menu_hero.png" class="hero" width=300%  alt="">
 	<div class="items">
 
@@ -41,5 +44,11 @@
 		</div>
 
 	</div>
+	</main>
+	<!--　フッター　-->
+	<footer>
+		<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
+	</footer>
+	<!-- フッターここまで　-->
 </body>
 </html>
