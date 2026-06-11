@@ -27,33 +27,38 @@ main {  /* フォームのコンテンツ */
 	padding: 0 50px ;
 }
 form{ /* フォームのコンテンツ内部 */
-	background: #e0e0ee;
-	padding: 60px 100px;
-	border: solid 2px
+	background: #ffc47;
+	padding: 40px 100px;
+	border: solid 2px orange;
 }
 input{ 
-	margin: 20px 0;
+	margin: 10px 0;
 }
-input[type="text"] { /* 記入欄 */
+input[type="text"], input[type="password"] { /* 記入欄 */
 	width: 250px;
-	height: 20px
+	height: 20px;
+	background-color: gold;
+	color:white;
 }
 .button {
+	text-align: center;
 }
 h2 {
 	font-size: 35px;
 }
 a {
+	color: white;
 	padding: 0 5px;
 	text-decoration: none;
-	border: solid 1px;
-	background: #ffd700;
+	border: solid 1px black;
+	background: orange;
 }
 img {
 	padding: 100px 50px;
 	margin: 60px 30px;
 }
 </style>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/log_reg.css">
 </head>
 <body>
 	<header>
@@ -67,8 +72,9 @@ img {
 		<main>
 			<h2>おかえりなさい！</h2>
 			<form method="POST" action="/e3/LoginServlet">
-				ユーザーID<br><input type="text" name="id"><br>
-				パスワード<br><input type="text" name="password"><br>
+				ユーザーID<br><input type="text" name="id"><br><br>
+				パスワード<br><input type="password" name="password"><br>
+				<input type="checkbox" id="showPass"> パスワードを表示<br><br>
 				<input type="submit" name="login" value="ログイン" class="button"><br>
 				<hr style="border: none; border-top: 2px solid #333;">
 				<br><a href="/e3/LoginRegisterServlet">新規登録はこちら</a>
