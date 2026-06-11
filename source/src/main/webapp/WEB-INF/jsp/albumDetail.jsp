@@ -6,6 +6,8 @@
 <head>
 <meta charset="UTF-8">
 <title>モノカチコレクション | 商品詳細</title>
+<link rel="stylesheet" href="css/style.css">
+<link rel="stylesheet" href="css/albumDetail.css">
 </head>
 <body>
 	<!--　ヘッダー　-->
@@ -16,14 +18,17 @@
 	<main>
 
 		<!-- キャラクター + 吹き出し -->
-		<img src="images/デフォルトアイコン（仮）.png"> <img
-			src="images/吹き出し（仮）.png">
+		
+		<img src="images/デフォルトアイコン（仮）.png">
+		
+		<div class="speechBubble">
 		<p>
 			僕の一日あたりの価格は〇〇円だよ！<br> 〇〇日使ったよ！<br> あと〇〇日で目標達成♪
 		</p>
+		</div>
 
 		<!-- 商品情報 -->
-		<table>
+		<table class="information">
 			<tr>
 				<th colspan="4">ジャンル</th>
 				<td></td>
