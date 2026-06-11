@@ -9,6 +9,8 @@
 <title>モノカチコレクション | 履歴一覧</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/sl_al.css">
 </head>
 <body>
 	<p>

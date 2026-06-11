@@ -18,7 +18,6 @@ h2 {
 
 .container {
 	display: flex; /* 横並び */
-	margin: 50px 0;
 }
 
 main {  /* フォームのコンテンツ */
@@ -27,42 +26,51 @@ main {  /* フォームのコンテンツ */
 	padding: 0 50px ;
 }
 form{ /* フォームのコンテンツ内部 */
-	background: #ffc47;
+	background: #fef263;
 	padding: 40px 100px;
-	border: solid 2px orange;
+	border: solid 6px orange;
+	border-radius: 30px;
 }
 input{ 
 	margin: 10px 0;
 }
 input[type="text"], input[type="password"] { /* 記入欄 */
 	width: 250px;
-	height: 20px;
+	height: 30px;
 	background-color: gold;
 	color:white;
+	border-radius: 5px;
 }
-.button {
-	text-align: center;
+input[type="submit"] {
+	padding: 5px 20px;
+	margin: 20px 80px 30px;
+	font-size: 10px  20px;
 }
 h2 {
 	font-size: 35px;
+	
 }
 a {
 	color: white;
-	padding: 0 5px;
+	padding: 0 3px;
+	margin: 0 60px;
 	text-decoration: none;
 	border: solid 1px black;
 	background: orange;
 }
-img {
+.left, .right {
 	padding: 100px 50px;
 	margin: 60px 30px;
 }
 </style>
+	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/log_reg.css">
 </head>
 <body>
 	<header>
-		<h1>モノカチコレクション</h1>
+		<h1 class="title">
+		<img src="images/タイトルロゴ.png" alt="サイトタイトル">
+		</h1>
 	</header>
 
 	<div class="container">
@@ -74,8 +82,7 @@ img {
 			<form method="POST" action="/e3/LoginServlet">
 				ユーザーID<br><input type="text" name="id"><br><br>
 				パスワード<br><input type="password" name="password"><br>
-				<input type="checkbox" id="showPass"> パスワードを表示<br><br>
-				<input type="submit" name="login" value="ログイン" class="button"><br>
+				<input type="submit" name="login" value="ログイン"><br>
 				<hr style="border: none; border-top: 2px solid #333;">
 				<br><a href="/e3/LoginRegisterServlet">新規登録はこちら</a>
 			</form>

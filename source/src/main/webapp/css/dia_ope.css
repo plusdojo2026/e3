@@ -1,0 +1,80 @@
+@charset "UTF-8";
+
+/* スタイルシート */
+
+
+#shouhin_name{
+	padding-left: 50px;
+}
+
+/* formのサイズ */
+#diagnosis_form{
+	margin: 0 auto;
+	
+}
+/* form入力場所のサイズ */
+#diagnosis_form input[type = "text"]{
+	padding: 15px;
+	width: 200px;
+	border: 1.8px solid #7A2C00;
+}
+#exp { /* 変わらない */
+	padding: 10px;
+	width: 100px;
+}
+/* 診断ボタン */
+#diagnosis_form input[type = "submit"]{
+	padding: 10px;
+	width: 80px;
+	
+	/*border: none;
+	background-color: #FFCC00;*/
+		
+	background-color: #C75000;
+	color: #fff;
+	border: none;
+	border-radius: 24px;
+	/*padding: 8px 24px;*/
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+#diagnosis_form input[type = "submit"]:hover {
+	background-color: #a34400;
+}
+	
+
+
+/* 診断結果表示リスト*/
+/* 枠 */
+.dr {
+	border: 1.8px solid #7A2C00;
+	padding: 5px 5px;
+	
+}
+
+/* 中央に配置 */
+.dr h2{
+	text-align: center;
+}
+#diagnosis_result{
+	margin: 0 auto;
+	
+}
+/* ⊖ボタン */
+#diagnosis_result input[type = "submit"]{
+	background-color: #C75000;
+	color: #fff;
+	border: none;
+	border-radius: 24px;
+	/*padding: 8px 24px;*/
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+#diagnosis_result input[type = "submit"]:hover {
+	background-color: #a34400;
+}
+
+
+
