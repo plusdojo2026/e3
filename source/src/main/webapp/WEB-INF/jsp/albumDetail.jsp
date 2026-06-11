@@ -12,21 +12,24 @@
 <body>
 	<!--　ヘッダー　-->
 	<header>
-		<h1>モノカチコレクション</h1>
+<h1 class="title">
+  <img src="images/タイトルロゴ.png" alt="サイトタイトル">
+</h1>
 	</header>
 	<!-- ヘッダーここまで　-->
 	<main>
 
 		<!-- キャラクター + 吹き出し -->
-		
-		<img src="images/デフォルトアイコン（仮）.png">
+		<div class="iconSpeech">
+		<img src="images/デフォルトアイコン（仮）.png" width="40vw" height="40vw">
 		
 		<div class="speechBubble">
 		<p>
 			僕の一日あたりの価格は〇〇円だよ！<br> 〇〇日使ったよ！<br> あと〇〇日で目標達成♪
 		</p>
 		</div>
-
+		</div>
+<div class = "card">
 		<!-- 商品情報 -->
 		<table class="information">
 			<tr>
@@ -61,11 +64,12 @@
 				<td><span>日</span></td>
 			</tr>
 		</table>
+	</div>	
 
-		<div>
+		<div class="buttons">
 			<button type="button">編集</button>
 			<button type="button">履歴へ送る</button>
-			<button type="button">削除</button>
+			<button type="button" class = deleteButton>削除</button>
 		</div>
 	</main>
 
