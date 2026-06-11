@@ -1,15 +1,59 @@
 @charset "UTF-8";
-/* login.jsp */
 
+/* 前頁共通部分*/
+/*背景色をクリーム色に*/
+body {
+	background-color: #FFF3E0;
+}
+
+/*タイトルロゴのサイズ・位置設定*/
+h1.title {
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+}
+
+h1.title img {
+	display: block;
+	width: clamp(80px, 15vw, 180px);
+	height: auto;
+	margin-top: -10px;
+}
+
+/*フッターのサイズ・位置設定*/
+footer {
+	background-color: #C75000;
+	padding: 48px 24px 20px;
+	margin-top: 48px;
+	color: #fff;
+	text-align: center;
+	font-size: 13px;
+	border-radius: 50% 50% 0 0/32px 32px 0 0;
+}
+
+/*ボタンの形状・色設定*/
+button {
+	background-color: #C75000;
+	color: #fff;
+	border: none;
+	border-radius: 24px;
+	padding: 8px 24px;
+	font-size: 14px;
+	cursor: pointer;
+	transition: background-color 0.2s;
+}
+
+button:hover {
+	background-color: #a34400;
+}
+
+/* login.jsp */
 
 /* loginRegister.jsp */
 
-
 /* diagnosis.jsp */
 
-
 /* menu.jsp */
-
 
 /* shouhinList.jsp */
 .items{

@@ -6,8 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <title>モノカチコレクション | 商品詳細</title>
-<link rel="stylesheet" href="css/style.css">
-<link rel="stylesheet" href="css/albumDetail.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/sd_ad.css">
 </head>
 <body>
 	<!--　ヘッダー　-->
