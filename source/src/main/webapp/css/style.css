@@ -1,1 +1,66 @@
 @charset "UTF-8";
+/* login.jsp */
+
+
+/* loginRegister.jsp */
+
+
+/* diagnosis.jsp */
+
+
+/* menu.jsp */
+
+
+/* shouhinList.jsp */
+.items{
+	display: grid;
+	grid-template-columns: 1fr 1fr 1fr;
+	gap: 40px;
+}
+
+.item{
+	position: relative;
+}
+
+.nickname{
+	position: absolute;
+	top: 170px;
+}
+
+.img{
+	position: absolute;
+	bottom: 20px;
+}
+.name{
+	position: absolute;
+	bottom: 30px;
+}
+.progress{
+	position: absolute;
+	bottom: 40px;
+}
+.day_price{
+	position: absolute;
+	bottom: 50px;
+}
+/* shouhinDetail.jsp */
+
+
+/* register.jsp */
+
+
+/* edit.jsp */
+
+
+/* operation.jsp */
+
+
+/* ranking.jsp */
+
+
+/* albumList.jsp */
+
+
+/* albumDetail.jsp */
+
+
