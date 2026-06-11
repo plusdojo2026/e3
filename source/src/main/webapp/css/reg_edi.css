@@ -1,0 +1,32 @@
+@charset "UTF-8";
+
+/* 表全体の調整 */
+.form-table{
+	width:80%;
+	margin:20px auto;
+	border-collapse:collapse;
+	background:#fff;
+}
+/* 項目名の調整 */
+.form-table th{
+    width:180px;
+    padding:15px;
+    background:#f4f4f4;
+    border:1px solid #ddd;
+    text-align:left;
+}
+/* 入力欄の調整 */
+.form-table td{
+    padding:15px;
+    border:1px solid #ddd;
+}
+/* フレームの調整 */
+.frame-area {
+    display: flex;
+    gap: 20px;     /* 間隔 */
+}
+
+
+.frame-item {
+    text-align: center;  /* 画像とラジオ中央 */
+}
