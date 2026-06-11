@@ -1,0 +1,47 @@
+@charset "UTF-8";
+
+/* スタイルシート */
+
+
+#shouhin_name{
+	padding-left: 50px;
+}
+
+/* formのサイズを変えたい */
+#diagnosis_form{
+	margin: 0 auto;
+	
+}
+#diagnosis_form input[type = "text"]{
+	padding: 15px;
+	width: 200px;
+}
+#exp { /* 変わらない */
+	padding: 10px;
+	width: 100px;
+}
+#diagnosis_form input[type = "submit"]{
+	padding: 10px;
+	width: 80px;
+	border: none;
+	background-color: #FFCC00
+}
+
+/* 診断結果表示リスト*/
+/* 枠 */
+#dr {
+	border: 1.4px solid #000000;
+	padding: 5px 5px;
+}
+
+/* 中央に配置 */
+#dr h2{
+	text-align: center;
+}
+#diagnosis_result{
+	margin: 0 auto;
+	
+}
+
+
+

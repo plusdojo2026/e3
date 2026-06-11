@@ -11,6 +11,10 @@
 	display: flex; /* 横並び */
 	margin: 50px 30px;
 }
+.left{
+	
+}
+
 </style>
 </head>
 <body>
