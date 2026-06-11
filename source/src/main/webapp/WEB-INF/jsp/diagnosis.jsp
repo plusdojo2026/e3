@@ -8,11 +8,13 @@
 <title>モノカチコレクション | 購入診断</title>
 </head>
 <body>
+
 <!-- ロゴ(仮) -->
 <h1>モノカチコレクション</h1>
 <p>▶ 購入診断 : 気になる商品を比較して <strong>カチ</strong> のある買い物をしよう！</p>
+
 <!-- 診断フォーム -->
-<form id="regist_form"><!-- POST,action追加する -->
+<form id="regist_form" method="POST" action="/e3/DiagnosisServlet"><!-- action→同ページに表示 -->
 	<table class="diagnosis">
 		<tr> <!-- 4つを一行扱いにしている -->
 			<td>
@@ -37,6 +39,55 @@
 </table>
 </form>
 
+<br><!-- 改行 -->
+<!-- 診断結果リストの表示テーブル -->
+<h2>診断結果</h2>
+<table id="diagnosis_result"><!-- 枠はCSS? -->
+	
+	<!-- thかtdどっちが良いか -->
+	<tr><!-- 1つ目 -->
+		<th>商品名 : </th><td>○○○○　　</td><!-- 仮空白2コ -->
+		<th>価格 : </th><td>○○円　　</td>
+		<th>年数 : </th><td>○年　　　　　</td><!-- 仮空白5コ -->
+		<th>1日当たり価格 : </th><td>○○円　　		
+	</tr>
+	<tr><!-- 区切り線 -->
+		<td colspan="10">ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
+		</td><!-- 上の10は適当 -->
+	</tr>
+	<!-- CSSで空間作るべし -->
+	<tr><!-- 2つ目 -->
+		<td>商品名 : </td><td>○○○○　　</td><!-- 仮空白2コ -->
+		<td>価格 : </td><td>○○円　　</td>
+		<td>年数 : </td><td>○年　　　　　</td><!-- 仮空白5コ -->
+		<td>1日当たり価格 : </td><td>○○円　　		
+	</tr>
+	
+</table>
+
+<footer>
+</footer>
+
+<!-- JavaScript -->
+<script>
+'use strict';
+
+document.getElementById('diagnosis_result').onsubmit = function(event) {
+	  let price = document.getElementById('diagnosis_result').price.value;
+	  let expect = document.getElementById('diagnosis_result').expect.value;
+	  
+	  if (price === '' || expect === '' ) {
+	    window.alert('価格と想定年数は必ず入力してください！');
+	    event.preventDefault();
+	  }
+	};
+
+</script>
 
 </body>
 </html>
+
+
+
+
+
