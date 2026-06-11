@@ -9,13 +9,18 @@
 <title>モノカチコレクション | 商品一覧</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/sl_al.css">
 </head>
 <body>
+	<h1 class="title">
+		  <img src="images/タイトルロゴ.png" alt="サイトタイトル">
+	</h1>
 	<p>
 		<b>▶ 一覧 </b>： 登録した<strong>モノ</strong>たちを見てみよう！
 	</p>
 	<main>
-	<!--<c:forEach var="s" items="${list}">
+		<!--<c:forEach var="s" items="${list}">
 			<div class="item">
 				<a href="${pageContext.request.contextPath}/ShouhinDetailServlet?shouhinid=${s.shouhinid}">
 				<img src="images/shouhinList_bg.png" width=300px height=auto>
@@ -37,25 +42,28 @@
 				</a>
 			</div>
 		</c:forEach> -->
-		
+
 		<div class="items">
 			<div class="item">
-				<img src="images/shouhinList_bg.png" width=300px height=auto>
-				<div class="nickname">
-					<p>〇〇くん</p>
-				</div>
-				<div class="shouhinimg">
-					<img src="images/kaden_reizouko.png" alt="画像">
-				</div>
-				<div class="name">
-					<p>冷蔵庫</p>
-				</div>
-				<div class="progress">
-					<p>500日</p>
-				</div>
-				<div class="day_price">
-					<p>2円/日</p>
-				</div>
+				<a
+					href="${pageContext.request.contextPath}/ShouhinDetailServlet?shouhinid=${s.shouhinid}">
+					<img src="images/shouhinList_bg.png" width=300px height=auto>
+					<div class="nickname">
+						<p>〇〇くん</p>
+					</div>
+					<div class="shouhinimg">
+						<img src="images/kaden_reizouko.png" alt="画像">
+					</div>
+					<div class="name">
+						<p>冷蔵庫</p>
+					</div>
+					<div class="progress">
+						<p>500日</p>
+					</div>
+					<div class="day_price">
+						<p>2円/日</p>
+					</div>
+				</a>
 			</div>
 			<div class="item">
 				<img src="images/shouhinList_bg.png" width=300px height=auto>

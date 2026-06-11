@@ -28,6 +28,17 @@ public class ShouhinListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		
+		String sort = request.getParameter("sort");
+		List<shouhin> list;
+		
+		if(sort == null) {
+			list = dao.idAsc();
+		}else if(sort.equals("progress_asc"){
+			
+		}else if(sort.equals("progress_desc"))
+		
+		request.setAttribute("list", list);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhinList.jsp");
 		dispatcher.forward(request, response);
 	}
