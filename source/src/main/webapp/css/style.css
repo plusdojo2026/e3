@@ -14,35 +14,64 @@
 /* shouhinList.jsp */
 .items{
 	display: grid;
-	grid-template-columns: 1fr 1fr 1fr;
-	gap: 40px;
+	grid-template-columns: repeat(3,1fr);
+	gap: 0;
+	place-items: center;
 }
 
 .item{
 	position: relative;
+	justify-content: center;
+	align-items: center;
+	margin: 10px 0;
 }
 
 .nickname{
 	position: absolute;
-	top: 170px;
+	top: 4px;
+	right: 125px;
+	font-weight: bold;
 }
 
-.img{
+.shouhinimg{
 	position: absolute;
-	bottom: 20px;
+	top: 75px;
+	right: 65px;
+	width: 180px;
+	height: 180px;
+	border: 2px solid black;
 }
+
+.shouhinimg img{
+	width: 100%;
+	height: 100%;
+	object-fit: contain;
+	display: block;
+}
+
 .name{
 	position: absolute;
-	bottom: 30px;
+	justify-content: center;	/* 水平方向 */
+	align-items: center;	/* 垂直方向 */
+	top: 252px;
+	right: 135px;
 }
+
 .progress{
 	position: absolute;
-	bottom: 40px;
+	justify-content: center;
+	align-items: center;
+	top: 295px;
+	right: 135px;
 }
 .day_price{
 	position: absolute;
-	bottom: 50px;
+	justify-content: center;
+	align-items: center;
+	top: 335px;
+	right: 135px;
 }
+
 /* shouhinDetail.jsp */
 
 
