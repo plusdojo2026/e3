@@ -6,6 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <title>モノカチコレクション | 購入診断</title>
+
+<!-- スタイルシート -->
+
+<style>
+/* formのサイズを変えたい */
+#diagnosis_form{
+	margin: auto;
+	max-width: auto;
+}
+
+/* 診断結果表示リストを中央に配置 */
+h2{
+	text-align: center;
+}
+#diagnosis_result{
+	
+}
+
+
+
+</style>
+
 </head>
 <body>
 
@@ -14,7 +36,7 @@
 <p>▶ 購入診断 : 気になる商品を比較して <strong>カチ</strong> のある買い物をしよう！</p>
 
 <!-- 診断フォーム -->
-<form id="regist_form" method="POST" action="/e3/DiagnosisServlet"><!-- action→同ページに表示 -->
+<form id="diagnosis_form" method="POST" action="/e3/DiagnosisServlet"><!-- action→同ページに表示 -->
 	<table class="diagnosis">
 		<tr> <!-- 4つを一行扱いにしている -->
 			<td>
@@ -65,6 +87,11 @@
 	
 </table>
 
+<!-- 入力・計算結果の読み取り -->
+<section>
+
+</section>
+
 <footer>
 </footer>
 
@@ -72,9 +99,11 @@
 <script>
 'use strict';
 
-document.getElementById('diagnosis_result').onsubmit = function(event) {
-	  let price = document.getElementById('diagnosis_result').price.value;
-	  let expect = document.getElementById('diagnosis_result').expect.value;
+// 診断情報入力フォームのアラート
+// 現状2つ(価格と想定年数)まとめてのアラート表示だが、個別対応の方が良いか？
+document.getElementById('diagnosis_form').onsubmit = function(event) {
+	  let price = document.getElementById('diagnosis_form').price.value;
+	  let expect = document.getElementById('diagnosis_form').expect.value;
 	  
 	  if (price === '' || expect === '' ) {
 	    window.alert('価格と想定年数は必ず入力してください！');
@@ -82,6 +111,15 @@ document.getElementById('diagnosis_result').onsubmit = function(event) {
 	  }
 	};
 
+// 診断結果リストへの情報取得
+/*
+document.getElementById('diagnosis_form').onsubmit = function(event) {
+	event.preventDefault();
+	const search = document.getElementById('diagnosis_form').shouhin_name;
+}
+*/
+	
+	
 </script>
 
 </body>
