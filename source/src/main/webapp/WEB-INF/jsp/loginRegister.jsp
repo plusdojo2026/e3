@@ -7,61 +7,6 @@
 <meta charset="UTF-8">
 <title>モノカチコレクション | 新規登録</title>
 <style>
-.contain {
-	display: flex; /* 横並び */
-}
-
-.notice { /* 左コンテンツ */	
-	font-size: 20px;
-	color: #7A2C00;
-	padding: 0 40px 0 0px;
-	margin: 0 120px 0 80px;
-}
-.first{　/* はいｊめまして！ */
-	display: flex;
-	padding: 0 0 20px;
-}
-.tip{
-	padding: 0 50px;
-}
-
-.regist { /*　右コンテンツ */
-	text-align: left;
-	flex: 1;
-	margin: 0 80px 0 0  ;
-}
-.second { /* 「新規登録」 */
-	display: flex;
-	padding: 0 0 20px;
-}
-.register{ /* 右コンテンツ内部 */
-	background: #fef263;
-	padding: 50px 90px 30px;
-	margin: 10px 0px;
-	border: solid 6px orange;
-	border-radius: 30px;
-}
-
-.rule{
-	font-size: 15px;
-	color: #7A2C00;
-	opacity: 0.5;
-}
-
-.reg{
-	color: #FFF3E0;
-	padding: 10px 18px;
-	display: flex;
-	margin: 30px 180px 0;
-	border: solid 0px black;
-	border-radius: 8px;
-	background: orange;
-	transition: 0.2s;
-	box-shadow: 0px 5px #FF4500;
-}
-.reg:hover {
-	background-color: #FF8C00;
-}
 
 </style>
 	<link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
