@@ -1,77 +1,136 @@
 @charset "UTF-8";
 
-/* フォーム全体の設定 */
-.form-container{
-    width: 90%;
-    margin: 0px auto;
-    padding: 30px;
-    background: #ffffff;
-    border: 2px solid #dcdcdc;
-    border-radius: 15px;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+/* フォーム全体 */
+.form-container {
+	width: 90%;
+	max-width: 800px;
+	margin: 20px auto;
+	padding: 20px;
+	background: #ffffff;
+	border: 2px solid #dcdcdc;
+	border-radius: 15px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
-/* 表全体の調整 */
-.form-table{
-	width:100%;
-	border-collapse:collapse;
-	
+/* 各入力ブロック行 */
+.form-row {
+	margin-bottom: 20px;
 }
-/* 項目名の調整 */
-.form-table th,
-.form-table td {
-    padding: 10px 12px;
-  border: none;
-  border-bottom: 1.5px solid #C75000;
-  vertical-align: middle;
-  white-space: nowrap;
+/* 見出し */
+.form-label {
+	display: block;
+	color: #7A2C00;
+	border-bottom: 1.5px solid #C75000;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	text-align: left;
 }
-
-.form-table input[type="text"],
-.form-table input[type="number"],
-.form-table input[type="date"]{
-    width:250px;
-    height:35px;
-    padding:5px 10px;
-    border:1px solid #ccc;
-    border-radius:0;
-    
+/* 横並び */
+.two-column {
+	display: flex;
+	gap: 20px;
 }
 
-.required{
-    color:red;
+.form-group {
+	flex: 1;
+	display: flex;
+	flex-direction: column; /* ラベルと入力欄を縦に並べる */
 }
-/* フレームの調整 */
+
+.form-group input {
+	width: 100%;
+	max-width: 100%;
+}
+
+.form-group span.unit {
+	margin-left: 5px;
+}
+
+/* 入力 */
+input[type="text"], input[type="number"], input[type="date"] {
+	width: 100%;
+	max-width: 250px;
+	height: 35px;
+	padding: 5px 10px; /* 内側の余白 */
+	box-sizing: border-box; /* はみ出し防止 */
+	border: 1.9px solid #000;
+	border-radius: 15px;
+}
+/* 必須マーク */
+.required {
+	color: red;
+}
+
+.error {
+	color:red;
+	font-size:12px;
+	margin-top:5px;
+	display:block;
+}
+
+/* ラジオボタン */
+.radio-group {
+	display: flex;
+	flex-wrap: wrap; /* 画面が小さいとき折り返す */
+	gap: 20px;
+}
+
+.radio-group label {
+	cursor: pointer; /* ラベルもクリック可能 */
+}
+/* フレーム */
 .frame-area {
-    display: flex;
-    justify-content:center;
-    gap:30px;
+	display: flex;
+	justify-content: center;
+	gap: 30px; /* フレーム間の間隔 */
+	flex-wrap: wrap; /* 画面が小さいとき折り返す */
 }
 
 .frame-item {
-    display:flex;
-    text-align: center;  /* 画像とラジオ中央 */
-    flex-direction: column; 
-    
+	display: flex;
+	flex-direction: column; /* 縦並び */
+	align-items: center;
 }
 
+/* ラジオボタンと画像の間の間隔 */
 .frame-item input {
-  margin-top: 5px;
+	margin-top: 5px;
 }
-
 
 .frame-item:hover {
-	background-color: #a34400;
+	background-color: #ffe0b2;
 }
 
-
-.frame-item label{
-    cursor:pointer;
+.frame-item label {
+	cursor: pointer; /* 画像もクリック可 */
 }
 
-.frame-item img{
-    width:100px;
-    height:100px;
-    object-fit: contain;
-    
+.frame-item img {
+	width: 100px;
+	height: 100px;
+	object-fit: contain; /* 比率維持 */
 }
+/* ボタン */
+#registerBtn {
+	display: block;
+	margin: 20px auto;
+	padding: 10px 30px;
+}
+/* スマホ対応 */
+@media ( max-width : 768px) {
+	/* 縦並びにする */
+	.two-column　 {
+		display: flex;
+		gap: 20px;
+	}
+	.form-group {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+	}
 
+	/* フレーム少し小さく */
+	.frame-item img {
+		width: 80px;
+		height: 80px;
+	}
+}

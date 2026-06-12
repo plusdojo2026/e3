@@ -5,6 +5,8 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!-- ビューポート -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>モノカチコレクション | ログイン</title>
 <style>
 
@@ -30,7 +32,7 @@
 				パスワード<br><input type="password" name="password"><br>
 				<input class="login" type="button" name="login" value="ログイン"><br>
 				<hr style="border: none; border-top: 2px solid #333;">
-				<br><a href="/e3/LoginRegisterServlet">新規登録はこちら</a>
+				<br><a class="Toregist" href="/e3/LoginRegisterServlet">新規登録はこちら</a>
 			</form>
 		</main>
 		<!-- 右画像 -->
