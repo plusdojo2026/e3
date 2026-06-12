@@ -24,10 +24,9 @@
 	<!-- ヒーロー -->
 	<main>
 		<img src="images/menu_hero.png" class="hero" width=300%  alt="">
-	<div class="items">
 
 		<!-- キャラ＋吹き出し -->
-		<div class="item">
+		<div class="image">
 
 			<img src="images/petlogo.png" class="logo" width="10%" alt="">
 
@@ -36,7 +35,6 @@
 			<!-- 吹き出しの外 -->
 			<button type="button">もっと見る</button>
 
-			<!-- 固定費を表示するテレビ -->
 			<div align="center">
 				<img src="images/tv.png" alt="テレビ">
 
