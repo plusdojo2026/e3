@@ -1,7 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -34,7 +33,7 @@ public class ShouhinListServlet extends HttpServlet {
 		
 		String sort = request.getParameter("sort");
 		CommonDAO dao = new CommonDAO();
-		List<shouhin> list = dao.idAsc();
+		/*List<shouhin> list = dao.idAsc();
 		
 		if(sort.equals("progress_asc")) {
 			List<shouhin> list = dao.progressAsc();
@@ -46,7 +45,7 @@ public class ShouhinListServlet extends HttpServlet {
 			List<shouhin> list = dao.daypriceDesc();
 		}
 		
-		request.setAttribute("list", list);
+		request.setAttribute("list", list);*/
 		
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhinList.jsp");
 		dispatcher.forward(request, response);

@@ -36,6 +36,7 @@
 			<!-- 吹き出しの外 -->
 			<button type="button">もっと見る</button>
 
+			<!-- 固定費を表示するテレビ -->
 			<div align="center">
 				<img src="images/tv.png" alt="テレビ">
 
