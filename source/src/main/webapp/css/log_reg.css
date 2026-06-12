@@ -52,7 +52,7 @@ input[type="text"], input[type="password"] { /* 記入欄 */
 	padding: 8px 14px;
 	margin: 20px 90px;
 	text-decoration: none;
-	border: solid 0px black;
+	border: solid 2px　 #FFF3E0;
 	border-radius: 8px;
 	background: orange;
 	transition: 0.2s;
@@ -91,7 +91,75 @@ a:hover {
 
 
 /* loginRegister.jsp */
+.contain { /* コンテンツ全体 */
+	display: flex; /* 横並び */
+}
 
+ /* 左コンテンツ */	
+.notice {
+	font-size: 20px;
+	color: #7A2C00;
+	padding: 0 40px 0 0px;
+	margin: 0 120px 0 80px;
+}
+
+ /* 「はじめまして！」 */
+.first{
+	display: flex;
+	padding: 0 0 20px 0;
+}
+
+ /* アプリの説明文 */
+.tip{
+	padding: 0 50px;
+}
+
+/*　右コンテンツ */
+.regist {
+	text-align: left;
+	flex: 1;
+	margin: 0 80px 0 0  ;
+}
+
+ /* 「新規登録」 */
+.second {
+	display: flex;
+	padding: 0 0 20px;
+}
+
+ /* 右コンテンツ内部 */
+.register{
+	background: #fef263;
+	padding: 50px 90px 30px;
+	margin: 10px 0px;
+	border: solid 6px orange;
+	border-radius: 30px;
+}
+
+/* パスワード設定条件説明 */
+.rule{
+	font-size: 15px;
+	color: #7A2C00;
+	opacity: 0.5;
+}
+
+/* 登録ボタン */
+.reg{
+	color: #FFF3E0;
+	padding: 10px 18px;
+	display: flex;
+	margin: 30px 180px 0;
+	border: solid 2px　 #FFF3E0;
+	border-radius: 8px;
+	background: orange;
+	transition: 0.2s;
+	box-shadow: 0px 5px #FF4500;
+}
+
+/* 登録ボタンの効果 */
+.reg:hover {
+	background-color: #FF8C00;
+}
 
 /* edit.jsp */
 
