@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.CommonDAO;
+import dto.CommonDTO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -29,27 +31,58 @@ public class ShouhinListServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		String sort = request.getParameter("sort");
-		CommonDAO dao = new CommonDAO();
-		/*List<shouhin> list = dao.idAsc();
-		
-		if(sort.equals("progress_asc")) {
-			List<shouhin> list = dao.progressAsc();
-		}else if(sort.equals("progress_desc")){
-			List<shouhin> list = dao.progressDesc();
-		}else if(sort.equals("day_price_asc")) {
-			List<shouhin> list = dao.daypriceAsc();
-		}else if(sort.equals("day_price_desc")) {
-			List<shouhin> list = dao.daypriceDesc();
-		}
-		
-		request.setAttribute("list", list);*/
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhinList.jsp");
-		dispatcher.forward(request, response);
-	}
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        String sort = request.getParameter("sort");
+        System.out.println("sort = " + sort);
+
+        String column = "id";
+        String order = "ASC";
+
+        if (sort != null) {
+            switch (sort) {
+                case "progress_asc":
+                    column = "progress";
+                    order = "ASC";
+                    break;
+
+                case "progress_desc":
+                    column = "progress";
+                    order = "DESC";
+                    break;
+
+                case "day_price_asc":
+                    column = "day_price";
+                    order = "ASC";
+                    break;
+
+                case "day_price_desc":
+                    column = "day_price";
+                    order = "DESC";
+                    break;
+
+                case "id_asc":
+                    column = "id";
+                    order = "ASC";
+                    break;
+
+                case "id_desc":
+                    column = "id";
+                    order = "DESC";
+                    break;
+            }
+        }
+
+        CommonDAO dao = new CommonDAO();
+        List<CommonDTO> list = dao.sort(column, order);
+
+        request.setAttribute("list", list);
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhinList.jsp");
+        dispatcher.forward(request, response);
+    }
+
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

@@ -1,48 +1,55 @@
 @charset "UTF-8";
 /* shouhinList.jsp */
-.items{
+.items {
 	display: grid;
-	grid-template-columns: repeat(3,1fr);
+	grid-template-columns: repeat(3, 1fr);
 	gap: 0;
 	place-items: center;
 }
 
-.item{
+.item {
 	position: relative;
 	justify-content: center;
 	align-items: center;
 	margin: 10px 0;
 }
-.item a:link{
-    color: black;
-    text-decoration: none;
+
+.item a:link {
+	color: black;
+	text-decoration: none;
 }
-.item a:visited{
-    color: black;
-    text-decoration: none;
+
+.item a:visited {
+	color: black;
+	text-decoration: none;
 }
-.item a:hover{
-    color: black;
+
+.item a:hover {
+	color: black;
+	text-decoration: none;
 }
-.item a:active{
-    color: black;
-    text-decoration: underline;
+
+.item a:active {
+	color: black;
+	text-decoration: none;
 }
-.item:hover{
+
+.item:hover {
 	filter: grayscale(70%) brightness(80%);
 }
-.item:active{
+
+.item:active {
 	filter: grayscale(100%) brightness(50%);
 }
 
-.nickname{
+.nickname {
 	position: absolute;
 	top: 4px;
-	right: 125px;
+	right: 120px;
 	font-weight: bold;
 }
 
-.shouhinimg{
+.shouhinimg {
 	position: absolute;
 	top: 75px;
 	right: 65px;
@@ -51,34 +58,85 @@
 	border: 2px solid black;
 }
 
-.shouhinimg img{
+.shouhinimg img {
 	width: 100%;
 	height: 100%;
 	object-fit: contain;
 	display: block;
 }
 
-.name{
+.name {
 	position: absolute;
-	justify-content: center;	/* 水平方向 */
-	align-items: center;	/* 垂直方向 */
+	justify-content: center; /* 水平方向 */
+	align-items: center; /* 垂直方向 */
 	top: 252px;
 	right: 135px;
 }
 
-.progress{
+.progress {
 	position: absolute;
 	justify-content: center;
 	align-items: center;
 	top: 295px;
 	right: 135px;
 }
-.day_price{
+
+.day_price {
 	position: absolute;
 	justify-content: center;
 	align-items: center;
 	top: 335px;
 	right: 135px;
+}
+
+/* sort 全体を右寄せ */
+.sort {
+    width: 70%;
+    text-align: right;
+    position: relative;
+}
+
+/* ボタンは右寄せのまま */
+.sortbutton {
+    width: 80px;
+    cursor: pointer;
+}
+
+/* プルダウンは左寄せに戻す */
+.dropdown {
+    display: none;
+    position: absolute;
+    top: 0px;
+    right: -330px;      /* ボタンの真下に出す */
+    background: white;
+    border: 1px solid #ccc;
+    padding: 10px;
+    z-index: 100;
+    width: 300px;
+    text-align: left;   /* ← これが重要 */
+}
+
+
+.dropdown a {
+    display: block;
+    padding: 6px 10px;
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown a:visited {
+	color: black;
+	text-decoration: none;
+}
+
+.dropdown a:hover {
+	color: #c97e47;
+	filter: grayscale(70%) brightness(80%);
+}
+
+.dropdown a:active {
+	color: #ffffff;
+	filter: grayscale(100%) brightness(50%);
 }
 
 /* albumList.jsp */

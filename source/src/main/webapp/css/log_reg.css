@@ -105,7 +105,7 @@ a:hover {
 		margin: 10px 20px;
 	}
 	
-	.center form input[type="text"], input[type="password"] {
+	.center form input[type="text"], .center form input[type="password"] {
 		text-align: center;
 		width: 180px;
 		height: 30px;
@@ -233,18 +233,23 @@ p {
 		margin: 10px 55px;
 	}
 	
+	.second{
+		margin: 20px 15px 0 ;
+		font-size: 25px;
+	}
+	
 	.regist {
 		margin: 0 30px;
 	}
 	.register {
-		padding: 30px 15px;
+		padding: 30px 10px;
 		margin: 0px 5px;
 		font-size: 13px;
 	}
 	
 	.register input[type="text"], input[type="password"] {
 		
-		width: 110px;
+		width: 100px;
 		height: 20px;
 		margin: 10px 20px;
 	}
@@ -259,7 +264,7 @@ p {
 	}
 	
 	.Tologin {
-		margin: 0 90px;
+		margin: 0 80px;
 	}
 }
 
