@@ -8,8 +8,12 @@
 }
 
 .image {
+    display: flex;
     align-items: center;
     gap: 16px;
+    position: relative;
+
+    
 }
 
 .logo {
@@ -17,6 +21,22 @@
     margin-left: 10%;
 }
 
+.image button {
+	position: absolute;
+	right:50px; top:45px;
+}
+
+.tv {
+	position: relative;
+}
+.tv img{
+	width:550px;
+	height:550px;
+}
+.tv_text {
+	position: absolute;
+	left:0; right:0; top:300px;
+}
 /* ペットの吹き出し */
 .speechBubble {
     position: relative;
