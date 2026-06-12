@@ -15,7 +15,7 @@
 
 </head>
 <body>
-
+<main>
 <!-- ロゴ(仮) -->
 <h1 class="title">
   <img src="images/タイトルロゴ.png" alt="サイトタイトル">
@@ -27,19 +27,19 @@
 <form id="diagnosis_form" method="POST" action="/e3/DiagnosisServlet"><!-- action→同ページに表示 -->
 	<table class="diagnosis">
 		<tr> <!-- 4つを一行扱いにしている -->
-			<td id = "shouhin_name">
+			<td class = "shouhin_name">
 				<label>商品名<br><!-- textareaの方が良い？ -->
-				<input type = "text" name = "shouhin" >　　　　<!-- とりあえずスペースで余白をつけている -->
+				<input type = "text" name = "shouhin" ><!-- スペース4コ -->
 				</label>
 			</td>
 			<td>
 				<label>価格<br>
-				<input type = "text" name = "money">円 　　　　
+				<input type = "text" name = "money">円
 				</label>
 			</td>
-			<td>
+			<td class = "year">
 				<label>想定年数<br>
-				<input type = "text" name = "use_year" id ="exp">年使用　　　　
+				<input type = "text" name = "use_year" >年使用
 				</label>
 			</td>
 			<td>
@@ -51,16 +51,17 @@
 
 <br><!-- 改行 -->
 <!-- 診断結果リストの表示テーブル -->
-<div class = "dr">
-	<h2>診断結果</h2>
+<!--<div class = "dr">-->
+<div class = "card">
+	<h3>診断結果</h3><br>
 	<table id="diagnosis_result"><!-- 枠はCSS? -->
 	
-	<c:forEach var="d" items="${diagnosisList}"> <!-- ここ全然わかりません -->
+	<c:forEach var="d" items="${diagnosisList}"> <!-- EL式 -->
 		<!-- thかtdどっちが良いか -->
 		<tr><!-- 1つ目 -->
 			<!-- マイナスボタン -->
 			<td>
-				<input type = "submit" name = "delete" value = "－">　　　<!-- 仮空白3コ -->
+				<input type = "submit" name = "delete" value = "　－　">　　　<!-- 仮空白3コ -->
 			</td>
 			<td>商品名 : ${d.shouhin}</td><td>○○○○　　</td><!-- 仮空白2コ -->
 			<td>価格 : ${d.money}</td><td>○○円　　</td>
@@ -91,8 +92,9 @@
 		
 </table>
 </div>
-
+</main>
 <footer>
+	<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
 </footer>
 
 <!-- JavaScript -->
