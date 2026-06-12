@@ -5,7 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<mata name = "viewport" content = "width=device-width, initial-scale= 1">
+<meta name = "viewport" content = "width=device-width, initial-scale= 1">
 <title>モノカチコレクション | 購入診断</title>
 <link rel = "stylesheet"
 	href = "<%=request.getContextPath()%>/css/style.css">
@@ -28,7 +28,7 @@
 <p>▶ 購入診断 : 気になる商品を比較して <strong>カチ</strong> のある買い物をしよう！</p>
 <br>
 <!-- 診断フォーム -->
-<form id="diagnosis_form" method="POST" action="/e3/DiagnosisServlet"><!-- action→同ページに表示 -->
+<form class = "diagnosis_form" id="diagnosis_form" method="POST" action="/e3/DiagnosisServlet"><!-- action→同ページに表示 -->
 	<table class="diagnosis">
 		<tr> <!-- 4つを一行扱いにしている -->
 			<td class = "shouhin_name">
@@ -47,18 +47,21 @@
 				</label>
 			</td>
 			<td>
-				<input type = "submit" name = "diagnosis" value = "　診断　">
+				<div class = "dia">
+					<input type = "submit" name = "diagnosis" value = "　診断　">
+				</div>
 			</td>
 		</tr>
 </table>
 </form>
+
 
 <br><!-- 改行 -->
 <!-- 診断結果リストの表示テーブル -->
 <!--<div class = "dr">-->
 <div class = "card">
 	<h3>診断結果</h3><br>
-	<table id="diagnosis_result"><!-- 枠はCSS? -->
+	<table class = "diagnosis_result" id="diagnosis_result"><!-- 枠はCSS? -->
 	
 	<c:forEach var="d" items="${diagnosisList}"> <!-- EL式 -->
 		<!-- thかtdどっちが良いか -->
@@ -67,30 +70,34 @@
 			<td>
 				<input type = "submit" name = "delete" value = "　－　">　　　<!-- 仮空白3コ -->
 			</td>
-			<td>商品名 : ${d.shouhin}</td><td>○○○○　　</td><!-- 仮空白2コ -->
+			<td>　商品名 : ${d.shouhin}</td><td>○○○○　　</td><!-- 仮空白2コ -->
 			<td>価格 : ${d.money}</td><td>○○円　　</td>
 			<td>年数 : ${d.use_year}</td><td>○年　　　　　</td><!-- 仮空白5コ -->
-			<td>1日当たり価格 : ${day_price}</td><td>○○円　　		
+			<td>1日当たり価格 : ${day_price}</td><td>○○円　</td>	
 		</tr>
-		<tr><!-- 区切り線 -->
+		<tr><!-- 区切り線CSSで付けることにした -->
 			<td colspan="10">　　　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
 			</td><!-- 上の10は適当 -->
 		</tr>
 		</c:forEach>
 		
-		<!-- CSSで空間作るべし -->
-		<tr><!-- 2つ目 -->
-			<td>
-				<input type = "submit" name = "delete" value = "－">　　　<!-- 仮空白3コ -->
+		<tr><!-- 3つ目 -->
+			<td class = "dia_button">
+				<input type = "submit" name = "delete" value = "－">
 			</td>
-			<td>商品名 : </td><td>○○○○　　</td><!-- 仮空白2コ -->
-			<td>価格 : </td><td>○○円　　</td>
-			<td>年数 : </td><td>○年　　　　　</td><!-- 仮空白5コ -->
-			<td>1日当たり価格 : </td><td>○○円　　		
+			<td>商品名 :○○○○</td>
+			<td>価格 :○○円</td>
+			<td>年数 :○年</td>
+			<td>1日当たり価格 :○○円</td>	
 		</tr>
-		<tr><!-- 区切り線 -->
-			<td colspan="10">　　　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-			</td><!-- 上の10は適当 -->
+		<tr><!-- 3つ目 -->
+			<td class = "dia_button">
+				<input type = "submit" name = "delete" value = "－">
+			</td>
+			<td>商品名 :</td><td>○○○○</td>
+			<td>価格 :</td><td>○○円</td>
+			<td>年数 :</td><td>○年</td>
+			<td>1日当たり価格 :</td><td>○○円</td>	
 		</tr>
 	
 		

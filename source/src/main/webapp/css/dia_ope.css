@@ -2,26 +2,27 @@
 
 /* スタイルシート */
 /* 購入診断 */
-
+/*
 .shouhin_name{
 	padding-left: 50px;
-}
+}*/
 
-/* 商品名の位置 */
+/* 商品名の位置 *//*
 #diagnosis_form{
 	margin: 0 auto;
 	
-}
+}*/
 
 
 	/* form入力場所 */
-#diagnosis_form input[type = "text"]{
-	margin:0 0 0 50px;
+.diagnosis_form input[type = "text"]{
+	margin:0 0 0 80px;
 	padding: 15px;
 	width: 150px;
 	border: 1.9px solid #7A2C00;
 	border-radius: 15px ;
 }
+	
 /* 想定年数欄小さめに */
 #diagnosis_form .year input[type = "text"]{ 
 	padding: 15px;
@@ -29,8 +30,8 @@
 }
 
 	/* 入力項目名の位置 */
-#diagnosis_form label{
-	margin: 0 0 0 63px;
+.diagnosis label{
+	margin: 0 0 0 93px;
 }
 	/* 入力項目名の色 */
 .diagnosis{
@@ -39,24 +40,23 @@
 
 
 /* 診断ボタン */
-#diagnosis_form input[type = "submit"]{
+.diagnosis_form input[type = "submit"]{
 	margin: 20px 0 0 100px;
 	padding: 10px;
 	width: 80px;
-	/*border: none;
-	background-color: #FFCC00;*/
+	
 	
 	background-color: #C75000;
 	color: #fff;
 	border: none;
 	border-radius: 24px;
-	/*padding: 8px 24px;*/
+	
 	font-size: 14px;
 	cursor: pointer;
 	transition: background-color 0.2s;
 }
 
-#diagnosis_form input[type = "submit"]:hover {
+.diagnosis_form input[type = "submit"]:hover {
 	background-color: #a34400;
 }
 	
@@ -88,21 +88,35 @@
 .card{
 	color: #C75000;
 }
-#diagnosis_result{
-	margin: 0 auto;
+.diagnosis_result {
+	/*border-spacing: 0px 0px;
+	margin: 0 auto 20px auto;*/
+	text-align: center;
 }
+
+	/* 区切り線 */
+.diagnosis_result td{
+	border-bottom: 1px dashed #C75000;
+	padding: 10px;
+}
+
+.diagnosis_result td.dia_button {
+	border-bottom: none;
+}
+
 /* ⊖ボタン */
-#diagnosis_result input[type = "submit"]{
+.diagnosis_result input[type = "submit"]{
 	background-color: #C75000;
 	color: #fff;
 	border: none;
 	border-radius: 50px;
-	padding: 8px 11px;
+	padding: 6px 9px;
 	font-size: 14px;
 	cursor: pointer;
 	transition: background-color 0.2s;
+	margin: 5px 25px 25px 0;
 }
-#diagnosis_result input[type = "submit"]:hover {
+.diagnosis_result input[type = "submit"]:hover {
 	background-color: #a34400;
 }
 
@@ -116,9 +130,35 @@
 
 
 /* モバイル対応 */
-@media(max-width: 767px){
-	.diagnosis{
-		grid-template-columns: 1fr;
+@media(max-width: 480px){
+	/* 診断ボタン */
+	.diagnosis_form input[type = "submit"]{
+		margin: 35px 0 0 0;
 	}
+	.dia {
+		text-align: center;
+		}
+	
+	/* フォーム縦並び */
+	table.diagnosis td, table.diagnosis tr,
+	table.diagnosis tbody, table.diagnosis {
+		display: block;
+		width:100%;
+		box-sizing: border-box;
+	}
+	/* リスト縦並び */
+	table.diagnosis_result td, table.diagnosis_result tr,
+	table.diagnosis_result tbody, table.diagnosis_result {
+		display: block;
+		width:100%;
+		box-sizing: border-box;
+	}
+	/* マイナスボタン */
+	.diagnosis_result td.dia_button {
+	border-bottom: none;
+	margin: 30px auto 0 auto;
+	text-align: center;
+}
+	
 }
 
