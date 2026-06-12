@@ -6,6 +6,12 @@ body {
 	background-color: #FFF3E0;
 }
 
+/*ヘッダー設定*/
+header {
+  padding: 0px 32px 0px;
+  background: #fff8f0;
+  border-bottom: 2.5px solid #e8923a;
+}
 /*タイトルロゴのサイズ・位置設定*/
 h1.title {
 	margin: 0;
@@ -17,7 +23,13 @@ h1.title img {
 	display: block;
 	width: clamp(80px, 15vw, 180px);
 	height: auto;
-	margin-top: -10px;
+	margin-top: -15px;
+	margin-bottom: -15px;
+	
+}
+
+main {
+  margin-top: 128px;
 }
 
 /*フッターのサイズ・位置設定*/

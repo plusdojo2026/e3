@@ -7,17 +7,19 @@
 	padding-left: 50px;
 }
 
-/* formのサイズ */
+/* 商品名の位置 */
 #diagnosis_form{
 	margin: 0 auto;
 	
 }
+
+
 	/* form入力場所 */
 #diagnosis_form input[type = "text"]{
 	margin:0 0 0 50px;
 	padding: 15px;
 	width: 150px;
-	border: 1.9px solid #C75000;
+	border: 1.9px solid #7A2C00;
 	border-radius: 15px ;
 }
 /* 想定年数欄小さめに */
@@ -28,7 +30,11 @@
 
 	/* 入力項目名の位置 */
 #diagnosis_form label{
-	margin: 0 0 0 60px;
+	margin: 0 0 0 63px;
+}
+	/* 入力項目名の色 */
+.diagnosis{
+	color: #7A2C00;
 }
 
 
@@ -77,10 +83,13 @@
 /* 中央に配置 */
 .card h3{
 	text-align: center;
+	color: #C75000;
+}
+.card{
+	color: #C75000;
 }
 #diagnosis_result{
 	margin: 0 auto;
-	
 }
 /* ⊖ボタン */
 #diagnosis_result input[type = "submit"]{
@@ -98,5 +107,18 @@
 }
 
 
+/* 操作説明 */
+.explane{
+	
+}
 
+
+
+
+/* モバイル対応 */
+@media(max-width: 767px){
+	.diagnosis{
+		grid-template-columns: 1fr;
+	}
+}
 
