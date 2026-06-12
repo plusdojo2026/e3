@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* スタイルシート */
-
+/* 購入診断 */
 
 #shouhin_name{
 	padding-left: 50px;
@@ -13,10 +13,12 @@
 	
 }
 /* form入力場所のサイズ */
+
 #diagnosis_form input[type = "text"]{
 	padding: 15px;
 	width: 200px;
-	border: 1.8px solid #7A2C00;
+	border: 1.8px solid #000000;
+	border-radius: 10px ;
 }
 #exp { /* 変わらない */
 	padding: 10px;
@@ -26,10 +28,9 @@
 #diagnosis_form input[type = "submit"]{
 	padding: 10px;
 	width: 80px;
-	
 	/*border: none;
 	background-color: #FFCC00;*/
-		
+	
 	background-color: #C75000;
 	color: #fff;
 	border: none;
@@ -39,6 +40,7 @@
 	cursor: pointer;
 	transition: background-color 0.2s;
 }
+
 #diagnosis_form input[type = "submit"]:hover {
 	background-color: #a34400;
 }
@@ -52,6 +54,7 @@
 	padding: 5px 5px;
 	
 }
+
 
 /* 中央に配置 */
 .dr h2{
