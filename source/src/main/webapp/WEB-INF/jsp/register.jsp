@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>モノカチコレクション | 登録</title>
 <link rel="stylesheet" 
 	href="<%= request.getContextPath()%>/css/style.css">
@@ -22,174 +23,136 @@
 	<!-- ヘッダーここまで　-->
 	
 <p>▶ 登録</p>
-<div class = "conteiner">
-<form id ="form">
-<table class="form-table">
 
-    <tr>
-     
-        <td colspan="3">
-            <img id="preview"
-                 src="${pageContext.request.contextPath}/images/frame_noimage.png"
-                 alt = "No Image"
-                 width="120">
+<div class="form-container">
+<form id="form">
 
-            <input type="file"
-                   id="img"
-                   name="itemImage"
-                   accept="image/*">
-        </td>
-    </tr>
+  <!-- 画像 -->
+  <div class="form-row">
+    <label class="form-label">画像</label>
 
-    <tr>
-        <th>ジャンル<span class="required">*</span></th>
-        <td colspan="3">
+    <img id="preview"
+         src="${pageContext.request.contextPath}/images/frame_noimage.png"
+         alt="No Image"
+         width="120">
 
-            <input type="radio" name="genre" value="家電製品">家電製品
-            <input type="radio" name="genre" value="家具">家具
-            <input type="radio" name="genre" value="ぬいぐるみ">ぬいぐるみ
-            <input type="radio" name="genre" value="その他">その他
+    <input type="file" id="img" name="itemImage" accept="image/*">
+  </div>
 
-        </td>
-    </tr>
+  <!-- ジャンル -->
+  <div class="form-row">
+    <label class="form-label">ジャンル<span class="required">*</span></label>
+	<span class = "error" id = "genreError"></span>
+	
+    <div class="radio-group">
+      <label><input type="radio" name="genre" value="家電製品"> 家電製品</label>
+      <label><input type="radio" name="genre" value="家具"> 家具</label>
+      <label><input type="radio" name="genre" value="ぬいぐるみ"> ぬいぐるみ</label>
+      <label><input type="radio" name="genre" value="その他"> その他</label>
+    </div>
+  </div>
 
-    <tr>
-        <th>商品名<span class="required">*</span></th>
-        <td>
-            <input type="text" placeholder="入力してください" id="shouhin" name="shouhin">
-        </td>
+  <!-- 商品名 / メーカー -->
+  <div class="form-row two-column">
+    <div class="form-group">
+      <label>商品名<span class="required">*</span></label>
+      <input type="text" id="shouhin" name="shouhin" placeholder="入力してください">
+      <span class = "error" id = "shouhinError"></span>
+    </div>
 
-        <th>メーカー</th>
-        <td>
-            <input type="text" placeholder="入力してください" id="maker" name="maker">
-        </td>
-    </tr>
+    <div class="form-group">
+      <label>メーカー</label>
+      <input type="text" id="maker" name="maker" placeholder="入力してください">
+    </div>
+  </div>
 
-    <tr>
-        <th>購入日<span class="required">*</span></th>
-        <td>
-            <input type="date" placeholder="年 / 月 / 日" id="buyDate" name="buy_date">
-        </td>
+  <!-- 購入日 / 価格 -->
+  <div class="form-row two-column">
+    <div class="form-group">
+      <label>購入日<span class="required">*</span></label>
+      <input type="date" id="buyDate" name="buy_date">
+      <span class = "error" id = "buyDateError"></span>
+    </div>
 
-        <th>価格<span class="required">*</span></th>
-        <td>
-            <input type="number" placeholder="入力してください" id="price" name="price"> 円
-        </td>
-    </tr>
+    <div class="form-group">
+      <label>価格<span class="required">*</span></label>
+      <input type="number" id="price" name="price"> <span class="unit">円</span>
+      <span class = "error" id = "priceError"></span>
+    </div>
+  </div>
 
-    <tr>
-        <th>保証期間</th>
-        <td>
-            <input type="number" placeholder="年数を入力" id="wperiod" name="wperiod"> 年
-        </td>
+  <!-- 保証期間 / 耐用年数 -->
+  <div class="form-row two-column">
+    <div class="form-group">
+      <label>保証期間</label>
+      <input type="number" id="wperiod" name="wperiod"><span class="unit">年</span>
+    </div>
 
-        <th>耐用年数<span class="required">*</span></th>
-        <td>
-            <input type="number" placeholder="年数を入力"
-                   id="life"
-                   name="life"> 年
-        </td>
-    </tr>
+    <div class="form-group">
+      <label>耐用年数<span class="required">*</span></label>
+      <input type="number" id="life" name="life"><span class="unit">年</span>
+      <span class = "error" id = "lifeError"></span>
+    </div>
+  </div>
 
-    <tr>
-        <th>愛称</th>
-        <td colspan="3">
-            <input type="text" placeholder="入力してください"
-                   id="nickname"
-                   name="nickname">
-        </td>
-    </tr>
-</table>
+  <!-- 愛称 -->
+  <div class="form-row">
+    <label class="form-label">愛称</label>
+    <input type="text" id="nickname" name="nickname" placeholder="入力してください">
+  </div>
 
-<p>	▶フレーム</p>
+  <!-- フレーム -->
+  <div class="form-row">
+    <label class="form-label">フレーム (愛称を設定すると入力できます)</label>
 
- <div class="frame-area">
+    <div class="frame-area">
 
-        <div class="frame-item">
+      <div class="frame-item">
+        <input type="radio" id="frame1" class="frameRadio" name="frame" value="1">
+        <label for="frame1">
+          <img src="${pageContext.request.contextPath}/images/frame_rabbit.png" alt="">
+        </label>
+      </div>
 
-            <input type="radio"
-                   id="frame1"
-                   class="frameRadio"
-                   name="frame"
-                   value="1">
+      <div class="frame-item">
+        <input type="radio" id="frame2" class="frameRadio" name="frame" value="2">
+        <label for="frame2">
+          <img src="${pageContext.request.contextPath}/images/frame_cat.png" alt="">
+        </label>
+      </div>
 
-            <label for="frame1">
-                <img src="${pageContext.request.contextPath}/images/frame_rabbit.png"
-                     alt="frame1" width = "100">
-            </label>
+      <div class="frame-item">
+        <input type="radio" id="frame3" class="frameRadio" name="frame" value="3">
+        <label for="frame3">
+          <img src="${pageContext.request.contextPath}/images/frame_bear.png" alt="">
+        </label>
+      </div>
 
-        </div>
+      <div class="frame-item">
+        <input type="radio" id="frame4" class="frameRadio" name="frame" value="4">
+        <label for="frame4">
+          <img src="${pageContext.request.contextPath}/images/frame_dog.png" alt="">
+        </label>
+      </div>
 
-        
-        <div class="frame-item">
-
-            <input type="radio"
-                   id="frame2"
-                   class="frameRadio"
-                   name="frame"
-                   value="2">
-
-            <label for="frame2">
-                <img src="${pageContext.request.contextPath}/images/frame_cat.png"
-                     alt="frame2" width = "100">
-            </label>
-
-        </div>
-        
-         <div class="frame-item">
-
-            <input type="radio"
-                   id="frame3"
-                   class="frameRadio"
-                   name="frame"
-                   value="3">
-
-            <label for="frame3">
-                <img src="${pageContext.request.contextPath}/images/frame_bear.png"
-                     alt="frame3" width = "100">
-            </label>
-
-        </div>
-        <div class="frame-item">
-
-            <input type="radio"
-                   id="frame4"
-                   class="frameRadio"
-                   name="frame"
-                   value="4">
-
-            <label for="frame4">
-                <img src="${pageContext.request.contextPath}/images/frame_dog.png"
-                     alt="frame4"width = "100">
-            </label>
-
-        </div>
-        
-         <div class="frame-item">
-
-            <input type="radio"
-                   id="frame5"
-                   class="frameRadio"
-                   name="frame"
-                   value="5">
-
-            <label for="frame5">
-                <img src="${pageContext.request.contextPath}/images/frame_bird.png"
-                     alt="frame5" width = "100">
-            </label>
-
-        </div>
+      <div class="frame-item">
+        <input type="radio" id="frame5" class="frameRadio" name="frame" value="5">
+        <label for="frame5">
+          <img src="${pageContext.request.contextPath}/images/frame_bird.png" alt="">
+        </label>
+      </div>
 
     </div>
-</form>    
+  </div>
+
+  <!-- ボタン -->
+  <button type="submit" id="registerBtn">登録</button>
+ 
+</form>
 </div>
 
-    <button type="submit"
-            id="registerBtn">
-        登録
-    </button>
-
 <script>
+
 	//耐用年数自動入力
 	const genreRadios =document.querySelectorAll("input[name='genre']");
 	const life = document.getElementById("life");
@@ -263,7 +226,64 @@
 			radio.disabled = !enable;
 		});
 	});
+	//必須項目に不足あればエラーメッセージの表示
+	document.getElementById("form").addEventListener("submit", function(event) {
+		let hasError = false;
+		
+	//エラーメッセージ初期化
+	document.querySelectorAll(".error").forEach(e => e.textContent = "");
+		
+	//商品名
+	const shouhin =
+		document.getElementById("shouhin").value.trim();
+		if(shouhin === "") {
+			document.getElementById("shouhinError").textContent = 
+				"商品名を入力してください";
+				hasError = true;
+		}
+		
+	//購入日
+	const buyDate =
+		document.getElementById("buyDate").value.trim();
+		if(buyDate === "") {
+			document.getElementById("buyDateError").textContent = 
+				"購入日を入力してください";
+				hasError = true;
+	}
+		
+	//価格
+	const price =
+		document.getElementById("price").value.trim();
+		if(price === "") {
+			document.getElementById("priceError").textContent = 
+				"価格を入力してください";
+				hasError = true;
+		}
 	
+	//耐用年数
+	const life =
+		document.getElementById("life").value.trim();
+		if(life === "") {
+			document.getElementById("lifeError").textContent = 
+				"耐用年数を入力してください";
+				hasError = true;
+	}
+		
+	//ジャンル
+	const genre =
+		document.querySelector("input[name='genre']:checked");
+		if(!genre) {
+			document.getElementById("genreError").textContent = 
+				"ジャンルを選択してください";
+			hasError = true;
+	}
+		
+	//エラーがあれば送信できない
+	if(hasError) {
+		event.preventDefault();
+		return;
+	}
+   });
 	//登録内容をポップアップで表示し確認
 	document.getElementById("form").addEventListener("submit", function(event) {
 		//各項目の入力値を取得
