@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<mata name = "viewport" content = "width=device-width, initial-scale= 1">
 <title>モノカチコレクション | 購入診断</title>
 <link rel = "stylesheet"
 	href = "<%=request.getContextPath()%>/css/style.css">
@@ -15,6 +16,9 @@
 
 </head>
 <body>
+<header>
+</header>
+
 <main>
 <!-- ロゴ(仮) -->
 <h1 class="title">
