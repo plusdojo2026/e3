@@ -32,10 +32,11 @@
 
 			<!-- 吹き出し（ここはテキストだけ） -->
 			<div class="speechBubble">通知です<br>通知です<br>通知です</div>
-			<!-- 吹き出しの外 -->
+			<!-- 「もっと見る」ボタン -->
 			<button type="button">もっと見る</button>
 
 		</div>
+		<!-- テレビ画像 -->
 		<div class="tv" align="center">
 			<img src="images/tv.png" alt="テレビ">
 
