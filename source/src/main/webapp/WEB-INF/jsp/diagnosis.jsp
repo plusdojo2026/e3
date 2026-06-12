@@ -111,14 +111,6 @@ document.getElementById('diagnosis_form').onsubmit = function(event) {
 	  }
 	};
 
-// 診断結果リストへの情報取得
-/*
-document.getElementById('diagnosis_form').onsubmit = function(event) {
-	event.preventDefault();
-	const search = document.getElementById('diagnosis_form').shouhin_name;
-}
-*/
-	
 	
 </script>
 
