@@ -23,7 +23,7 @@
 
 	<!-- ヒーロー -->
 	<main>
-		<img src="images/menu_hero.png" class="hero" width=300% alt="">
+		<img src="images/hero.jpg" class="hero" width=100% alt="">
 
 		<!-- キャラ＋吹き出し -->
 		<div class="image">
@@ -34,9 +34,6 @@
 			<div class="speechBubble">通知です</div>
 			<!-- 吹き出しの外 -->
 			<button type="button">もっと見る</button>
-
-
-
 
 		</div>
 		<div class="tv" align="center">
