@@ -20,10 +20,10 @@
 		</h1>
 	</header>
 	<!-- ヘッダー（ここまで） -->
-	
+
 	<!-- ヒーロー -->
 	<main>
-		<img src="images/menu_hero.png" class="hero" width=300%  alt="">
+		<img src="images/hero.jpg" class="hero" width=100% alt="">
 
 		<!-- キャラ＋吹き出し -->
 		<div class="image">
@@ -35,14 +35,12 @@
 			<!-- 吹き出しの外 -->
 			<button type="button">もっと見る</button>
 
-			<div align="center">
-				<img src="images/tv.png" alt="テレビ">
-
-			</div>
-
 		</div>
+		<div class="tv" align="center">
+			<img src="images/tv.png" alt="テレビ">
 
-	</div>
+			<p class="tv_text">aaa</p>
+		</div>
 	</main>
 	<!--　フッター　-->
 	<footer>
