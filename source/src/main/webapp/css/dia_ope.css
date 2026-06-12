@@ -12,13 +12,12 @@
 	margin: 0 auto;
 	
 }
-	/* form入力場所のサイズ */
+	/* form入力場所 */
 #diagnosis_form input[type = "text"]{
 	margin:0 0 0 50px;
 	padding: 15px;
 	width: 150px;
-	border: none;
-	border: 1.9px solid #7A2C00;
+	border: 1.9px solid #C75000;
 	border-radius: 15px ;
 }
 /* 想定年数欄小さめに */
