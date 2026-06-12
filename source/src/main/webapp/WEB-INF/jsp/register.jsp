@@ -22,11 +22,12 @@
 	<!-- ヘッダーここまで　-->
 	
 <p>▶ 登録</p>
+<div class = "conteiner">
 <form id ="form">
 <table class="form-table">
 
     <tr>
-        <th>画像</th>
+     
         <td colspan="3">
             <img id="preview"
                  src="${pageContext.request.contextPath}/images/frame_noimage.png"
@@ -53,7 +54,7 @@
     </tr>
 
     <tr>
-        <th>商品名<span>*</span></th>
+        <th>商品名<span class="required">*</span></th>
         <td>
             <input type="text" placeholder="入力してください" id="shouhin" name="shouhin">
         </td>
@@ -65,12 +66,12 @@
     </tr>
 
     <tr>
-        <th>購入日<span>*</span></th>
+        <th>購入日<span class="required">*</span></th>
         <td>
             <input type="date" placeholder="年 / 月 / 日" id="buyDate" name="buy_date">
         </td>
 
-        <th>価格<span>*</span></th>
+        <th>価格<span class="required">*</span></th>
         <td>
             <input type="number" placeholder="入力してください" id="price" name="price"> 円
         </td>
@@ -82,7 +83,7 @@
             <input type="number" placeholder="年数を入力" id="wperiod" name="wperiod"> 年
         </td>
 
-        <th>耐用年数<span>*</span></th>
+        <th>耐用年数<span class="required">*</span></th>
         <td>
             <input type="number" placeholder="年数を入力"
                    id="life"
@@ -100,7 +101,7 @@
     </tr>
 </table>
 
-<p>フレーム</p>
+<p>	▶フレーム</p>
 
  <div class="frame-area">
 
@@ -119,6 +120,7 @@
 
         </div>
 
+        
         <div class="frame-item">
 
             <input type="radio"
@@ -128,13 +130,13 @@
                    value="2">
 
             <label for="frame2">
-                <img src="${pageContext.request.contextPath}/images/frame_dog.png"
-                     alt="frame2"width = "100">
+                <img src="${pageContext.request.contextPath}/images/frame_cat.png"
+                     alt="frame2" width = "100">
             </label>
 
         </div>
-
-        <div class="frame-item">
+        
+         <div class="frame-item">
 
             <input type="radio"
                    id="frame3"
@@ -143,13 +145,12 @@
                    value="3">
 
             <label for="frame3">
-                <img src="${pageContext.request.contextPath}/images/frame_cat.png"
+                <img src="${pageContext.request.contextPath}/images/frame_bear.png"
                      alt="frame3" width = "100">
             </label>
 
         </div>
-        
-         <div class="frame-item">
+        <div class="frame-item">
 
             <input type="radio"
                    id="frame4"
@@ -158,8 +159,8 @@
                    value="4">
 
             <label for="frame4">
-                <img src="${pageContext.request.contextPath}/images/frame_bear.png"
-                     alt="frame4" width = "100">
+                <img src="${pageContext.request.contextPath}/images/frame_dog.png"
+                     alt="frame4"width = "100">
             </label>
 
         </div>
@@ -180,18 +181,18 @@
         </div>
 
     </div>
-
+</form>    
+</div>
 
     <button type="submit"
             id="registerBtn">
         登録
     </button>
-</form>    
-    
+
 <script>
 	//耐用年数自動入力
 	const genreRadios =document.querySelectorAll("input[name='genre']");
-	const life = document.getElementById("life").value;
+	const life = document.getElementById("life");
 	
 	genreRadios.forEach(radio => {
 	
@@ -244,7 +245,7 @@
 	
 	//愛称未入力の場合、フレーム選択不可
 	//ニックネームの入力欄を取得
-	const nickname = document.getElementById("nickname").value;
+	const nickname = document.getElementById("nickname");
 	
 	const frameRadios = document.querySelectorAll(".frameRadio");
 	//すべてのラジオボタンがクリックできない状態
@@ -266,6 +267,9 @@
 	//登録内容をポップアップで表示し確認
 	document.getElementById("form").addEventListener("submit", function(event) {
 		//各項目の入力値を取得
+		
+		const lifeValue = document.getElementById("life").value;
+	    const nicknameValue = document.getElementById("nickname").value;
 		const shouhin = document.getElementById("shouhin").value;
 		const maker = document.getElementById("maker").value;
 		const buyDate = document.getElementById("buyDate").value;

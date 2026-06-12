@@ -1,32 +1,77 @@
 @charset "UTF-8";
 
+/* フォーム全体の設定 */
+.form-container{
+    width: 90%;
+    margin: 0px auto;
+    padding: 30px;
+    background: #ffffff;
+    border: 2px solid #dcdcdc;
+    border-radius: 15px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
 /* 表全体の調整 */
 .form-table{
-	width:80%;
-	margin:20px auto;
+	width:100%;
 	border-collapse:collapse;
-	background:#fff;
+	
 }
 /* 項目名の調整 */
-.form-table th{
-    width:180px;
-    padding:15px;
-    background:#f4f4f4;
-    border:1px solid #ddd;
-    text-align:left;
+.form-table th,
+.form-table td {
+    padding: 10px 12px;
+  border: none;
+  border-bottom: 1.5px solid #C75000;
+  vertical-align: middle;
+  white-space: nowrap;
 }
-/* 入力欄の調整 */
-.form-table td{
-    padding:15px;
-    border:1px solid #ddd;
+
+.form-table input[type="text"],
+.form-table input[type="number"],
+.form-table input[type="date"]{
+    width:250px;
+    height:35px;
+    padding:5px 10px;
+    border:1px solid #ccc;
+    border-radius:0;
+    
+}
+
+.required{
+    color:red;
 }
 /* フレームの調整 */
 .frame-area {
     display: flex;
-    gap: 20px;     /* 間隔 */
+    justify-content:center;
+    gap:30px;
 }
-
 
 .frame-item {
+    display:flex;
     text-align: center;  /* 画像とラジオ中央 */
+    flex-direction: column; 
+    
 }
+
+.frame-item input {
+  margin-top: 5px;
+}
+
+
+.frame-item:hover {
+	background-color: #a34400;
+}
+
+
+.frame-item label{
+    cursor:pointer;
+}
+
+.frame-item img{
+    width:100px;
+    height:100px;
+    object-fit: contain;
+    
+}
+
