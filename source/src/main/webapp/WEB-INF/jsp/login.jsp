@@ -27,6 +27,12 @@
 		<!-- ログインフォーム -->
 		<main class="center">
 			<h2>おかえりなさい！</h2>
+			
+			<!-- エラー表示 -->
+			<c:if test="${not empty error}">
+    			<p style="color:red;">${error}</p>
+			</c:if>
+			
 			<form method="POST" action="${pageContext.request.contextPath}/LoginServlet">
 				ユーザーID<br><input type="text" name="userId"><br><br>
 				パスワード<br><input type="password" name="password"><br>
