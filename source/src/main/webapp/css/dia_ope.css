@@ -136,6 +136,13 @@
 .explane h2{
 	text-align: center;
 	color: #C75000;
+	border-bottom: 1px dashed #C75000;
+	padding: 10px;
+	
+}
+	/* 365右寄せ */
+.sanrokugo{
+	text-align: right;
 }
 
 /* 各項目名の中央配置
@@ -172,12 +179,20 @@
 		width:100%;
 		box-sizing: border-box;
 	}
+	.card {
+		padding: 20px 50px;
+	}
 	/* マイナスボタン */
 	.diagnosis_result td.dia_button {
 	border-bottom: none;
 	margin: 30px auto 0 auto;
 	text-align: center;
 }
+
+	/* 操作説明 */
+	.explane{
+		padding: 20px 50px;
+	}
 	
 }
 
