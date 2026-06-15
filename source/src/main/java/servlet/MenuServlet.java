@@ -41,7 +41,7 @@ public class MenuServlet extends HttpServlet {
 			return;
 		}
 
-		// ログイン完了していたらホーム画面を表示する
+		// ログイン完了していたらメニュー画面を表示する
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);
 	}
