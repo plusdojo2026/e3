@@ -125,6 +125,7 @@ a:hover {
 /* loginRegister.jsp */
 .contain { /* コンテンツ全体 */
 	display: flex; /* 横並び */
+	margin: 30px;
 }
 
  /* 左コンテンツ */	
@@ -143,6 +144,7 @@ a:hover {
 
 /* アプリ紹介文 */
 p {
+	font-size: 18px;
 	margin: 15px 0;
 }
 
@@ -216,11 +218,12 @@ p {
 	
 	.contain {
 		flex-direction: column;
+		margin: 20px 0 0 0;
 	}
 	
 	.notice {
 		padding: 0;
-		margin: 0 10px;
+		margin: 0 14px;
 	}
 	
 	.first{
@@ -230,11 +233,11 @@ p {
 	
 	p {
 		font-size: 15px;
-		margin: 10px 55px;
+		margin: 0px 55px 20px;
 	}
 	
 	.second{
-		margin: 20px 15px 0 ;
+		margin: 30px 15px 0 ;
 		font-size: 25px;
 	}
 	
