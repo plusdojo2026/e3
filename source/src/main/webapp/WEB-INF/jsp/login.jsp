@@ -28,7 +28,7 @@
 		<main class="center">
 			<h2>おかえりなさい！</h2>
 			<form method="POST" action="/e3/LoginServlet">
-				ユーザーID<br><input type="text" name="id"><br><br>
+				ユーザーID<br><input type="text" name="user_id"><br><br>
 				パスワード<br><input type="password" name="password"><br>
 				<input class="login" type="button" name="login" value="ログイン"><br>
 				<hr style="border: none; border-top: 2px solid #333;">

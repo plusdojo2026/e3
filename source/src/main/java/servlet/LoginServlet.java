@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CommonDAO;
+import dao.LoginDAO;
 import dto.CommonDTO;
 
 /**
@@ -44,33 +44,49 @@ public class LoginServlet extends HttpServlet {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("id");
+		String userIdStr = request.getParameter("user_id");
 		String password = request.getParameter("password");
 		
 		// ログイン処理
-		// 入力チェック
-        if (id == null || id.isEmpty() || password == null || password.isEmpty()) {
-
-            request.setAttribute("error", "ID とパスワードを入力してください。");
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
+		// 入力チェック(ID未入力)
+        if (userIdStr == null || userIdStr.isEmpty()) {
+        	request.setAttribute("error", "IDを入力してください。");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+        
+        // 入力チェック(パスワード未入力)
+        if(password == null || password.isEmpty()) {
+            request.setAttribute("error", "パスワードを入力してください。");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+        
+        // 数値チェック（文字列にしたuseridを数値に戻す）
+        int userid = 0;
+        try {
+        	userid = Integer.parseInt(userIdStr);
+        } catch (NumberFormatException e) {
+        	request.setAttribute("error", "IDは数値で入力してください。");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
 
-        // DAO 呼び出し
-        CommonDAO dao = new CommonDAO();
-        CommonDTO user = dao.login(id, password);
+        // DB 呼び出し
+        LoginDAO dao = new LoginDAO();
+        CommonDTO user = dao.login(userid, password);
 
         if (user == null) {
-            // ログイン失敗
-            request.setAttribute("error", "ID またはパスワードが違います。");
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
-        } else {
             // ログイン成功
-            HttpSession session = request.getSession();
+        	HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("MenuServlet.jsp");
+            // メニュー画面(Menu.jsp)へ
+            response.sendRedirect("menu.jsp");
+        } else {
+            // ログイン失敗
+        	// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+        	request.setAttribute("error", "ログインIDまたはパスワードに誤りがあります");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 	}
 
