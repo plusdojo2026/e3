@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
-/*albumDetail*/
-
+/* albumDetail */
+/* 吹き出し */
 .speechBubble {
   position: relative;
   display: inline-block;
@@ -41,6 +41,12 @@
   transform-origin: right;
 }
 
+.iconSpeech {
+  text-align: center;
+  margin-top:100px;
+}
+
+/* 商品詳細テーブル */
 .information {
   width: 100%;
   max-width: 560px;
@@ -76,9 +82,7 @@
   margin-left: 2px;
 }
 
-.iconSpeech {
-  text-align: center;
-}
+/* カード型背景 */
 .card {
   max-width: 560px;
   margin: 48px auto;
@@ -86,6 +90,8 @@
   border-radius: 16px;
   padding: 1.5rem 3rem;
 }
+
+/* ボタン位置設定 */
 .buttons {
   text-align: center;
   margin-top: 50px;
@@ -105,18 +111,20 @@
 .backlist a:hover {
   color: #7A2C00;
 }
-
+/* メディアクエリ */
+/* 少し狭めの適応範囲にしています */
 @media (max-width: 480px) {
   
   .speechBubble::before,
   .speechBubble::after {
     display: none;
   }
-    
+  /* カード背景画面外はみだし対策 */
   .card {
     padding: 1rem;
+    max-width: 300px;
   }
-
+/* テーブルを縦一列に、またそれに伴う調整 */
   .information tr,
   .information th,
   .information td {
@@ -139,6 +147,7 @@
   .information tr:last-child td:last-child {
     border-bottom: none;
   }
+  /* ボタン位置調整 */
   .buttons button {
     margin: 6px;
   }
