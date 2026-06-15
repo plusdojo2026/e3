@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -44,21 +46,24 @@ public class LoginServlet extends HttpServlet {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		
-		String userIdStr = request.getParameter("user_id");
+		String userIdStr = request.getParameter("userId");
 		String password = request.getParameter("password");
+		
+		// ★ エラーをまとめて管理するリスト
+	    List<String> errors = new ArrayList<>();
 		
 		// ログイン処理
 		// 入力チェック(ID未入力)
         if (userIdStr == null || userIdStr.isEmpty()) {
         	request.setAttribute("error", "IDを入力してください。");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;
         }
         
         // 入力チェック(パスワード未入力)
         if(password == null || password.isEmpty()) {
             request.setAttribute("error", "パスワードを入力してください。");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;
         }
         
@@ -68,7 +73,7 @@ public class LoginServlet extends HttpServlet {
         	userid = Integer.parseInt(userIdStr);
         } catch (NumberFormatException e) {
         	request.setAttribute("error", "IDは数値で入力してください。");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;
         }
 
@@ -76,7 +81,7 @@ public class LoginServlet extends HttpServlet {
         LoginDAO dao = new LoginDAO();
         CommonDTO user = dao.login(userid, password);
 
-        if (user == null) {
+        if (user != null) {
             // ログイン成功
         	HttpSession session = request.getSession();
             session.setAttribute("user", user);
@@ -86,7 +91,7 @@ public class LoginServlet extends HttpServlet {
             // ログイン失敗
         	// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
         	request.setAttribute("error", "ログインIDまたはパスワードに誤りがあります");
-            request.getRequestDispatcher("login.jsp").forward(request, response);
+            request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
         }
 	}
 
