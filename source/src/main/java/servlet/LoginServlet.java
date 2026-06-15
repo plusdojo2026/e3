@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import dao.CommonDAO;
+import dao.LoginDAO;
 import dto.CommonDTO;
 
 /**
@@ -44,13 +44,13 @@ public class LoginServlet extends HttpServlet {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		
-		String userId = request.getParameter("user_id");
+		String userIdStr = request.getParameter("user_id");
 		String password = request.getParameter("password");
 		
 		// ログイン処理
 		// 入力チェック(ID未入力)
-        if (userId == null || userId.isEmpty()) {
-        	request.setAttribute("error", "パスワードを入力してください。");
+        if (userIdStr == null || userIdStr.isEmpty()) {
+        	request.setAttribute("error", "IDを入力してください。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
@@ -61,10 +61,20 @@ public class LoginServlet extends HttpServlet {
             request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
+        
+        // 数値チェック（文字列にしたuseridを数値に戻す）
+        int userId = 0;
+        try {
+        	userId = Integer.parseInt(userIdStr);
+        } catch (NumberFormatException e) {
+        	request.setAttribute("error", "IDは数値で入力してください。");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
 
         // DB 呼び出し
-        CommonDAO dao = new CommonDAO();
-        CommonDTO user = null; // TODO: dao.login(userId, password);
+        LoginDAO dao = new LoginDAO();
+        CommonDTO user = dao.login(userId, password);
 
         if (user == null) {
             // ログイン成功
