@@ -44,33 +44,39 @@ public class LoginServlet extends HttpServlet {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		
-		String id = request.getParameter("id");
+		String userId = request.getParameter("user_id");
 		String password = request.getParameter("password");
 		
 		// ログイン処理
-		// 入力チェック
-        if (id == null || id.isEmpty() || password == null || password.isEmpty()) {
-
-            request.setAttribute("error", "ID とパスワードを入力してください。");
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
+		// 入力チェック(ID未入力)
+        if (userId == null || userId.isEmpty()) {
+        	request.setAttribute("error", "パスワードを入力してください。");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
+            return;
+        }
+        
+        // 入力チェック(パスワード未入力)
+        if(password == null || password.isEmpty()) {
+            request.setAttribute("error", "パスワードを入力してください。");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
             return;
         }
 
-        // DAO 呼び出し
+        // DB 呼び出し
         CommonDAO dao = new CommonDAO();
-        CommonDTO user = dao.login(id, password);
+        CommonDTO user = null; // TODO: dao.login(userId, password);
 
         if (user == null) {
-            // ログイン失敗
-            request.setAttribute("error", "ID またはパスワードが違います。");
-            RequestDispatcher rd = request.getRequestDispatcher("/login.jsp");
-            rd.forward(request, response);
-        } else {
             // ログイン成功
-            HttpSession session = request.getSession();
+        	HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("MenuServlet.jsp");
+            // メニュー画面(Menu.jsp)へ
+            response.sendRedirect("menu.jsp");
+        } else {
+            // ログイン失敗
+        	// リクエストスコープに、タイトル、メッセージ、戻り先を格納する
+        	request.setAttribute("error", "ログインIDまたはパスワードに誤りがあります");
+            request.getRequestDispatcher("login.jsp").forward(request, response);
         }
 	}
 
