@@ -57,4 +57,25 @@ public class LoginDAO {
 
 	    return 1; // 初回登録
 	}
+	
+	// ----新規登録----
+	public boolean insertUser(CommonDTO dto) {
+
+	    String sql = "INSERT INTO login (userid, password) VALUES (?, ?)";
+
+	    try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+	         PreparedStatement ps = con.prepareStatement(sql)) {
+
+	        ps.setInt(1, dto.getUserid());
+	        ps.setString(2, dto.getPassword());
+
+	        int result = ps.executeUpdate();
+	        return result == 1;
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return false;
+	}
 }
