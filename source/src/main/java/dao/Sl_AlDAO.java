@@ -10,15 +10,17 @@ import java.util.List;
 
 import dto.CommonDTO;
 
-public class CommonDAO {
+public class Sl_AlDAO {
 	private static final String URL = "jdbc:mysql://localhost:3306/monocolledb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
 	private static final String USER = "root";
 	private static final String PASS = "password";
 
-	public List<CommonDTO> sort(String column, String order) {
+	public List<CommonDTO> sort(String table, String column, String order) {
 		Connection conn = null;
 		List<CommonDTO> list = new ArrayList<>();
 
+		String sortTable = table;
+		
 		String sortColumn;
 		switch (column) { // SQLインジェクション対策
 		case "id":
@@ -46,7 +48,7 @@ public class CommonDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASS);
 
-			String sql = "SELECT * FROM shouhin ORDER BY " + sortColumn + " " + sortOrder;
+			String sql = "SELECT * FROM " + sortTable + " ORDER BY " + sortColumn + " " + sortOrder;
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			ResultSet rs = pStmt.executeQuery();

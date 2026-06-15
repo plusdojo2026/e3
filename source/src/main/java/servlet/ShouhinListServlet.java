@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.CommonDAO;
+import dao.Sl_AlDAO;
 import dto.CommonDTO;
 
 /**
@@ -37,6 +37,7 @@ public class ShouhinListServlet extends HttpServlet {
         String sort = request.getParameter("sort");
         System.out.println("sort = " + sort);
 
+        String table = "shouhin";
         String column = "id";
         String order = "ASC";
 
@@ -74,8 +75,8 @@ public class ShouhinListServlet extends HttpServlet {
             }
         }
 
-        CommonDAO dao = new CommonDAO();
-        List<CommonDTO> list = dao.sort(column, order);
+        Sl_AlDAO dao = new Sl_AlDAO();
+        List<CommonDTO> list = dao.sort(table, column, order);
 
         request.setAttribute("list", list);
 

@@ -15,7 +15,7 @@ public class LoginDAO {
 
 	// ----ログイン----
 	public CommonDTO login(int userid, String password) {
-		String sql ="SELECT user_id, password FROM login WHERE user_id = ? AND password = ?";
+		String sql ="SELECT userid, password FROM login WHERE user_id = ? AND password = ?";
 		
 		try(Connection con = DriverManager.getConnection(URL, USER, PASS);
 			PreparedStatement ps = con.prepareStatement(sql)) {
@@ -27,7 +27,7 @@ public class LoginDAO {
 			
 			if (rs.next()) {
 	            CommonDTO dto = new CommonDTO();
-	            dto.setUserid(rs.getInt("user_id"));
+	            dto.setUserid(rs.getInt("userid"));
 	            dto.setPassword(rs.getString("password"));
 	            return dto;
 	        }
