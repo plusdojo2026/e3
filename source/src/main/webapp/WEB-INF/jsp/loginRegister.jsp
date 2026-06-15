@@ -33,11 +33,11 @@
 		<div class="regist">
 			<h2 class="second">会員登録</h2>
 			<form class="register" method="POST" action="/e3/LoginRegisterServlet">
-				ID　　　　　　　　<input type="text" name="id"><br>
+				ID　　　　　　　　<input type="text" name="userId"><br>
 				パスワード　　　　<input type="text" name="password"><br>
 				パスワード(確認用) <input type="text" name="password"><br>
 				<p class="rule">パスワードには8文字（英数字、大文字、小文字から２つ以上を含む）を設定してください。</p>
-				<input class="reg" type="button" name="regist" value="登録"><br>
+				<input class="reg" type="submit" name="regist" value="登録"><br>
 			</form>
 			<br><a class="Tologin" href="/e3/LoginServlet">ログインはこちら</a>
 		</div>

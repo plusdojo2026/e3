@@ -27,10 +27,10 @@
 		<!-- ログインフォーム -->
 		<main class="center">
 			<h2>おかえりなさい！</h2>
-			<form method="POST" action="/e3/LoginServlet">
-				ユーザーID<br><input type="text" name="user_id"><br><br>
+			<form method="POST" action="${pageContext.request.contextPath}/LoginServlet">
+				ユーザーID<br><input type="text" name="userId"><br><br>
 				パスワード<br><input type="password" name="password"><br>
-				<input class="login" type="button" name="login" value="ログイン"><br>
+				<input class="login" type="submit" name="login" value="ログイン"><br>
 				<hr style="border: none; border-top: 2px solid #333;">
 				<br><a class="Toregist" href="/e3/LoginRegisterServlet">新規登録はこちら</a>
 			</form>
@@ -42,5 +42,9 @@
 	<footer>
 		<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
 	</footer>
+	
+<script src="${pageContext.request.contextPath}/js/common.js"></script>
+<script>
+</script>
 </body>
 </html>

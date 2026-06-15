@@ -72,7 +72,7 @@ public class LoginServlet extends HttpServlet {
             return;
         }
 
-        // DB 呼び出し
+        // DAO呼び出し
         LoginDAO dao = new LoginDAO();
         CommonDTO user = dao.login(userid, password);
 

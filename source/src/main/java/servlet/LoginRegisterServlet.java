@@ -97,6 +97,7 @@ public class LoginRegisterServlet extends HttpServlet {
 		}
 		
 		// 完了メッセージをポップアップ表示
+		request.setAttribute("message", "登録が完了しました。");
 		
 	}
 
