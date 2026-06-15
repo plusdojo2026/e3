@@ -15,13 +15,34 @@
 </head>
 <body>
 
-	<header> </header>
+	<!--　ヘッダー　-->
+	<header>
+    <div class="header-in">
+        <div class="header-spacer"></div>
+        <h1 class="title">
+            <img src="images/タイトルロゴ.png" alt="サイトタイトル">
+        </h1>
+    </div>
+    <button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+    </button>
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-header">モノカチコレクション</div>
+        <div class="menu-nav">
+            <a href="${pageContext.request.contextPath}/MenuServlet">メニュー</a>
+            <a href="${pageContext.request.contextPath}/DiagnosisServlet">購入診断</a>
+            <a href="${pageContext.request.contextPath}/ShouhinListServlet">一覧表示</a>
+            <a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
+            <a href="${pageContext.request.contextPath}/AlbumListServlet">アルバム</a>
+            <a href="${pageContext.request.contextPath}/OperationServlet">機能説明</a>
+            <a href="${pageContext.request.contextPath}/LoginServlet">ログアウト</a>
+        </div>
+    </nav>
+</header>
+	<!-- ヘッダーここまで　-->
 
 	<main>
-		<!-- ロゴ(仮) -->
-		<h1 class="title">
-			  <img src="images/タイトルロゴ.png" alt="サイトタイトル">
-		</h1>
+		
 
 		<p>
 			▶ 機能説明 : 使い方をマスターしてコレクションを楽しもう！<br>
@@ -31,7 +52,7 @@
 
 		<div class = "explane">
 			<h2>使い方</h2>
-			 このアプリでは、家具や家電やその他、自分の身の回りにある
+			 このアプリでは、家具・家電やその他自分の身の回りにある
 			<strong>モノ</strong> の <strong> カチ</strong> をコレクションすることができます。
 			以下は機能の説明です。<br><br><br>
 			
@@ -96,6 +117,12 @@
 	<footer>
 		<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
 	</footer>
+	<!-- フッターここまで　-->
+	<!-- ハンバーガーメニュー　-->
+<script src="${pageContext.request.contextPath}/js/common.js"></script>
+<script>
+</script>
+	
 
 </body>
 </html>
