@@ -4,13 +4,12 @@
 /*背景色をクリーム色に*/
 body {
 	background-color: #FFF3E0;
-	margin:0;
-	padding:0;
+	margin: 0;
+	padding: 0;
 }
 
 /* ヘッダー設定 */
 header {
-
 	background: #fff8f0;
 	border-bottom: 2.5px solid #e8923a;
 	position: relative;
@@ -30,6 +29,7 @@ h1.title {
 	padding: 0;
 	line-height: 1;
 }
+
 h1.title img {
 	display: block;
 	width: clamp(80px, 15vw, 180px);
@@ -41,63 +41,75 @@ h1.title img {
 /* ハンバーガーボタン */
 /* 一部デフォルトのボタン設定と干渉するためimportant使用 */
 .hamburger-btn {
-    aspect-ratio: 1 / 1;
-    position: fixed;
-    top: 10px;
-    left: 12px;
-    z-index: 1000;
-    background: none !important;
-    border: 3px solid #C75000 !important;
-    border-radius: 10px !important;
-    cursor: pointer;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 5px;
-    width: clamp(4px, 6.8vw, 80px);
-    margin-top: 1.5vw;
-    color: inherit !important;
+	aspect-ratio: 1/1;
+	position: fixed;
+	top: 10px;
+	left: 12px;
+	z-index: 1000;
+	background: none !important;
+	border: 3px solid #C75000 !important;
+	border-radius: 10px !important;
+	cursor: pointer;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 5px;
+	width: clamp(4px, 6.8vw, 80px);
+	margin-top: 1.5vw;
+	color: inherit !important;
 }
 
 /* ハンバーガーボタンの横線　*/
 .hamburger-btn span {
-    display: block;
-    width: 22px;
-    height: 2px;
-    background: #C75000;
-    border-radius: 2px;
-    transition: transform 0.3s, opacity 0.3s;
+	display: block;
+	width: 22px;
+	height: 2px;
+	background: #C75000;
+	border-radius: 2px;
+	transition: transform 0.3s, opacity 0.3s;
 }
-.hamburger-btn.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
-.hamburger-btn.open span:nth-child(2) { opacity: 0; }
-.hamburger-btn.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+.hamburger-btn.open span:nth-child(1) {
+	transform: translateY(7px) rotate(45deg);
+}
+
+.hamburger-btn.open span:nth-child(2) {
+	opacity: 0;
+}
+
+.hamburger-btn.open span:nth-child(3) {
+	transform: translateY(-7px) rotate(-45deg);
+}
 
 /* スペーサー（タイトルロゴの位置調整） */
 .header-spacer {
-    width: 88px;
-    height: 88px;
-    flex-shrink: 0;
+	width: 88px;
+	height: 88px;
+	flex-shrink: 0;
 }
 
 /* サイドメニュー */
 .side-menu {
-    padding-top: 120px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 240px;
-    height: 100%;
-    background: #fff;
-    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
-    transform: translateX(-100%);
-    transition: transform 0.3s cubic-bezier(.4,0,.2,1);
-    z-index: 950;
-    display: flex;
-    flex-direction: column;
+	padding-top: 120px;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 240px;
+	height: 100%;
+	background: #fff;
+	box-shadow: 2px 0 12px rgba(0, 0, 0, 0.1);
+	transform: translateX(-100%);
+	transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+	z-index: 950;
+	display: flex;
+	flex-direction: column;
 }
 
-.side-menu.open { transform: translateX(0); }
+.side-menu.open {
+	transform: translateX(0);
+}
+
 .menu-header {
 	padding: 18px 20px 14px;
 	border-bottom: 1px solid #eee;
@@ -106,6 +118,7 @@ h1.title img {
 	color: #000000;
 	background: #ffffff;
 }
+
 .menu-nav a {
 	display: flex;
 	align-items: center;
@@ -117,6 +130,7 @@ h1.title img {
 	border-left: 3px solid transparent;
 	transition: background 0.15s;
 }
+
 .menu-nav a:hover {
 	background: #ffffff;
 	color: #C75000;
@@ -150,39 +164,36 @@ button:hover {
 	background-color: #a34400;
 }
 
-@media (max-width: 768px) {
+@media ( max-width : 768px) {
+	.header-spacer {
+		width: 0px;
+		height: 88px;
+	}
 
-    .header-spacer {
-    width: 0px;
-    height: 88px;
+	/* ハンバーガーボタンを右に*/
+	.hamburger-btn {
+		left: auto;
+		right: 12px;
+		top: 10px;
+		width: 52px;
+		height: 52px;
+	}
+
+	/* サイドメニューを右側から、全幅に */
+	.side-menu {
+		left: auto;
+		right: 0;
+		width: 100%;
+		height: 100%;
+		transform: translateX(100%);
+		transition: transform 0.3s cubic-bezier(.4, 0, .2, 1);
+	}
+
+	/* 開いた状態 */
+	.side-menu.open {
+		transform: translateX(0);
+	}
 }
-
-/* ハンバーガーボタンを右に*/
-    .hamburger-btn {
-        left: auto;
-        right: 12px;
-        top: 10px;
-
-        width: 52px;
-        height: 52px;
-    }
-
-    /* サイドメニューを右側から、全幅に */
-    .side-menu {
-        left: auto;
-        right: 0;
-
-        width: 100%;
-        height: 100%;
-
-        transform: translateX(100%);
-        transition: transform 0.3s cubic-bezier(.4,0,.2,1);
-    }
-
-    /* 開いた状態 */
-    .side-menu.open {
-        transform: translateX(0);
-    }
 /* login.jsp */
 
 /* loginRegister.jsp */
@@ -192,104 +203,22 @@ button:hover {
 /* menu.jsp */
 
 /* shouhinList.jsp */
-.items{
-	display: grid;
-	grid-template-columns: repeat(3,1fr);
-	gap: 0;
-	place-items: center;
-}
-
-.item{
-	position: relative;
-	justify-content: center;
-	align-items: center;
-	margin: 10px 0;
-}
-.item a:link{
-    color: black;
-    text-decoration: none;
-}
-.item a:visited{
-    color: black;
-    text-decoration: none;
-}
-.item a:hover{
-    color: black;
-}
-.item a:active{
-    color: black;
-    text-decoration: underline;
-}
-.item:hover{
-	filter: grayscale(70%) brightness(80%);
-}
-.item:active{
-	filter: grayscale(100%) brightness(50%);
-}
-
-.nickname{
-	position: absolute;
-	top: 4px;
-	right: 125px;
-	font-weight: bold;
-}
-
-.shouhinimg{
-	position: absolute;
-	top: 75px;
-	right: 65px;
-	width: 180px;
-	height: 180px;
-	border: 2px solid black;
-}
-
-.shouhinimg img{
-	width: 100%;
-	height: 100%;
-	object-fit: contain;
-	display: block;
-}
-
-.name{
-	position: absolute;
-	justify-content: center;	/* 水平方向 */
-	align-items: center;	/* 垂直方向 */
-	top: 252px;
-	right: 135px;
-}
-
-.progress{
-	position: absolute;
-	justify-content: center;
-	align-items: center;
-	top: 295px;
-	right: 135px;
-}
-.day_price{
-	position: absolute;
-	justify-content: center;
-	align-items: center;
-	top: 335px;
-	right: 135px;
-}
 
 /* shouhinDetail.jsp */
 
-
 /* register.jsp */
-
 
 /* edit.jsp */
 
-
 /* operation.jsp */
 
-
 /* ranking.jsp */
-
 
 /* albumList.jsp */
 
 
+
 /* albumDetail.jsp */
-}
+
+/* albumDetail.jsp */
+

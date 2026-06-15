@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!--　ビューポート　-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>モノカチコレクション | 登録</title>
 <link rel="stylesheet" 
@@ -185,7 +186,7 @@
  
 </form>
 </div>
-
+<script src="${pageContext.request.contextPath}/js/common.js"></script>
 <script>
 
 	//耐用年数自動入力

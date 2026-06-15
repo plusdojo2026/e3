@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<!--　ビューポート　-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>モノカチコレクション | 編集</title>
 <link rel="stylesheet" 
@@ -183,7 +184,7 @@
  
 </form>
 </div>
-
+<script src="${pageContext.request.contextPath}/js/common.js"></script>
 <script>
 
 	//耐用年数自動入力
@@ -205,11 +206,11 @@
 	                break;
 	
 	            case "ぬいぐるみ":
-	                life.value = 5;
+	                life.value = 4;
 	                break;
 	
 	            default:
-	                life.value = 3;
+	                life.value = 5;
 	        }
 
     });
