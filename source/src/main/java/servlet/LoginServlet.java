@@ -63,9 +63,9 @@ public class LoginServlet extends HttpServlet {
         }
         
         // 数値チェック（文字列にしたuseridを数値に戻す）
-        int userId = 0;
+        int userid = 0;
         try {
-        	userId = Integer.parseInt(userIdStr);
+        	userid = Integer.parseInt(userIdStr);
         } catch (NumberFormatException e) {
         	request.setAttribute("error", "IDは数値で入力してください。");
             request.getRequestDispatcher("login.jsp").forward(request, response);
@@ -74,7 +74,7 @@ public class LoginServlet extends HttpServlet {
 
         // DB 呼び出し
         LoginDAO dao = new LoginDAO();
-        CommonDTO user = dao.login(userId, password);
+        CommonDTO user = dao.login(userid, password);
 
         if (user == null) {
             // ログイン成功
