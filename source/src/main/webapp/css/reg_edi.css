@@ -1,5 +1,7 @@
 @charset "UTF-8";
-
+.h2 {
+	font-size:24px;
+}
 /* フォーム全体 */
 .form-container {
 	width: 90%;
@@ -42,7 +44,7 @@
 }
 
 .form-group span.unit {
-	margin-left: 5px;
+	margin-left: 250px;
 }
 
 /* 入力 */
@@ -63,9 +65,15 @@ input[type="text"], input[type="number"], input[type="date"] {
 .error {
 	color:red;
 	font-size:12px;
-	margin-top:5px;
-	display:block;
+	margin:0 5px 0 10px;
 }
+
+.label-area {
+	display:flex;
+	align-items:center;
+}
+
+
 
 /* ラジオボタン */
 .radio-group {
@@ -116,21 +124,23 @@ input[type="text"], input[type="number"], input[type="date"] {
 	padding: 10px 30px;
 }
 /* スマホ対応 */
-@media ( max-width : 768px) {
-	/* 縦並びにする */
-	.two-column　 {
-		display: flex;
-		gap: 20px;
-	}
-	.form-group {
-		display: flex;
-		flex-direction: column;
-		flex: 1;
-	}
+@media ( max-width : 750px) {
+/* 縦並びにする */
 
-	/* フレーム少し小さく */
-	.frame-item img {
-		width: 80px;
-		height: 80px;
-	}
+.two-column {
+	flex-direction:column;
+}
+.form-group {
+	flex-direction: column;
+	align-items:stretch;
+}
+
+.form-group span.unit {
+	margin-left:250px;
+}
+/* フレーム少し小さく */
+.frame-item img {
+	width: 40px;
+	height: 40px;
+}
 }

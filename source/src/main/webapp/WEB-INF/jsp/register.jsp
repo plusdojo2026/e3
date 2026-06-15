@@ -16,16 +16,36 @@
 <body>
 <!--　ヘッダー　-->
 	<header>
-<h1 class="title">
-  <img src="images/タイトルロゴ.png" alt="サイトタイトル">
-</h1>
-	</header>
+    <div class="header-in">
+        <div class="header-spacer"></div>
+        <h1 class="title">
+            <img src="images/タイトルロゴ.png" alt="サイトタイトル">
+        </h1>
+    </div>
+    <button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
+        <span></span><span></span><span></span>
+    </button>
+    <nav class="side-menu" id="sideMenu">
+        <div class="menu-header">モノカチコレクション</div>
+        <div class="menu-nav">
+            <a href="${pageContext.request.contextPath}/MenuServlet">メニュー</a>
+            <a href="${pageContext.request.contextPath}/DiagnosisServlet">購入診断</a>
+            <a href="${pageContext.request.contextPath}/ShouhinListServlet">一覧表示</a>
+            <a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
+            <a href="${pageContext.request.contextPath}/AlbumListServlet">アルバム</a>
+            <a href="${pageContext.request.contextPath}/OperationServlet">機能説明</a>
+            <a href="${pageContext.request.contextPath}/LoginServlet">ログアウト</a>
+        </div>
+    </nav>
+</header>
 	<!-- ヘッダーここまで　-->
 	
-<p>▶ 登録</p>
+<h2>▶ 登録</h2>
 
 <div class="form-container">
-<form id="form">
+<form id="form" action="${pageContext.request.contextPath}/RegisterServlet"
+      method="post"
+      enctype="multipart/form-data">
 
   <!-- 画像 -->
   <div class="form-row">
@@ -41,8 +61,11 @@
 
   <!-- ジャンル -->
   <div class="form-row">
-    <label class="form-label">ジャンル<span class="required">*</span></label>
-	<span class = "error" id = "genreError"></span>
+  <label class="form-label">商品詳細</label>
+   <div class="label-area">
+    <label>ジャンル<span class="required">*</span></label>
+    <span class = "error" id = "genreError"></span>
+   </div>
 	
     <div class="radio-group">
       <label><input type="radio" name="genre" value="家電製品"> 家電製品</label>
@@ -55,9 +78,12 @@
   <!-- 商品名 / メーカー -->
   <div class="form-row two-column">
     <div class="form-group">
+     <div class="label-area"> 
       <label>商品名<span class="required">*</span></label>
-      <input type="text" id="shouhin" name="shouhin" placeholder="入力してください">
       <span class = "error" id = "shouhinError"></span>
+     </div>
+      <input type="text" id="shouhin" name="shouhin" placeholder="入力してください">
+      
     </div>
 
     <div class="form-group">
@@ -69,18 +95,24 @@
   <!-- 購入日 / 価格 -->
   <div class="form-row two-column">
     <div class="form-group">
+     <div class="label-area"> 
       <label>購入日<span class="required">*</span></label>
-      <input type="date" id="buyDate" name="buy_date">
       <span class = "error" id = "buyDateError"></span>
+     </div>
+      <input type="date" id="buyDate" name="buy_date">
+      
     </div>
 
     <div class="form-group">
+     <div class="label-area">
       <label>価格<span class="required">*</span></label>
-      <input type="number" id="price" name="price"> <span class="unit">円</span>
       <span class = "error" id = "priceError"></span>
+     </div>
+      <input type="number" id="price" name="price"> <span class="unit">円</span>
+      
     </div>
   </div>
-
+  
   <!-- 保証期間 / 耐用年数 -->
   <div class="form-row two-column">
     <div class="form-group">
@@ -89,9 +121,12 @@
     </div>
 
     <div class="form-group">
+     <div class="label-area">
       <label>耐用年数<span class="required">*</span></label>
-      <input type="number" id="life" name="life"><span class="unit">年</span>
       <span class = "error" id = "lifeError"></span>
+     </div>
+      <input type="number" id="life" name="life"><span class="unit">年</span>
+      
     </div>
   </div>
 
@@ -172,11 +207,11 @@
 	                break;
 	
 	            case "ぬいぐるみ":
-	                life.value = 5;
+	                life.value = 4;
 	                break;
 	
 	            default:
-	                life.value = 3;
+	                life.value = 5;
 	        }
 
     });
