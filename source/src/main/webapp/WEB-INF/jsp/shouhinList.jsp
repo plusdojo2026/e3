@@ -6,6 +6,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>モノカチコレクション | 商品一覧</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
@@ -17,7 +18,7 @@
 		  <img src="images/タイトルロゴ.png" alt="サイトタイトル">
 	</h1>
 
-	<h2>
+	<h2 class="listtitle">
 		<b>▶ 一覧 </b>： 登録した<strong>モノ</strong>たちを見てみよう！
 	</h2>
 
@@ -34,19 +35,19 @@
 			<a
 				href="${pageContext.request.contextPath}/ShouhinListServlet?sort=progress_asc">経過日数が短い順</a>
 			<a
-				href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_desc">１日当たりの固定費が多い順</a>
+				href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_desc">1日当たりの固定費が多い順</a>
 			<a
-				href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_asc">１日当たりの固定費が少ない順</a>
+				href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_asc">1日当たりの固定費が少ない順</a>
 		</div>
 	</div>
 
 	<main>
-		<div class="items">
+		<div class="shouhinlist">
 			<c:forEach var="s" items="${list}">
-				<div class="item">
+				<div class="shouhin">
 					<a
 						href="${pageContext.request.contextPath}/ShouhinDetailServlet?shouhinid=${s.id}">
-						<img src="images/shouhinList_bg.png" width=300px height=auto>
+						<img src="images/shouhinList_bg.png">
 						<div class="nickname">
 							<p>${s.nickname}</p>
 						</div>
