@@ -36,10 +36,10 @@ public class MenuServlet extends HttpServlet {
 		CommonDTO user = (CommonDTO) request.getSession().getAttribute("user");
 
 		// 未ログインならログイン画面へ
-		if (user == null) {
-			response.sendRedirect("LoginServlet");
-			return;
-		}
+//		if (user == null) {
+//			response.sendRedirect("LoginServlet");
+//			return;
+//		}
 
 		// ログイン完了していたらメニュー画面を表示する
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
