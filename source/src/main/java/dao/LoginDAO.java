@@ -13,6 +13,7 @@ public class LoginDAO {
 	private static final String USER = "root";
 	private static final String PASS = "password";
 
+	// ----ログイン----
 	public CommonDTO login(int userid, String password) {
 		String sql ="SELECT user_id, password FROM login WHERE user_id = ? AND password = ?";
 		
@@ -36,5 +37,24 @@ public class LoginDAO {
 	    }
 
 	    return null;
+	}
+	
+	// ----自動採番----
+	public int getNextUserId() {
+	    String sql = "SELECT MAX(userid) FROM login";
+
+	    try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+	         PreparedStatement ps = con.prepareStatement(sql);
+	         ResultSet rs = ps.executeQuery()) {
+
+	        if (rs.next()) {
+	            return rs.getInt(1) + 1;
+	        }
+
+	    } catch (SQLException e) {
+	        e.printStackTrace();
+	    }
+
+	    return 1; // 初回登録
 	}
 }
