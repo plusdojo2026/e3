@@ -42,20 +42,42 @@ public class LoginRegisterServlet extends HttpServlet {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
 		
+		String userIdStr = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String passwordConfirm = request.getParameter("passwordConfirm");
+		
+		// 未記入
+		if((userIdStr ==null || userIdStr.isEmpty()) && (password == null || password.isEmpty())) {
+			request.setAttribute("error", "ユーザーIDとパスワードを入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		}
+		
+		// パスワードのみ入力
+		if((userIdStr ==null || userIdStr.isEmpty()) && (passwordConfirm == null || passwordConfirm.isEmpty())) {
+			request.setAttribute("error", "ユーザーIDと確認用パスワードを入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		}
+		
+		// ID未入力チェック
+		if(userIdStr == null || userIdStr.isEmpty()) {
+			request.setAttribute("error", "パスワードを入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		}
 		
 		// パスワード未入力チェック
 		if(password == null || password.isEmpty()) {
 			request.setAttribute("error", "パスワードを入力してください。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
 		
 		// パスワード確認未入力チェック
 		if(passwordConfirm == null || passwordConfirm.isEmpty()) {
 			request.setAttribute("error", "確認用パスワードを入力してください。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
 		
@@ -63,7 +85,7 @@ public class LoginRegisterServlet extends HttpServlet {
 		// 8文字以上チェック
 		if(password.length() < 8) {
 			request.setAttribute("error", "パスワードは8文字以上で入力してください。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
 		
@@ -80,7 +102,7 @@ public class LoginRegisterServlet extends HttpServlet {
 		// パスワード一致チェック
 		if(typeCount < 2) {
 			request.setAttribute("error", "パスワードが一致しません。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 		}
 		
 		// DAOに登録（自動採番）
@@ -92,7 +114,7 @@ public class LoginRegisterServlet extends HttpServlet {
 		
 		if(!result) {
 			request.setAttribute("error", "登録に失敗しました。");
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
 		
