@@ -196,7 +196,7 @@
 }
 
 /*モバイル対応 */
-@media ( max-width : 390px) {
+@media screen and ( max-width : 600px) {
 	main {
 		padding: 0 1%;
 	}

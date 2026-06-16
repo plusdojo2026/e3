@@ -107,9 +107,8 @@
 	width: 70%;
 	text-align: right;
 	position: relative;
-	top: 50%;
-	transform: translateY(-100%);
-	z-index: 10000;
+	margin: -70px 0 50px 0;
+	z-index: 1;
 }
 
 .sortbutton {
@@ -125,7 +124,7 @@
 	background: white;
 	border: 1px solid #ccc;
 	padding: 10px;
-	z-index: 9999;
+	z-index: 5000;
 	width: 300px;
 	text-align: left;
 }
@@ -152,15 +151,21 @@
 	filter: grayscale(100%) brightness(50%);
 }
 
+.listtitle {
+	z-index: 1;
+	transform: translateX(10%);
+}
+
 @media screen and (max-width:600px) {
 	.listtitle {
 		font-size: 18px;
+		text-align: center;
+		transform: translateX(0%);
 	}
 	.shouhinlist {
 		grid-template-columns: repeat(2, minmax(0, 160px));
 		margin: 0 5px;
 		gap: 10px;
-		
 	}
 	.shouhin {
 		width: 100%;
@@ -177,11 +182,15 @@
 		font-size: 10px;
 	}
 	.shouhinimg {
-		top: 20%;
+		top: 18%;
 		left: 48%;
 		transform: translateX(-50%);
 		width: 90px;
 		height: 90px;
+	}
+	.shouhinimg img {
+		width: 100%;
+		height: 100%;
 	}
 	.name {
 		top: 57.5%;
@@ -202,11 +211,11 @@
 		font-size: 10px;
 	}
 	.sort {
-		left: 30px; width : 70%;
+		left: 30px;
+		width: 70%;
 		text-align: left;
 		position: relative;
-		top: 50%;
-		transform: translateY(0%);
+		margin: 15px 0;
 		width: 70%;
 		z-index: 100;
 	}

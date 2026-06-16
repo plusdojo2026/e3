@@ -1,40 +1,41 @@
 package dto;
 
 import java.io.Serializable;
+import java.util.Base64;
 
-public class CommonDTO implements Serializable{
-	
-	//privateな変数
-	private int userid; //ユーザーID
-	private String password; //パスワード
-	private int id;	//ID
-	private String shouhin;	//商品名
-	private int money;	//価格(購入前)
-	private int use_year;	//想定使用年数
-	private double day_price;	//1日当たりの価格
-	private String genre;	//ジャンル
-	private String buy_date;	//購入日
-	private int price;	//価格(購入時)
-	private int wperiod;	//保証期間
-	private String maker;	//メーカー
-	private int life;	//耐用年数
-	private int progress;	//経過日数
-	private int goal;	//あと何日
-	private String nickname;	//愛称
-	private byte[] img;	//商品画像
-	
-	//デフォルトコンストラクタ
+public class CommonDTO implements Serializable {
+
+	// privateな変数
+	private int userid; // ユーザーID
+	private String password; // パスワード
+	private int id; // ID
+	private String shouhin; // 商品名
+	private int money; // 価格(購入前)
+	private int use_year; // 想定使用年数
+	private double day_price; // 1日当たりの価格
+	private String genre; // ジャンル
+	private String buy_date; // 購入日
+	private int price; // 価格(購入時)
+	private int wperiod; // 保証期間
+	private String maker; // メーカー
+	private int life; // 耐用年数
+	private int progress; // 経過日数
+	private int goal; // あと何日
+	private String nickname; // 愛称
+	private byte[] img; // 商品画像
+
+	// デフォルトコンストラクタ
 	public CommonDTO() {
-		
+
 	}
-	
-	//コンストラクタ
-    public CommonDTO(int userid, String password) {	//ログインDB
+
+	// コンストラクタ
+	public CommonDTO(int userid, String password) { // ログインDB
 		this.userid = userid;
 		this.password = password;
 	}
-    
-	public CommonDTO(int id, String shouhin, int money, int use_year, double day_price) {	//購入診断DB
+
+	public CommonDTO(int id, String shouhin, int money, int use_year, double day_price) { // 購入診断DB
 		this.id = id;
 		this.shouhin = shouhin;
 		this.money = money;
@@ -43,7 +44,7 @@ public class CommonDTO implements Serializable{
 	}
 
 	public CommonDTO(int id, String shouhin, double day_price, String genre, String buy_date, int price, int wperiod,
-			String maker, int life, int progress, int goal, String nickname, byte[] img) {	//商品詳細DB、履歴詳細DB
+			String maker, int life, int progress, int goal, String nickname, byte[] img) { // 商品詳細DB、履歴詳細DB
 		this.id = id;
 		this.shouhin = shouhin;
 		this.day_price = day_price;
@@ -59,7 +60,7 @@ public class CommonDTO implements Serializable{
 		this.img = img;
 	}
 
-	//ゲッターとセッター
+	// ゲッターとセッター
 	public int getUserid() {
 		return userid;
 	}
@@ -194,5 +195,13 @@ public class CommonDTO implements Serializable{
 
 	public void setImg(byte[] img) {
 		this.img = img;
+	}
+
+	// その他
+	public String getBase64Image() {
+		if (img == null) {
+			return null;
+		}
+		return Base64.getEncoder().encodeToString(img);
 	}
 }

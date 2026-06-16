@@ -46,17 +46,17 @@
 			<img src="images/sortbutton.png" alt="並び替え" class="sortbutton">
 			<div class="dropdown">
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=id_desc">登録が新しい順</a>
+					href="${pageContext.request.contextPath}/AlbumListServlet?sort=id_desc">登録が新しい順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=id_asc">登録が古い順</a>
+					href="${pageContext.request.contextPath}/AlbumListServlet?sort=id_asc">登録が古い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=progress_desc">経過日数が長い順</a>
+					href="${pageContext.request.contextPath}/AlbumListServlet?sort=progress_desc">経過日数が長い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=progress_asc">経過日数が短い順</a>
+					href="${pageContext.request.contextPath}/AlbumListServlet?sort=progress_asc">経過日数が短い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_desc">1日当たりの固定費が多い順</a>
+					href="${pageContext.request.contextPath}/AlbumListServlet?sort=day_price_desc">1日当たりの固定費が多い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_asc">1日当たりの固定費が少ない順</a>
+					href="${pageContext.request.contextPath}/AlbumListServlet?sort=day_price_asc">1日当たりの固定費が少ない順</a>
 			</div>
 		</div>
 
@@ -65,14 +65,20 @@
 			<c:forEach var="s" items="${list}">
 				<div class="shouhin">
 					<a
-						href="${pageContext.request.contextPath}/ShouhinDetailServlet?shouhinid=${s.id}">
+						href="${pageContext.request.contextPath}/AlbumDetailServlet?shouhinid=${s.id}">
 						<img src="images/shouhinList_bg.png">
 						<div class="nickname">
 							<p>${s.nickname}</p>
 						</div>
 						<div class="shouhinimg">
-							<img src="" alt="商品画像">
-							<!--退避　${pageContext.request.contextPath}/ImageServlet?name=${s.id}-->
+							<c:choose>
+								<c:when test="${not empty s.base64Image}">
+									<img src="data:image/jpeg;base64,${s.base64Image}" alt="商品画像">
+								</c:when>
+								<c:otherwise>
+									<img src="images/noimage.png" alt="画像がありません">
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div class="name">
 							<p>${s.shouhin}</p>
