@@ -194,3 +194,82 @@
 	border-radius: 16px;
 	padding: 1.5rem 3rem;
 }
+
+/*モバイル対応 */
+@media ( max-width : 390px) {
+	main {
+		padding: 0 1%;
+	}
+
+	/* ヒーロー画像 */
+	.hero {
+		top: 0;
+		width: 100%;
+	}
+
+	/* ロゴ＋吹き出し */
+	.image {
+		flex-direction: column;
+		right: 0;
+		top: 0;
+		gap: 10px;
+	}
+	.logo {
+		margin-left: 0;
+		width: 80px;
+	}
+	.logo img {
+		width: 100%;
+		height: auto;
+	}
+
+	/* もっと見るボタン */
+	.image button {
+		position: auto;
+		margin-top: 60px;
+	}
+
+	/* テレビ */
+	.tv {
+	position: relative;
+	max-width: 300px;
+	}
+	.tv img {
+		width: 200px;
+		height: auto;
+		margin-top: 20px;
+	}
+	.tv_text {
+		top: 55%;
+		font-size: 16px;
+		padding: 0 10px;
+	}
+
+	/* 吹き出し */
+	.speechBubble {
+		width: 90%;
+		padding: 10px;
+		font-size: 14px;
+	}
+
+	/* ソート */
+	.sort_ {
+		width: 100%;
+	}
+	.drop_down {
+		width: 180px;
+		right: 0;
+	}
+
+	/* ランキング */
+	.card {
+		width: 95%;
+		margin: 20px auto;
+	}
+	.info {
+		font-size: 12px;
+	}
+	.info th, .info td {
+		padding: 6px;
+	}
+}
