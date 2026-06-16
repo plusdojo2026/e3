@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.DiagnosisDAO;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -38,19 +40,22 @@ public class DiagnosisServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//リクエストパラメータを取得する Integer.parseInt();でint型に直す
+		request.setCharacterEncoding("UTF-8");
+		String shouhin = request.getParameter("shouhin");
+		int money = Integer.parseInt(request.getParameter("money"));
+		int use_year = Integer.parseInt(request.getParameter("use_year"));
+		
+		//インスタンス生成
+		DiagnosisDAO dao = new DiagnosisDAO();
+		//DAOの呼び出し
+		dao.register(shouhin, money, use_year);
+	
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/diagnosis.jsp");
+        dispatcher.forward(request, response);
 	}
 
 }
-	//リクエストパラメータを取得する
-// request.setCharacterEncoding("UTF-8");
-// String shouhin = request.getParameter("shouhin");
-// String money = request.getParameter("money");
-// String use_year = request.getParameter("use_year");
-// String day_price = request.getParameter("day_price");
-
-	//診断結果をリクエストスコープに格納する
-// request.setAttribute("diagnosisList", diagnosisList);
+	
 
 
