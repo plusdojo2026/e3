@@ -39,7 +39,7 @@
 			<form class="register" method="POST" action="/e3/LoginRegisterServlet">
 				ID　　　　　　　　<input type="text" name="userId"><br>
 				パスワード　　　　<input type="text" name="password"><br>
-				パスワード(確認用) <input type="text" name="password"><br>
+				パスワード(確認用) <input type="text" name="passwordConfirm"><br>
 				<p class="rule">パスワードには8文字（英数字、大文字、小文字から２つ以上を含む）を設定してください。</p>
 				<input class="reg" type="submit" name="regist" value="登録"><br>
 			</form>

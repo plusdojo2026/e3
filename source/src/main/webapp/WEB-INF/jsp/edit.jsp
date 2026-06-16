@@ -44,17 +44,24 @@
 <h2>▶ 編集</h2>
 
 <div class="form-container">
-<form id="form">
+<form id="form" action="${pageContext.request.contextPath}/RegisterServlet"
+      method="post"
+      enctype="multipart/form-data">
 
   <!-- 画像 -->
   <div class="form-row">
     <label class="form-label">画像</label>
 
-    <img id="preview"
-         src="${pageContext.request.contextPath}/images/frame_noimage.png"
-         alt="No Image"
-         width="120">
-
+  <div class = "icon-preview">
+  <!-- 商品画像用 -->
+    <img id="previewImg"
+         src="${pageContext.request.contextPath}/images/chara_logo.png"
+         alt = "No Image">
+         
+  <!-- フレーム用 -->
+    <img id ="previewFrame"
+         src = "">
+   </div>
     <input type="file" id="img" name="itemImage" accept="image/*">
   </div>
 
@@ -144,35 +151,35 @@
       <div class="frame-item">
         <input type="radio" id="frame1" class="frameRadio" name="frame" value="1">
         <label for="frame1">
-          <img src="${pageContext.request.contextPath}/images/frame_rabbit.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_usagi.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame2" class="frameRadio" name="frame" value="2">
         <label for="frame2">
-          <img src="${pageContext.request.contextPath}/images/frame_cat.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_neko.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame3" class="frameRadio" name="frame" value="3">
         <label for="frame3">
-          <img src="${pageContext.request.contextPath}/images/frame_bear.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_kuma.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame4" class="frameRadio" name="frame" value="4">
         <label for="frame4">
-          <img src="${pageContext.request.contextPath}/images/frame_dog.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_inu.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame5" class="frameRadio" name="frame" value="5">
         <label for="frame5">
-          <img src="${pageContext.request.contextPath}/images/frame_bird.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_hiyoko.png" alt="">
         </label>
       </div>
 
@@ -229,7 +236,7 @@
 
 	        reader.onload = function(e){
 
-	            document.getElementById("preview").src =
+	            document.getElementById("previewImg").src =
 	                e.target.result;
 
 	        };
@@ -239,12 +246,45 @@
 
 	});
 	
+	//ラジオボタンの選択が変更されたときに実行
+	const frameRadios = document.querySelectorAll(".frameRadio");
+	
+	//各ラジオボタンごとにい処理を設定
+	frameRadios.forEach(radio => {
+		
+		//ラジオボタンの選択が変更されたときに実行
+		radio.addEventListener("change", function() {
+			
+			//プレビュー用のフレーム画像の取得
+			const previewFrame = 
+				document.getElementById("previewFrame");
+			
+			//選択されたフレームによって表示するフレームを切り替える
+			if(this.value == "1") {
+				//うさぎフレーム
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_usagi.png"
+			} else if(this.value == "2") {
+				//ねこフレーム
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_neko.png"
+			} else if(this.value == "3") {
+				//くまフレーム
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_kuma.png"
+			} else if(this.value == "4") {
+				//いぬフレーム
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_inu.png"
+			} else if(this.value == "5") {
+				//とりフレーム
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_hiyoko.png"
+			}
+		});
+	});
+	
 	
 	//愛称未入力の場合、フレーム選択不可
 	//ニックネームの入力欄を取得
 	const nickname = document.getElementById("nickname");
 	
-	const frameRadios = document.querySelectorAll(".frameRadio");
+	//const frameRadios = document.querySelectorAll(".frameRadio");
 	//すべてのラジオボタンがクリックできない状態
 	frameRadios.forEach(radio => {
 		radio.disabled = true;

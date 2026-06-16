@@ -71,8 +71,14 @@
 							<p>${s.nickname}</p>
 						</div>
 						<div class="shouhinimg">
-							<img src="" alt="商品画像">
-							<!--退避　${pageContext.request.contextPath}/ImageServlet?name=${s.id}-->
+							<c:choose>
+								<c:when test="${not empty s.base64Image}">
+									<img src="data:image/jpeg;base64,${s.base64Image}" alt="商品画像">
+								</c:when>
+								<c:otherwise>
+									<img src="images/noimage.png" alt="画像がありません">
+								</c:otherwise>
+							</c:choose>
 						</div>
 						<div class="name">
 							<p>${s.shouhin}</p>

@@ -66,6 +66,11 @@ input[type="text"], input[type="password"] { /* 記入欄 */
 .login:hover {
 	background-color: #FF8C00;
 }
+.login:active {
+	transform: translateY(3px);
+	background-color: #dd7900;
+}
+
 h2 {
 	color: #7A2C00;
 	font-size: 35px;
@@ -85,8 +90,8 @@ a:hover {
 	background: #FFE4B5;
 }
 .left, .right {
-	padding: 50px;
-	margin: 60px 30px;
+    padding: 50px;
+    margin: 60px 30px;
 }
 
 /* レスポンシブデザイン */
@@ -204,6 +209,10 @@ p {
 /* 登録ボタンの効果 */
 .reg:hover {
 	background-color: #FF8C00;
+}
+.reg:active {
+	transform: translateY(3px);
+	background-color: #dd7900;
 }
 
 /* ログイン画面へ */
