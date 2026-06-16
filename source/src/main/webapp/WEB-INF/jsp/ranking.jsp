@@ -45,6 +45,30 @@
 			<b>▶ ランキング </b>
 		</h2>
 
+<div class="wrapper">
+  <!-- 2位（左） -->
+  <div class="item second">
+	 <img src="images/銀メダルアイコン.png" class="medal">
+	 <p  class="plate">おこめちゃん</p>
+	 <img src="images/chara_logo.png" class="icon">
+    <div class="stand">2年</div>
+  </div>
+  <!-- 1位（中央・最前面） -->
+  <div class="item first">
+    <img src="images/金メダルアイコン .png" class="medal">
+	<p class="plate">れいぞうくん</p>
+	<img src="images/chara_logo.png" class="icon">
+    <div class="stand">5年</div>
+  </div>
+  <!-- 3位（右） -->
+  <div class="item third">
+    <img src="images/銅メダルアイコン.png" class="medal">
+	<p  class="plate">そうじきん</p>
+	<img src="images/chara_logo.png" class="icon">
+    <div class="stand">1年</div>
+  </div>
+</div>
+
 		<div class="sort_">
 			<img src="images/sortbutton.png" alt="並び替え" class="sort_button">
 			<div class="drop_down">
