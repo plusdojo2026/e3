@@ -51,30 +51,27 @@
 <br>
 <!-- 診断フォーム -->
 <form class = "diagnosis_form" id="diagnosis_form" method="POST" action="/e3/DiagnosisServlet"><!-- action→同ページに表示 -->
-	<table class="diagnosis">
-		<tr> <!-- 4つを一行扱いにしている -->
-			<td class = "shouhin_name">
+			<div class = "diagnosis">
 				<label>商品名<br><!-- textareaの方が良い？ -->
 				<input type = "text" name = "shouhin" ><!-- スペース4コ -->
 				</label>
-			</td>
-			<td>
+			</div>
+			<div class = "diagnosis">
 				<label>価格<br>
-				<input type = "text" name = "money">円
+				<input type = "text" name = "money">
 				</label>
-			</td>
-			<td class = "year">
+				<p class = "tanni">円</p>
+			</div>
+			<div class = "diagnosis">
 				<label>想定年数<br>
-				<input type = "text" name = "use_year" >年使用
+				<input type = "number" name = "use_year" >
 				</label>
-			</td>
-			<td>
+				<p class = "tanni">年使用</p>
+			</div>
 				<div class = "dia">
 					<input type = "submit" name = "diagnosis" value = "　診断　">
 				</div>
-			</td>
-		</tr>
-</table>
+			
 </form>
 
 
@@ -105,16 +102,21 @@
 		
 		<tr><!-- 3つ目 -->
 			<td class = "dia_button">
+			<div class = "dia_b">
 				<input type = "submit" name = "delete" value = "－">
+			</div>
 			</td>
-			<td>商品名 :○○○○</td>
-			<td>価格 :○○円</td>
-			<td>年数 :○年</td>
-			<td>1日当たり価格 :○○円</td>	
+			<td>商品名 :</td><td>○○○○</td>
+			<td>価格 :</td><td>○○円</td>
+			<td>年数 :</td><td>○年</td>
+			<td>1日当たり価格 :</td><td>○○円</td>
 		</tr>
+		
 		<tr><!-- 3つ目 -->
 			<td class = "dia_button">
+			<div class = "dia_b">
 				<input type = "submit" name = "delete" value = "－">
+			</div>
 			</td>
 			<td>商品名 :</td><td>○○○○</td>
 			<td>価格 :</td><td>○○円</td>
@@ -135,7 +137,7 @@
 'use strict';
 
 // 診断情報入力フォームのアラート
-// 現状2つ(価格と想定年数)まとめてのアラート表示だが、個別対応の方が良いか？
+// 現状2つ(価格と想定年数)まとめてのアラート表示
 document.getElementById('diagnosis_form').onsubmit = function(event) {
 	  let money = document.getElementById('diagnosis_form').money.value;
 	  let use_year = document.getElementById('diagnosis_form').use_year.value;

@@ -12,11 +12,22 @@
 	margin: 0 auto;
 	
 }*/
+/* form入力場所更新版 */
+.diagnosis_form{
+	display: flex;
+}
+.diagnosis{
+	display: flex;
+}
+/* 円、使用年数配置 */
+.tanni{
+	margin: 50px 0 0 0;
+}
 
 
 	/* form入力場所 */
-.diagnosis_form input[type = "text"]{
-	margin:0 0 0 80px;
+.diagnosis_form input{
+	/*margin:0 0 0 80px;*/
 	padding: 15px;
 	width: 150px;
 	border: 1.9px solid #7A2C00;
@@ -24,13 +35,13 @@
 }
 	
 /* 想定年数欄小さめに */
-#diagnosis_form .year input[type = "text"]{ 
+.diagnosis_form input[type = "number"]{ 
 	padding: 15px;
 	width: 60px;
 }
 
 	/* 入力項目名の位置 */
-.diagnosis label{
+.diagnosis{
 	margin: 0 0 0 93px;
 }
 	/* 入力項目名の色 */
@@ -98,6 +109,7 @@
 .diagnosis_result td{
 	border-bottom: 1px dashed #C75000;
 	padding: 10px;
+	height: 20px;
 }
 .diagnosis_result tr{
 	display: flex;
@@ -116,7 +128,7 @@
 	font-size: 14px;
 	cursor: pointer;
 	transition: background-color 0.2s;
-	margin: 5px 25px 25px 0;
+	/*margin: 5px 25px 50px 0;*/
 }
 .diagnosis_result input[type = "submit"]:hover {
 	background-color: #a34400;
@@ -166,12 +178,17 @@
 		}
 	
 	/* フォーム縦並び */
-	table.diagnosis td, table.diagnosis tr,
+	/*table.diagnosis td, table.diagnosis tr,
 	table.diagnosis tbody, table.diagnosis {
 		display: block;
 		width:100%;
 		box-sizing: border-box;
+	}*/
+	.diagnosis_form{
+		flex-direction: column;
+		gap: 30px;		
 	}
+	
 	/* リスト縦並び */
 	table.diagnosis_result td, table.diagnosis_result tr,
 	table.diagnosis_result tbody, table.diagnosis_result {
@@ -182,10 +199,17 @@
 	.card {
 		padding: 20px 50px;
 	}
+	.diagnosis_result td{
+		height: 40px;
+}
+	
 	/* マイナスボタン */
 	.diagnosis_result td.dia_button {
 	border-bottom: none;
-	margin: 30px auto 0 auto;
+	/*margin: 30px auto 0 auto;*/
+	text-align: center;
+}
+.dia_b{
 	text-align: center;
 }
 
