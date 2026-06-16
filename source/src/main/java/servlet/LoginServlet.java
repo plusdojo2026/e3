@@ -43,13 +43,12 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		
 		String userIdStr = request.getParameter("userId");
 		String password = request.getParameter("password");
 		
 		// ログイン処理
 		// 入力チェック(ユーザーID未入力)
-		 if((userIdStr == null || userIdStr.isEmpty()) && (password == null || password.isEmpty())) {
+		if((userIdStr == null || userIdStr.isEmpty()) && (password == null || password.isEmpty())) {
 			request.setAttribute("error", "ユーザーIDとパスワードを入力してください。");
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 			return;

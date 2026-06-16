@@ -3,29 +3,19 @@
 /* スタイルシート */
 /* 購入診断 */
 /*
-.shouhin_name{
-	padding-left: 50px;
-}*/
 
-/* 商品名の位置 *//*
-#diagnosis_form{
-	margin: 0 auto;
-	
-}*/
-/* form入力場所更新版 */
+	/* form配置 */
 .diagnosis_form{
 	display: flex;
 }
 .diagnosis{
 	display: flex;
 }
-/* 円、使用年数配置 */
+/* 「円」、「使用年数」配置 */
 .tanni{
 	margin: 50px 0 0 0;
 }
-
-
-	/* form入力場所 */
+	/* form入力欄の形 */
 .diagnosis_form input{
 	/*margin:0 0 0 80px;*/
 	padding: 15px;
@@ -70,17 +60,8 @@
 .diagnosis_form input[type = "submit"]:hover {
 	background-color: #a34400;
 }
-	
-
 
 /* 診断結果表示リスト*/
-/* 枠 */
-/*
-.card {
-	border: 1.9px solid #7A2C00;
-	padding: 5px 5px;
-	border-radius: 15px ;
-}*/
 
 /* sd_ad.cssから拝借 */
 .card {
@@ -108,8 +89,8 @@
 	/* 区切り線 */
 .diagnosis_result td{
 	border-bottom: 1px dashed #C75000;
-	padding: 10px;
-	height: 20px;
+	padding: 13px;
+	height: 20px; /* 行の高さ */
 }
 .diagnosis_result tr{
 	display: flex;
@@ -209,6 +190,7 @@
 	/*margin: 30px auto 0 auto;*/
 	text-align: center;
 }
+	/* ボタンdivクラス */
 .dia_b{
 	text-align: center;
 }
