@@ -48,7 +48,7 @@
 		<!-- キャラ＋吹き出し -->
 		<div class="image">
 
-			<img src="images/petlogo.png" class="logo" width="10%" alt="">
+			<img src="images/chara_logo.png" class="logo" width="10%" alt="">
 
 			<!-- 吹き出し（ここはテキストだけ） -->
 			<div class="speechBubble">

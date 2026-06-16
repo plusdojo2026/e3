@@ -1,8 +1,6 @@
 package servlet;
 
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -45,23 +43,25 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		
 		String userIdStr = request.getParameter("userId");
 		String password = request.getParameter("password");
 		
-		// ★ エラーをまとめて管理するリスト
-	    List<String> errors = new ArrayList<>();
-		
 		// ログイン処理
-		// 入力チェック(ID未入力)
+		// 入力チェック(ユーザーID未入力)
+		if((userIdStr == null || userIdStr.isEmpty()) && (password == null || password.isEmpty())) {
+			request.setAttribute("error", "ユーザーIDとパスワードを入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+			return;
+		}
+		 
         if (userIdStr == null || userIdStr.isEmpty()) {
-        	request.setAttribute("error", "IDを入力してください。");
+        	request.setAttribute("error", "ユーザーIDを入力してください。");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;
         }
         
-        // 入力チェック(パスワード未入力)
         if(password == null || password.isEmpty()) {
+        // 入力チェック(パスワード未入力)
             request.setAttribute("error", "パスワードを入力してください。");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;

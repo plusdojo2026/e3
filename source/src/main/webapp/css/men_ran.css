@@ -201,7 +201,7 @@
 		padding: 0 1%;
 	}
 
-	/* ヒーロー画像 */
+	/* キービジュアル */
 	.hero {
 		top: 0;
 		width: 100%;
@@ -209,14 +209,14 @@
 
 	/* ロゴ＋吹き出し */
 	.image {
-		flex-direction: column;
+		flex-direction: row;
 		right: 0;
-		top: 0;
+		top: 40px;
 		gap: 10px;
 	}
 	.logo {
 		margin-left: 0;
-		width: 80px;
+		width: 70px;
 	}
 	.logo img {
 		width: 100%;
@@ -225,29 +225,32 @@
 
 	/* もっと見るボタン */
 	.image button {
-		position: auto;
-		margin-top: 60px;
+		font-size: 12px;
+        padding: 4px 8px;
+		top: 50px;
+		right: 10px;
 	}
 
 	/* テレビ */
 	.tv {
 	position: relative;
-	max-width: 300px;
+	max-width: 500px;
+	top: 0px;
 	}
 	.tv img {
-		width: 200px;
+		width: 300px;
 		height: auto;
-		margin-top: 20px;
+		margin-top: 100px;
 	}
 	.tv_text {
-		top: 55%;
+		top: 240px;
 		font-size: 16px;
 		padding: 0 10px;
 	}
 
 	/* 吹き出し */
 	.speechBubble {
-		width: 90%;
+		width: 70%;
 		padding: 10px;
 		font-size: 14px;
 	}

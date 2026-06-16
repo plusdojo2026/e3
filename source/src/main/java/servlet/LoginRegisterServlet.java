@@ -38,32 +38,73 @@ public class LoginRegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
+	
+	/* もしもログインしていなかったらログインサーブレットにリダイレクトする
+			HttpSession session = request.getSession();
+			if (session.getAttribute("userid") == null) {
+				response.sendRedirect("/WEB-INF/jsp/login.jsp");
+				return;
+			}*/
+	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		
+		String userIdStr = request.getParameter("userId");
 		String password = request.getParameter("password");
 		String passwordConfirm = request.getParameter("passwordConfirm");
+		
+		// 全部 未入力
+		if ((userIdStr == null || userIdStr.isEmpty()) &&
+		        (password == null || password.isEmpty()) &&
+		        (passwordConfirm == null || passwordConfirm.isEmpty())) {
+
+		        request.setAttribute("error", "ユーザーID・パスワード・確認用パスワードを入力してください。");
+		        request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+		        return;
+		    }
+		
+		// ユーザーID・パスワード 未入力
+		if((userIdStr ==null || userIdStr.isEmpty()) && (password == null || password.isEmpty())) {
+			request.setAttribute("error", "ユーザーIDとパスワードを入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		}
+		
+		// ユーザーID・確認用パスワード 未入力
+		if((userIdStr ==null || userIdStr.isEmpty()) && (passwordConfirm == null || passwordConfirm.isEmpty())) {
+			request.setAttribute("error", "ユーザーIDと確認用パスワードを入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		}
+		
+		// ユーザーID未入力チェック
+		if(userIdStr == null || userIdStr.isEmpty()) {
+			request.setAttribute("error", "ユーザーIDを入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		}
 		
 		// パスワード未入力チェック
 		if(password == null || password.isEmpty()) {
 			request.setAttribute("error", "パスワードを入力してください。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
 		
 		// パスワード確認未入力チェック
 		if(passwordConfirm == null || passwordConfirm.isEmpty()) {
 			request.setAttribute("error", "確認用パスワードを入力してください。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
+		
+		// パスワード一致チェック
 		
 		// ----パスワード条件確認----
 		// 8文字以上チェック
 		if(password.length() < 8) {
 			request.setAttribute("error", "パスワードは8文字以上で入力してください。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
 		
@@ -77,10 +118,20 @@ public class LoginRegisterServlet extends HttpServlet {
 		if(hasUpper) typeCount++;
 		if(hasLower) typeCount++;
 		
-		// パスワード一致チェック
+		// パスワード文字種チェック
 		if(typeCount < 2) {
-			request.setAttribute("error", "パスワードが一致しません。");
-			request.getRequestDispatcher("loginRegister.jsp").forward(request, response);
+			request.setAttribute("error", "パスワードには文字種を2種類以上含めて下さい。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+		}
+		
+		//　数字
+		int userid = 0;
+		try {
+			userid = Integer.parseInt(userIdStr);
+		} catch (NumberFormatException e) {
+			request.setAttribute("error", "IDは数値で入力してください。");
+			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
+			return;
 		}
 		
 		// DAOに登録（自動採番）
@@ -90,15 +141,15 @@ public class LoginRegisterServlet extends HttpServlet {
 		CommonDTO dto = new CommonDTO(newUserId, password);
 		boolean result = dao.insertUser(dto);
 		
+		// 登録失敗
 		if(!result) {
 			request.setAttribute("error", "登録に失敗しました。");
-			request.getRequestDispatcher("register.jsp").forward(request, response);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
 		
+		// 登録成功
 		// 完了メッセージをポップアップ表示
 		request.setAttribute("message", "登録が完了しました。");
-		
 	}
-
 }
