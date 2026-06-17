@@ -27,24 +27,37 @@ h2 {
 
 .container {
 	display: flex; /* 横並び */
+	flex-wrap: nowrap;
+	justify-content: center;
+	text-align: center;
+	overflow:hidden;
 }
 
 .center {  /* フォームのコンテンツ */
-	text-align: left;
-	flex: 1;
-	padding: 0 50px ;
+	flex: 0 1 auto;
+	min-width: 400px;
+	margin: 0 20px;
 }
 form{ /* フォームのコンテンツ内部 */
 	background: #fef263;
-	padding: 40px 100px;
+	padding: 40px 30px;
 	border: solid 6px orange;
 	border-radius: 30px;
+	box-sizing: border-box;
+	width: 100%;
+	max-width: 350px;
 }
+form #text {
+	margin: 0 20px;
+	text-align: left;
+}
+
 input{ 
 	margin: 10px 0;
 }
 input[type="text"], input[type="password"] { /* 記入欄 */
-	width: 250px;
+	width: 100%;
+	max-width: 250px;
 	height: 30px;
 	background-color: gold;
 	color: #7A2C00;
@@ -54,8 +67,8 @@ input[type="text"], input[type="password"] { /* 記入欄 */
 .login {
 	font-size: 15px;
 	color: #FFF3E0;
-	padding: 8px 14px;
-	margin: 20px 90px;
+	padding: 8px 14px 10px;
+	margin: 20px;
 	text-decoration: none;
 	border: solid 2px　 #FF6347;
 	border-radius: 8px;
@@ -77,6 +90,7 @@ h2 {
 	
 }
 .Toregist {
+	flex-wrap: nowrap;
 	color: #7A2C00;
 	padding: 1px 5px;
 	margin: 0 60px;
@@ -90,8 +104,11 @@ a:hover {
 	background: #FFE4B5;
 }
 .left, .right {
-    padding: 50px;
-    margin: 60px 30px;
+	height: 360px;
+	flex: 0 0 30%;
+	max-width: 20%;
+    padding: 60px 20px 0 0;
+    margin: 20px;
 }
 
 /* レスポンシブデザイン */
@@ -134,7 +151,9 @@ a:hover {
 /* loginRegister.jsp */
 .contain { /* コンテンツ全体 */
 	display: flex; /* 横並び */
-	margin: 30px;
+	flex: nowrap;
+	justify-content: center;
+	overflow: hidden;
 }
 
  /* 左コンテンツ */	
@@ -166,7 +185,8 @@ p {
 .regist {
 	text-align: left;
 	flex: 1;
-	margin: 0 80px 0 0  ;
+	margin: 0 80px 0 0 ;
+	padding: 10px 20px;
 }
 
  /* 「新規登録」 */
@@ -177,9 +197,12 @@ p {
 
  /* 右コンテンツ内部 */
 .register{
+	text-align:center;
+	flex: 0 1 auto;
+	max-width: 70%;
 	background: #fef263;
-	padding: 50px 90px 30px;
-	margin: 10px 0px;
+	padding: 40px 60px;
+	margin: 0px 20px;
 	border: solid 6px orange;
 	border-radius: 30px;
 }
@@ -188,6 +211,7 @@ p {
 
 /* パスワード設定条件説明 */
 .rule{
+	text-align: left;
 	font-size: 15px;
 	color: #7A2C00;
 	opacity: 0.5;
@@ -196,9 +220,8 @@ p {
 /* 登録ボタン */
 .reg{
 	color: #FFF3E0;
-	padding: 10px 18px;
-	display: flex;
-	margin: 30px 180px 0;
+	padding: 8px 14px 10px;
+	margin: 20px;
 	border: solid 2px　 #FFF3E0;
 	border-radius: 8px;
 	background: orange;
@@ -217,9 +240,10 @@ p {
 
 /* ログイン画面へ */
 .Tologin {
+	justify-content: center;
 	text-decoration: none;
 	padding: 0 10px;
-	margin: 0px 230px;
+	margin: 0;
 	border: solid 1px #7A2C00;
 	border-radius: 5px;
 	background: #FAFAD2;

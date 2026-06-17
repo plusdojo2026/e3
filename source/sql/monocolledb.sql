@@ -1,17 +1,17 @@
 /* ログインDB */
-CLEATE TABLE login (
+CREATE TABLE login (
 id int (50) AUTO_INCREMENT PRIMARY KEY,
 password varchar (50) NOT NULL
 );
 
 /* TODO: テストデータとしてINSERT文を複数作成する必要あり */
 /* PW:8文字以上(数字、大文字、小文字から 2 つ以上) */
-INSERT INTO login (password) VALUES (passWord);
-INSERT INTO login (password) VALUES (TestLoginpw);
-INSERT INTO login (password) VALUES (404TESTPASS);
+INSERT INTO login (password) VALUES ('passWord');
+INSERT INTO login (password) VALUES ('TestLoginpw');
+INSERT INTO login (password) VALUES ('404TESTPASS');
 
 /* 購入診断DB */
-CLEATE TABLE diagnosis (
+CREATE TABLE diagnosis (
 id int (50) AUTO_INCREMENT PRIMARY KEY,
 shouhin varchar (300),
 money int NOT NULL,

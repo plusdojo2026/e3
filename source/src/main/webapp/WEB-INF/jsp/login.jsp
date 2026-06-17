@@ -23,7 +23,7 @@
 
 	<div class="container">
 		<!-- 左画像 -->
-		<img class="left" src="images/login3.png" width="320" height="350" alt="">
+		<img class="left" src="images/login3.png" alt="">
 		<!-- ログインフォーム -->
 		<main class="center">
 			<h2>おかえりなさい！</h2>
@@ -34,15 +34,15 @@
 			</c:if>
 			
 			<form method="POST" action="${pageContext.request.contextPath}/LoginServlet">
-				ユーザーID<br><input type="text" name="userId"><br><br>
-				パスワード<br><input type="password" name="password"><br>
+				<p id="text">ユーザーID</p><input type="text" name="userId"><br><br>
+				<p id="text">パスワード</p><input type="password" name="password"><br>
 				<input class="login" type="submit" name="login" value="ログイン"><br>
 				<hr style="border: none; border-top: 2px solid #333;">
 				<br><a class="Toregist" href="/e3/LoginRegisterServlet">新規登録はこちら</a>
 			</form>
 		</main>
 		<!-- 右画像 -->
-		<img class="right" src="images/login2.png" width="350" height="300" alt="">
+		<img class="right" src="images/login2.png" alt="">
 	</div>
 	
 	<footer>
