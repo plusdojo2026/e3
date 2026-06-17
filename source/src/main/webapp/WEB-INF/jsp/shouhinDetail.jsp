@@ -39,14 +39,26 @@
 	</header>
 	<!-- ヘッダーここまで　-->
 	<main>
-
+	<!-- 愛称 -->
+	<div class="nickname">
+	<P>${shouhininfo.nickname}</P>
+	</div>
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
-			<img src="images/デフォルトアイコン（仮）.png" width="40vw" height="40vw">
+			<div class="shouhinimg">
+							<c:choose>
+								<c:when test="${not empty s.base64Image}">
+									<img src="data:image/jpeg;base64,${s.base64Image}" alt="商品画像">
+								</c:when>
+								<c:otherwise>
+									<img src="images/noimage.png" alt="画像がありません">
+								</c:otherwise>
+							</c:choose>
+						</div>
 
 			<div class="speechBubble">
 				<p>
-					僕の一日あたりの価格は〇〇円だよ！<br> 〇〇日使ったよ！<br> あと〇〇日で目標達成♪
+					僕の一日あたりの価格は${shouhininfo.day_price}円だよ！<br> ${shouhininfo.progress}日使ったよ！<br> あと${shouhininfo.goal}日で目標達成♪
 				</p>
 			</div>
 		</div>
@@ -79,7 +91,7 @@
 					<th>1日あたりの価格</th>
 					<td>${shouhininfo.day_price}<span>円</span></td>
 					<th>目標達成まで</th>
-					<td>${shouhinifo.goal}<span>日</span></td>
+					<td>${shouhininfo.goal}<span>日</span></td>
 				</tr>
 			</table>
 		</div>
