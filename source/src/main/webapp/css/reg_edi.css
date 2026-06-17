@@ -125,6 +125,12 @@ input[type="text"], input[type="number"], input[type="date"] {
 	padding: 10px 30px;
 }
 
+.backlist a {
+  text-decoration: none;
+  transition: color 0.3s;
+  color: #C75000;
+}
+
 /* アイコンプレビュー */
 .icon-preview {
 	position:relative;
@@ -141,23 +147,23 @@ input[type="text"], input[type="number"], input[type="date"] {
 	top:0;
 	left:0;
 	object-fit:cover;
-	
+	object-position:center 40%;
 }
 
 .frame1 {
-	clip-path:ellipse(34% 30% at 50% 55%);
+	clip-path:ellipse(35% 30% at 50% 50%);
 }
 .frame2 {
-	clip-path:ellipse(36% 32% at 50% 56%);
+	clip-path:ellipse(35% 30% at 50% 50%);
 }
 .frame3 {
-	clip-path:ellipse(34% 32% at 50% 56%);
+	clip-path:ellipse(35% 30% at 50% 50%);
 }
 .frame4 {
-	clip-path:ellipse(37% 32% at 50% 57%);
+	clip-path:ellipse(35% 30% at 50% 50%);
 }
 .frame5 {
-	clip-path:ellipse(40% 33% at 50% 57%);
+	clip-path:ellipse(35% 30% at 50% 50%);
 }
 #previewFrame {
 	position:absolute;      /* 重ねて配置 */

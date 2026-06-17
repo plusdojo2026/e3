@@ -188,6 +188,12 @@
 
   <!-- ボタン -->
   <button type="submit" id="registerBtn">変更する</button>
+  
+  <div class="backlist">
+			<!--　一覧に戻る　-->
+			<a href="${pageContext.request.contextPath}/ShouhinListServlet">
+				◀ 一覧へ戻る </a>
+		</div>
  
 </form>
 </div>

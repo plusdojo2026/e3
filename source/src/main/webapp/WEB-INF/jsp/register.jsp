@@ -53,10 +53,10 @@
     <label class="form-label">画像</label>
 
   <div class = "icon-preview">
-  <!-- 商品画像用 -->
+  <!-- 登録画像用 -->
     <img id="previewImg"
          src="${pageContext.request.contextPath}/images/chara_logo.png"
-         alt = "No Image">
+         alt = "Default Chara ">
          
   <!-- フレーム用 -->
     <img id ="previewFrame"
