@@ -14,68 +14,87 @@ public class LoginDAO {
 	private static final String PASS = "password";
 
 	// ----ログイン----
-	public CommonDTO login(int userid, String password) {
-		String sql ="SELECT userid, password FROM login WHERE userid = ? AND password = ?";
-		
-		try(Connection con = DriverManager.getConnection(URL, USER, PASS);
-			PreparedStatement ps = con.prepareStatement(sql)) {
-			
-			ps.setInt(1, userid);
-			ps.setString(2, password);
-			
+	public boolean login(CommonDTO login) {
+		Connection conn = null;
+		boolean loginResult = false;
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			conn = DriverManager.getConnection(URL, USER, PASS);
+
+			String sql = "SELECT COUNT(*) FROM login WHERE id = ? AND password = ?";
+			PreparedStatement ps = conn.prepareStatement(sql);
+
+			ps.setString(1, login.getUserid());
+			ps.setString(2, login.getPassword());
+
 			ResultSet rs = ps.executeQuery();
-			
-			if (rs.next()) {
-	            CommonDTO dto = new CommonDTO();
-	            dto.setUserid(rs.getInt("userid"));
-	            dto.setPassword(rs.getString("password"));
-	            return dto;
-	        }
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+			rs.next();
+			if (rs.getInt("count(*)") == 1) {
+				loginResult = true;
+			}
 
-	    return null;
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+
+		return loginResult;
 	}
-	
+
 	// ----自動採番----
 	public int getNextUserId() {
-	    String sql = "SELECT MAX(userid) FROM login";
+		String sql = "SELECT MAX(userid) FROM login";
 
-	    try (Connection con = DriverManager.getConnection(URL, USER, PASS);
-	         PreparedStatement ps = con.prepareStatement(sql);
-	         ResultSet rs = ps.executeQuery()) {
+		try (Connection con = DriverManager.getConnection(URL, USER, PASS);
+				PreparedStatement ps = con.prepareStatement(sql);
+				ResultSet rs = ps.executeQuery()) {
 
-	        if (rs.next()) {
-	            return rs.getInt(1) + 1;
-	        }
+			if (rs.next()) {
+				return rs.getInt(1) + 1;
+			}
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
 
-	    return 1; // 初回登録
+		return 1; // 初回登録
 	}
-	
+
 	// ----新規登録----
 	public boolean insertUser(CommonDTO dto) {
+		Connection conn = null;
+		boolean result = false;
 
-	    String sql = "INSERT INTO login (userid, password) VALUES (?, ?)";
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(URL, USER, PASS);
 
-	    try (Connection con = DriverManager.getConnection(URL, USER, PASS);
-	         PreparedStatement ps = con.prepareStatement(sql)) {
+			String sql = "INSERT INTO login (password) VALUES (?)";
+			PreparedStatement ps = con.prepareStatement(sql);
 
-	        ps.setInt(1, dto.getUserid());
-	        ps.setString(2, dto.getPassword());
+			ps.setString(1, dto.getPassword());
 
-	        int result = ps.executeUpdate();
-	        return result == 1;
+			if (ps.executeUpdate() == 1) {
+				result = true;
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+			}
+		}
 
-	    } catch (SQLException e) {
-	        e.printStackTrace();
-	    }
-
-	    return false;
+		return result;
 	}
 }

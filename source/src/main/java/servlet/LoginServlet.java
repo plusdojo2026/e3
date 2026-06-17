@@ -12,6 +12,7 @@ import javax.servlet.http.HttpSession;
 
 import dao.LoginDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -43,18 +44,18 @@ public class LoginServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// リクエストパラメータを取得
 		request.setCharacterEncoding("UTF-8");
-		String userIdStr = request.getParameter("userId");
+		String userid = request.getParameter("userId");
 		String password = request.getParameter("password");
 		
 		// ログイン処理
 		// 入力チェック(ユーザーID未入力)
-		if((userIdStr == null || userIdStr.isEmpty()) && (password == null || password.isEmpty())) {
+		if((userid == null || userid.isEmpty()) && (password == null || password.isEmpty())) {
 			request.setAttribute("error", "ユーザーIDとパスワードを入力してください。");
 			request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
 			return;
 		}
 		 
-        if (userIdStr == null || userIdStr.isEmpty()) {
+        if (userid == null || userid.isEmpty()) {
         	request.setAttribute("error", "ユーザーIDを入力してください。");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
             return;
@@ -67,10 +68,8 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         
-        // 数値チェック（文字列にしたuseridを数値に戻す）
-        int userid = 0;
+        // 数値チェック
         try {
-        	userid = Integer.parseInt(userIdStr);
         } catch (NumberFormatException e) {
         	request.setAttribute("error", "IDは数値で入力してください。");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);
@@ -79,14 +78,13 @@ public class LoginServlet extends HttpServlet {
 
         // DAO呼び出し
         LoginDAO dao = new LoginDAO();
-        CommonDTO user = dao.login(userid, password);
-
-        if (user != null) {
+        
+        if (dao.login(new CommonDTO(userid, password))) {
             // ログイン成功
         	HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-            // メニュー画面(Menu.jsp)へ
-            response.sendRedirect("menu.jsp");
+            session.setAttribute("userid", new Loginuser(userid));
+            // メニュー画面(MenuServlet)へ
+            response.sendRedirect("/e3/MenuServlet");
         } else {
             // ログイン失敗
         	// リクエストスコープに、タイトル、メッセージ、戻り先を格納する

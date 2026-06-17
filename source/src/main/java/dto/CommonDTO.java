@@ -6,7 +6,7 @@ import java.util.Base64;
 public class CommonDTO implements Serializable {
 
 	// privateな変数
-	private int userid; // ユーザーID
+	private String userid; // ユーザーID
 	private String password; // パスワード
 	private int id; // ID
 	private String shouhin; // 商品名
@@ -30,8 +30,12 @@ public class CommonDTO implements Serializable {
 	}
 
 	// コンストラクタ
-	public CommonDTO(int userid, String password) { // ログインDB
+	public CommonDTO(String userid, String password) { // ログインDB
 		this.userid = userid;
+		this.password = password;
+	}
+	
+	public CommonDTO(String password) { // ログインDB(登録用)
 		this.password = password;
 	}
 
@@ -61,11 +65,11 @@ public class CommonDTO implements Serializable {
 	}
 
 	// ゲッターとセッター
-	public int getUserid() {
+	public String getUserid() {
 		return userid;
 	}
 
-	public void setUserid(int userid) {
+	public void setUserid(String userid) {
 		this.userid = userid;
 	}
 
