@@ -93,7 +93,7 @@
 		</div>
 		<div class="backlist">
 			<!--　アルバムに戻る　-->
-			<a href="${pageContext.request.contextPath}/AlbumListListServlet">
+			<a href="${pageContext.request.contextPath}/AlbumListServlet">
 				◀ アルバムへ戻る </a>
 		</div>
 	</main>
