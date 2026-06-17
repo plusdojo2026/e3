@@ -47,10 +47,15 @@ public class ShouhinDetailServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}else if(action.equals("rireki")) {
 			
+		}else if(action.equals("delete")) {
+			boolean success = dao.deleteShouhin(id);
+
+			if (success) {
+				response.sendRedirect(request.getContextPath() + "/ShouhinListServlet?deleted=true");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/ShouhinDetailServlet?shouhinid=" + id + "&error=delete");
+			}
 		}
-		
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhinDetail.jsp");
-		dispatcher.forward(request, response);
 	}
 
 	/**
