@@ -156,6 +156,18 @@
 	transform: translateX(10%);
 }
 
+.nextrank {
+	transform: translateX(10%);
+}
+.nextrank a {
+  text-decoration: none;
+  transition: color 0.3s;
+  color: #C75000;
+}
+.nextrank a:hover {
+  color: #7A2C00;
+}
+
 @media screen and (max-width:600px) {
 	.listtitle {
 		font-size: 18px;

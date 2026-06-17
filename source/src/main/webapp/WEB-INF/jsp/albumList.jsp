@@ -41,7 +41,10 @@
 		<h2 class="listtitle">
 			<b>▶ 一覧 </b>： 使い終わった<strong>モノ</strong>たちを見てみよう！
 		</h2>
-
+		<div class="nextrank">
+			<a href="${pageContext.request.contextPath}/RankingServlet">▶
+				ランキングを見る</a>
+		</div>
 		<div class="sort">
 			<img src="images/sortbutton.png" alt="並び替え" class="sortbutton">
 			<div class="dropdown">
