@@ -83,22 +83,19 @@
 	<table class = "diagnosis_result" id="diagnosis_result"><!-- 枠はCSS? -->
 	
 	<c:forEach var="d" items="${diagnosisList}"> <!-- EL式 -->
-		<!-- thかtdどっちが良いか -->
 		<tr><!-- 1つ目 -->
 			<!-- マイナスボタン -->
-			<td>
-				<input type = "submit" name = "delete" value = "　－　">　　　<!-- 仮空白3コ -->
+			<td class = "dia_button">
+			<div class = "dia_b">
+				<input type = "submit" name = "delete" value = "－">
+			</div>
 			</td>
-			<td>　商品名 : ${d.shouhin}</td><td>○○○○　　</td><!-- 仮空白2コ -->
-			<td>価格 : ${d.money}</td><td>○○円　　</td>
-			<td>年数 : ${d.use_year}</td><td>○年　　　　　</td><!-- 仮空白5コ -->
-			<td>1日当たり価格 : ${d.day_price}</td><td>○○円　</td>	
+			<td>商品名 : </td><td>${d.shouhin}</td><!-- 仮空白2コ -->
+			<td>価格 : </td><td>${d.money}円</td>
+			<td>年数 : </td><td>${d.use_year}年</td><!-- 仮空白5コ -->
+			<td>1日当たり価格 : </td><td> ${d.day_price}円</td>	
 		</tr>
-		<tr><!-- 区切り線CSSで付けることにした -->
-			<td colspan="10">　　　ーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーーー
-			</td><!-- 上の10は適当 -->
-		</tr>
-		</c:forEach>
+	</c:forEach>
 		
 		<tr><!-- 3つ目 -->
 			<td class = "dia_button">

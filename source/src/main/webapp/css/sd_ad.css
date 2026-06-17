@@ -1,6 +1,11 @@
 @charset "UTF-8";
 
 /* albumDetail */
+
+.shouhinimg img {
+    width: 200px;
+    height: 200px;
+}
 /* 吹き出し */
 .speechBubble {
   position: relative;
@@ -44,6 +49,7 @@
 .iconSpeech {
   text-align: center;
   margin-top:100px;
+  display:flex;
 }
 
 /* 商品詳細テーブル */
