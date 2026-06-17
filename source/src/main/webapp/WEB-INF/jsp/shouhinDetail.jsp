@@ -55,41 +55,42 @@
 			<table class="information">
 				<tr>
 					<th>ジャンル</th>
-					<td colspan="3">家電</td>
+					<td colspan="3">${shouhininfo.genre}</td>
 				</tr>
 				<tr>
 					<th>商品名</th>
-					<td>test</td>
+					<td>S{shouhininfo.shouhin}</td>
 					<th>メーカー</th>
-					<td>test</td>
+					<td>${shouhininfo.maker}</td>
 				</tr>
 				<tr>
 					<th>購入日</th>
-					<td>test</td>
+					<td>S{shouhininfo.buy_date}</td>
 					<th>価格</th>
-					<td>00<span>円</span></td>
+					<td>${shouhininfo.price}<span>円</span></td>
 				</tr>
 				<tr>
 					<th>保証期間</th>
-					<td>00<span>年</span></td>
+					<td>${shouhininfo.wperiod}<span>年</span></td>
 					<th>耐用年数</th>
-					<td>00<span>年</span></td>
+					<td>${shouhininfo.life}<span>年</span></td>
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td>00<span>円</span></td>
+					<td>${shouhininfo.day_price}<span>円</span></td>
 					<th>目標達成まで</th>
-					<td>0<span>日</span></td>
+					<td>${shouhinifo.goal}<span>日</span></td>
 				</tr>
 			</table>
 		</div>
 		<!-- 各種ボタン -->
 		<div class="buttons">
 			<button type="button"
-				onclick="location.href='${pageContext.request.contextPath}/EditServlet'">
+				onclick="location.href='${pageContext.request.contextPath}/EditServlet?id=${shouhininfo.id}'">
 				編集</button>
-			<button type="button">履歴へ送る</button>
-			<button type="button" class=deleteButton>削除</button>
+			<button type="button" onclick="return rirekicheck(${shouhininfo.id})">履歴へ送る</button>
+			<button type="button" class=deleteButton
+				onclick="return deletecheck(${shouhininfo.id})">削除</button>
 		</div>
 		<div class="backlist">
 			<!--　一覧に戻る　-->
@@ -104,7 +105,34 @@
 	</footer>
 	<!-- フッターここまで　-->
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
-	<script>	
+	<script>
+    'use strict';
+    
+    function rirekicheck(id){
+        if (window.confirm('商品を履歴に登録しますか？履歴に登録した商品は復元できません。')) {
+            alert('履歴への登録が完了しました。');
+            location.href = '<%=request.getContextPath()%>
+		/ShouhinDetailServlet?action=rireki&id='
+						+ id;
+				return true;
+			} else {
+				alert('履歴への登録がキャンセルされました。');
+				return false;
+			}
+		}
+    
+    function deletecheck(id){
+        if (window.confirm('本当に商品を削除しますか？削除された商品は復元できません。')) {
+            alert('商品の削除が完了しました。');
+            location.href = '<%=request.getContextPath()%>
+		/ShouhinDetailServlet?action=delete&id='
+						+ id;
+				return true;
+			} else {
+				alert('削除がキャンセルされました。');
+				return false;
+			}
+		}
 	</script>
 </body>
 </html>
