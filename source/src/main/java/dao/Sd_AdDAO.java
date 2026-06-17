@@ -32,6 +32,7 @@ public class Sd_AdDAO {
          //　uStmtは、pStmtとの被り回避
                 PreparedStatement uStmt = conn.prepareStatement(updateSql);
                 uStmt.setInt(1, id);
+                //updateを実行
                 uStmt.executeUpdate();
                 uStmt.close();
           //　SQL文をString型で用意
@@ -40,7 +41,12 @@ public class Sd_AdDAO {
             PreparedStatement pStmt = conn.prepareStatement(sql);
           //　prepareStatementの一個目の?に受け取ったidをセット
             pStmt.setInt(1, id);
+          //　updateを実行、ResultSet型の変数rsに受け取る
+          //　ResultSetは行と列を持ったデータの集合、表のようなもの
             ResultSet rs = pStmt.executeQuery();
+          //rs.next()は0行目の位置にあるrsが1行目に進めるか（次の行が存在するか）
+          //商品詳細は個別のページ、行数は１のためwhileではなくifを使用
+            
             if (rs.next()) {
                 dto = new CommonDTO(
                     rs.getInt("id"),
@@ -69,4 +75,46 @@ public class Sd_AdDAO {
         }
         return dto;
     }
+
+public boolean deleteShouhin(int id) {
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		// JDBCドライバを読み込む
+		Class.forName("com.mysql.cj.jdbc.Driver");
+
+		// データベースに接続する
+		conn = DriverManager.getConnection(URL, USER, PASS);
+
+		// SQL文を準備する
+		String sql = "DELETE FROM shouhin WHERE id=?";
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+
+		// SQL文を完成させる
+		pStmt.setInt(1, id);
+
+		// SQL文を実行する
+		if (pStmt.executeUpdate() == 1) {
+			result = true;
+		}
+		pStmt.close();
+	} catch (SQLException e) {
+		e.printStackTrace();
+	} catch (ClassNotFoundException e) {
+		e.printStackTrace();
+	} finally {
+		// データベースを切断
+		if (conn != null) {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+
+	// 結果を返す
+	return result;
+}
 }

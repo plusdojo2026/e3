@@ -47,8 +47,8 @@
 		<div class="iconSpeech">
 			<div class="shouhinimg">
 							<c:choose>
-								<c:when test="${not empty s.base64Image}">
-									<img src="data:image/jpeg;base64,${s.base64Image}" alt="商品画像">
+								<c:when test="${not empty shouhininfo.base64Image}">
+									<img src="data:image/jpeg;base64,${shouhininfo.base64Image}" alt="商品画像">
 								</c:when>
 								<c:otherwise>
 									<img src="images/noimage.png" alt="画像がありません">
@@ -123,9 +123,7 @@
     function rirekicheck(id){
         if (window.confirm('商品を履歴に登録しますか？履歴に登録した商品は復元できません。')) {
             alert('履歴への登録が完了しました。');
-            location.href = '<%=request.getContextPath()%>
-		/ShouhinDetailServlet?action=rireki&id='
-						+ id;
+            location.href = '<%=request.getContextPath()%>/ShouhinDetailServlet?action=rireki&id=' + id;
 				return true;
 			} else {
 				alert('履歴への登録がキャンセルされました。');
@@ -136,9 +134,7 @@
     function deletecheck(id){
         if (window.confirm('本当に商品を削除しますか？削除された商品は復元できません。')) {
             alert('商品の削除が完了しました。');
-            location.href = '<%=request.getContextPath()%>
-		/ShouhinDetailServlet?action=delete&id='
-						+ id;
+            location.href = '<%=request.getContextPath()%>/ShouhinDetailServlet?action=delete&shouhinid=' + id;
 				return true;
 			} else {
 				alert('削除がキャンセルされました。');
