@@ -9,8 +9,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dto.CommonDTO;
-
 /**
  * Servlet implementation class LoginServlet
  */
@@ -33,7 +31,7 @@ public class ShouhinDetailServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
-		String action = request.getParameter("action");
+		/*String action = request.getParameter("action");
 		int id = Integer.parseInt(request.getParameter("id"));
 		Sd_AdDAO dao = new Sd_AdDAO();
 		
@@ -46,10 +44,10 @@ public class ShouhinDetailServlet extends HttpServlet {
 			dispatcher.forward(request, response);
 		}else if(action == "rireki") {
 			
-		}
-
-
-
+		}*/
+		
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/shouhinDetail.jsp");
+		dispatcher.forward(request, response);
 	}
 
 	/**

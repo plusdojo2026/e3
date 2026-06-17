@@ -59,13 +59,13 @@
 				</tr>
 				<tr>
 					<th>商品名</th>
-					<td>S{shouhininfo.shouhin}</td>
+					<td>${shouhininfo.shouhin}</td>
 					<th>メーカー</th>
 					<td>${shouhininfo.maker}</td>
 				</tr>
 				<tr>
 					<th>購入日</th>
-					<td>S{shouhininfo.buy_date}</td>
+					<td>${shouhininfo.buy_date}</td>
 					<th>価格</th>
 					<td>${shouhininfo.price}<span>円</span></td>
 				</tr>
