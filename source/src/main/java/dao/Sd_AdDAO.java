@@ -18,7 +18,9 @@ public class Sd_AdDAO {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection(URL, USER, PASS);
-            //　経過日数、一日当たり価格、目標達成までの日数を表示前に計算
+            //　経過日数、一日当たり価格、目標達成までの日数を表示前に計算するSQL文をString型で用意
+            //　DATEDIFF(a, b)はMySQLの関数、date型a-bを日数で返す
+            // case、endはMySQLのif文みたいなもの、経過日数が0だった場合価格をそのまま表示することでゼロ除算を回避
             String updateSql = "UPDATE shouhin SET " +
                     "progress = DATEDIFF(CURDATE(), buy_date), " +
                     "goal = (life * 365) - DATEDIFF(CURDATE(), buy_date), " +
