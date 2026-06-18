@@ -96,26 +96,26 @@ public class Men_RanDAO {
 			if ("buyDateAsc".equals(sort)) {
 
 				// 購入日の昇順（古い順）
-				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price FROM rireki ORDER BY buy_date ASC LIMIT 10";
 			} else if ("buyDateDesc".equals(sort)) {
 
 				// 購入日の降順（新しい順）
 
-				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY buy_date DESC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price FROM rireki ORDER BY buy_date DESC LIMIT 10";
 			} else if ("dayPriceAsc".equals(sort)) {
 
 				// 1日の固定費の昇順(安い順)
-				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY day_price ASC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price FROM rireki ORDER BY day_price ASC LIMIT 10";
 			} else if ("dayPriceDesc".equals(sort)) {
 
 				// 1日の固定費の降順(高い順)
 
-				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY day_price DESC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price FROM rireki ORDER BY day_price DESC LIMIT 10";
 			} else {
 
 				// ページ遷移後最初に表示する1日の固定費の昇順(高い順)
 
-				sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price FROM rireki ORDER BY buy_date ASC LIMIT 10";
 			}
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
