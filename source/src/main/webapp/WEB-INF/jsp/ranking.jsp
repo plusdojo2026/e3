@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <!--　ビューポート　-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>モノカチコレクション | メニュー</title>
+<title>モノカチコレクション | ランキング</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/men_ran.css">
 <link rel="stylesheet"
