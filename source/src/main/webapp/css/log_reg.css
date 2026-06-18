@@ -41,11 +41,13 @@ h2 {
 form{ /* フォームのコンテンツ内部 */
 	background: #fef263;
 	padding: 40px 30px;
+	margin: 10px auto;
 	border: solid 6px orange;
 	border-radius: 30px;
 	box-sizing: border-box;
 	width: 100%;
 	max-width: 350px;
+	box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
 }
 form #text {
 	margin: 0 20px;
@@ -68,7 +70,7 @@ input[type="text"], input[type="password"] { /* 記入欄 */
 	font-size: 15px;
 	color: #FFF3E0;
 	padding: 8px 14px 10px;
-	margin: 20px;
+	margin: 30px auto;
 	text-decoration: none;
 	border: solid 2px　 #FF6347;
 	border-radius: 8px;
@@ -127,24 +129,24 @@ a:hover {
 	}
 	
 	.center form{
-		padding: 50px 50px;
-		margin: 10px 20px;
+		max-width: 80%;
+		padding: 40px 50px;
+		margin: 10px auto;
 	}
 	
 	.center form input[type="text"], .center form input[type="password"] {
 		text-align: center;
 		width: 180px;
 		height: 30px;
-		margin: 10px 20px;
+		margin: 10px auto;
 	}
 	.login {
-		margin:30px 70px;
+		margin:30px auto;
 	}
 	
 	.Toregist {
-		margin: 0 40px;
+		margin: 0 auto;
 	}
-}
 /* shouhinDetail.jsp */
 
 
@@ -189,7 +191,7 @@ p {
 	padding: 10px 20px;
 }
 
- /* 「新規登録」 */
+ /* 「会員登録」 */
 .second {
 	display: flex;
 	padding: 0 0 20px;
@@ -199,15 +201,22 @@ p {
 .register{
 	text-align:center;
 	flex: 0 1 auto;
-	max-width: 70%;
+	min-width: 400px;
+	margin: 0 20px;
 	background: #fef263;
-	padding: 40px 60px;
-	margin: 0px 20px;
+	padding: 30px 60px;
 	border: solid 6px orange;
 	border-radius: 30px;
 }
 
+.register input {
+	text-align: center;
+	font-size: 15px;
+}
 
+.register p#text {
+	margin: 15px 10px 0 ;
+}
 
 /* パスワード設定条件説明 */
 .rule{
@@ -219,6 +228,7 @@ p {
 
 /* 登録ボタン */
 .reg{
+	font-size: 16px;
 	color: #FFF3E0;
 	padding: 8px 14px 10px;
 	margin: 20px;
@@ -243,7 +253,7 @@ p {
 	justify-content: center;
 	text-decoration: none;
 	padding: 0 10px;
-	margin: 0;
+	margin: 0 140px;
 	border: solid 1px #7A2C00;
 	border-radius: 5px;
 	background: #FAFAD2;

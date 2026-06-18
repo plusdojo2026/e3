@@ -37,7 +37,7 @@
     			<p style="color:red;">${error}</p>
 			</c:if>
 			<form class="register" method="POST" action="/e3/LoginRegisterServlet">
-				<p id="text">ID　　　　　　　　</p><input type="text" name="userId"><br>
+				<p id="text">ユーザーID　　　</p><input type="text" name="userId" placeholder="(自動採番)" disabled><br>
 				<p id="text">パスワード　　　　</p><input type="text" name="password"><br>
 				<p id="text">パスワード(確認用)</p><input type="text" name="passwordConfirm"><br>
 				<p class="rule">パスワードには8文字（英数字、大文字、小文字から２つ以上を含む）を設定してください。</p>
