@@ -37,7 +37,19 @@ h2 {
 	flex: 0 1 auto;
 	min-width: 440px;
 	margin: 0 20px;
+}	
+.pop {
+	opacity: 0;
+	transform: scale(0.9);
+	animation: pop 0.5s ease forwards;	
 }
+@keyframes pop {
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
 form{ /* フォームのコンテンツ内部 */
 	background: #fef263;
 	padding: 40px 30px;
@@ -111,6 +123,32 @@ a:hover {
 	max-width: 20%;
     padding: 60px 20px 0 0;
     margin: 20px;
+}
+
+.slide-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideLeft 0.8s ease forwards;
+}
+
+@keyframes slideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: slideRight 0.8s ease forwards;
+}
+
+@keyframes slideRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* レスポンシブデザイン */
