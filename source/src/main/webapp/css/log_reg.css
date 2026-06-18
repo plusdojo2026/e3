@@ -35,7 +35,7 @@ h2 {
 
 .center {  /* フォームのコンテンツ */
 	flex: 0 1 auto;
-	min-width: 400px;
+	min-width: 440px;
 	margin: 0 20px;
 }
 form{ /* フォームのコンテンツ内部 */
@@ -125,17 +125,16 @@ a:hover {
 	.center {
 		margin: 0;
         padding: 0;
-        width: 100%;
 	}
 	
 	.center form{
-		padding: 50px 50px;
-		margin: 10px 20px;
+		padding: 40px 20px;
+		margin: 10px 45px;
 	}
 	
 	.center form input[type="text"], .center form input[type="password"] {
 		text-align: center;
-		width: 180px;
+		max-width: 80%;
 		height: 30px;
 		margin: 10px 20px;
 	}
@@ -209,7 +208,7 @@ p {
 	border-radius: 30px;
 }
 
-.register input {
+.register input[name="userId"] {
 	text-align: center;
 	font-size: 15px;
 }
@@ -294,7 +293,7 @@ p {
 	.register {
 		min-width: auto;
 		padding: 20px 20px;
-		margin: 0 auto;
+		margin: 0 18px;
 		font-size: 13px;
 	}
 	

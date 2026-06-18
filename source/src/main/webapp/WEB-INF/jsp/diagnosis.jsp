@@ -90,10 +90,10 @@
 				<input type = "submit" name = "delete" value = "－">
 			</div>
 			</td>
-			<td>商品名 : </td><td>${d.shouhin}</td><!-- 仮空白2コ -->
-			<td>価格 : </td><td>${d.money}円</td>
-			<td>年数 : </td><td>${d.use_year}年</td><!-- 仮空白5コ -->
-			<td>1日当たり価格 : </td><td> ${d.day_price}円</td>	
+			<td>商品名 : ${d.shouhin}</td><!-- 仮空白2コ -->
+			<td>価格 : ${d.money}円</td>
+			<td>年数 : ${d.use_year}年</td><!-- 仮空白5コ -->
+			<td>1日当たり価格 : ${d.day_price}円</td>	
 		</tr>
 	</c:forEach>
 		

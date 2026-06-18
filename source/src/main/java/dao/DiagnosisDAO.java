@@ -67,8 +67,8 @@ public class DiagnosisDAO {
 			
 			conn = DriverManager.getConnection(URL, USER, PASS);// データベースに接続する
 
-			// 一覧表示
-			String sql = "SELECT shouhin, money, use_year, day_price  FROM diagnosis";
+			// 一覧表示 // ここにidあっていい？
+			String sql = "SELECT id, shouhin, money, use_year, day_price  FROM diagnosis";
 
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
