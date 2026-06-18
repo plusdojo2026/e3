@@ -9,9 +9,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>モノカチコレクション | メニュー</title>
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/men_ran.css">
-<link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
+<link rel="stylesheet"
+	href="<%=request.getContextPath()%>/css/men_ran.css">
 </head>
 <body>
 	<!-- ヘッダー（ここから） -->
@@ -41,40 +41,85 @@
 	</header>
 	<!-- ヘッダー（ここまで） -->
 
-	<!-- ヒーロー -->
 	<main>
+		<!-- ヒーロー -->
 		<img src="images/hero.jpg" class="hero" alt="">
 
 		<!-- キャラ＋吹き出し -->
-			<div class="image">
+		<div class="speech">
+			<img src="images/chara_logo.png" class="logo" width="10%" alt="">
 
-				<img src="images/chara_logo.png" class="logo" width="10%" alt="">
-
-				<!-- 吹き出し（ここはテキストだけ） -->
-				<div class="speechBubble">
-					通知です<br>通知です<br>通知です
+			<div class="speechBubble">
+				<div class="speechTrack" id="speechTrack">
+					<div class="speechPage">
+						<div class="speechText">通知だよ----ん</div>
+						<div class="speechText">通知だよん2</div>
+						<div class="speechText">通知だよん3</div>
+					</div>
+					<div class="speechPage">
+						<div class="speechText">通知だよん4</div>
+						<div class="speechText">通知だよん5</div>
+						<div class="speechText">通知だよん6</div>
+					</div>
 				</div>
-				<!-- 「もっと見る」ボタン -->
-				<button type="button">もっと見る</button>
 			</div>
 
+			<button type="button" class="backbutton" id="backbutton">前の3件</button>
+			<button type="button" class="nextbutton" id="nextbutton">次の3件</button>
+		</div>
 
-			<!-- テレビ画像 -->
-			<div class="tv" align="center">
-				<img src="images/tv.png" alt="テレビ">
+		<!-- テレビ画像 -->
+		<div class="tv" align="center">
+			<img src="images/tv.png" alt="テレビ">
 
-				<p class="tv_text">
-					今日の固定費は<br>〇〇円です！
-				</p>
-			</div>
+			<p class="tv_text">
+				現在の固定費は<br>${total}円です！
+			</p>
+		</div>
 	</main>
 	<!--　フッター　-->
 	<footer>
 		<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
 	</footer>
 	<!-- フッターここまで　-->
-	<script src="${pageContext.request.contextPath}/js/common.js">
-		
-	</script>
+	<script src="${pageContext.request.contextPath}/js/common.js"></script>
+	<script>
+	document.addEventListener("DOMContentLoaded", () => {
+
+	    const track = document.querySelector(".speechTrack");
+	    const pages = document.querySelectorAll(".speechPage");
+	    const nextbutton = document.getElementById("nextbutton");
+	    const backbutton = document.getElementById("backbutton");
+
+	    let index = 0;
+	    const pageHeight = 150;
+	    const maxIndex = pages.length - 1;
+	    console.log("pageHeight:", pageHeight);
+	    backbutton.addEventListener("click", () => {
+	        index = (index - 1 + (maxIndex + 1)) % (maxIndex + 1);
+
+	        const move = index * pageHeight;
+
+	        console.log("BACK:", index);
+	        console.log("move:", move, typeof move);
+
+	        track.style.transform = "translateY(" + (-move) + "px)";
+	        console.log("transform:", track.style.transform);
+	    });
+
+	    nextbutton.addEventListener("click", () => {
+	        index = (index + 1) % (maxIndex + 1);
+
+	        const move = index * pageHeight;
+
+	        console.log("NEXT:", index);
+	        console.log("move:", move, typeof move);
+
+	        track.style.transform = "translateY(" + (-move) + "px)";
+	        console.log("transform:", track.style.transform);
+	    });
+	});
+</script>
+
 </body>
 </html>
