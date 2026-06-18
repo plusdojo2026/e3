@@ -42,14 +42,14 @@ public class DiagnosisServlet extends HttpServlet {
 		 * null) { response.sendRedirect("/LoginServlet"); return; }
 		 */
 
-		//---診断結果リストの一覧表示---
+		// ---診断結果リストの一覧表示---
 		DiagnosisDAO dao = new DiagnosisDAO();
 		List<CommonDTO> diagnosisList = dao.findAll(); // 変数の宣言
-		//dao.findAll();
-		
+		// dao.findAll();
+
 		// 診断結果をリクエストスコープに格納する
 		request.setAttribute("diagnosisList", diagnosisList);
-		
+
 		// 購入診断ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/diagnosis.jsp");
 		dispatcher.forward(request, response);
@@ -64,27 +64,29 @@ public class DiagnosisServlet extends HttpServlet {
 			throws ServletException, IOException {
 		// フォームから値を受け取る(getParameter) Integer.parseInt();でint型に直す
 		request.setCharacterEncoding("UTF-8");
-		String shouhin = request.getParameter("shouhin");
-		int money = Integer.parseInt(request.getParameter("money"));
-		int use_year = Integer.parseInt(request.getParameter("use_year"));
-
-		// ---登録---
 		// インスタンス生成 (データベース処理を行う専用のクラス)
 		DiagnosisDAO dao = new DiagnosisDAO();
-		// DAOの呼び出し DBに登録
-		dao.register(shouhin, money, use_year);
+		// ボタンの種類を確認
+		String button = request.getParameter("diagnosis");
+		if (button != null) {
+			String shouhin = request.getParameter("shouhin");
+			int money = Integer.parseInt(request.getParameter("money"));
+			int use_year = Integer.parseInt(request.getParameter("use_year"));
 
-		// ---削除---
-		int id = Integer.parseInt(request.getParameter("id"));
-			// －ボタンを押されたとき
-			if (request.getParameter("submit").equals("－")) {
-				// idだけで良いの？shouhin, money, use_year, day_priceは？
-				dao.delete(id); // DELETEは[行ごと]消えるため、idだけで良い。
-			}
+			// ---登録---
+			// DAOの呼び出し DBに登録
+			dao.register(shouhin, money, use_year);
+		} else {
 
-		// 購入診断ページへforward
-				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/diagnosis.jsp");
-				dispatcher.forward(request, response);
+			// ---削除---
+			int id = Integer.parseInt(request.getParameter("id"));
+			// idだけで良いの？shouhin, money, use_year, day_priceは？
+			dao.delete(id); // DELETEは[行ごと]消えるため、idだけで良い。
+
+		}
+
+		// 購入診断ページへredirect
+		response.sendRedirect("DiagnosisServlet");
 	}
 
 }
