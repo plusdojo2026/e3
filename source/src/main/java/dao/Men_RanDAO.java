@@ -6,60 +6,68 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import dto.CommonDTO;
+
 public class Men_RanDAO {
 	private static final String URL = "jdbc:mysql://localhost:3306/e3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
 	private static final String USER = "e3";
 	private static final String PASS = "password";
 
-	public class RankingDAO extends DAO {
+	List<CommonDTO> getRanking(String sort) {
 
-		// ランキングデータを取得するメソッド
-		public List<Shouhin> selectRanking() {
+		List<CommonDTO> rankingList = new ArrayList<>();
 
-			// 返却用リスト（ランキング結果を格納）
-			List<Shouhin> rankingList = new ArrayList<>();
+		String sql;
 
-			// SQL（購入日が古い順で上位10件）
-			String sql = "SELECT nickname, buy_date " + "FROM shouhin " + "ORDER BY buy_date ASC " + "LIMIT 10";
+		if ("buyDateAsc".equals(sort)) {
 
-			try (
-					// DB接続を取得
-					Connection conn = getConnection();
+		}
+		// 購入日の降順（新しい順）
+		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
+	}else if("buyDateDesc".equals(sort))
 
-					// SQLを実行するための準備
-					PreparedStatement ps = conn.prepareStatement(sql);) {
+	{
+		// 購入日の降順（新しい順）
 
-				// SQLを実行して結果を受け取る
-				ResultSet rs = ps.executeQuery();
+		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date DESC LIMIT 10";
+	}else if("dayPriceAsc".equals(sort))
+	{
+		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY day_price ASC LIMIT 10";
+	}else if("dayPriceDesc".equals(sort))
+	{
+		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY day_price DESC LIMIT 10";
+	}else
+	{
+		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
+	}
 
-				// 1件ずつ取り出してListに詰める
-				while (rs.next()) {
+	try(
+	Connection conn = getConnection();
+	PreparedStatement ps = conn.prepareStatement(sql);
+	ResultSet rs = ps.executeQuery())
+	{
 
-					// 1行分のデータを入れる箱（Bean）
-					Shouhin s = new Shouhin();
+		while (rs.next()) {
 
-					// nicknameをセット
-					s.setNickname(rs.getString("nickname"));
+			CommonDTO dto = new CommonDTO();
 
-					// buy_dateをセット
-					s.setBuyDate(rs.getDate("buy_date"));
+			dto.setNickname(rs.getString("nickname"));
+			dto.setBuyDate(rs.getDate("buy_date"));
+			dto.setDayPrice(rs.getInt("day_price"));
 
-					// リストに追加
-					rankingList.add(s);
-				}
-
-			} catch (Exception e) {
-				// エラーが出た場合は表示
-				e.printStackTrace();
-			}
-
-			// 完成したランキングリストを返す
-			return rankingList;
+			rankingList.add(dto);
 		}
 
-		private Connection getConnection() {
-			// TODO 自動生成されたメソッド・スタブ
-			return null;
-		}
+	}catch(
+	Exception e)
+	{
+		e.printStackTrace();
+	}
+
+	return rankingList;
+
+	private Connection getConnection() {
+		// TODO 自動生成されたメソッド・スタブ
+		return null;
 	}
 }
