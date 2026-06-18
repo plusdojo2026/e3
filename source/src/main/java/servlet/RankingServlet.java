@@ -31,19 +31,16 @@ public class RankingServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		 // 並び替え条件取得
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
         String sort = request.getParameter("sort_");
 
-        // DAO呼び出し
         Men_RanDAO dao = new Men_RanDAO();
         List<CommonDTO> rankingList = dao.getRanking(sort);
 
-        // JSPへ渡す
         request.setAttribute("rankingList", rankingList);
 
-        // JSPへフォワード
         RequestDispatcher dispatcher =
                 request.getRequestDispatcher("/WEB-INF/jsp/ranking.jsp");
         dispatcher.forward(request, response);

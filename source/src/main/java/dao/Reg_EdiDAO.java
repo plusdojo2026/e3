@@ -43,9 +43,9 @@ public class Reg_EdiDAO {
 	     	pStmt.setString(6, dto.getMaker());
 	     	pStmt.setInt(7, dto.getLife());
 
-	     	pStmt.setDouble(8, 0);     // 仮
-	     	pStmt.setInt(9, 0);        // 仮
-	     	pStmt.setInt(10, 0);       // 仮
+	     	pStmt.setDouble(8, dto.getDay_price());     // 仮
+	     	pStmt.setInt(9, dto.getProgress());        // 仮
+	     	pStmt.setInt(10, dto.getGoal());       // 仮
 
 	     	pStmt.setString(11, dto.getNickname());
 	     	pStmt.setBytes(12, dto.getImg());

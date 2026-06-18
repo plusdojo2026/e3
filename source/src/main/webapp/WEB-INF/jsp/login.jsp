@@ -23,9 +23,9 @@
 
 	<div class="container">
 		<!-- 左画像 -->
-		<img class="left" src="images/login3.png" alt="">
+		<img class="left slide-left" src="images/login3.png" alt="">
 		<!-- ログインフォーム -->
-		<main class="center">
+		<main class="center pop">
 			<h2>おかえりなさい！</h2>
 			
 			<!-- エラー表示 -->
@@ -42,7 +42,7 @@
 			</form>
 		</main>
 		<!-- 右画像 -->
-		<img class="right" src="images/login2.png" alt="">
+		<img class="right slide-right" src="images/login2.png" alt="">
 	</div>
 	
 	<footer>

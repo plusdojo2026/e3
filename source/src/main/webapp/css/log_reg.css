@@ -35,9 +35,21 @@ h2 {
 
 .center {  /* フォームのコンテンツ */
 	flex: 0 1 auto;
-	min-width: 400px;
+	min-width: 440px;
 	margin: 0 20px;
+}	
+.pop {
+	opacity: 0;
+	transform: scale(0.9);
+	animation: pop 0.5s ease forwards;	
 }
+@keyframes pop {
+	to {
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
 form{ /* フォームのコンテンツ内部 */
 	background: #fef263;
 	padding: 40px 30px;
@@ -113,6 +125,32 @@ a:hover {
     margin: 20px;
 }
 
+.slide-left {
+  opacity: 0;
+  transform: translateX(-40px);
+  animation: slideLeft 0.8s ease forwards;
+}
+
+@keyframes slideLeft {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.slide-right {
+  opacity: 0;
+  transform: translateX(40px);
+  animation: slideRight 0.8s ease forwards;
+}
+
+@keyframes slideRight {
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
 /* レスポンシブデザイン */
 @media (max-width: 480px){
 	img {
@@ -125,17 +163,16 @@ a:hover {
 	.center {
 		margin: 0;
         padding: 0;
-        width: 100%;
 	}
 	
 	.center form{
-		padding: 50px 50px;
-		margin: 10px 20px;
+		padding: 40px 20px;
+		margin: 10px 45px;
 	}
 	
 	.center form input[type="text"], .center form input[type="password"] {
 		text-align: center;
-		width: 180px;
+		max-width: 80%;
 		height: 30px;
 		margin: 10px 20px;
 	}
@@ -209,7 +246,19 @@ p {
 	border-radius: 30px;
 }
 
-.register input {
+.fadein {
+  opacity: 0;
+  animation: fadein 1s ease forwards;
+}
+
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+
+
+.register input[name="userId"] {
 	text-align: center;
 	font-size: 15px;
 }
@@ -294,7 +343,7 @@ p {
 	.register {
 		min-width: auto;
 		padding: 20px 20px;
-		margin: 0 auto;
+		margin: 0 18px;
 		font-size: 13px;
 	}
 	

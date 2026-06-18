@@ -44,58 +44,54 @@
 		<h2>
 			<b>▶ ランキング </b>
 		</h2>
-		<div class="wrapper">
-			<c:forEach var="item" items="${rankingList}" varStatus="status">
-				<!-- 2位（左） -->
-				<div class="item second">
-					<img src="images/銀メダルアイコン.png" class="medal">
-					<p class="plate">
-						<c:choose>
-							<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-							<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-						</c:choose>
-					</p>
-					<img src="images/chara_logo.png" class="icon">
-					<div class="stand">2年</div>
-				</div>
-				<!-- 1位（中央・最前面） -->
-				<div class="item first">
-					<img src="images/金メダルアイコン .png" class="medal">
-					<p class="plate">
-						<c:choose>
-							<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-							<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-						</c:choose>
-					</p>
-					<img src="images/chara_logo.png" class="icon">
-					<div class="stand">5年</div>
-				</div>
-				<!-- 3位（右） -->
-				<div class="item third">
-					<img src="images/銅メダルアイコン.png" class="medal">
-					<p class="plate">
-						<c:choose>
-							<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-							<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-						</c:choose>
-					</p>
-					<img src="images/chara_logo.png" class="icon">
-					<div class="stand">1年</div>
-				</div>
-			</c:forEach>
-		</div>
+<div class="wrapper">
+
+<!-- 1位 -->
+<div class="item first">
+    <img src="images/金メダルアイコン .png" class="medal">
+
+    <p class="plate">
+        ${not empty rankingList[0] ? (empty rankingList[0].nickname ? rankingList[0].shouhin : rankingList[0].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[0] ? rankingList[0].day_price : 0}円/日
+    </div>
+</div>
+
+<!-- 2位 -->
+<div class="item second">
+    <img src="images/銀メダルアイコン.png" class="medal">
+
+    <p class="plate">
+        ${not empty rankingList[1] ? (empty rankingList[1].nickname ? rankingList[1].shouhin : rankingList[1].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[1] ? rankingList[1].day_price : 0}円/日
+    </div>
+</div>
+
+<!-- 3位 -->
+<div class="item third">
+    <img src="images/銅メダルアイコン.png" class="medal">
+
+    <p class="plate">
+        ${not empty rankingList[2] ? (empty rankingList[2].nickname ? rankingList[2].shouhin : rankingList[2].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[2] ? rankingList[2].day_price : 0}円/日
+    </div>
+</div>
+
+</div>
 
 		<div class="sort_">
 			<img src="images/sortbutton.png" alt="並び替え" class="sort_button">
@@ -124,128 +120,22 @@
 		<div class="card">
 			<!-- ランキング結果 -->
 			<table class="info">
-				<c:forEach var="item" items="${rankingList}" varStatus="status">
-					<tr>
-						<th>①</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>5年3か月使用</td>
-					</tr>
-					<tr>
-						<th>②</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>3年4か月使用</td>
-					</tr>
-					<tr>
-						<th>③</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-					<tr>
-						<th>④</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-					<tr>
-						<th>⑤</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-					<tr>
-						<th>⑥</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-					<tr>
-						<th>⑦</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-					<tr>
-						<th>⑧</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-					<tr>
-						<th>⑨</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-					<tr>
-						<th>⑩</th>
-						<th><c:choose>
-								<c:when test="${not empty item.nickname}">
-            ${item.nickname}
-        </c:when>
-								<c:otherwise>
-            ${item.shouhin}
-        </c:otherwise>
-							</c:choose></th>
-						<td>〇年〇か月使用</td>
-					</tr>
-				</c:forEach>
+
+<c:forEach var="item" items="${rankingList}" varStatus="status">
+
+<tr>
+    <th>${status.count}</th>
+
+    <th>
+        ${empty item.nickname ? item.shouhin : item.nickname}
+    </th>
+
+    <td>
+        ${item.day_price}円/日
+    </td>
+</tr>
+
+</c:forEach>
 			</table>
 		</div>
 	</main>
