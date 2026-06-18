@@ -26,7 +26,7 @@ public class Sd_AdDAO {
                     "goal = (life * 365) - DATEDIFF(CURDATE(), buy_date), " +
                     "day_price = CASE " +
                     "    WHEN DATEDIFF(CURDATE(), buy_date) = 0 THEN price " +
-                    "    ELSE price / DATEDIFF(CURDATE(), buy_date) " +
+                    "    ELSE round(price / DATEDIFF(CURDATE(), buy_date)) " +
                     "END " +
                     "WHERE id = ?";
          //　uStmtは、pStmtとの被り回避
@@ -51,7 +51,7 @@ public class Sd_AdDAO {
                 dto = new CommonDTO(
                     rs.getInt("id"),
                     rs.getString("shouhin"),
-                    rs.getDouble("day_price"),
+                    rs.getInt("day_price"),
                     rs.getString("genre"),
                     rs.getString("buy_date"),
                     rs.getInt("price"),
