@@ -44,46 +44,52 @@
 		<h2>
 			<b>▶ ランキング </b>
 		</h2>
-		<div class="wrapper">
+<div class="wrapper">
 
-<c:forEach var="item" items="${rankingList}" varStatus="status">
-<c:if test="${status.count <= 3}">
+<!-- 1位 -->
+<div class="item first">
+    <img src="images/金メダルアイコン .png" class="medal">
 
-<div class="item 
-    ${status.count == 1 ? 'first' :
-      status.count == 2 ? 'second' :
-      status.count == 3 ? 'third' : ''}">
-
-    <!-- メダル -->
-    <c:if test="${status.count == 1}">
-        <img src="images/金メダルアイコン .png" class="medal">
-    </c:if>
-
-    <c:if test="${status.count == 2}">
-        <img src="images/銀メダルアイコン.png" class="medal">
-    </c:if>
-
-    <c:if test="${status.count == 3}">
-        <img src="images/銅メダルアイコン.png" class="medal">
-    </c:if>
-
-    <!-- 名前 -->
     <p class="plate">
-        ${empty item.nickname ? item.shouhin : item.nickname}
+        ${not empty rankingList[0] ? (empty rankingList[0].nickname ? rankingList[0].shouhin : rankingList[0].nickname) : "未登録"}
     </p>
 
-    <!-- アイコン -->
     <img src="images/chara_logo.png" class="icon">
 
-    <!-- スタンド -->
     <div class="stand">
-        ${item.day_price}円/日
+        ${not empty rankingList[0] ? rankingList[0].day_price : 0}円/日
     </div>
-
 </div>
 
-</c:if>
-</c:forEach>
+<!-- 2位 -->
+<div class="item second">
+    <img src="images/銀メダルアイコン.png" class="medal">
+
+    <p class="plate">
+        ${not empty rankingList[1] ? (empty rankingList[1].nickname ? rankingList[1].shouhin : rankingList[1].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[1] ? rankingList[1].day_price : 0}円/日
+    </div>
+</div>
+
+<!-- 3位 -->
+<div class="item third">
+    <img src="images/銅メダルアイコン.png" class="medal">
+
+    <p class="plate">
+        ${not empty rankingList[2] ? (empty rankingList[2].nickname ? rankingList[2].shouhin : rankingList[2].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[2] ? rankingList[2].day_price : 0}円/日
+    </div>
+</div>
 
 </div>
 
