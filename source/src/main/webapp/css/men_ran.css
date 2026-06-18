@@ -11,67 +11,49 @@
 	top: -50px;
 }
 
-/* imageクラス全体 */
-.image {
+/* speechクラス全体 */
+.speech {
 	display: flex;
 	flex-direction: row;
+	justify-content: center;
 	align-items: center;
-	gap: 16px;
-	position: relative;
-	right: 140px;
-	top: 20px;
-	margin-bottom: 40px;
-}
-
-/* ペットロゴ */
-.logo {
-	display: flex;
-	margin-left: 20%;
-}
-
-/* 「もっと見る」ボタン */
-.image button {
-	position: absolute;
-	right: 50px;
-	top: 110px;
-}
-
-/* テレビ全体 */
-.tv {
+	gap: 20px;
 	position: relative;
 }
 
-/* テレビ画像 */
-.tv img {
-	width: 550px;
-	height: 550px;
-	margin-top: 70px;
-}
-
-/* テレビ内のテキスト */
-.tv_text {
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 340px;
-	color: #7A2C00;
-	font-size: 24px;
-}
 /* ペットの吹き出し */
 .speechBubble {
 	position: relative;
-	margin-left: 16px;
-	padding: 20px 30px;
-	width: 100%;
-	padding-bottom: 70px;
+	width: 70%;
+	height: 150px; /* 3件 × 50px */
+	overflow: hidden;
 	border: 2px solid #7A2C00;
 	border-radius: 12px;
 	background: #fff;
-	color: #7A2C00;
+}
+
+.speechTrack {
+	position: relative;
+	transition: transform 0.4s ease;
+	display: block;
+	flex-direction: column;
+	width: 100%;
+	height: max-content;
+}
+
+.speechPage {
 	display: flex;
-	justify-content: space-between;
-	align-items: flex-end;
-	border: 2px solid #7A2C00;
+	flex-direction: column;
+	line-height: 50px;
+	height: 150px;
+	flex-shrink: 0;
+}
+
+.speechText {
+	padding-left: 20px;
+	height: 50px;
+	font-size: 20px;
+	color: #7A2C00;
 }
 
 /* 吹き出しのしっぽ（外側） */
@@ -99,6 +81,41 @@
 	border-top: 7px solid transparent;
 	border-bottom: 7px solid transparent;
 	border-right: 9px solid #fff;
+}
+
+/* 「スライド」ボタン */
+.backbutton {
+	position: absolute;
+	right: 150px;
+	top: 30px;
+}
+
+.nextbutton {
+	position: absolute;
+	right: 150px;
+	top: 90px;
+}
+
+/* テレビ全体 */
+.tv {
+	position: relative;
+}
+
+/* テレビ画像 */
+.tv img {
+	width: 550px;
+	height: 550px;
+	margin-top: 10px;
+}
+
+/* テレビ内のテキスト */
+.tv_text {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 260px;
+	color: #7A2C00;
+	font-size: 30px;
 }
 
 /*ranking*/
@@ -289,7 +306,7 @@
 	}
 
 	/* もっと見るボタン */
-	.image button {
+	.speech button {
 		font-size: 12px;
 		padding: 4px 8px;
 		top: 50px;
@@ -330,7 +347,6 @@
 		width: 180px;
 		right: 0;
 	}
-	
 	.wrapper {
 		gap: 3px;
 	}
