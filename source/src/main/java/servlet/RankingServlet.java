@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,6 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import dao.Men_RanDAO;
+import dto.CommonDTO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -29,9 +33,21 @@ public class RankingServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/ranking.jsp");
-		dispatcher.forward(request, response);
-	}
+		 // 並び替え条件取得
+        String sort = request.getParameter("sort_");
+
+        // DAO呼び出し
+        Men_RanDAO dao = new Men_RanDAO();
+        List<CommonDTO> rankingList = dao.getRanking(sort);
+
+        // JSPへ渡す
+        request.setAttribute("rankingList", rankingList);
+
+        // JSPへフォワード
+        RequestDispatcher dispatcher =
+                request.getRequestDispatcher("/WEB-INF/jsp/ranking.jsp");
+        dispatcher.forward(request, response);
+    }
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

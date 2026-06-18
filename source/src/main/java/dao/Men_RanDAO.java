@@ -20,8 +20,11 @@ public class Men_RanDAO {
 		Connection conn = null;
 		int total = 0;
 		try {
+			// JDBCドライバを読み込む
 			Class.forName("com.mysql.cj.jdbc.Driver");
+			// データベースへ接続する
 			conn = DriverManager.getConnection(URL, USER, PASS);
+
 			// 一日当たり価格を再計算するSQL文をString型で用意
 			// case、endはMySQLのif文みたいなもの、耐用年数が0だった場合価格をそのまま表示することでゼロ除算を回避
 			// ROUND()で四捨五入
@@ -50,17 +53,20 @@ public class Men_RanDAO {
 					total = 0;
 				}
 			}
-
+			// 後処理
 			rs.close();
 			pStmt.close();
 
 		} catch (Exception e) {
+			// 例外処理
 			e.printStackTrace();
 		} finally {
 			try {
+				// connectionがnullじゃない時だけclose()を試みる
 				if (conn != null)
 					conn.close();
 			} catch (SQLException e) {
+				// 例外処理
 				e.printStackTrace();
 			}
 		}
@@ -68,65 +74,88 @@ public class Men_RanDAO {
 		return total;
 	}
 
+	// ソート条件に応じたランキング情報の取得
 	public List<CommonDTO> getRanking(String sort) {
 
+		// ランキング結果を格納するリスト
 		List<CommonDTO> rankingList = new ArrayList<>();
 
-		String sql;
+		// DB接続用のオブジェクト
+		Connection conn = null;
 
-		if ("buyDateAsc".equals(sort)) {
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// データベースへ接続する
+			conn = DriverManager.getConnection(URL, USER, PASS);
 
-	
-		// 購入日の昇順（古い順）
-		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
-	}else if("buyDateDesc".equals(sort)) {
+			// 実行するSQLを格納する変数
+			String sql;
 
-		// 購入日の降順（新しい順）
+			// ソート条件に応じてSQLを切り替える
+			if ("buyDateAsc".equals(sort)) {
 
-		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date DESC LIMIT 10";
-	}else if("dayPriceAsc".equals(sort)) {
+				// 購入日の昇順（古い順）
+				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
+			} else if ("buyDateDesc".equals(sort)) {
 
-		// 1日の固定費の昇順(安い順)
-		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY day_price ASC LIMIT 10";
-	}else if("dayPriceDesc".equals(sort)) {
-	
-		// 1日の固定費の降順(高い順)
+				// 購入日の降順（新しい順）
 
-		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY day_price DESC LIMIT 10";
-	}else {
-	
-		// ページ遷移後最初に表示する1日の固定費の昇順(高い順)
+				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY buy_date DESC LIMIT 10";
+			} else if ("dayPriceAsc".equals(sort)) {
 
-		sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
-	}
+				// 1日の固定費の昇順(安い順)
+				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY day_price ASC LIMIT 10";
+			} else if ("dayPriceDesc".equals(sort)) {
 
-	try(
-	Connection conn = getConnection();
-	PreparedStatement ps = conn.prepareStatement(sql);
-	ResultSet rs = ps.executeQuery())
-	{
+				// 1日の固定費の降順(高い順)
 
-		while (rs.next()) {
+				sql = "SELECT nickname, syouhin, buy_date, day_price FROM shouhin ORDER BY day_price DESC LIMIT 10";
+			} else {
 
-			CommonDTO dto = new CommonDTO();
+				// ページ遷移後最初に表示する1日の固定費の昇順(高い順)
 
-			dto.setNickname(rs.getString("nickname"));
-			dto.setBuy_date(rs.getString("buy_date"));
-			dto.setDay_price(rs.getInt("day_price"));
+				sql = "SELECT nickname, buy_date, day_price FROM shouhin ORDER BY buy_date ASC LIMIT 10";
+			}
 
-			rankingList.add(dto);
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			// selectを実行、ResultSet型の変数rsに受け取る
+			// ResultSetは行と列を持ったデータの集合、表のようなもの
+			ResultSet rs = pStmt.executeQuery();
+
+			// SQLの実行結果（ResultSet）を1行ずつ処理する
+			while (rs.next()) {
+
+				// データを入れるDTOの作成
+				CommonDTO dto = new CommonDTO();
+
+				// 愛称、購入日、1日当たりの固定費の値を取得
+				dto.setNickname(rs.getString("nickname"));
+				dto.setBuy_date(rs.getString("buy_date"));
+				dto.setDay_price(rs.getInt("day_price"));
+				dto.setShouhin(rs.getString("shouhin"));
+
+				// CommonDTOにランキングリストを追加
+				rankingList.add(dto);
+			}
+			// 後処理
+			rs.close();
+			pStmt.close();
+
+		} catch (Exception e) {
+			// 例外処理
+			e.printStackTrace();
+		} finally {
+			try {
+				// connectionがnullじゃない時だけclose()を試みる
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// 例外処理
+				e.printStackTrace();
+			}
 		}
-
-	}catch(
-	Exception e)
-	{
-		e.printStackTrace();
+		// ランキングリストを返す
+		return rankingList;
 	}
-
-	return rankingList;
-
-	private Connection getConnection() {
-		// TODO 自動生成されたメソッド・スタブ
-		return null;
-	}
-}}
+}

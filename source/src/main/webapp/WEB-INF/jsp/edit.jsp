@@ -44,9 +44,12 @@
 <h2>▶ 編集</h2>
 
 <div class="form-container">
-<form id="form" action="${pageContext.request.contextPath}/RegisterServlet"
-      method="post"
-      enctype="multipart/form-data">
+<form id="form" action="${pageContext.request.contextPath}/EditServlet"
+      method="post">
+     <!-- enctype="multipart/form-data"> -->
+      
+      <input type="hidden" name="id" value="${dto.id}">
+      
 
   <!-- 画像 -->
   <div class="form-row">
@@ -74,10 +77,10 @@
    </div>
 	
     <div class="radio-group">
-      <label><input type="radio" name="genre" value="家電製品"> 家電製品</label>
-      <label><input type="radio" name="genre" value="家具"> 家具</label>
-      <label><input type="radio" name="genre" value="ぬいぐるみ"> ぬいぐるみ</label>
-      <label><input type="radio" name="genre" value="その他"> その他</label>
+      <label><input type="radio" name="genre" value="家電製品" ${dto.genre == '家電製品' ? 'checked' : ''}> 家電製品</label>
+      <label><input type="radio" name="genre" value="家具" ${dto.genre == '家具' ? 'checked' : ''}> 家具</label>
+      <label><input type="radio" name="genre" value="ぬいぐるみ" ${dto.genre == 'ぬいぐるみ' ? 'checked' : ''}> ぬいぐるみ</label>
+      <label><input type="radio" name="genre" value="その他" ${dto.genre == 'その他' ? 'checked' : ''}> その他</label>
     </div>
   </div>
 
@@ -88,13 +91,13 @@
       <label>商品名<span class="required">*</span></label>
       <span class = "error" id = "shouhinError"></span>
      </div>
-      <input type="text" id="shouhin" name="shouhin" placeholder="入力してください">
+      <input type="text" id="shouhin" name="shouhin" value="${dto.shouhin}">
       
     </div>
 
     <div class="form-group">
       <label>メーカー</label>
-      <input type="text" id="maker" name="maker" placeholder="入力してください">
+      <input type="text" id="maker" name="maker" value="${dto.maker}">
     </div>
   </div>
 
@@ -105,7 +108,7 @@
       <label>購入日<span class="required">*</span></label>
       <span class = "error" id = "buyDateError"></span>
      </div>
-      <input type="date" id="buyDate" name="buy_date">
+      <input type="date" id="buyDate" name="buy_date" value="${dto.buy_date}">
       
     </div>
 
@@ -114,7 +117,7 @@
       <label>価格<span class="required">*</span></label>
       <span class = "error" id = "priceError"></span>
      </div>
-      <input type="number" id="price" name="price"> <span class="unit">円</span>
+      <input type="number" id="price" name="price" value="${dto.price}"> <span class="unit">円</span>
       
     </div>
   </div>
@@ -123,7 +126,7 @@
   <div class="form-row two-column">
     <div class="form-group">
       <label>保証期間</label>
-      <input type="number" id="wperiod" name="wperiod"><span class="unit">年</span>
+      <input type="number" id="wperiod" name="wperiod" value="${dto.wperiod}"><span class="unit">年</span>
     </div>
 
     <div class="form-group">
@@ -131,7 +134,7 @@
       <label>耐用年数<span class="required">*</span></label>
       <span class = "error" id = "lifeError"></span>
      </div>
-      <input type="number" id="life" name="life"><span class="unit">年</span>
+      <input type="number" id="life" name="life" value="${dto.life}"><span class="unit">年</span>
       
     </div>
   </div>
@@ -139,7 +142,7 @@
   <!-- 愛称 -->
   <div class="form-row">
     <label class="form-label">愛称</label>
-    <input type="text" id="nickname" name="nickname" placeholder="入力してください">
+    <input type="text" id="nickname" name="nickname" value="${dto.nickname}">
   </div>
 
   <!-- フレーム -->
@@ -194,7 +197,7 @@
 			<a href="${pageContext.request.contextPath}/ShouhinListServlet">
 				◀ 一覧へ戻る </a>
 		</div>
- 
+
 </form>
 </div>
 <script src="${pageContext.request.contextPath}/js/common.js"></script>

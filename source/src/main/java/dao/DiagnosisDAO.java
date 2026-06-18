@@ -67,8 +67,8 @@ public class DiagnosisDAO {
 			
 			conn = DriverManager.getConnection(URL, USER, PASS);// データベースに接続する
 
-			// 一覧表示
-			String sql = "SELECT shouhin, money, use_year, day_price  FROM diagnosis";
+			// 一覧表示 // ここにidあっていい？
+			String sql = "SELECT id, shouhin, money, use_year, day_price  FROM diagnosis";
 
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -78,7 +78,6 @@ public class DiagnosisDAO {
 
 			// データベースの結果を一行ずつ返す→Resultsetが次の行に進む
 			while (rs.next()) {
-				// int id = rs.getInt("id"); // idいる？
 				CommonDTO shouhin = new CommonDTO(rs.getInt("id"), rs.getString("shouhin"), rs.getInt("money"),
 						rs.getInt("use_year"), rs.getInt("day_price"));
 				diagnosisList.add(shouhin);
@@ -101,8 +100,8 @@ public class DiagnosisDAO {
 
 	}
 
-	/* 行の削除 */
-	public boolean delete(int id) { // day_priceは計算で出すため。
+	/* 行の削除 [DELETEは行ごと行われる] */
+	public boolean delete(int id) { 
 		Connection conn = null;
 		boolean result = false;
 		
@@ -120,7 +119,7 @@ public class DiagnosisDAO {
 			// SQL文を完成させる
 			pStmt.setInt(1, id);
 			
-			// この記述は何？// この記述は何？　INSERT/UPDATE/DELETE 専用	
+			// この記述は何？　INSERT/UPDATE/DELETE 専用	
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
