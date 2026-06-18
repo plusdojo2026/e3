@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import dao.DiagnosisDAO;
+import dto.CommonDTO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -17,45 +19,72 @@ import dao.DiagnosisDAO;
 @WebServlet("/DiagnosisServlet")
 public class DiagnosisServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
-    public DiagnosisServlet() {
-        super();
-        // TODO Auto-generated constructor stub
-    }
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#HttpServlet()
 	 */
-    // 購入診断画面にフォワードする
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	public DiagnosisServlet() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	/**
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
+	 */
+	// doGet
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		// もしもログインしていなかったらログインサーブレットにリダイレクトする
+		/*
+		 * HttpSession session = request.getSession(); if (session.getAttribute("id") ==
+		 * null) { response.sendRedirect("/LoginServlet"); return; }
+		 */
+
+		//---診断結果リストの一覧表示---
+		DiagnosisDAO dao = new DiagnosisDAO();
+		List<CommonDTO> diagnosisList = dao.findAll(); // 変数の宣言
+		//dao.findAll();
+		
+		// 診断結果をリクエストスコープに格納する
+		request.setAttribute("diagnosisList", diagnosisList);
+		
+		// 購入診断ページにフォワードする
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/diagnosis.jsp");
 		dispatcher.forward(request, response);
-		}
+	}
 
 	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//リクエストパラメータを取得する Integer.parseInt();でint型に直す
+	// doPost
+	protected void doPost(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+		// フォームから値を受け取る(getParameter) Integer.parseInt();でint型に直す
 		request.setCharacterEncoding("UTF-8");
 		String shouhin = request.getParameter("shouhin");
 		int money = Integer.parseInt(request.getParameter("money"));
 		int use_year = Integer.parseInt(request.getParameter("use_year"));
-		
-		//インスタンス生成
+
+		// ---登録---
+		// インスタンス生成 (データベース処理を行う専用のクラス)
 		DiagnosisDAO dao = new DiagnosisDAO();
-		//DAOの呼び出し
+		// DAOの呼び出し DBに登録
 		dao.register(shouhin, money, use_year);
-	
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/diagnosis.jsp");
-        dispatcher.forward(request, response);
+
+		// ---削除---
+		int id = Integer.parseInt(request.getParameter("id"));
+			// －ボタンを押されたとき
+			if (request.getParameter("submit").equals("－")) {
+				// idだけで良いの？shouhin, money, use_year, day_priceは？
+				dao.delete(id); // DELETEは[行ごと]消えるため、idだけで良い。
+			}
+
+		// 購入診断ページへforward
+				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/diagnosis.jsp");
+				dispatcher.forward(request, response);
 	}
 
 }
-	
-
-
