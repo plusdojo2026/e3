@@ -81,11 +81,17 @@ SELECT * FROM shouhin;
 
 /* TODO: テストデータとしてINSERT文を複数作成する必要あり */
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) 
-	VALUES ('家電', '冷蔵庫', '2026-06-12', 10000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, 'レイちゃん', NULL);
+	VALUES ('家電', '冷蔵庫', '2026-06-12', 10000, 90, 'アイリスオーヤマ', 5, 10000/(5*365), 3, 200, 'レイちゃん', NULL);
 	
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) 
-	VALUES ('家電', '', '2026-06-12', 10000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, 'レイちゃん', NULL);
+	VALUES ('家電', '電子レンジ', '2026-06-13', 10000, 90, 'アイリスオーヤマ', 5, 10000/(5*365), 3, 200, 'アタメル', NULL);
 
+INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) 
+	VALUES ('家電', '掃除機', '2026-06-15', 50000, 90, 'アイリスオーヤマ', 5, 50000/(5*365), 3, 200, 'すいすい君', NULL);
+	
+INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) 
+	VALUES ('家電', '扇風機', '2026-06-18', 30000, 90, 'アイリスオーヤマ', 5, 30000/(5*365), 3, 200, '風神', NULL);
+	
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
 

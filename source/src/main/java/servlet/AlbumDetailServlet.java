@@ -9,6 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import dao.Sd_AdDAO;
+import dto.CommonDTO;
+
 /**
  * Servlet implementation class AlbumDetailServlet
  */
@@ -28,9 +31,28 @@ public class AlbumDetailServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/albumDetail.jsp");
-		dispatcher.forward(request, response);
+		String action = request.getParameter("action");
+		int id = Integer.parseInt(request.getParameter("shouhinid"));
+		Sd_AdDAO dao = new Sd_AdDAO();
+		
+		if(action == null) {
+			CommonDTO shouhininfo = dao.shouhinInfo(id);
+			
+			request.setAttribute("shouhininfo", shouhininfo);
+
+			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/albumDetail.jsp");
+			dispatcher.forward(request, response);
+		}else if(action.equals("rireki")) {
+			
+		}else if(action.equals("delete")) {
+			boolean success = dao.deleteShouhin(id);
+
+			if (success) {
+				response.sendRedirect(request.getContextPath() + "/AlbumListServlet?deleted=true");
+			} else {
+				response.sendRedirect(request.getContextPath() + "/AlbumDetailServlet?shouhinid=" + id + "&error=delete");
+			}
+		}
 	}
 
 	/**
