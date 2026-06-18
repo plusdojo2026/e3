@@ -89,7 +89,8 @@
 	/* 区切り線 */
 .diagnosis_result td{
 	border-bottom: 1px dashed #C75000;
-	padding: 13px;
+	padding: 13px 13px 13px 13px;
+	margin-top: 18px; /* 行間 */
 	height: 20px; /* 行の高さ */
 }
 .diagnosis_result tr{

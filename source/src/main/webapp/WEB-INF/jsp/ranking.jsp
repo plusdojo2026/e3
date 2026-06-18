@@ -7,7 +7,7 @@
 <meta charset="UTF-8">
 <!--　ビューポート　-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>モノカチコレクション | メニュー</title>
+<title>モノカチコレクション | ランキング</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/men_ran.css">
 <link rel="stylesheet"
@@ -44,98 +44,98 @@
 		<h2>
 			<b>▶ ランキング </b>
 		</h2>
-
 <div class="wrapper">
-  <!-- 2位（左） -->
-  <div class="item second">
-	 <img src="images/銀メダルアイコン.png" class="medal">
-	 <p  class="plate">おこめちゃん</p>
-	 <img src="images/chara_logo.png" class="icon">
-    <div class="stand">2年</div>
-  </div>
-  <!-- 1位（中央・最前面） -->
-  <div class="item first">
+
+<!-- 1位 -->
+<div class="item first">
     <img src="images/金メダルアイコン .png" class="medal">
-	<p class="plate">れいぞうくん</p>
-	<img src="images/chara_logo.png" class="icon">
-    <div class="stand">5年</div>
-  </div>
-  <!-- 3位（右） -->
-  <div class="item third">
+
+    <p class="plate">
+        ${not empty rankingList[0] ? (empty rankingList[0].nickname ? rankingList[0].shouhin : rankingList[0].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[0] ? rankingList[0].day_price : 0}円/日
+    </div>
+</div>
+
+<!-- 2位 -->
+<div class="item second">
+    <img src="images/銀メダルアイコン.png" class="medal">
+
+    <p class="plate">
+        ${not empty rankingList[1] ? (empty rankingList[1].nickname ? rankingList[1].shouhin : rankingList[1].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[1] ? rankingList[1].day_price : 0}円/日
+    </div>
+</div>
+
+<!-- 3位 -->
+<div class="item third">
     <img src="images/銅メダルアイコン.png" class="medal">
-	<p  class="plate">そうじきん</p>
-	<img src="images/chara_logo.png" class="icon">
-    <div class="stand">1年</div>
-  </div>
+
+    <p class="plate">
+        ${not empty rankingList[2] ? (empty rankingList[2].nickname ? rankingList[2].shouhin : rankingList[2].nickname) : "未登録"}
+    </p>
+
+    <img src="images/chara_logo.png" class="icon">
+
+    <div class="stand">
+        ${not empty rankingList[2] ? rankingList[2].day_price : 0}円/日
+    </div>
+</div>
+
 </div>
 
 		<div class="sort_">
 			<img src="images/sortbutton.png" alt="並び替え" class="sort_button">
 			<div class="drop_down">
+				<!--   <a href="${pageContext.request.contextPath}/RankingServlet?sort_=id_desc">経過日数が長い順</a> -->
+				<!--  <a href="${pageContext.request.contextPath}/RankingServlet?sort_=id_asc">経過日数が短い順</a> -->
+				<!--   <a href="${pageContext.request.contextPath}/RankingServlet?sort_=day_price_desc">１日当たりの固定費が多い順</a>  -->
+				<!--   < a href="${pageContext.request.contextPath}/RankingServlet?sort_=day_price_asc">１日当たりの固定費が少ない順</a>  -->
+				<!-- sort_=id_descの部分がDAOと違っていたので修正しています、確認できましたら上のコメントアウトは消してもらって大丈夫です！ -->
+
 				<a
-					href="${pageContext.request.contextPath}/RankingServlet?sort_=id_desc">経過日数が長い順</a>
+					href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateDesc">経過日数が長い順</a>
+
 				<a
-					href="${pageContext.request.contextPath}/RankingServlet?sort_=id_asc">経過日数が短い順</a>
+					href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateAsc">経過日数が短い順</a>
+
 				<a
-					href="${pageContext.request.contextPath}/RankingServlet?sort_=day_price_desc">１日当たりの固定費が多い順</a>
+					href="${pageContext.request.contextPath}/RankingServlet?sort_=dayPriceDesc">１日当たりの固定費が多い順</a>
+
 				<a
-					href="${pageContext.request.contextPath}/RankingServlet?sort_=day_price_asc">１日当たりの固定費が少ない順</a>
+					href="${pageContext.request.contextPath}/RankingServlet?sort_=dayPriceAsc">１日当たりの固定費が少ない順</a>
+
 			</div>
 		</div>
 
 		<div class="card">
 			<!-- ランキング結果 -->
 			<table class="info">
-				<tr>
-					<th>①</th>
-					<th>れいぞうくん</th>
-					<td>5年3か月使用</td>
-				</tr>
-				<tr>
-					<th>②</th>
-					<th>おこめちゃん</th>
-					<td>3年4か月使用</td>
-				</tr>
-				<tr>
-					<th>③</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
-				<tr>
-					<th>④</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
-				<tr>
-					<th>⑤</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
-				<tr>
-					<th>⑥</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
-				<tr>
-					<th>⑦</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
-				<tr>
-					<th>⑧</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
-				<tr>
-					<th>⑨</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
-				<tr>
-					<th>⑩</th>
-					<th>〇〇ちゃん</th>
-					<td>〇年〇か月使用</td>
-				</tr>
+
+<c:forEach var="item" items="${rankingList}" varStatus="status">
+
+<tr>
+    <th>${status.count}</th>
+
+    <th>
+        ${empty item.nickname ? item.shouhin : item.nickname}
+    </th>
+
+    <td>
+        ${item.day_price}円/日
+    </td>
+</tr>
+
+</c:forEach>
 			</table>
 		</div>
 	</main>

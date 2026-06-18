@@ -23,7 +23,7 @@
 	<main class="contain">
 	
 		<div class="notice">
-			<h2 class="first">はじめまして！</h2>
+			<h2 class="first slide-left">はじめまして！</h2>
 			<p>これは、あなたが <strong>モノ</strong> の <strong>カチ</strong> を計算できる魔法のツールです。</p>
 			<p>ここから、あなただけのコレクションを始めていきましょう。</p>
 			
@@ -31,12 +31,12 @@
 		</div>
 		
 		<div class="regist">
-			<h2 class="second">会員登録</h2>
+			<h2 class="second slide-right">会員登録</h2>
 			<!-- エラー表示 -->
 			<c:if test="${not empty error}">
     			<p style="color:red;">${error}</p>
 			</c:if>
-			<form class="register" method="POST" action="/e3/LoginRegisterServlet">
+			<form class="register fadein" method="POST" action="/e3/LoginRegisterServlet">
 				<p id="text">ユーザーID　　　</p><input type="text" name="userId" placeholder="(自動採番)" disabled><br>
 				<p id="text">パスワード　　　　</p><input type="text" name="password"><br>
 				<p id="text">パスワード(確認用)</p><input type="text" name="passwordConfirm"><br>
