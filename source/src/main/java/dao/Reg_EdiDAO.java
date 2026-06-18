@@ -3,6 +3,7 @@ package dao;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import dto.CommonDTO;
@@ -34,21 +35,20 @@ public class Reg_EdiDAO {
 	        // SQLインジェクション対策
 	     	PreparedStatement pStmt = conn.prepareStatement(sql);
 
-	            pStmt.setString(1, dto.getGenre());
-	            pStmt.setString(2, dto.getShouhin());
-	            pStmt.setDate(3, java.sql.Date.valueOf(dto.getBuy_date()));
-	            pStmt.setInt(4, dto.getPrice());
-	            pStmt.setInt(5, dto.getWperiod());
-	            pStmt.setString(6, dto.getMaker());
-	            pStmt.setInt(7, dto.getLife());
+	     	pStmt.setString(1, dto.getGenre());
+	     	pStmt.setString(2, dto.getShouhin());
+	     	pStmt.setDate(3, java.sql.Date.valueOf(dto.getBuy_date()));
+	     	pStmt.setInt(4, dto.getPrice());
+	     	pStmt.setInt(5, dto.getWperiod());
+	     	pStmt.setString(6, dto.getMaker());
+	     	pStmt.setInt(7, dto.getLife());
 
-	            pStmt.setDouble(8, dto.getDay_price());
-	            pStmt.setInt(9, dto.getProgress());
-	            pStmt.setInt(10, dto.getGoal());
+	     	pStmt.setDouble(8, 0);     // 仮
+	     	pStmt.setInt(9, 0);        // 仮
+	     	pStmt.setInt(10, 0);       // 仮
 
-	            pStmt.setString(11, dto.getNickname());
-	            pStmt.setBytes(12, dto.getImg());
-
+	     	pStmt.setString(11, dto.getNickname());
+	     	pStmt.setBytes(12, dto.getImg());
 
 	        int result = pStmt.executeUpdate();
 
@@ -86,8 +86,8 @@ public class Reg_EdiDAO {
 	                "UPDATE shouhin SET " +
 	                "genre=?, shouhin=?, buy_date=?, price=?," +
 	                "wperiod=?, maker=?, life=?," +
-	                "day_price=?, progress=?, goal=?," +
-	                "nickname=?, img=?" +
+	                //"day_price=?, progress=?, goal=?," +
+	                "nickname=?" + 
 	                "WHERE id=?";
 	
 	        // SQLインジェクション対策
@@ -101,13 +101,11 @@ public class Reg_EdiDAO {
 	            pStmt.setString(6, dto.getMaker());
 	            pStmt.setInt(7, dto.getLife());
 	
-	            pStmt.setDouble(8, dto.getDay_price());
-	            pStmt.setInt(9, dto.getProgress());
-	            pStmt.setInt(10, dto.getGoal());
+	            
 	
-	            pStmt.setString(11, dto.getNickname());
-	            pStmt.setBytes(12, dto.getImg());
-	            pStmt.setInt(13, dto.getId());
+	            pStmt.setString(8, dto.getNickname());
+	           
+	            pStmt.setInt(9, dto.getId());
 	
 	        //SQL実行
 	        int result = pStmt.executeUpdate();
@@ -129,7 +127,69 @@ public class Reg_EdiDAO {
 	        } catch (SQLException e) {
 	            e.printStackTrace();
 	        }
-	      }
 	    }
+	} 
+
 	
+	//idを指定して商品情報を１件取得
+	public CommonDTO selectById(int id) {
+		
+		CommonDTO dto = null;
+		
+		try {
+			//JDBCドライバ読み込み
+			 Class.forName("com.mysql.cj.jdbc.Driver");
+				
+				//DB接続
+		       Connection conn = DriverManager.getConnection(URL, USER, PASS);
+			//指定されたidの商品を取得
+		       String sql = 
+		    		   "SELECT * FROM shouhin WHERE id = ?";
+		    
+		    // SQLインジェクション対策
+		       PreparedStatement pStmt = conn.prepareStatement(sql);
+		    
+		    //?にidをセット
+		       pStmt.setInt(1,  id);
+	       
+		    //select実行
+		       ResultSet rs = pStmt.executeQuery();
+		       
+		    //データが見つかった場合
+		       if(rs.next()) {
+
+		    	   //DTO生成
+		    	   dto = new CommonDTO();
+		    	   
+		    	   //dbからdtoへ格納
+		    	   dto.setId(rs.getInt("id"));
+		    	   dto.setGenre(rs.getString("genre"));
+		    	   dto.setShouhin(rs.getString("shouhin"));
+		    	   dto.setBuy_date(rs.getString("buy_date"));
+		    	   dto.setPrice(rs.getInt("price"));
+		    	   dto.setWperiod(rs.getInt("wperiod"));
+		    	   dto.setMaker(rs.getString("maker"));
+		    	   dto.setLife(rs.getInt("life"));
+		    	   dto.setDay_price(rs.getInt("day_price"));
+		    	   dto.setProgress(rs.getInt("progress"));
+		    	   dto.setGoal(rs.getInt("goal"));
+		    	   dto.setNickname(rs.getString("nickname"));
+		    	   dto.setImg(rs.getBytes("img"));
+		    	   
+		       }
+		    	   //ResultSet を閉じる
+		    	   rs.close();
+		    	   //PreparedStatement を閉じる
+		    	   pStmt.close();
+		    	   //Connection を閉じる
+		    	   conn.close();
+		    	 
+		       } catch (Exception e) {
+		            e.printStackTrace();
+		       }
+		
+		return dto;
 	}
+  }
+	
+		
