@@ -264,13 +264,13 @@ p {
 @media(max-width: 480px){
 	
 	.contain {
-		flex-direction: column;
+		display: block;
 		margin: 20px 0 0 0;
 	}
 	
 	.notice {
 		padding: 0;
-		margin: 0 14px;
+		margin: 0;
 	}
 	
 	.first{
@@ -284,21 +284,23 @@ p {
 	}
 	
 	.second{
-		margin: 30px 15px 0 ;
-		font-size: 25px;
+		margin: 20px 15px 0 ;
+		font-size: 30px;
 	}
 	
 	.regist {
+		width: 340px;
 	}
 	.register {
-		max-width: 100%;
-		padding: 30px 30px;
+		min-width: auto;
+		padding: 20px 20px;
+		margin: 0 auto;
 		font-size: 13px;
 	}
 	
 	.register input[type="text"], input[type="password"] {
-		width: 140px;
-		height: 20px;
+		max-width: 80%;
+		height: 25px;
 		margin: 10px 20px;
 	}
 	
@@ -308,11 +310,12 @@ p {
 	}
 	
 	.reg{
-		margin: 10px 0px 0;
+		margin: 0 0 20px 0;
 	}
 	
 	.Tologin {
-		margin: 0 20px;
+		text-align: center;
+		margin: 0 95px;
 	}
 }
 
