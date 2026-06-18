@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 public class DiagnosisDAO {
 
-	private static final String URL = "jdbc:mysql://localhost:3306/monocolledb?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
-	private static final String USER = "root";
+	private static final String URL = "jdbc:mysql://localhost:3306/e3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
+	private static final String USER = "e3";
 	private static final String PASS = "password";
 
 	public boolean register(String shouhin, int money, int use_year) { //day_priceは計算で出すため。
