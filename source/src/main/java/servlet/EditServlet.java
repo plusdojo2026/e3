@@ -32,24 +32,29 @@ public class EditServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+  
+    //編集画面表示
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
-		      
+		//URLパラメータから商品IDを取得      
 		String idStr = request.getParameter("id");
-
+		//IDがない場合は一覧画面へ戻る
 		if (idStr == null) {
 		    response.sendRedirect("ShouhinListServlet");
 		    return;
 		}
-
+		//idStr→数値として扱いたい文字列　文字列をint型に変換
 		int id = Integer.parseInt(idStr);
 		
 		Reg_EdiDAO dao = new Reg_EdiDAO();
 	
+		//指定されたidの情報を取得
 		CommonDTO dto = dao.selectById(id);
 		
 		request.setAttribute("dto", dto);
 		
+		//編集画面へ遷移
 		RequestDispatcher rd = request.getRequestDispatcher("/WEB-INF/jsp/edit.jsp");
 		rd.forward(request, response);
 		
@@ -62,7 +67,9 @@ public class EditServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
-	@Override
+	
+    //編集後の更新処理
+    @Override
 	protected void doPost(HttpServletRequest request,
 	        HttpServletResponse response)
 	        throws ServletException, IOException {
