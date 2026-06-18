@@ -51,7 +51,7 @@
     <img src="images/金メダルアイコン .png" class="medal">
 
     <p class="plate">
-        ${not empty rankingList[0] ? (empty rankingList[0].nickname ? rankingList[0].shouhin : rankingList[0].nickname) : ""}
+        ${not empty rankingList[0] ? (empty rankingList[0].nickname ? rankingList[0].shouhin : rankingList[0].nickname) : "未登録"}
     </p>
 
     <img src="images/chara_logo.png" class="icon">
@@ -66,7 +66,7 @@
     <img src="images/銀メダルアイコン.png" class="medal">
 
     <p class="plate">
-        ${not empty rankingList[1] ? (empty rankingList[1].nickname ? rankingList[1].shouhin : rankingList[1].nickname) : ""}
+        ${not empty rankingList[1] ? (empty rankingList[1].nickname ? rankingList[1].shouhin : rankingList[1].nickname) : "未登録"}
     </p>
 
     <img src="images/chara_logo.png" class="icon">
@@ -81,7 +81,7 @@
     <img src="images/銅メダルアイコン.png" class="medal">
 
     <p class="plate">
-        ${not empty rankingList[2] ? (empty rankingList[2].nickname ? rankingList[2].shouhin : rankingList[2].nickname) : ""}
+        ${not empty rankingList[2] ? (empty rankingList[2].nickname ? rankingList[2].shouhin : rankingList[2].nickname) : "未登録"}
     </p>
 
     <img src="images/chara_logo.png" class="icon">
