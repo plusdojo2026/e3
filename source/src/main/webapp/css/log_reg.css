@@ -47,7 +47,7 @@ form{ /* フォームのコンテンツ内部 */
 	box-sizing: border-box;
 	width: 100%;
 	max-width: 350px;
-	box-shadow: 0 0 4px 4px rgba(0, 0, 0, 0.2);
+	box-shadow: 0 0 3px 4px rgba(0, 0, 0, 0.2);
 }
 form #text {
 	margin: 0 20px;
@@ -129,24 +129,24 @@ a:hover {
 	}
 	
 	.center form{
-		max-width: 80%;
-		padding: 40px 50px;
-		margin: 10px auto;
+		padding: 50px 50px;
+		margin: 10px 20px;
 	}
 	
 	.center form input[type="text"], .center form input[type="password"] {
 		text-align: center;
 		width: 180px;
 		height: 30px;
-		margin: 10px auto;
+		margin: 10px 20px;
 	}
 	.login {
-		margin:30px auto;
+		margin:30px 70px;
 	}
 	
 	.Toregist {
-		margin: 0 auto;
+		margin: 0 40px;
 	}
+}
 /* shouhinDetail.jsp */
 
 
