@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import dao.MenuDAO;
+import dao.Men_RanDAO;
 
 /**
  * Servlet implementation class LoginServlet
@@ -32,7 +32,7 @@ public class MenuServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		// DAO呼び出し、使用
-		MenuDAO dao = new MenuDAO();
+		Men_RanDAO dao = new Men_RanDAO();
 		int total = dao.getTotalDayPrice();
 
 		// JSPに渡す
