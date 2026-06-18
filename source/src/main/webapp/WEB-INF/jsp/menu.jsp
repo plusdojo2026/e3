@@ -84,6 +84,8 @@
 	<!-- フッターここまで　-->
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
 	<script>
+	'use strict';
+	
 	document.addEventListener("DOMContentLoaded", () => {
 
 	    const track = document.querySelector(".speechTrack");
