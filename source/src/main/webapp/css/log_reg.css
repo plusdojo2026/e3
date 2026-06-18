@@ -246,6 +246,18 @@ p {
 	border-radius: 30px;
 }
 
+.fadein {
+  opacity: 0;
+  animation: fadein 1s ease forwards;
+}
+
+@keyframes fadein {
+  to {
+    opacity: 1;
+  }
+}
+
+
 .register input[name="userId"] {
 	text-align: center;
 	font-size: 15px;
