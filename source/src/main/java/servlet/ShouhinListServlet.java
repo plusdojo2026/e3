@@ -39,7 +39,7 @@ public class ShouhinListServlet extends HttpServlet {
 
         String table = "shouhin";
         String column = "id";
-        String order = "ASC";
+        String order = "DESC";
 
         if (sort != null) {
             switch (sort) {
