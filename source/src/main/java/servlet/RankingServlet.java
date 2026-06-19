@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import dao.Men_RanDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -36,8 +37,10 @@ public class RankingServlet extends HttpServlet {
 
         String sort = request.getParameter("sort_");
 
-        Men_RanDAO dao = new Men_RanDAO();
-        List<CommonDTO> rankingList = dao.getRanking(sort);
+        Loginuser loginuser =
+				(Loginuser) request.getSession().getAttribute("userid");
+		Men_RanDAO dao = new Men_RanDAO();
+		List<CommonDTO> rankingList = dao.getRanking(sort, loginuser);
 
         request.setAttribute("rankingList", rankingList);
 
