@@ -67,6 +67,8 @@ public class LoginDAO {
 
 		return 1; // 初回登録
 	}
+	
+	
 
 	// ----新規登録----
 	public boolean insertUser(CommonDTO dto) {
@@ -97,4 +99,31 @@ public class LoginDAO {
 
 		return result;
 	}
+	
+	//---- 自動採番をサーブレットに送る ----　★追加
+	public int insertUserAndGetId(CommonDTO dto) {
+		int userid = -1;
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection con = DriverManager.getConnection(URL, USER, PASS);
+
+			String sql = "INSERT INTO login (password) VALUES (?)";
+			PreparedStatement ps = con.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+
+			ps.setString(1, dto.getPassword());
+			ps.executeUpdate();
+
+			ResultSet rs = ps.getGeneratedKeys();
+			if (rs.next()) {
+				userid = rs.getInt(1);
+			}
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+
+		return userid;
+	}
+	//----★追加ここまで----
 }

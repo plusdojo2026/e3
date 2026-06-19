@@ -116,6 +116,7 @@ public class LoginRegisterServlet extends HttpServlet {
 		LoginDAO dao = new LoginDAO();
 
 		CommonDTO dto = new CommonDTO(password);
+		int userid = dao.insertUserAndGetId(dto); //★追加
 		boolean result = dao.insertUser(dto);
 
 		// 登録成功
@@ -127,7 +128,11 @@ public class LoginRegisterServlet extends HttpServlet {
 			return;
 		}
 
-		/* 完了メッセージをポップアップ表示
-		request.setAttribute("message", "登録が完了しました。");*/
+		// 完了メッセージをポップアップ表示　★追加
+		if (result) {
+    		request.setAttribute("userId", userid);
+    		request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+		}
+
 	}
 }
