@@ -126,6 +126,11 @@ SELECT * FROM rireki;
 
 /* TODO: テストデータとしてINSERT文を複数作成する必要あり */
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) VALUES ('家電', '扇風機', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, '風ちゃん', NULL);
+INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) VALUES ('家電', 'コーヒーメーカー', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, 'カフェちゃん', NULL);
+INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) VALUES ('家電', '墓地', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, 'ハカ', NULL);
+INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) VALUES ('家電', 'テスター', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, '試験君', NULL);
+INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) VALUES ('家電', '電卓機', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, '計算さん', NULL);
+INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) VALUES ('家電', 'ガレリアPC', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, 'ハイスペック', NULL);
 
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;

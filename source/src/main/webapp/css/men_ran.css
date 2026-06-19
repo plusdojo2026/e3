@@ -55,6 +55,12 @@
 	font-size: 20px;
 	color: #7A2C00;
 }
+.notspeechText {
+	padding: 55px 0 0 20px;
+	height: 50px;
+	font-size: 20px;
+	color: #7A2C00;
+}
 
 /* 吹き出しのしっぽ（外側） */
 .speechBubble::before {

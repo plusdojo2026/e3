@@ -13,17 +13,22 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/sl_al.css">
 </head>
+
 <body>
+
 	<header>
+
 		<div class="header-in">
 			<div class="header-spacer"></div>
 			<h1 class="title">
 				<img src="images/タイトルロゴ.png" alt="サイトタイトル">
 			</h1>
 		</div>
+
 		<button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
 			<span></span><span></span><span></span>
 		</button>
+
 		<nav class="side-menu" id="sideMenu">
 			<div class="menu-header">モノカチコレクション</div>
 			<div class="menu-nav">
@@ -36,15 +41,22 @@
 				<a href="${pageContext.request.contextPath}/LoginServlet">ログアウト</a>
 			</div>
 		</nav>
+
 	</header>
+
 	<main>
+
 		<h2 class="listtitle">
 			<b>▶ 一覧 </b>： 使い終わった<strong>モノ</strong>たちを見てみよう！
 		</h2>
+
+		<!-- ランキング画面へ -->
 		<div class="nextrank">
 			<a href="${pageContext.request.contextPath}/RankingServlet">▶
 				ランキングを見る</a>
 		</div>
+
+		<!-- 並び替えボタン -->
 		<div class="sort">
 			<img src="images/sortbutton.png" alt="並び替え" class="sortbutton">
 			<div class="dropdown">
@@ -63,7 +75,7 @@
 			</div>
 		</div>
 
-
+		<!-- 商品一覧を表示 -->
 		<div class="shouhinlist">
 			<c:forEach var="s" items="${list}">
 				<div class="shouhin">
@@ -96,13 +108,18 @@
 				</div>
 			</c:forEach>
 		</div>
+
 	</main>
 </body>
+
 <footer>
 	<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
 </footer>
+
 <script>
 	'use strict';
+
+	//並び替えのプルダウンを表示
 	document.addEventListener("DOMContentLoaded", function() {
 		const btn = document.querySelector(".sortbutton");
 		const menu = document.querySelector(".dropdown");
@@ -119,6 +136,7 @@
 		});
 	});
 </script>
+
 <script src="${pageContext.request.contextPath}/js/common.js"></script>
 
 </html>

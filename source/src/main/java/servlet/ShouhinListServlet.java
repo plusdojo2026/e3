@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Sl_AlDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -34,6 +36,14 @@ public class ShouhinListServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+		HttpSession session = request.getSession();
+		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+		
+		if (loginuser == null) {
+			response.sendRedirect("/e3/LoginServlet");
+			return;
+		}
+		
         String sort = request.getParameter("sort");
         System.out.println("sort = " + sort);
 
@@ -41,7 +51,7 @@ public class ShouhinListServlet extends HttpServlet {
         String column = "id";
         String order = "DESC";
 
-        if (sort != null) {
+        if (sort != null) {	//並び替え項目と順番の決定
             switch (sort) {
                 case "progress_asc":
                     column = "progress";
@@ -76,7 +86,7 @@ public class ShouhinListServlet extends HttpServlet {
         }
 
         Sl_AlDAO dao = new Sl_AlDAO();
-        List<CommonDTO> list = dao.sort(table, column, order);
+        List<CommonDTO> list = dao.sort(table, column, order, loginuser);
 
         request.setAttribute("list", list);
 

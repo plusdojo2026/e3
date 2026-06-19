@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.CommonDTO;
+import dto.Loginuser;
 
 public class Men_RanDAO {
 	private static final String URL = "jdbc:mysql://localhost:3306/e3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
@@ -72,6 +73,59 @@ public class Men_RanDAO {
 		}
 		// totalを返す
 		return total;
+	}
+
+	// 保証期間の通知機能
+	public List<CommonDTO> wpNotification(Loginuser loginuser) {
+		Connection conn = null;
+		List<CommonDTO> list = new ArrayList<>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// データベースへ接続する
+			conn = DriverManager.getConnection(URL, USER, PASS);
+
+			// 保証期間まで30日以内である愛称を検索する
+			String sql = "SELECT nickname " + "FROM shouhin " + "WHERE userid = ? " + "AND nickname IS NOT NULL "
+					+ "AND nickname <> '' " + "AND DATE_ADD(buy_date, INTERVAL wperiod YEAR) >= CURRENT_DATE "
+					+ "AND DATEDIFF( " + "    DATE_ADD(buy_date, INTERVAL wperiod YEAR), " + "    CURRENT_DATE "
+					+ ") <= 30 " + "ORDER BY id";
+
+			// SQL文をprepareStatement（インジェクション対策）で実行
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, loginuser.getUserid());
+			System.out.println(sql);
+			System.out.println(loginuser.getUserid());
+			
+			// selectを実行、ResultSet型の変数rsに受け取る
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				CommonDTO dto = new CommonDTO();
+				dto.setNickname(rs.getString("nickname"));
+				list.add(dto);
+			}
+
+			// 後処理
+			rs.close();
+			pStmt.close();
+
+		} catch (Exception e) {
+			// 例外処理
+			e.printStackTrace();
+		} finally {
+			try {
+				// connectionがnullじゃない時だけclose()を試みる
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// 例外処理
+				e.printStackTrace();
+			}
+		}
+
+		return list;
 	}
 
 	// ソート条件に応じたランキング情報の取得
