@@ -116,6 +116,11 @@ public class CommonDTO implements Serializable {
 	public double getDay_price() {
 		return day_price;
 	}
+	
+	//day_priceをint型で取得するゲッター
+	public int getDay_priceInt() {
+	    return (int) day_price;
+	}
 
 	public void setDay_price(double day_price) {
 		this.day_price = day_price;

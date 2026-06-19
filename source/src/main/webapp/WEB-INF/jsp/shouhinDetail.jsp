@@ -51,14 +51,14 @@
 									<img src="data:image/jpeg;base64,${shouhininfo.base64Image}" alt="商品画像">
 								</c:when>
 								<c:otherwise>
-									<img src="images/noimage.png" alt="画像がありません">
+									<img src="images/chara_logo.png">
 								</c:otherwise>
 							</c:choose>
 						</div>
 
 			<div class="speechBubble">
 				<p>
-					僕の一日あたりの価格は${shouhininfo.day_price}円だよ！<br> ${shouhininfo.progress}日使ったよ！<br> あと${shouhininfo.goal}日で目標達成♪
+					僕の一日あたりの価格は${shouhininfo.day_priceInt}円だよ！<br> ${shouhininfo.progress}日使ったよ！<br> あと${shouhininfo.goal}日で目標達成♪
 				</p>
 			</div>
 		</div>
@@ -89,7 +89,7 @@
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td>${shouhininfo.day_price}<span>円</span></td>
+					<td>${shouhininfo.day_priceInt}<span>円</span></td>
 					<th>目標達成まで</th>
 					<td>${shouhininfo.goal}<span>日</span></td>
 				</tr>
