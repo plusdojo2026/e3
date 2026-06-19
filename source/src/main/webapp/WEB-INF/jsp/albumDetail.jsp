@@ -5,7 +5,6 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<!--　ビューポート　-->
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>モノカチコレクション | アルバム詳細</title>
 <link rel="stylesheet"
@@ -14,8 +13,6 @@
 	href="<%=request.getContextPath()%>/css/sd_ad.css">
 </head>
 <body>
-
-
 	<!--　ヘッダー　-->
 	<header>
 		<div class="header-in">
@@ -42,15 +39,24 @@
 	</header>
 	<!-- ヘッダーここまで　-->
 	<main>
-
-
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
-			<img src="images/デフォルトアイコン（仮）.png" width="40vw" height="40vw">
+			<div class="shouhinimg">
+				<P>${rirekiinfo.nickname}</P>
+				<c:choose>
+					<c:when test="${not empty rirekiinfo.base64Image}">
+						<img src="data:image/jpeg;base64,${rirekiinfo.base64Image}"
+							alt="商品画像">
+					</c:when>
+					<c:otherwise>
+						<img src="images/chara_logo.png">
+					</c:otherwise>
+				</c:choose>
+			</div>
 
 			<div class="speechBubble">
 				<p>
-					〇〇日使ったよ！<br> 大事に使ってくれてありがとう！
+					${rirekiinfo.progress}日使ったよ！<br> 大事に使ってくれてありがとう♪
 				</p>
 			</div>
 		</div>
@@ -59,42 +65,49 @@
 			<table class="information">
 				<tr>
 					<th>ジャンル</th>
-					<td colspan="3">家電</td>
+					<td colspan="3">${rirekiinfo.genre}</td>
 				</tr>
 				<tr>
 					<th>商品名</th>
-					<td>test</td>
+					<td>${rirekiinfo.shouhin}</td>
 					<th>メーカー</th>
-					<td>test</td>
+					<td>${rirekiinfo.maker}</td>
 				</tr>
 				<tr>
 					<th>購入日</th>
-					<td>test</td>
+					<td>${rirekiinfo.buy_date}</td>
 					<th>価格</th>
-					<td>00<span>円</span></td>
+					<td>${rirekiinfo.price}<span>円</span></td>
 				</tr>
 				<tr>
 					<th>保証期間</th>
-					<td>00<span>年</span></td>
+					<td>${rirekiinfo.wperiod}<span>年</span></td>
 					<th>耐用年数</th>
-					<td>00<span>年</span></td>
+					<td>${rirekiinfo.life}<span>年</span></td>
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td>00<span>円</span></td>
+					<td>${rirekiinfo.day_priceInt}<span>円</span></td>
 					<th>目標達成</th>
-					<td>○</td>
+					<td><c:choose>
+							<c:when test="${rirekiinfo.goal <= 0}">
+            ○
+        </c:when>
+							<c:otherwise>
+            ✕
+        </c:otherwise>
+						</c:choose></td>
 				</tr>
 			</table>
 		</div>
 		<!-- 各種ボタン -->
 		<div class="buttons">
-			<button type="button">削除</button>
+			<button type="button" onclick="return deletecheck(${rirekiinfo.id})">削除</button>
 		</div>
 		<div class="backlist">
-			<!--　アルバムに戻る　-->
-			<a href="${pageContext.request.contextPath}/AlbumListServlet">
-				◀ アルバムへ戻る </a>
+			<!--　一覧に戻る　-->
+			<a href="${pageContext.request.contextPath}/AlbumListServlet"> ◀
+				アルバムへ戻る </a>
 		</div>
 	</main>
 
@@ -104,7 +117,19 @@
 	</footer>
 	<!-- フッターここまで　-->
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
-	<script>	
+	<script>
+    'use strict';
+    
+   function deletecheck(id){
+        if (window.confirm('本当に商品を削除しますか？削除された商品は復元できません。')) {
+            alert('商品の削除が完了しました。');
+            location.href = '<%=request.getContextPath()%>/AlbumDetailServlet?action=delete&shouhinid=' + id;
+				return true;
+			} else {
+				alert('削除がキャンセルされました。');
+				return false;
+			}
+		}
 	</script>
 </body>
 </html>
