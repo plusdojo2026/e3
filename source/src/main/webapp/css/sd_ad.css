@@ -3,8 +3,8 @@
 /* albumDetail */
 
 .shouhinimg img {
-    width: 200px;
-    height: 200px;
+    width: 300px;
+    height: 300px;
 }
 /* 吹き出し */
 .speechBubble {
@@ -16,6 +16,7 @@
   border-radius: 12px;
   background-color: #ffffff;
   text-align: center;
+  align-items: center;
   font-size: 16px;
   font-weight: 400;
   line-height: 1.5;
@@ -50,6 +51,7 @@
   margin-top:100px;
   display: flex;
   justify-content: center;
+  align-items: center;
 }
 
 /* 商品詳細テーブル */
@@ -120,22 +122,29 @@
   color: #7A2C00;
 }
 /* メディアクエリ */
-/* 少し狭めの適応範囲にしています */
-@media (max-width: 480px) {
-  
-  .speechBubble::before,
-  .speechBubble::after {
-    display: none;
-  }
-  /* カード背景画面外はみだし対策 */
-  .card {
-    padding: 1rem;
-    max-width: 300px;
-  }
+@media (max-width: 700px) {
+	/* 画像サイズ調整 */
+	.shouhinimg img  {
+		width: 100%;
+		max-width: 300px;
+		height: auto;
+		padding-bottom:10px;
+	}
+	.iconSpeech {
+		flex-direction: column;
+		align-items: center;
+	}
+
+.speechBubble::before, .speechBubble::after {
+	display: none;
+}
+/* カード背景画面外はみだし対策 */
+.card {
+	padding: 1rem;
+	width:90%;
+}
 /* テーブルを縦一列に、またそれに伴う調整 */
-  .information tr,
-  .information th,
-  .information td {
+.information tr, .information th, .information td {
     display: block;
     width: 100%;
     box-sizing: border-box;
