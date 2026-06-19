@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -9,10 +11,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import dao.Reg_EdiDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class EditServlet
@@ -38,6 +42,14 @@ public class EditServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			  throws ServletException, IOException {
+    	
+    	HttpSession session = request.getSession();
+		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+		
+		if (loginuser == null) {
+			response.sendRedirect("/e3/LoginServlet");
+			return;
+		}
 		//URLパラメータから商品IDを取得      
 		String idStr = request.getParameter("id");
 		//IDがない場合は一覧画面へ戻る
@@ -92,9 +104,21 @@ public class EditServlet extends HttpServlet {
 		dto.setMaker(request.getParameter("maker"));
 		dto.setLife(Integer.parseInt(request.getParameter("life")));
 		
-//		 dto.setDay_price(Integer.parseInt(request.getParameter("day_price")));
-//		 dto.setProgress(Integer.parseInt(request.getParameter("progress")));
-//		 dto.setGoal(Integer.parseInt(request.getParameter("goal")));
+		int progress =
+			    (int) ChronoUnit.DAYS.between(
+			        LocalDate.parse(dto.getBuy_date()),
+			        LocalDate.now());
+
+			int goal = dto.getLife() * 365 - progress;
+
+			int dayPrice =
+				    progress == 0
+				    ? dto.getPrice()
+				    : dto.getPrice() / progress;
+	
+			dto.setProgress(progress);
+			dto.setGoal(goal);
+			dto.setDay_price(dayPrice);
 		 
 		dto.setNickname(request.getParameter("nickname"));
 		Part file = request.getPart("itemImage");

@@ -1,6 +1,8 @@
 package servlet;
 
 import java.io.IOException;
+import java.time.LocalDate;
+import java.time.temporal.ChronoUnit;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -35,8 +37,16 @@ public class RegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response) 
+			throws ServletException, IOException {
 		  
+		HttpSession session = request.getSession();
+		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+		
+		if (loginuser == null) {
+			response.sendRedirect("/e3/LoginServlet");
+			return;
+		}
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
 		dispatcher.forward(request, response);
 	}
@@ -97,6 +107,25 @@ public class RegisterServlet extends HttpServlet {
 	    dto.setMaker(maker);
 	    dto.setWperiod(wperiod);
 	    dto.setLife(life);
+	    
+	    LocalDate buy = LocalDate.parse(buyDate);
+
+	    int progress =
+	        (int) ChronoUnit.DAYS.between(
+	            buy,
+	            LocalDate.now()
+	        );
+
+	    int goal = life * 365;
+
+	     int dayPrice =
+	    	    progress == 0
+	    	    ? price
+	    	    : price / progress;
+
+	    dto.setProgress(progress);
+	    dto.setGoal(goal);
+	    dto.setDay_price(dayPrice);
 	    dto.setNickname(nickname);
 	    dto.setImg(imageData);
 	    dto.setUserid(userid);
