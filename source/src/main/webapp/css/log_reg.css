@@ -186,7 +186,7 @@ a:hover {
 }
 
 
-@media(min-width: 481px){
+@media(min-width: 481px)and(max-width: 768px){
 	img {
 		display: none;
 	}
@@ -410,8 +410,7 @@ p {
 	}
 }
 
-@media(min-width: 481px){
-	
+@media(min-width: 481px)and(max-width: 768px){
 }
 
 /* edit.jsp */

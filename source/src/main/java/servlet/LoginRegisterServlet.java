@@ -110,13 +110,13 @@ public class LoginRegisterServlet extends HttpServlet {
 		if (typeCount < 2) {
 			request.setAttribute("error", "パスワードには文字種を2種類以上含めて下さい。");
 			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return; // ★追加
 		}
 
 		// DAOに登録（自動採番）
 		LoginDAO dao = new LoginDAO();
 
 		CommonDTO dto = new CommonDTO(password);
-		int userid = dao.insertUserAndGetId(dto); //★追加
 		boolean result = dao.insertUser(dto);
 
 		// 登録成功
@@ -128,11 +128,11 @@ public class LoginRegisterServlet extends HttpServlet {
 			return;
 		}
 
-		// 完了メッセージをポップアップ表示　★追加
+		/* 完了メッセージをポップアップ表示
 		if (result) {
-    		request.setAttribute("userId", userid);
-    		request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
-		}
+			request.setAttribute("error", "登録に失敗しました。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+		}*/
 
 	}
 }
