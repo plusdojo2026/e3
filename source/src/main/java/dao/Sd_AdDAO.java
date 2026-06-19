@@ -117,4 +117,38 @@ public boolean deleteShouhin(int id) {
 	// 結果を返す
 	return result;
 }
+
+public boolean insertRireki(int id) {
+	Connection conn = null;
+	boolean result = false;
+
+	try {
+		Class.forName("com.mysql.cj.jdbc.Driver");
+		conn = DriverManager.getConnection(URL, USER, PASS);
+
+		String sql = "INSERT INTO rireki "
+				+ "(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img) "
+				+ "SELECT genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img "
+				+ "FROM shouhin WHERE id = ?";
+
+		PreparedStatement pStmt = conn.prepareStatement(sql);
+		pStmt.setInt(1, id);
+
+		result = pStmt.executeUpdate() == 1;
+
+		pStmt.close();
+
+	} catch (Exception e) {
+		e.printStackTrace();
+	} finally {
+		try {
+			if (conn != null)
+				conn.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	return result;
+}
 }
