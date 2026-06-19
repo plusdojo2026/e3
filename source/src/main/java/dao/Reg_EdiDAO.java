@@ -16,7 +16,7 @@ public class Reg_EdiDAO {
 	//登録
 	public boolean insert(CommonDTO dto) {
 	    Connection conn = null;
-	    PreparedStatement pstmt = null;
+	    PreparedStatement pStmt = null;
 
 	    try {
 	    	//JDBCファイル読み込み
@@ -33,7 +33,7 @@ public class Reg_EdiDAO {
 	                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	        // SQLインジェクション対策
-	     	PreparedStatement pStmt = conn.prepareStatement(sql);
+	        pStmt = conn.prepareStatement(sql);
 
 	     	pStmt.setString(1, dto.getGenre());
 	     	pStmt.setString(2, dto.getShouhin());
@@ -44,12 +44,14 @@ public class Reg_EdiDAO {
 	     	pStmt.setInt(7, dto.getLife());
 
 	     	pStmt.setDouble(8, dto.getDay_price());     // 仮
-	     	pStmt.setInt(9, dto.getProgress());        // 仮
-	     	pStmt.setInt(10, dto.getGoal());       // 仮
+	     	pStmt.setInt(9, dto.getProgress());         // 仮
+	     	pStmt.setInt(10, dto.getGoal());            // 仮
 
 	     	pStmt.setString(11, dto.getNickname());
 	     	pStmt.setBytes(12, dto.getImg());
 
+	     	
+	     	
 	        int result = pStmt.executeUpdate();
 
 	        return result > 0;
@@ -62,7 +64,7 @@ public class Reg_EdiDAO {
 	    } finally {
 
 	        try {
-	            if (pstmt != null) pstmt.close();
+	            if (pStmt != null) pStmt.close();
 	            if (conn != null) conn.close();
 	        } catch (SQLException e) {
                 e.printStackTrace();
@@ -73,7 +75,7 @@ public class Reg_EdiDAO {
 	//編集
 	public boolean update(CommonDTO dto) {
 	    Connection conn = null;
-	    PreparedStatement pstmt = null;
+	    PreparedStatement pStmt = null;
 	
 	    try {
 	    	//JDBCファイル読み込み
@@ -86,12 +88,12 @@ public class Reg_EdiDAO {
 	                "UPDATE shouhin SET " +
 	                "genre=?, shouhin=?, buy_date=?, price=?," +
 	                "wperiod=?, maker=?, life=?," +
-	                //"day_price=?, progress=?, goal=?," +
+	                "day_price=?, progress=?, goal=?," +
 	                "nickname=?" + 
 	                "WHERE id=?";
 	
 	        // SQLインジェクション対策
-	     	PreparedStatement pStmt = conn.prepareStatement(sql);
+	            pStmt = conn.prepareStatement(sql);
 	
 	            pStmt.setString(1, dto.getGenre());
 	            pStmt.setString(2, dto.getShouhin());
@@ -100,12 +102,11 @@ public class Reg_EdiDAO {
 	            pStmt.setInt(5, dto.getWperiod());
 	            pStmt.setString(6, dto.getMaker());
 	            pStmt.setInt(7, dto.getLife());
-	
-	            
-	
-	            pStmt.setString(8, dto.getNickname());
-	           
-	            pStmt.setInt(9, dto.getId());
+	            pStmt.setDouble(8, dto.getDay_price());     // 仮
+		     	pStmt.setInt(9, dto.getProgress());         // 仮
+		     	pStmt.setInt(10, dto.getGoal());            //　仮  
+	            pStmt.setString(11, dto.getNickname());
+	  	        pStmt.setInt(12, dto.getId());
 	
 	        //SQL実行
 	        int result = pStmt.executeUpdate();
@@ -122,7 +123,7 @@ public class Reg_EdiDAO {
 	    } finally {
 	
 	        try {
-	            if (pstmt != null) pstmt.close();
+	            if (pStmt != null) pStmt.close();
 	            if (conn != null) conn.close();
 	        } catch (SQLException e) {
 	            e.printStackTrace();
