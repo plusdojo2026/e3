@@ -36,16 +36,14 @@ public class AlbumDetailServlet extends HttpServlet {
 		Sd_AdDAO dao = new Sd_AdDAO();
 		
 		if(action == null) {
-			CommonDTO shouhininfo = dao.shouhinInfo(id);
+			CommonDTO rirekiinfo = dao.rirekiInfo(id);
 			
-			request.setAttribute("shouhininfo", shouhininfo);
+			request.setAttribute("rirekiinfo", rirekiinfo);
 
 			RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/albumDetail.jsp");
 			dispatcher.forward(request, response);
-		}else if(action.equals("rireki")) {
-			
 		}else if(action.equals("delete")) {
-			boolean success = dao.deleteShouhin(id);
+			boolean success = dao.deleterireki(id);
 
 			if (success) {
 				response.sendRedirect(request.getContextPath() + "/AlbumListServlet?deleted=true");

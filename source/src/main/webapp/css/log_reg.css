@@ -184,6 +184,48 @@ a:hover {
 		margin: 0 40px;
 	}
 }
+
+
+@media(min-width: 481px)and(max-width: 768px){
+	img {
+		display: none;
+	}
+	main h2 {
+		font-size: 30px;
+	}
+		
+	.center {
+		margin: 0;
+        padding: 0;
+	}
+	
+	.center form{
+		max-width: 100%;
+		padding: 60px 30px;
+		margin: 10px 0;
+	}
+	
+	.center form input[type="text"], .center form input[type="password"] {
+		text-align: center;
+		max-width: 80%;
+		height: 30px;
+		margin: 10px 20px;
+	}
+	.login {
+		margin:30px 70px;
+	}
+	
+	.Toregist {
+		margin: 0px 40px;
+	}
+}
+
+@media(min-width: 1024spx){
+	img {
+		display: block;
+	}
+}
+
 /* shouhinDetail.jsp */
 
 
@@ -366,6 +408,9 @@ p {
 		text-align: center;
 		margin: 0 95px;
 	}
+}
+
+@media(min-width: 481px)and(max-width: 768px){
 }
 
 /* edit.jsp */
