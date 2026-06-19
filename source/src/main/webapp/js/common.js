@@ -1,13 +1,18 @@
 /**
  * 
  */
- 'use strict'
+'use strict';
 
-const btn = document.getElementById('menuBtn');
-const menu = document.getElementById('sideMenu');
+document.addEventListener("DOMContentLoaded", () => {
 
-function toggleMenu() {
-    const isOpen = menu.classList.toggle('open');
-    btn.classList.toggle('open', isOpen);
-}
-btn.addEventListener('click', toggleMenu);
+    const btn = document.getElementById('menuBtn');
+    const menu = document.getElementById('sideMenu');
+
+    if (btn && menu) {
+        btn.addEventListener('click', () => {
+            const isOpen = menu.classList.toggle('open');
+            btn.classList.toggle('open', isOpen);
+        });
+    }
+
+});
