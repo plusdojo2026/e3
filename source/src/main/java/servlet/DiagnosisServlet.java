@@ -9,9 +9,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.DiagnosisDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -38,9 +40,20 @@ public class DiagnosisServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		// もしもログインしていなかったらログインサーブレットにリダイレクトする
 		/*
-		 * HttpSession session = request.getSession(); if (session.getAttribute("id") ==
-		 * null) { response.sendRedirect("/LoginServlet"); return; }
+		 HttpSession session = request.getSession(); 
+		  	if (session.getAttribute("userid") == null) { 
+		  		response.sendRedirect("/e3/LoginServlet"); return; }
 		 */
+		HttpSession session = request.getSession();
+		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+		
+		if (loginuser == null) {
+			response.sendRedirect("/e3/LoginServlet");
+			return;
+		}
+		
+		
+		
 
 		// ---診断結果リストの一覧表示---
 		DiagnosisDAO dao = new DiagnosisDAO();
