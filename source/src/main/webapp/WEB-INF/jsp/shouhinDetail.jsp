@@ -39,13 +39,10 @@
 	</header>
 	<!-- ヘッダーここまで　-->
 	<main>
-	<!-- 愛称 -->
-	<div class="nickname">
-	<P>${shouhininfo.nickname}</P>
-	</div>
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
+			<P>${shouhininfo.nickname}</P>
 							<c:choose>
 								<c:when test="${not empty shouhininfo.base64Image}">
 									<img src="data:image/jpeg;base64,${shouhininfo.base64Image}" alt="商品画像">
@@ -100,7 +97,7 @@
 			<button type="button"
 				onclick="location.href='${pageContext.request.contextPath}/EditServlet?id=${shouhininfo.id}'">
 				編集</button>
-			<button type="button" onclick="return rirekicheck(${shouhininfo.id})">履歴へ送る</button>
+			<button type="button" onclick="return rirekicheck(${shouhininfo.id})">アルバムへ送る</button>
 			<button type="button" class=deleteButton
 				onclick="return deletecheck(${shouhininfo.id})">削除</button>
 		</div>
