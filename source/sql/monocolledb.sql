@@ -99,7 +99,7 @@ UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Up
 SELECT id, LENGTH(img) FROM shouhin WHERE id = 1;
 
 /* 画像登録後はこのSELECT文を実行すればOK */
-SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname FROM shouhin;
+SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, userid FROM shouhin;
 
 DELETE FROM shouhin WHERE id = 6;
 
@@ -139,6 +139,6 @@ UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Upl
 SELECT id, LENGTH(img) FROM rireki WHERE id = 1;
 
 /* 画像登録後はこのSELECT文を実行すればOK */
-SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname FROM rireki;
+SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, userid FROM rireki;
 
 DELETE FROM rireki WHERE id = 6;
