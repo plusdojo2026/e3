@@ -49,58 +49,7 @@ public class LoginDAO {
 		return loginResult;
 	}
 
-	// ----自動採番----
-	public int getNextUserId() {
-		String sql = "SELECT MAX(userid) FROM login";
-
-		try (Connection con = DriverManager.getConnection(URL, USER, PASS);
-				PreparedStatement ps = con.prepareStatement(sql);
-				ResultSet rs = ps.executeQuery()) {
-
-			if (rs.next()) {
-				return rs.getInt(1) + 1;
-			}
-
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
-
-		return 1; // 初回登録
-	}
-	
-	
-
-	// ----新規登録----
-	public boolean insertUser(CommonDTO dto) {
-		Connection conn = null;
-		boolean result = false;
-
-		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection con = DriverManager.getConnection(URL, USER, PASS);
-
-			String sql = "INSERT INTO login (password) VALUES (?)";
-			PreparedStatement ps = con.prepareStatement(sql);
-
-			ps.setString(1, dto.getPassword());
-
-			if (ps.executeUpdate() == 1) {
-				result = true;
-			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		} finally {
-			try {
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-			}
-		}
-
-		return result;
-	}
-	
-	//---- 自動採番をサーブレットに送る ----　★追加
+	// ----新規登録(自動採番をサーブレットに送る)----
 	public int insertUserAndGetId(CommonDTO dto) {
 		int userid = -1;
 
@@ -125,5 +74,4 @@ public class LoginDAO {
 
 		return userid;
 	}
-	//----★追加ここまで----
 }

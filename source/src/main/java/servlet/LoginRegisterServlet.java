@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.LoginDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -33,6 +35,15 @@ public class LoginRegisterServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+		
+		if (loginuser == null) {
+			response.sendRedirect("/e3/LoginServlet");
+			return;
+		}
+		
 		// 登録ページにフォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp");
 		dispatcher.forward(request, response);
@@ -41,12 +52,6 @@ public class LoginRegisterServlet extends HttpServlet {
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
 	 *      response)
-	 */
-
-	/*
-	 * もしもログインしていなかったらログインサーブレットにリダイレクトする HttpSession session =
-	 * request.getSession(); if (session.getAttribute("userid") == null) {
-	 * response.sendRedirect("/WEB-INF/jsp/login.jsp"); return; }
 	 */
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -79,12 +84,12 @@ public class LoginRegisterServlet extends HttpServlet {
 		}
 
 		// パスワード一致チェック
-		if(!(password.equals(passwordConfirm))) {
+		if (!(password.equals(passwordConfirm))) {
 			request.setAttribute("error", "パスワードと確認パスワードが一致しません。");
 			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
-		
+
 		// ----パスワード条件確認----
 		// 8文字以上チェック
 		if (password.length() < 8) {
@@ -110,29 +115,23 @@ public class LoginRegisterServlet extends HttpServlet {
 		if (typeCount < 2) {
 			request.setAttribute("error", "パスワードには文字種を2種類以上含めて下さい。");
 			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
-			return; // ★追加
+			return;
 		}
 
 		// DAOに登録（自動採番）
 		LoginDAO dao = new LoginDAO();
 
 		CommonDTO dto = new CommonDTO(password);
-		boolean result = dao.insertUser(dto);
+		int userId = dao.insertUserAndGetId(dto);
 
-		// 登録成功
-		if (result) {
-		    response.sendRedirect("/e3/LoginServlet");
-		} else {
+		if (userId != -1) {	// 登録成功
+			request.setAttribute("userId", userId);
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		} else {	//登録失敗
 			request.setAttribute("error", "登録に失敗しました。");
 			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
-
-		/* 完了メッセージをポップアップ表示
-		if (result) {
-			request.setAttribute("error", "登録に失敗しました。");
-			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
-		}*/
-
 	}
 }

@@ -82,14 +82,14 @@
             <!-- アイコン -->
             <img src="images/chara_logo.png" class="icon">
 
-            <!-- stand（残す） -->
+            <!-- stand -->
             <div class="stand">
                 <c:choose>
                     <c:when test="${param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
                         ${item.progress}日
                     </c:when>
                     <c:otherwise>
-                        ${item.day_price}円/日
+                        ${item.day_priceInt}円/日
                     </c:otherwise>
                 </c:choose>
             </div>
@@ -108,8 +108,8 @@
 
     <div class="drop_down">
 
-        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateDesc">経過日数が長い順</a>
-        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateAsc">経過日数が短い順</a>
+        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateAsc">経過日数が長い順</a>
+        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateDesc">経過日数が短い順</a>
         <a href="${pageContext.request.contextPath}/RankingServlet?sort_=dayPriceDesc">１日当たりの固定費が多い順</a>
         <a href="${pageContext.request.contextPath}/RankingServlet?sort_=dayPriceAsc">１日当たりの固定費が少ない順</a>
 
@@ -136,7 +136,7 @@
                 ${item.progress}日
             </c:when>
             <c:otherwise>
-                ${item.day_price}円/日
+                ${item.day_priceInt}円/日
             </c:otherwise>
         </c:choose>
     </td>

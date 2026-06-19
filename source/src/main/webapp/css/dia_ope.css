@@ -92,6 +92,9 @@
 	padding: 13px 13px 13px 13px;
 	margin-top: 18px; /* 行間 */
 	height: 20px; /* 行の高さ */
+	
+	width: 140px; /* 折り返しの長さを決める */
+	
 }
 .diagnosis_result tr{
 	display: flex;

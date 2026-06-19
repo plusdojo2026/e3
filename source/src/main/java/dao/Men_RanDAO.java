@@ -35,7 +35,7 @@ public class Men_RanDAO {
 				    		  + "WHEN life = 0 THEN NULL "
 				    		  + "ELSE ROUND(price / (life * 365)) "
 				    		  + "END "
-				    		  + "WHERE id = ?";
+				    		  + "WHERE userid = ?";
 			// uStmtは、pStmtとの被り回避
 			PreparedStatement uStmt = conn.prepareStatement(updateSql);
 			uStmt.setString(1, loginuser.getUserid());

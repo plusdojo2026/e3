@@ -53,10 +53,19 @@
 
 .nickname {
 	position: absolute;
-	top: 4px;
+	top: 5px;
 	left: 48%;
 	transform: translateX(-50%);
 	font-weight: bold;
+	width: 140px;
+	text-align: center;
+}
+
+.nickname p {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .shouhinimg {
@@ -83,6 +92,14 @@
 	top: 252px;
 	left: 48%;
 	transform: translateX(-50%);
+	width: 200px;
+	text-align: center;
+}
+.name p {
+	width: 100%;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .progress {
@@ -157,15 +174,17 @@
 }
 
 .nextrank {
-	transform: translate(10%,70%);
+	transform: translate(10%, 70%);
 }
+
 .nextrank a {
-  text-decoration: none;
-  transition: color 0.3s;
-  color: #C75000;
+	text-decoration: none;
+	transition: color 0.3s;
+	color: #C75000;
 }
+
 .nextrank a:hover {
-  color: #7A2C00;
+	color: #7A2C00;
 }
 
 @media screen and (max-width:600px) {
@@ -244,10 +263,9 @@
 	.dropdown a {
 		font-size: 12px;
 	}
-	
 	.nextrank {
-	transform: translate(10%,10%);
-}
+		transform: translate(10%, 10%);
+	}
 }
 
 /* albumList.jsp */
