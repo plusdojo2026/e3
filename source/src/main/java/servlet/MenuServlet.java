@@ -50,7 +50,7 @@ public class MenuServlet extends HttpServlet {
 
 		List<CommonDTO> list = dao.wpNotification(loginuser);
 
-		int total = dao.getTotalDayPrice();
+		int total = dao.getTotalDayPrice(loginuser);
 
 		// JSPに渡す
 		request.setAttribute("total", total);

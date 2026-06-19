@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.Reg_EdiDAO;
 import dto.CommonDTO;
@@ -90,12 +91,23 @@ public class EditServlet extends HttpServlet {
 		dto.setWperiod(Integer.parseInt(request.getParameter("wperiod")));
 		dto.setMaker(request.getParameter("maker"));
 		dto.setLife(Integer.parseInt(request.getParameter("life")));
-		/*
-		 * dto.setDay_price(Integer.parseInt(request.getParameter("day_price")));
-		 * dto.setProgress(Integer.parseInt(request.getParameter("progress")));
-		 * dto.setGoal(Integer.parseInt(request.getParameter("goal")));
-		 */
+		
+//		 dto.setDay_price(Integer.parseInt(request.getParameter("day_price")));
+//		 dto.setProgress(Integer.parseInt(request.getParameter("progress")));
+//		 dto.setGoal(Integer.parseInt(request.getParameter("goal")));
+		 
 		dto.setNickname(request.getParameter("nickname"));
+		Part file = request.getPart("itemImage");
+
+		if(file != null && file.getSize() > 0){
+		    byte[] imageData = file.getInputStream().readAllBytes();
+		    dto.setImg(imageData);
+		} else {
+			Reg_EdiDAO dao = new Reg_EdiDAO();
+			CommonDTO OldDto = dao.selectById(dto.getId());
+			
+			dto.setImg(OldDto.getImg());
+		}
 		
 		
 		//DAO生成

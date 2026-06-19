@@ -9,10 +9,12 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import dao.Reg_EdiDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class RegisterServlet
@@ -47,6 +49,11 @@ public class RegisterServlet extends HttpServlet {
 	        HttpServletResponse response)
 	        throws ServletException, IOException {
 		
+		HttpSession session = request.getSession();
+		Loginuser loginUser =
+			    (Loginuser) session.getAttribute("userid");
+
+			String userid = loginUser.getUserid();
 		request.setCharacterEncoding("UTF-8");
 
 	    // フォームの値取得
@@ -55,7 +62,8 @@ public class RegisterServlet extends HttpServlet {
 	    String buyDate = request.getParameter("buy_date");
 	    String maker = request.getParameter("maker");
 	    String nickname = request.getParameter("nickname");
-
+	    
+	    
 	    int price = Integer.parseInt(request.getParameter("price"));
 	    int life = Integer.parseInt(request.getParameter("life"));
 
@@ -81,6 +89,7 @@ public class RegisterServlet extends HttpServlet {
 	    // DTOへ格納
 	    CommonDTO dto = new CommonDTO();
 
+	    
 	    dto.setGenre(genre);
 	    dto.setShouhin(shouhin);
 	    dto.setBuy_date(buyDate);
@@ -90,6 +99,7 @@ public class RegisterServlet extends HttpServlet {
 	    dto.setLife(life);
 	    dto.setNickname(nickname);
 	    dto.setImg(imageData);
+	    dto.setUserid(userid);
 
 	    // DAO呼び出し
 	    Reg_EdiDAO dao = new Reg_EdiDAO();
