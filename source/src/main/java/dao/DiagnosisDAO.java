@@ -67,8 +67,8 @@ public class DiagnosisDAO {
 			
 			conn = DriverManager.getConnection(URL, USER, PASS);// データベースに接続する
 
-			// 一覧表示 // ここにidあっていい？
-			String sql = "SELECT id, shouhin, money, use_year, day_price  FROM diagnosis";
+			// 一覧表示 DESC LIMIT 50:降順で50件表示
+			String sql = "SELECT id, shouhin, money, use_year, day_price  FROM diagnosis ORDER BY id DESC LIMIT 50";
 
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -116,7 +116,7 @@ public class DiagnosisDAO {
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql); 
 			
-			// SQL文を完成させる
+			// SQL文を完成させる　//　prepareStatementの一個目の?に受け取ったidをセット
 			pStmt.setInt(1, id);
 			
 			// この記述は何？　INSERT/UPDATE/DELETE 専用	

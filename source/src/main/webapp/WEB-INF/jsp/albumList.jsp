@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>モノカチコレクション | 履歴一覧</title>
+<title>モノカチコレクション | アルバム</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -47,7 +47,7 @@
 	<main>
 
 		<h2 class="listtitle">
-			<b>▶ 一覧 </b>： 使い終わった<strong>モノ</strong>たちを見てみよう！
+			<b>▶ アルバム一覧 </b>： 使い終わった<strong>モノ</strong>たちを見てみよう！
 		</h2>
 
 		<!-- ランキング画面へ -->

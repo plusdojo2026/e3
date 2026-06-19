@@ -110,6 +110,7 @@ public class LoginRegisterServlet extends HttpServlet {
 		if (typeCount < 2) {
 			request.setAttribute("error", "パスワードには文字種を2種類以上含めて下さい。");
 			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return; // ★追加
 		}
 
 		// DAOに登録（自動採番）
@@ -128,6 +129,10 @@ public class LoginRegisterServlet extends HttpServlet {
 		}
 
 		/* 完了メッセージをポップアップ表示
-		request.setAttribute("message", "登録が完了しました。");*/
+		if (result) {
+			request.setAttribute("error", "登録に失敗しました。");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+		}*/
+
 	}
 }

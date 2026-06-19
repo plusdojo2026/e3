@@ -45,8 +45,8 @@
 
 <div class="form-container">
 <form id="form" action="${pageContext.request.contextPath}/EditServlet"
-      method="post">
-     <!-- enctype="multipart/form-data"> -->
+      method="post"
+      enctype="multipart/form-data"> 
       
       <input type="hidden" name="id" value="${dto.id}">
       
@@ -57,10 +57,20 @@
 
   <div class = "icon-preview">
   <!-- 商品画像用 -->
-    <img id="previewImg"
-         src="${pageContext.request.contextPath}/images/chara_logo.png"
-         alt = "No Image">
-         
+  <c:choose>
+	  <c:when test="${not empty dto.base64Image}">
+	    <img id="previewImg"
+	         src="data:image/jpeg;base64,${dto.base64Image}" 
+	         alt="商品画像">    
+	  </c:when>
+	  
+	  <c:otherwise>
+	    <img id="previewImg"
+	         src="${pageContext.request.contextPath}/images/chara_logo.png"
+	         alt="No Image">
+	  </c:otherwise>
+    </c:choose>
+    
   <!-- フレーム用 -->
     <img id ="previewFrame"
          src = "">
@@ -91,6 +101,8 @@
       <label>商品名<span class="required">*</span></label>
       <span class = "error" id = "shouhinError"></span>
      </div>
+     
+     <!--　value="${dto.shouhin}"・・・ DTOから取得した商品名を初期値として表示 -->
       <input type="text" id="shouhin" name="shouhin" value="${dto.shouhin}">
       
     </div>

@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.Part;
 
 import dao.Reg_EdiDAO;
 import dto.CommonDTO;
@@ -65,7 +66,18 @@ public class RegisterServlet extends HttpServlet {
 	    if (wperiodStr != null && !wperiodStr.isEmpty()) {
 	        wperiod = Integer.parseInt(wperiodStr);
 	    }
-
+	    
+	    //画像取得
+	    Part file  = request.getPart("itemImage");
+	    
+	    
+	    
+	    byte[] imageData = null;
+	    
+	    if(file != null && file.getSize() > 0) {
+	    	imageData = file.getInputStream().readAllBytes();
+	    }
+	    
 	    // DTOへ格納
 	    CommonDTO dto = new CommonDTO();
 
@@ -77,6 +89,7 @@ public class RegisterServlet extends HttpServlet {
 	    dto.setWperiod(wperiod);
 	    dto.setLife(life);
 	    dto.setNickname(nickname);
+	    dto.setImg(imageData);
 
 	    // DAO呼び出し
 	    Reg_EdiDAO dao = new Reg_EdiDAO();

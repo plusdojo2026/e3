@@ -150,7 +150,7 @@
 
 
 /* モバイル対応 */
-@media(max-width: 480px){
+@media(max-width: 855px){ /* SurfacePro7(912px)まで入れる？ */
 	/* 診断ボタン */
 	.diagnosis_form input[type = "submit"]{
 		margin: 35px 0 0 0;
@@ -166,17 +166,23 @@
 		width:100%;
 		box-sizing: border-box;
 	}*/
-	.diagnosis_form{
-		flex-direction: column;
-		gap: 30px;		
-	}
 	
-	/* リスト縦並び */
+	/* フォーム中央配置にしたい */
+	.diagnosis_form{
+		display: flex;
+		flex-direction: column;
+		gap: 30px;
+		/*text-align: center; ラベルの文字のみ動く*/
+	}
+		
+	
+	/* 診断結果リスト縦並び */
 	table.diagnosis_result td, table.diagnosis_result tr,
 	table.diagnosis_result tbody, table.diagnosis_result {
 		display: block;
 		width:100%;
 		box-sizing: border-box;
+		
 	}
 	.card {
 		padding: 20px 50px;

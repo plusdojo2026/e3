@@ -365,7 +365,20 @@
 		width: 180px;
 		right: 0;
 	}
-	.wrapper {
+	/* ランキング */
+	.card {
+		margin: 10px 0px;
+	}
+	.info {
+		font-size: 12px;
+	}
+	.info th, .info td {
+		padding: 6px;
+	}
+}
+
+@media screen and ( max-width : 550px) {
+.wrapper {
 		gap: 3px;
 	}
 	.stand {
@@ -389,17 +402,5 @@
 	.medal {
 		width: 23px;
 		height: 23px;
-	}
-
-	/* ランキング */
-	.card {
-		width: 280px;
-		margin: 10px 0px;
-	}
-	.info {
-		font-size: 12px;
-	}
-	.info th, .info td {
-		padding: 6px;
 	}
 }
