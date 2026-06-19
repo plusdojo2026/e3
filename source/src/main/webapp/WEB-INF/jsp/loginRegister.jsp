@@ -50,5 +50,15 @@
 	<footer>
 		<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
 	</footer>
+	<!-- ★追加 -->
+	<c:if test="${not empty userId}">
+  		<div id="modal" class="modal">
+    		<div class="modal-content">
+      			<p>あなたのユーザーIDは「${userId}」です。</p>
+      			<button onclick="closeModal()">OK</button>
+    		</div>
+  		</div>
+	</c:if>
+	<!-- ★追加ここまで -->
 </body>
 </html>
