@@ -8,10 +8,10 @@
 	align-items: center;
 }
 
-.shouhinimg img {
+/* .shouhinimg img {
 	width: 300px;
 	height: 300px;
-}
+} */
 /* 吹き出し */
 .speechBubble {
 	position: relative;
@@ -61,6 +61,31 @@
   align-items: center;
 }
 
+/* フレーム調整 */
+.frameWrap{
+	position:relative;
+	width:300px;
+	height:300px;
+}
+
+.itemImage {
+    position: absolute;
+    top: 87px;
+    left: 40px;
+    width: 220px;
+    height: 200px;
+    object-fit: cover;
+    z-index: 1;
+}
+
+.frameImage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 300px;
+    height: 300px;
+    z-index: 2;
+}
 /* 商品詳細テーブル */
 .information {
   width: 100%;

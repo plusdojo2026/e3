@@ -61,7 +61,8 @@ public class Sd_AdDAO {
                     rs.getInt("progress"),
                     rs.getInt("goal"),
                     rs.getString("nickname"),
-                    rs.getBytes("img")
+                    rs.getBytes("img"),
+                    rs.getInt("frame")
                 );
             }
         } catch (Exception e) {
@@ -128,7 +129,7 @@ public boolean insertRireki(int id) {
 
 		String sql = "INSERT INTO rireki "
 				+ "(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid) "
-				+ " SELECT genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img , userid "
+				+ " SELECT genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img , frame, userid "
 				+ "FROM shouhin WHERE id = ?";
 
 		PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -185,7 +186,8 @@ public CommonDTO rirekiInfo(int id) {
                 rs.getInt("progress"),
                 rs.getInt("goal"),
                 rs.getString("nickname"),
-                rs.getBytes("img")
+                rs.getBytes("img"),
+                rs.getInt("frame")
             );
         }
     } catch (Exception e) {

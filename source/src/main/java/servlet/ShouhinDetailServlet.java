@@ -8,9 +8,11 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Sd_AdDAO;
 import dto.CommonDTO;
+import dto.Loginuser;
 
 /**
  * Servlet implementation class LoginServlet
@@ -33,6 +35,14 @@ public class ShouhinDetailServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		
+		HttpSession session = request.getSession();
+		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+				
+		if (loginuser == null) {
+			response.sendRedirect("/e3/LoginServlet");
+			return;
+		}
 
 		String action = request.getParameter("action");
 		int id = Integer.parseInt(request.getParameter("shouhinid"));

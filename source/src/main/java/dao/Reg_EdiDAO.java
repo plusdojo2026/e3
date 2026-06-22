@@ -29,8 +29,8 @@ public class Reg_EdiDAO {
 	                "genre, shouhin, buy_date, price," +
 	                "wperiod, maker, life," +
 	                "day_price, progress, goal," +
-	                "nickname, img, userid" +
-	                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	                "nickname, frame, img, userid" +
+	                ") VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
 
 	        // SQLインジェクション対策
 	        pStmt = conn.prepareStatement(sql);
@@ -48,8 +48,10 @@ public class Reg_EdiDAO {
 	     	pStmt.setInt(10, dto.getGoal());            // 仮
 
 	     	pStmt.setString(11, dto.getNickname());
-	     	pStmt.setBytes(12, dto.getImg());
-	     	pStmt.setString(13, dto.getUserid());
+	     	pStmt.setInt(12, dto.getFrame());
+	     	pStmt.setBytes(13, dto.getImg());
+	     	pStmt.setString(14, dto.getUserid());
+	     	
 	     	
 	     	
 	        int result = pStmt.executeUpdate();
@@ -89,7 +91,7 @@ public class Reg_EdiDAO {
 	        	    "genre=?, shouhin=?, buy_date=?, price=?," +
 	        	    "wperiod=?, maker=?, life=?," +
 	        	    "day_price=?, progress=?, goal=?," +
-	        	    "nickname=?, img=? " +
+	        	    "nickname=?, frame=?, img=? " +
 	        	    "WHERE id=?";
 	
 	        // SQLインジェクション対策
@@ -105,9 +107,10 @@ public class Reg_EdiDAO {
 	            pStmt.setDouble(8, dto.getDay_priceInt());     // 仮
 		     	pStmt.setInt(9, dto.getProgress());         // 仮
 		     	pStmt.setInt(10, dto.getGoal());            //　仮  
-	            pStmt.setString(11, dto.getNickname());
-	            pStmt.setBytes(12, dto.getImg());
-	  	        pStmt.setInt(13, dto.getId());
+		     	pStmt.setString(11, dto.getNickname());
+		     	pStmt.setInt(12, dto.getFrame());
+		     	pStmt.setBytes(13, dto.getImg());
+		     	pStmt.setInt(14, dto.getId());
 	
 	        //SQL実行
 	        int result = pStmt.executeUpdate();
@@ -176,8 +179,10 @@ public class Reg_EdiDAO {
 		    	   dto.setProgress(rs.getInt("progress"));
 		    	   dto.setGoal(rs.getInt("goal"));
 		    	   dto.setNickname(rs.getString("nickname"));
+		    	   dto.setFrame(rs.getInt("frame"));
 		    	   dto.setImg(rs.getBytes("img"));
 		    	   dto.setUserid(rs.getString("userid"));
+		    	   
 		    	   
 		       }
 		    	   //ResultSet を閉じる

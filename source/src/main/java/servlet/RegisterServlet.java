@@ -73,6 +73,14 @@ public class RegisterServlet extends HttpServlet {
 	    String maker = request.getParameter("maker");
 	    String nickname = request.getParameter("nickname");
 	    
+	    String frameStr = request.getParameter("frame");
+	   
+	    int frame = 0;
+
+	    if(frameStr != null && !frameStr.isEmpty()){
+	        frame = Integer.parseInt(frameStr);
+	    }
+	    
 	    
 	    int price = Integer.parseInt(request.getParameter("price"));
 	    int life = Integer.parseInt(request.getParameter("life"));
@@ -107,6 +115,7 @@ public class RegisterServlet extends HttpServlet {
 	    dto.setMaker(maker);
 	    dto.setWperiod(wperiod);
 	    dto.setLife(life);
+	    dto.setFrame(frame);
 	    
 	    LocalDate buy = LocalDate.parse(buyDate);
 

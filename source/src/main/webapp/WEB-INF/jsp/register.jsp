@@ -35,7 +35,7 @@
             <a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
             <a href="${pageContext.request.contextPath}/AlbumListServlet">アルバム</a>
             <a href="${pageContext.request.contextPath}/OperationServlet">機能説明</a>
-            <a href="${pageContext.request.contextPath}/LoginServlet">ログアウト</a>
+            <a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a>
         </div>
     </nav>
 </header>
@@ -60,7 +60,7 @@
          
   <!-- フレーム用 -->
     <img id ="previewFrame"
-         src = "">
+         src = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=">
    </div>
     <input type="file" id="img" name="itemImage" accept="image/*">
   </div>
@@ -151,35 +151,35 @@
       <div class="frame-item">
         <input type="radio" id="frame1" class="frameRadio" name="frame" value="1">
         <label for="frame1">
-          <img src="${pageContext.request.contextPath}/images/frame_usagi.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_usagi2.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame2" class="frameRadio" name="frame" value="2">
         <label for="frame2">
-          <img src="${pageContext.request.contextPath}/images/frame_neko.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_neko2.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame3" class="frameRadio" name="frame" value="3">
         <label for="frame3">
-          <img src="${pageContext.request.contextPath}/images/frame_kuma.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_panda2.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame4" class="frameRadio" name="frame" value="4">
         <label for="frame4">
-          <img src="${pageContext.request.contextPath}/images/frame_inu.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_dog2.png" alt="">
         </label>
       </div>
 
       <div class="frame-item">
         <input type="radio" id="frame5" class="frameRadio" name="frame" value="5">
         <label for="frame5">
-          <img src="${pageContext.request.contextPath}/images/frame_hiyoko.png" alt="">
+          <img src="${pageContext.request.contextPath}/images/frame_buta2.png" alt="">
         </label>
       </div>
 
@@ -264,26 +264,26 @@
 			//選択されたフレームによって表示するフレームを切り替える
 			if(this.value == "1") {
 				//うさぎフレーム
-				previewFrame.src = "${pageContext.request.contextPath}/images/frame_usagi.png"
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_usagi2.png"
 			} else if(this.value == "2") {
 				//ねこフレーム
-				previewFrame.src = "${pageContext.request.contextPath}/images/frame_neko.png"
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_neko2.png"
 			} else if(this.value == "3") {
 				//くまフレーム
-				previewFrame.src = "${pageContext.request.contextPath}/images/frame_kuma.png"
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_panda2.png"
 			} else if(this.value == "4") {
 				//いぬフレーム
-				previewFrame.src = "${pageContext.request.contextPath}/images/frame_inu.png"
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_dog2.png"
 			} else if(this.value == "5") {
 				//ひよこフレーム
-				previewFrame.src = "${pageContext.request.contextPath}/images/frame_hiyoko.png"
+				previewFrame.src = "${pageContext.request.contextPath}/images/frame_buta2.png"
 			}
 			
 
-			previewImg.classList.remove("frame1","frame2","frame3","frame4","frame5");
+			/* previewImg.classList.remove("frame1","frame2","frame3","frame4","frame5");
 
 			    /* 対応する形を付ける */
-			    if(this.value == "1") {
+			  /*   if(this.value == "1") {
 			        previewImg.classList.add("frame1");
 			    } else if(this.value == "2") {
 			        previewImg.classList.add("frame2");
@@ -293,9 +293,9 @@
 			        previewImg.classList.add("frame4");
 			    } else if(this.value == "5") {
 			        previewImg.classList.add("frame5");
-			    }
+			    }*/
 
-		});
+		}); 
 	});
 	
 	
@@ -414,6 +414,8 @@
 			        event.preventDefault(); // キャンセルで送信ストップ
 			    }
 			});
+	
+	
 	
 </script>  
 <!--　フッター　-->

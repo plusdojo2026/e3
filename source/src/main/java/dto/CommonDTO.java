@@ -23,6 +23,7 @@ public class CommonDTO implements Serializable {
 	private int goal; // あと何日
 	private String nickname; // 愛称
 	private byte[] img; // 商品画像
+	private int frame; //フレーム画像
 
 	// デフォルトコンストラクタ
 	public CommonDTO() {
@@ -48,7 +49,7 @@ public class CommonDTO implements Serializable {
 	}
 
 	public CommonDTO(int id, String shouhin, double day_price, String genre, String buy_date, int price, int wperiod,
-			String maker, int life, int progress, int goal, String nickname, byte[] img) { // 商品詳細DB、履歴詳細DB
+			String maker, int life, int progress, int goal, String nickname, byte[] img, int frame) { // 商品詳細DB、履歴詳細DB
 		this.id = id;
 		this.shouhin = shouhin;
 		this.day_price = day_price;
@@ -62,6 +63,7 @@ public class CommonDTO implements Serializable {
 		this.goal = goal;
 		this.nickname = nickname;
 		this.img = img;
+		this.frame = frame;
 	}
 
 	// ゲッターとセッター
@@ -115,6 +117,10 @@ public class CommonDTO implements Serializable {
 
 	public double getDay_price() {
 		return day_price;
+	}
+	
+	public int getFrame() {
+	    return frame;
 	}
 	
 	//day_priceをint型で取得するゲッター
@@ -212,5 +218,9 @@ public class CommonDTO implements Serializable {
 			return null;
 		}
 		return Base64.getEncoder().encodeToString(img);
+	}
+
+	public void setFrame(int frame) {
+		this.frame = frame;
 	}
 }
