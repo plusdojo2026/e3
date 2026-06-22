@@ -151,6 +151,11 @@ a:hover {
   }
 }
 
+.one {
+	color: #7A2C00;
+	margin: 20px 0;
+}
+
 /* モーダル */
 .modal {
     display: flex;
@@ -226,7 +231,7 @@ a:hover {
 }
 
 
-@media(min-width: 481px)and(max-width: 768px){
+@media(min-width: 481px) and (max-width: 767px){
 	img {
 		display: none;
 	}
@@ -260,7 +265,7 @@ a:hover {
 	}
 }
 
-@media(min-width: 1024spx){
+@media (min-width: 768px) and (max-width: 1024px){
 	img {
 		display: block;
 	}
@@ -417,7 +422,9 @@ p {
 	}
 	
 	.regist {
-		width: 340px;
+		text-align: center;
+		margin: 0;
+		max-width: 80%;
 	}
 	.register {
 		min-width: auto;
@@ -438,15 +445,33 @@ p {
 	}
 	
 	.reg{
-		margin: 0 0 20px 0;
+		margin: 0 auto 20px;
 	}
 	
 	.Tologin {
-		text-align: center;
-		margin: 0 95px;
+		margin: 0 0 0 35px;
 	}
 }
 
-@media(min-width: 481px)and(max-width: 768px){
+@media(min-width: 481px)and(max-width: 767px){
+	
 }
 
+@media(max-width: 768px) and (max-width: 1024px){
+	.contain{
+		display: block;
+	}
+	.tip {
+		display: none;
+	}
+	
+	p {
+		margin: 18px auto;
+	}
+	.second {
+		margin: 20px 60px;
+	}
+	.register {
+		
+	}
+}

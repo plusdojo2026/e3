@@ -40,6 +40,7 @@
 				<hr style="border: none; border-top: 2px solid #333;">
 				<br><a class="Toregist" href="/e3/LoginRegisterServlet">新規登録はこちら</a>
 			</form>
+			<p class="one">ログインして通知を確認</p>
 		</main>
 		<!-- 右画像 -->
 		<img class="right slide-right" src="images/login2.png" alt="">
