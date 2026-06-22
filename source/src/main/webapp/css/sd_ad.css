@@ -12,6 +12,14 @@
 	width: 300px;
 	height: 300px;
 }
+
+.shouhinimg p {
+			   max-width: 200px;
+			   overflow: hidden;
+			   text-overflow: ellipsis;
+			   white-space: nowrap;
+			   margin: 0 0 4px;
+}
 /* 吹き出し */
 .speechBubble {
 	position: relative;
@@ -69,23 +77,35 @@
   border-collapse: collapse;
   font-size: 15px;
   text-align: center;
+	table-layout: fixed;
 }
 .information th,
 .information td {
-  padding: 10px 12px;
+  padding: 10px 12px 10px 0;
   border: none;
   border-bottom: 1.5px solid #C75000;
   vertical-align: middle;
   color: #7A2C00;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .information th {
   color: #C75000;
   font-weight: 500;
   font-size: 13px;
   width: 22%;
+	text-align: left;
+}
+
+.nickname{
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 .information td {
   width: 28%;
+	text-align: left;
 }
 .information tr:last-child th,
 .information tr:last-child td {
@@ -96,6 +116,7 @@
   font-size: 13px;
   margin-left: 2px;
 }
+
 
 /* カード型背景 */
 .card {
@@ -155,7 +176,7 @@
     display: block;
     width: 100%;
     box-sizing: border-box;
-    white-space: normal;
+    white-space: nowrap;
   }
 
   .information th {
@@ -166,6 +187,7 @@
   .information td {
     border-bottom: 1.5px solid #C75000;
     padding-top: 2px;
+	text-align:center;
   }
 
   .information tr:last-child td:last-child {
