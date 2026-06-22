@@ -17,15 +17,15 @@ public class DiagnosisDAO {
 	private static final String URL = "jdbc:mysql://localhost:3306/e3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
 	private static final String USER = "e3";
 	private static final String PASS = "password";
-
-	public boolean register(String shouhin, int money, int use_year, Loginuser loginuser) { // day_priceは計算で出すため。
-		Connection conn = null;
-		boolean result = false;
+	
+	public boolean register(String shouhin, int money, int use_year, Loginuser loginuser) { // 引数。day_priceは計算で出す。
+		Connection conn = null; // 最初はnull・後で DriverManager.getConnection()で接続
+		boolean result = false; // 最初はfalse扱い・登録が成功したらtrueを返す
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASS);
-
+			// 新しいデータを登録するためのINSERT文ひな形
 			String sql = "INSERT INTO diagnosis(shouhin, money, use_year, day_price, userid) VALUES(?, ?, ?, ?, ?)";
 
 			// SQLインジェクション対策
@@ -41,18 +41,20 @@ public class DiagnosisDAO {
 				day_price = 0;
 			}
 			
-			// サーブレットへ ?に項目が入る
+			// サーブレットへ ?に項目が入る DB順
 			pStmt.setString(1, shouhin);
 			pStmt.setInt(2, money);
 			pStmt.setInt(3, use_year);
 			pStmt.setInt(4, day_price);
 			pStmt.setString(5, loginuser.getUserid());
-
+			
+			// データ更新が成功したかどうかを判定し、DB接続を必ず閉じるための処理
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
+			//例外処理
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); // エラー内容をコンソールに出す
 		} finally {
 			try {
 				if (conn != null)
@@ -67,6 +69,7 @@ public class DiagnosisDAO {
 	}
 
 //結果一覧を取得するメソッド
+		// ログイン中のユーザーに紐づくデータを全部取り出すためのメソッド
 	public List<CommonDTO> findAll(Loginuser loginuser) {
 		List<CommonDTO> diagnosisList = new ArrayList<>();// 検索結果を入れるコレクション
 		Connection conn = null;// 接続の確認
@@ -130,7 +133,7 @@ public class DiagnosisDAO {
 			// SQL文を完成させる　//　prepareStatementの一個目の?に受け取ったidをセット
 			pStmt.setInt(1, id);
 			
-			// この記述は何？　INSERT/UPDATE/DELETE 専用	
+			// データ更新が成功したかどうかを判定
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
