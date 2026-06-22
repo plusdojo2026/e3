@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import dao.Men_RanDAO;
 import dto.CommonDTO;
@@ -34,11 +35,16 @@ public class RankingServlet extends HttpServlet {
 	 */
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
+    	HttpSession session = request.getSession();
+    	Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+    			
+    	if (loginuser == null) {
+    		response.sendRedirect("/e3/LoginServlet");
+    		return;
+    	}
+    	
+    	
         String sort = request.getParameter("sort_");
-
-        Loginuser loginuser =
-				(Loginuser) request.getSession().getAttribute("userid");
 		Men_RanDAO dao = new Men_RanDAO();
 		List<CommonDTO> rankingList = dao.getRanking(sort, loginuser);
 

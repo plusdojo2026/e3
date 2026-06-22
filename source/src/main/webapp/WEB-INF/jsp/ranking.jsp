@@ -40,7 +40,7 @@
             <a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
             <a href="${pageContext.request.contextPath}/AlbumListServlet">アルバム</a>
             <a href="${pageContext.request.contextPath}/OperationServlet">機能説明</a>
-            <a href="${pageContext.request.contextPath}/LoginServlet">ログアウト</a>
+            <a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a>
         </div>
     </nav>
 </header>

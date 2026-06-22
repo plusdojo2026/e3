@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.CommonDTO;
+import dto.Loginuser;
 
 public class DiagnosisDAO {
 
@@ -16,35 +17,44 @@ public class DiagnosisDAO {
 	private static final String URL = "jdbc:mysql://localhost:3306/e3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
 	private static final String USER = "e3";
 	private static final String PASS = "password";
-
-	public boolean register(String shouhin, int money, int use_year) { // day_priceは計算で出すため。
-		Connection conn = null;
-		boolean result = false;
+	
+	public boolean register(String shouhin, int money, int use_year, Loginuser loginuser) { // 引数。day_priceは計算で出す。
+		Connection conn = null; // 最初はnull・後で DriverManager.getConnection()で接続
+		boolean result = false; // 最初はfalse扱い・登録が成功したらtrueを返す
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASS);
-
-			String sql = "INSERT INTO diagnosis(shouhin, money, use_year, day_price) VALUES(?, ?, ?, ?)";
+			// 新しいデータを登録するためのINSERT文ひな形
+			String sql = "INSERT INTO diagnosis(shouhin, money, use_year, day_price, userid) VALUES(?, ?, ?, ?, ?)";
 
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// サーブレットへ ?に項目が入る
+			// 一日当たり価格の計算
+			int day_price = money;
+			/* 0除算対策 */
+			if (!(use_year <= 0)) {
+				/* (キャスト) Math.round四捨五入でint型に*/
+				day_price = (int)Math.round(money / (use_year * 365));
+			} else if(!(use_year == 0)) {
+				day_price = 0;
+			}
+			
+			// サーブレットへ ?に項目が入る DB順
 			pStmt.setString(1, shouhin);
 			pStmt.setInt(2, money);
 			pStmt.setInt(3, use_year);
-
-			// 一日当たり価格の計算
-			// (キャスト) Math.round四捨五入でint型に
-			int day_price = (int) Math.round(money / (use_year * 365));
 			pStmt.setInt(4, day_price);
-
+			pStmt.setString(5, loginuser.getUserid());
+			
+			// データ更新が成功したかどうかを判定し、DB接続を必ず閉じるための処理
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
+			//例外処理
 		} catch (Exception e) {
-			e.printStackTrace();
+			e.printStackTrace(); // エラー内容をコンソールに出す
 		} finally {
 			try {
 				if (conn != null)
@@ -59,7 +69,8 @@ public class DiagnosisDAO {
 	}
 
 //結果一覧を取得するメソッド
-	public List<CommonDTO> findAll() {
+		// ログイン中のユーザーに紐づくデータを全部取り出すためのメソッド
+	public List<CommonDTO> findAll(Loginuser loginuser) {
 		List<CommonDTO> diagnosisList = new ArrayList<>();// 検索結果を入れるコレクション
 		Connection conn = null;// 接続の確認
 		try {
@@ -68,10 +79,13 @@ public class DiagnosisDAO {
 			conn = DriverManager.getConnection(URL, USER, PASS);// データベースに接続する
 
 			// 一覧表示 DESC LIMIT 50:降順で50件表示
-			String sql = "SELECT id, shouhin, money, use_year, day_price  FROM diagnosis ORDER BY id DESC LIMIT 50";
+			String sql = "SELECT id, shouhin, money, use_year, day_price, userid  FROM diagnosis WHERE userid = ? ORDER BY id DESC LIMIT 50";
 
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			/* ?にセット */
+			pStmt.setString(1, loginuser.getUserid());
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
@@ -119,7 +133,7 @@ public class DiagnosisDAO {
 			// SQL文を完成させる　//　prepareStatementの一個目の?に受け取ったidをセット
 			pStmt.setInt(1, id);
 			
-			// この記述は何？　INSERT/UPDATE/DELETE 専用	
+			// データ更新が成功したかどうかを判定
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
