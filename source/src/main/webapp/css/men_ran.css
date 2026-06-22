@@ -55,6 +55,7 @@
 	font-size: 20px;
 	color: #7A2C00;
 }
+
 .notspeechText {
 	padding: 55px 0 0 20px;
 	height: 50px;
@@ -134,8 +135,8 @@
 }
 
 /* ボタンは右寄せのまま */
-.sort_button {
-	width: 80px;
+.sort_buttonbutton {
+	width: 60px;
 	cursor: pointer;
 }
 
@@ -190,14 +191,17 @@
 	align-items: center;
 }
 
-.icon {
+.icon img {
 	width: 130px;
-	height: 130px;
+	height: auto;
 }
 
-.plete {
-	color: #7A2C00;
-	background: #ffbf00;
+.plate {
+	width: 100px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .medal {
@@ -241,12 +245,21 @@
 	text-align: center;
 }
 
+table {
+	table-layout: fixed;
+	width: 100%;
+}
+
 .info th, .info td {
 	padding: 10px 12px;
 	border: none;
 	border-bottom: 1.5px solid #C75000;
 	vertical-align: middle;
 	color: #7A2C00;
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .info th {
@@ -274,10 +287,18 @@
 	max-width: 560px;
 	margin: 48px auto;
 	background: #ffffff;
-	border-radius: 16px;
 	padding: 1.5rem 3rem;
+	border: 2px solid #dcdcdc;
+	border-radius: 15px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.card {
+	width: 90%;
+	max-width: 560px;
+	padding: 1rem;
+	box-sizing: border-box;
+}
 /*モバイル対応 */
 @media screen and ( max-width : 600px) {
 	body {
@@ -366,8 +387,23 @@
 		right: 0;
 	}
 	/* ランキング */
+	.backalbum {
+		transform: translate(10%, 70%);
+		margin-bottom: 70px;
+	}
+	.backalbum a {
+		text-decoration: none;
+		transition: color 0.3s;
+		color: #C75000;
+	}
+	.backalbum a:hover {
+		color: #7A2C00;
+	}
 	.card {
-		margin: 10px 0px;
+		width: 90%;
+		max-width: 560px;
+		padding: 1rem;
+		box-sizing: border-box;
 	}
 	.info {
 		font-size: 12px;
@@ -378,17 +414,19 @@
 }
 
 @media screen and ( max-width : 550px) {
-.wrapper {
+	.wrapper {
 		gap: 3px;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 	.stand {
 		width: 100px;
 		border-radius: 6px;
 		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 	}
-	.icon {
+	.icon img {
 		width: 80px;
-		height: 80px;
+		height: auto;
 	}
 	.first  .stand {
 		height: 88px;
@@ -402,5 +440,22 @@
 	.medal {
 		width: 23px;
 		height: 23px;
+	}
+	.sort_button {
+		width: 50px;
+		cursor: pointer;
+	}
+	.plate {
+		width: 80px;
+		font-size: 12px;
+	}
+	.drop_down {
+		right: 0;
+		left: auto;
+		width: 180px;
+	}
+	html, body {
+		overflow-x: hidden;
+		width: 100%;
 	}
 }
