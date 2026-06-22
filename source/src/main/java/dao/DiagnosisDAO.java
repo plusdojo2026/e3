@@ -18,7 +18,7 @@ public class DiagnosisDAO {
 	private static final String USER = "e3";
 	private static final String PASS = "password";
 
-	public boolean register(String shouhin, int money, int use_year) { // day_priceは計算で出すため。
+	public boolean register(String shouhin, int money, int use_year, Loginuser loginuser) { // day_priceは計算で出すため。
 		Connection conn = null;
 		boolean result = false;
 
@@ -26,7 +26,7 @@ public class DiagnosisDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASS);
 
-			String sql = "INSERT INTO diagnosis(shouhin, money, use_year, day_price) VALUES(?, ?, ?, ?)";
+			String sql = "INSERT INTO diagnosis(shouhin, money, use_year, day_price, userid) VALUES(?, ?, ?, ?, ?)";
 
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -35,6 +35,7 @@ public class DiagnosisDAO {
 			pStmt.setString(1, shouhin);
 			pStmt.setInt(2, money);
 			pStmt.setInt(3, use_year);
+			pStmt.setString(4, loginuser.getUserid());
 
 			// 一日当たり価格の計算
 			int day_price = money;
