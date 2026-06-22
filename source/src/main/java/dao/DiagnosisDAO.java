@@ -31,12 +31,6 @@ public class DiagnosisDAO {
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
-			// サーブレットへ ?に項目が入る
-			pStmt.setString(1, shouhin);
-			pStmt.setInt(2, money);
-			pStmt.setInt(3, use_year);
-			pStmt.setString(4, loginuser.getUserid());
-
 			// 一日当たり価格の計算
 			int day_price = money;
 			/* 0除算対策 */
@@ -47,7 +41,12 @@ public class DiagnosisDAO {
 				day_price = 0;
 			}
 			
+			// サーブレットへ ?に項目が入る
+			pStmt.setString(1, shouhin);
+			pStmt.setInt(2, money);
+			pStmt.setInt(3, use_year);
 			pStmt.setInt(4, day_price);
+			pStmt.setString(5, loginuser.getUserid());
 
 			if (pStmt.executeUpdate() == 1) {
 				result = true;

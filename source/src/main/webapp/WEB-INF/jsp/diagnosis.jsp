@@ -107,7 +107,7 @@
 						<td class = "shouhin">商品名 : ${d.shouhin}</td>
 						<td>価格 : ${d.money}円</td>
 						<td>年数 : ${d.use_year}年</td>
-						<td>1日当たり価格 : ${d.day_price}円</td>
+						<td>1日当たり価格 : ${d.day_priceInt}円</td>
 					</tr>
 				</c:forEach>
 
