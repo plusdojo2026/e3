@@ -90,6 +90,7 @@ public class DiagnosisServlet extends HttpServlet {
 			String shouhin = request.getParameter("shouhin");
 			int money = Integer.parseInt(request.getParameter("money"));
 			int use_year = Integer.parseInt(request.getParameter("use_year"));
+			//String userid = request.getParameter("userid");
 
 			// ---登録---
 			// DAOの呼び出し DBに登録
