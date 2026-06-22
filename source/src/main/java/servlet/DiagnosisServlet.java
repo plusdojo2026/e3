@@ -57,8 +57,10 @@ public class DiagnosisServlet extends HttpServlet {
 
 		// ---診断結果リストの一覧表示---
 		DiagnosisDAO dao = new DiagnosisDAO();
-		List<CommonDTO> diagnosisList = dao.findAll(); // 変数の宣言
+		
+		List<CommonDTO> diagnosisList = dao.findAll(loginuser); // 変数の宣言
 		// dao.findAll();
+		
 
 		// 診断結果をリクエストスコープに格納する
 		request.setAttribute("diagnosisList", diagnosisList);

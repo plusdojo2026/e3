@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import dto.CommonDTO;
+import dto.Loginuser;
 
 public class DiagnosisDAO {
 
@@ -36,8 +37,15 @@ public class DiagnosisDAO {
 			pStmt.setInt(3, use_year);
 
 			// 一日当たり価格の計算
-			// (キャスト) Math.round四捨五入でint型に
-			int day_price = (int) Math.round(money / (use_year * 365));
+			int day_price = money;
+			/* 0除算対策 */
+			if (!(use_year <= 0)) {
+				/* (キャスト) Math.round四捨五入でint型に*/
+				day_price = (int)Math.round(money / (use_year * 365));
+			} else if(!(use_year == 0)) {
+				day_price = 0;
+			}
+			
 			pStmt.setInt(4, day_price);
 
 			if (pStmt.executeUpdate() == 1) {
@@ -59,7 +67,7 @@ public class DiagnosisDAO {
 	}
 
 //結果一覧を取得するメソッド
-	public List<CommonDTO> findAll() {
+	public List<CommonDTO> findAll(Loginuser loginuser) {
 		List<CommonDTO> diagnosisList = new ArrayList<>();// 検索結果を入れるコレクション
 		Connection conn = null;// 接続の確認
 		try {
@@ -68,10 +76,13 @@ public class DiagnosisDAO {
 			conn = DriverManager.getConnection(URL, USER, PASS);// データベースに接続する
 
 			// 一覧表示 DESC LIMIT 50:降順で50件表示
-			String sql = "SELECT id, shouhin, money, use_year, day_price  FROM diagnosis ORDER BY id DESC LIMIT 50";
+			String sql = "SELECT id, shouhin, money, use_year, day_price, userid  FROM diagnosis WHERE userid = ? ORDER BY id DESC LIMIT 50";
 
 			// SQLインジェクション対策
 			PreparedStatement pStmt = conn.prepareStatement(sql);
+			
+			/* ?にセット */
+			pStmt.setString(1, loginuser.getUserid());
 
 			// SQL文を実行し、結果表を取得する
 			ResultSet rs = pStmt.executeQuery();
