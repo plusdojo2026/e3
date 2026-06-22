@@ -42,7 +42,7 @@
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
-				<P><span class="cellText">${rirekiinfo.nickname}</span></P>
+				<P>${rirekiinfo.nickname}</P>
 				<c:choose>
 					<c:when test="${not empty rirekiinfo.base64Image}">
 						<img src="data:image/jpeg;base64,${rirekiinfo.base64Image}"
@@ -65,29 +65,29 @@
 			<table class="information">
 				<tr>
 					<th>ジャンル</th>
-					<td colspan="3"><span class="cellText">${rirekiinfo.genre}</span></td>
+					<td colspan="3">${rirekiinfo.genre}</td>
 				</tr>
 				<tr>
 					<th>商品名</th>
-					<td><span class="cellText">${rirekiinfo.shouhin}</span></td>
+					<td>${rirekiinfo.shouhin}</td>
 					<th>メーカー</th>
-					<td><span class="cellText">${rirekiinfo.maker}</span></td>
+					<td>${rirekiinfo.maker}</td>
 				</tr>
 				<tr>
 					<th>購入日</th>
-					<td><span class="cellText">${rirekiinfo.buy_date}</span></td>
+					<td>${rirekiinfo.buy_date}</td>
 					<th>価格</th>
-					<td><span class="cellText">${rirekiinfo.price}</span><span class="tanni">円</span></td>
+					<td>${rirekiinfo.price}<span>円</span></td>
 				</tr>
 				<tr>
 					<th>保証期間</th>
-					<td><span class="cellText">${rirekiinfo.wperiod}</span><span class="tanni">年</span></td>
+					<td>${rirekiinfo.wperiod}<span>年</span></td>
 					<th>耐用年数</th>
-					<td><span class="cellText">${rirekiinfo.life}</span><span class="tanni">年</span></td>
+					<td>${rirekiinfo.life}<span>年</span></td>
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td><span class="cellText">${rirekiinfo.day_priceInt}</span><span class="tanni">円</span></td>
+					<td>${rirekiinfo.day_priceInt}<span>円</span></td>
 					<th>目標達成</th>
 					<td><c:choose>
 							<c:when test="${rirekiinfo.goal <= 0}">

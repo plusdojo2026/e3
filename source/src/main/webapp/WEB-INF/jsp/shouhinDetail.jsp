@@ -42,7 +42,7 @@
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
-			<P><span class="cellText">${shouhininfo.nickname}</span></P>
+			<P>${shouhininfo.nickname}</P>
 							<c:choose>
 								<c:when test="${not empty shouhininfo.base64Image}">
 									<img src="data:image/jpeg;base64,${shouhininfo.base64Image}" alt="商品画像">
@@ -64,31 +64,31 @@
 			<table class="information">
 				<tr>
 					<th>ジャンル</th>
-					<td colspan="3"><span class="cellText">${shouhininfo.genre}</span></td>
+					<td colspan="3">${shouhininfo.genre}</td>
 				</tr>
 				<tr>
 					<th>商品名</th>
-					<td><span class="cellText">${shouhininfo.shouhin}</span></td>
+					<td>${shouhininfo.shouhin}</td>
 					<th>メーカー</th>
-					<td><span class="cellText">${shouhininfo.maker}</span></td>
+					<td>${shouhininfo.maker}</td>
 				</tr>
 				<tr>
 					<th>購入日</th>
-					<td><span class="cellText">${shouhininfo.buy_date}</span></td>
+					<td>${shouhininfo.buy_date}</td>
 					<th>価格</th>
-					<td><span class="cellText">${shouhininfo.price}</span><span class="tanni">円</span></td>
+					<td>${shouhininfo.price}<span>円</span></td>
 				</tr>
 				<tr>
 					<th>保証期間</th>
-					<td><span class="cellText">${shouhininfo.wperiod}</span><span class="tanni">年</span></td>
+					<td>${shouhininfo.wperiod}<span>年</span></td>
 					<th>耐用年数</th>
-					<td><span class="cellText">${shouhininfo.life}</span><span class="tanni">年</span></td>
+					<td>${shouhininfo.life}<span>年</span></td>
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td><span class="cellText">${shouhininfo.day_priceInt}</span><span class="tanni">円</span></td>
+					<td>${shouhininfo.day_priceInt}<span>円</span></td>
 					<th>目標達成まで</th>
-					<td><span class="cellText">${shouhininfo.goal}</span><span class="tanni">日</span></td>
+					<td>${shouhininfo.goal}<span>日</span></td>
 				</tr>
 			</table>
 		</div>
