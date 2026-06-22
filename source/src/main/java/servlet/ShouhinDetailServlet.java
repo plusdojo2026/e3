@@ -38,19 +38,12 @@ public class ShouhinDetailServlet extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
-				
+		
 		if (loginuser == null) {
 			response.sendRedirect("/e3/LoginServlet");
 			return;
 		}
-
-		HttpSession session = request.getSession();
-		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
-				
-		if (loginuser == null) {
-			response.sendRedirect("/e3/LoginServlet");
-			return;
-		}
+		
 		String action = request.getParameter("action");
 		int id = Integer.parseInt(request.getParameter("shouhinid"));
 		Sd_AdDAO dao = new Sd_AdDAO();
