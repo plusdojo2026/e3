@@ -77,7 +77,6 @@
   border-collapse: collapse;
   font-size: 15px;
   text-align: center;
-	table-layout: fixed;
 }
 .information th,
 .information td {
@@ -86,10 +85,25 @@
   border-bottom: 1.5px solid #C75000;
   vertical-align: middle;
   color: #7A2C00;
+	
+}
+
+.information th .cellText,
+.information td .cellText {
+	display: inline-block;
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
+	max-width: 70%;
+	vertical-align: bottom;
 }
+
+.tanni {
+	display: inline-block;
+	white-space: nowrap;
+	vertical-align: bottom;
+}
+
 .information th {
   color: #C75000;
   font-weight: 500;
@@ -98,20 +112,14 @@
 	text-align: left;
 }
 
-.nickname{
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
 .information td {
   width: 28%;
-	text-align: left;
 }
 .information tr:last-child th,
 .information tr:last-child td {
   border-bottom: none;
 }
-.information span {
+.tanni {
   color: #888;
   font-size: 13px;
   margin-left: 2px;
@@ -201,4 +209,3 @@
   .deleteButton {
     margin-left: 0;
   }
-}
