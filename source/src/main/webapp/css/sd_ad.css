@@ -20,6 +20,15 @@
 	margin: 0 0 4px;
 }
 
+
+.shouhinimg p {
+			   max-width: 200px;
+			   overflow: hidden;
+			   text-overflow: ellipsis;
+			   white-space: nowrap;
+			   margin: 0 0 4px;
+}
+
 /* 吹き出し */
 .speechBubble {
 	position: relative;
@@ -112,6 +121,7 @@
 	border-bottom: 1.5px solid #C75000;
 	vertical-align: middle;
 	color: #7A2C00;
+
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -151,6 +161,7 @@
 	text-align: left;
 }
 
+
 .nickname {
 	overflow: hidden;
 	text-overflow: ellipsis;
@@ -183,6 +194,7 @@
 	font-size: 13px;
 	margin-left: 2px;
 }
+
 
 /* カード型背景 */
 .card {
