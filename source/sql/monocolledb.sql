@@ -67,8 +67,7 @@ INSERT INTO diagnosis (shouhin, money, use_year, day_price, userid)
 INSERT INTO diagnosis (shouhin, money, use_year, day_price, userid) 
 	VALUES('エアサーキュレーター', 7480, 5, 7480/(5*365), 2);
 
-/* 削除 */
-DELETE FROM diagnosis WHERE id = 4;
+
 
 
 
@@ -153,7 +152,7 @@ SELECT id, LENGTH(img) FROM shouhin WHERE id = 1;
 /* 画像登録後はこのSELECT文を実行すればOK */
 SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, userid, frame FROM shouhin;
 
-DELETE FROM shouhin WHERE id = 6;
+
 
 /* 履歴詳細DB */
 create table rireki (
@@ -229,4 +228,3 @@ SELECT id, LENGTH(img) FROM rireki WHERE id = 1;
 /* 画像登録後はこのSELECT文を実行すればOK */
 SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, userid, frame FROM rireki;
 
-DELETE FROM rireki WHERE id = 6;
