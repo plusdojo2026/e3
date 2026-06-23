@@ -42,19 +42,10 @@
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
-
+<div class="imageArea">
 				<P>
 					<span class="cellText">${shouhininfo.nickname}</span>
 				</P>
-				<c:choose>
-					<c:when test="${not empty shouhininfo.base64Image}">
-						<img src="data:image/jpeg;base64,${shouhininfo.base64Image}"
-							alt="商品画像">
-					</c:when>
-					<c:otherwise>
-						<img src="images/chara_logo.png">
-					</c:otherwise>
-				</c:choose>
 			</div>
 
 
@@ -72,18 +63,18 @@
 				<img class="frameImage" id="previewFrame"
 					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=">
 
-
-
+</div>
+			</div>
+			<div class="speechBubble">
+				<p>
+					僕の一日あたりの価格は${shouhininfo.day_priceInt}円だよ！<br>
+					${shouhininfo.progress}日使ったよ！<br> あと${shouhininfo.goal}日で目標達成♪
+				</p>
 
 			</div>
 		</div>
 
-		<div class="speechBubble">
-			<p>
-				僕の一日あたりの価格は${shouhininfo.day_priceInt}円だよ！<br>
-				${shouhininfo.progress}日使ったよ！<br> あと${shouhininfo.goal}日で目標達成♪
-			</p>
-		</div>
+
 		<div class="card">
 			<!-- 商品情報 -->
 			<table class="information">

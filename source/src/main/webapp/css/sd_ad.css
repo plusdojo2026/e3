@@ -1,6 +1,18 @@
 @charset "UTF-8";
 
 /* albumDetail */
+.imageArea{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+}
+
+.nickname{
+    margin-bottom:10px;
+    font-weight:bold;
+    color:#7A2C00;
+}
+
 .shouhinimg {
 	color: #7A2C00;
 	display: flex;
@@ -111,8 +123,6 @@
 	margin: 0 auto;
 	border-collapse: collapse;
 	font-size: 15px;
-	text-align: center;
-	table-layout: fixed;
 }
 
 .information th, .information td {
@@ -121,7 +131,6 @@
 	border-bottom: 1.5px solid #C75000;
 	vertical-align: middle;
 	color: #7A2C00;
-
 	overflow: hidden;
 	text-overflow: ellipsis;
 	white-space: nowrap;
@@ -130,7 +139,6 @@
 .information th .cellText, .information td .cellText {
 	padding: 10px 12px 10px 0;
 	border: none;
-	border-bottom: 1.5px solid #C75000;
 	vertical-align: middle;
 	color: #7A2C00;
 	overflow: hidden;
@@ -161,18 +169,6 @@
 	text-align: left;
 }
 
-
-.nickname {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
-
-.nickname {
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-}
 
 .nickname {
 	overflow: hidden;
@@ -278,7 +274,6 @@
 	.deleteButton {
 		margin-left: 0;
 	}
-}
 
 .speechBubble::before, .speechBubble::after {
 	display: none;
@@ -317,4 +312,5 @@
 
 .deleteButton {
 	margin-left: 0;
+}
 }
