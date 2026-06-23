@@ -145,11 +145,6 @@ INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_p
 	
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_microwave.png"') WHERE id = 2;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\energy_lemon_denchi_battery.png"') WHERE id = 3;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\jiko_kaji_stove_syukka.png"') WHERE id = 4;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_himono_kansouki.png') WHERE id = 5;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_senpuki.png') WHERE id = 6;
 
 /* 画像の長さが返ってくれば登録できている(SELECT * FROM shouhin;をすると、とんでもないことになるのでNG！) */
 SELECT id, LENGTH(img) FROM shouhin WHERE id = 1;
@@ -226,11 +221,6 @@ INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_pr
 
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
-UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_microwave.png"') WHERE id = 2;
-UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\energy_lemon_denchi_battery.png"') WHERE id = 3;
-UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\jiko_kaji_stove_syukka.png"') WHERE id = 4;
-UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_himono_kansouki.png') WHERE id = 5;
-UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_senpuki.png') WHERE id = 6;
 
 /* 画像の長さが返ってくれば登録できている(SELECT * FROM shouhin;をすると、とんでもないことになるのでNG！) */
 SELECT id, LENGTH(img) FROM rireki WHERE id = 1;
