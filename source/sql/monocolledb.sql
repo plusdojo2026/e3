@@ -2,7 +2,7 @@
 
 /*******************
  *
- * DROP DATABASE e3 IF EXISTS;
+ * DROP DATABASE IF EXISTS e3;
  * CREATE USER 'e3'@'localhost' IDENTIFIED BY 'password';
  * GRANT ALL PRIVILEGES ON *.* TO 'e3'@'localhost';
  *
