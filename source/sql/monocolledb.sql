@@ -188,7 +188,7 @@ INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_pr
 /* userid最後尾に追加バージョン */
 /* ジャンル・商品名・購入日・価格・保証期間(年)・メーカー・耐用年数・一日あたり価格・経過日数・(目標達成〇✖)・愛称 */
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	 VALUES ('家電', '扇風機', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 10000/(5*365), 200, '風ちゃん', NULL, 1);
+	 VALUES ('家電', '扇風機', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 10000/(5*365), 200, '風ちゃん', NULL, 1, 1);
 
 
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
