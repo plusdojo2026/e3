@@ -72,7 +72,8 @@ day_price double ,
 progress int ,
 goal int ,
 nickname varchar (300),
-img LONGBLOB 
+img LONGBLOB ,
+frame int
 );
 
 DESCRIBE shouhin;
@@ -153,7 +154,8 @@ day_price double ,
 progress int ,
 goal int ,
 nickname varchar (300),
-img LONGBLOB 
+img LONGBLOB ,
+frame int
 );
 
 DESCRIBE rireki;
