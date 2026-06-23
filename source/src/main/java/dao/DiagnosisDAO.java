@@ -42,23 +42,23 @@ public class DiagnosisDAO {
 				day_price = 0;
 			}
 
-			// サーブレットへ ?に項目が入る DB順
-			pStmt.setString(1, shouhin);
-			pStmt.setInt(2, money);
-			pStmt.setInt(3, use_year);
-			pStmt.setString(4, loginuser.getUserid());
+			
 
 			// 一日当たり価格の計算
 			day_price = money;
 
 			/* 0除算対策 */
-			if (!(use_year <= 0)) {
+			if (use_year > 0) {
 				/* (キャスト) Math.round四捨五入でint型に */
 				day_price = (int) Math.round(money / (use_year * 365));
 			} else if (!(use_year == 0)) {
 				day_price = 0;
 			}
 
+			// サーブレットへ ?に項目が入る DB順
+			pStmt.setString(1, shouhin);
+			pStmt.setInt(2, money);
+			pStmt.setInt(3, use_year);
 			pStmt.setInt(4, day_price);
 			pStmt.setString(5, loginuser.getUserid());
 
