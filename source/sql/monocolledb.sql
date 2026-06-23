@@ -145,6 +145,13 @@ INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_p
 	
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_himono_kansouki.png') WHERE id = 2;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_microwave.png') WHERE id = 3;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\energy_lemon_denchi_battery.png') WHERE id = 4;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\jiko_kaji_stove_syukka.png') WHERE id = 5;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_senpuki.png') WHERE id = 6;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_soujiki_stick.png') WHERE id = 7;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kinoko1.jpg') WHERE id = 8;
 
 /* 画像の長さが返ってくれば登録できている(SELECT * FROM shouhin;をすると、とんでもないことになるのでNG！) */
 SELECT id, LENGTH(img) FROM shouhin WHERE id = 1;
@@ -216,15 +223,19 @@ INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_pr
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
 	VALUES ('ぬいぐるみ', 'モフモフベア', '2017-12-10',2400, 0 , '縫い工房', 12, 2400/(12*365), 1080 , 1080 ,'もふぃ', NULL, 1, 5);
 
-
-
-
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_himono_kansouki.png') WHERE id = 2;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_microwave.png') WHERE id = 3;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\energy_lemon_denchi_battery.png') WHERE id = 4;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\jiko_kaji_stove_syukka.png') WHERE id = 5;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_senpuki.png') WHERE id = 6;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_soujiki_stick.png') WHERE id = 7;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kinoko1.jpg') WHERE id = 8;
 
 /* 画像の長さが返ってくれば登録できている(SELECT * FROM shouhin;をすると、とんでもないことになるのでNG！) */
 SELECT id, LENGTH(img) FROM rireki WHERE id = 1;
 
 /* 画像登録後はこのSELECT文を実行すればOK */
-SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, userid, frame FROM rireki;
+SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, LENGTH(img), userid, frame FROM rireki;
 
