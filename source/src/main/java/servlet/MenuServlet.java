@@ -49,12 +49,21 @@ public class MenuServlet extends HttpServlet {
 		Men_RanDAO dao = new Men_RanDAO();
 
 		List<CommonDTO> list = dao.wpNotification(loginuser);
-
+		CommonDTO img = null;
+		List<CommonDTO> imglist = dao.getRandomImg(loginuser);
+		List<CommonDTO> nickname_random = dao.getRandomNickname(loginuser);
 		int total = dao.getTotalDayPrice(loginuser);
 
+		//imgを一件だけにする
+		if(!imglist.isEmpty()) {
+			img = imglist.get(0);
+		}
+		
 		// JSPに渡す
-		request.setAttribute("total", total);
 		request.setAttribute("nickname", list);
+		request.setAttribute("nickname_random", nickname_random);
+		request.setAttribute("img", img);
+		request.setAttribute("total", total);
 
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");

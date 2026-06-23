@@ -54,30 +54,61 @@
 
 		<!-- キャラ＋吹き出し -->
 		<div class="speech">
-			<img src="images/chara_logo.png" class="logo" width="10%" alt="キャラ画像">
 
+			<c:choose>
+				<c:when test="${not empty img}">
+					<img src="data:image/jpeg;base64,${img.base64Image}" class="logo"
+						alt="キャラ画像" />
+				</c:when>
+				<c:otherwise>
+					<img src="images/noimage.png" class="logo" alt="キャラ画像" />
+				</c:otherwise>
+			</c:choose>
+			
 			<!-- 通知を３件ずつ分けて表示 -->
+			<!-- <div class="tail"></div> -->
 			<div class="speechBubble">
 				<div class="speechTrack" id="speechTrack">
 
-
-					<c:if test="${empty nickname}">
-						<div class="notspeechText">通知はありません。</div>
-					</c:if>
-
-					<c:if test="${not empty nickname}">
-						<c:forEach var="i" begin="0" end="${nickname.size() - 1}" step="3">
-							<div class="speechPage">
-								<c:forEach var="j" begin="0" end="2">
-									<c:if test="${i + j < nickname.size()}">
-										<c:set var="item" value="${nickname[i + j]}" />
-										<div class="speechText">${item.nickname}の保証期間が近づいているよ！</div>
-									</c:if>
-								</c:forEach>
-							</div>
-						</c:forEach>
-					</c:if>
-
+					<c:choose>
+						<c:when test="${not empty nickname}">
+							<c:forEach var="i" begin="0" end="${nickname.size() - 1}"
+								step="3">
+								<div class="speechPage">
+									<c:forEach var="j" begin="0" end="2">
+										<c:if test="${i + j < nickname.size()}">
+											<c:set var="item" value="${nickname[i + j]}" />
+											<div class="speechText">
+												<a
+													href="${pageContext.request.contextPath}/ShouhinDetailServlet?shouhinid=${item.id}">
+													${item.nickname}</a>の保証期間が近づいているよ！
+											</div>
+										</c:if>
+									</c:forEach>
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:when test="${empty nickname}">
+							<c:forEach var="k" begin="0" end="${nickname_random.size() - 1}"
+								step="3">
+								<div class="speechPage">
+									<c:forEach var="l" begin="0" end="2">
+										<c:if test="${k + l < nickname_random.size()}">
+											<c:set var="item" value="${nickname_random[k + l]}" />
+											<div class="speechText">
+												<a
+													href="${pageContext.request.contextPath}/ShouhinDetailServlet?shouhinid=${item.id}">
+													${item.nickname}</a> がこんにちはと言っているよ！
+											</div>
+										</c:if>
+									</c:forEach>
+								</div>
+							</c:forEach>
+						</c:when>
+						<c:otherwise>
+							<div class="notspeechText">通知はありません。</div>
+						</c:otherwise>
+					</c:choose>
 				</div>
 			</div>
 
@@ -91,7 +122,7 @@
 			<img src="images/tv.png" alt="テレビ">
 
 			<p class="tv_text">
-				現在の固定費は<br>${total}円です！
+				<b>現在の固定費は<br>${total}円です！</b>
 			</p>
 		</div>
 

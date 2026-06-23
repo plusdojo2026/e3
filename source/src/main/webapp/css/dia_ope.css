@@ -25,10 +25,11 @@
 }
 	
 /* 想定年数欄小さめに */
-.diagnosis_form input[type = "number"]{ 
+.diagnosis_form input[name = "use_year"]{ 
 	padding: 15px;
 	width: 60px;
 }
+
 
 	/* 入力項目名の位置 */
 .diagnosis{
@@ -70,6 +71,7 @@
   background: #ffffff;
   border-radius: 16px;
   padding: 20px 100px;
+  
 }
 
 /* 中央に配置 */
@@ -85,6 +87,13 @@
 	margin: 0 auto 20px auto;*/
 	text-align: center;
 }
+/* 商品名の文字省略 */ 
+.shouhin{
+	max-width: 230px;
+	white-space: nowrap; /* 折り返ししない */
+	overflow: hidden; /* 越えた部分を隠す */
+	text-overflow: ellipsis;  /* 省略部分を「...」で表示する */
+}
 
 	/* 区切り線 */
 .diagnosis_result td{
@@ -92,9 +101,6 @@
 	padding: 13px 13px 13px 13px;
 	margin-top: 18px; /* 行間 */
 	height: 20px; /* 行の高さ */
-	
-	
-	
 }
 .diagnosis_result tr{
 	display: flex;
@@ -154,7 +160,7 @@
 
 
 /* モバイル対応 */
-@media(max-width: 855px){ /* SurfacePro7(912px)まで入れる？ */
+@media(max-width: 912px){ /* SurfacePro7(912px)まで入れた */
 	/* 診断ボタン */
 	.diagnosis_form input[type = "submit"]{
 		margin: 35px 0 0 0;
@@ -177,7 +183,10 @@
 		flex-direction: column;
 		gap: 30px;
 		/*text-align: center; ラベルの文字のみ動く*/
+		max-width: 380px;
+		margin: 0 auto;
 	}
+	
 		
 	
 	/* 診断結果リスト縦並び */
@@ -193,7 +202,12 @@
 	}
 	.diagnosis_result td{
 		height: 40px;
-}
+	}
+	/* 文字列隠しのmax-widthを解除 */
+	.shouhin{
+		max-width: 100%;
+	}
+
 	
 	/* マイナスボタン */
 	.diagnosis_result td.dia_button {

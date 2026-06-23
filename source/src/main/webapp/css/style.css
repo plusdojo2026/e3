@@ -1,6 +1,27 @@
 @charset "UTF-8";
 
 /* 前頁共通部分*/
+
+/*フッターの浮き防止*/
+html, body {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+}
+
+main {
+	flex: 1;
+}
+
+footer {
+	margin-top: auto;
+}
+
 /*背景色をクリーム色に*/
 body {
 	background-color: #FFF3E0;
@@ -193,4 +214,5 @@ button:hover {
 	.side-menu.open {
 		transform: translateX(0);
 	}
+	
 }

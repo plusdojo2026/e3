@@ -3,9 +3,10 @@
 /* 前頁共通部分*/
 /*背景色をクリーム色に*/
 html, body {
-        margin: 0;
-        padding: 0;
+	margin: 0;
+	padding: 0;
 }
+
 body {
 	background-color: #FFF3E0;
 }
@@ -16,13 +17,14 @@ h1.title {
 	padding: 0;
 	line-height: 1;
 }
+
 body {
 	margin: 0;
 	font-family: sans-serif;
 }
 
 h2 {
-	text-align:center;
+	text-align: center;
 }
 
 .container {
@@ -30,29 +32,30 @@ h2 {
 	flex-wrap: nowrap;
 	justify-content: center;
 	text-align: center;
-	overflow:hidden;
+	overflow: hidden;
 }
 
-.center {  /* フォームのコンテンツ */
+.center { /* フォームのコンテンツ */
 	flex: 0 1 auto;
 	min-width: 440px;
 	margin: 0 20px;
-}	
+}
+
 .pop {
 	opacity: 0;
 	transform: scale(0.9);
-	animation: pop 0.5s ease forwards;	
-}
-@keyframes pop {
-	to {
-		opacity: 1;
-		transform: scale(1);
-	}
+	animation: pop 0.5s ease forwards;
 }
 
-form{ /* フォームのコンテンツ内部 */
+@
+keyframes pop {to { opacity:1;
+	transform: scale(1);
+}
+
+}
+form { /* フォームのコンテンツ内部 */
 	background: #fef263;
-	padding: 40px 30px;
+	padding: 40px 20px;
 	margin: 10px auto;
 	border: solid 6px orange;
 	border-radius: 30px;
@@ -61,14 +64,16 @@ form{ /* フォームのコンテンツ内部 */
 	max-width: 350px;
 	box-shadow: 0 0 3px 4px rgba(0, 0, 0, 0.2);
 }
+
 form #text {
 	margin: 0 20px;
 	text-align: left;
 }
 
-input{ 
+input {
 	margin: 10px 0;
 }
+
 input[type="text"], input[type="password"] { /* 記入欄 */
 	width: 100%;
 	max-width: 250px;
@@ -78,6 +83,7 @@ input[type="text"], input[type="password"] { /* 記入欄 */
 	border: solid 2px　 #7A2C00;
 	border-radius: 5px;
 }
+
 .login {
 	font-size: 15px;
 	color: #FFF3E0;
@@ -90,9 +96,11 @@ input[type="text"], input[type="password"] { /* 記入欄 */
 	transition: 0.2s;
 	box-shadow: 0px 5px #FF4500;
 }
+
 .login:hover {
 	background-color: #FF8C00;
 }
+
 .login:active {
 	transform: translateY(3px);
 	background-color: #dd7900;
@@ -101,8 +109,8 @@ input[type="text"], input[type="password"] { /* 記入欄 */
 h2 {
 	color: #7A2C00;
 	font-size: 35px;
-	
 }
+
 .Toregist {
 	flex-wrap: nowrap;
 	color: #7A2C00;
@@ -114,102 +122,101 @@ h2 {
 	background: #FAFAD2;
 	transition: 0.2s;
 }
+
 a:hover {
 	background: #FFE4B5;
 }
+
 .left, .right {
 	height: 360px;
-	flex: 0 0 30%;
-	max-width: 20%;
-    padding: 60px 20px 0 0;
-    margin: 20px;
+	max-width: 30%;
+	padding: 90px 0 0 0;
+	margin: 20px;
 }
 
 .slide-left {
-  opacity: 0;
-  transform: translateX(-40px);
-  animation: slideLeft 0.8s ease forwards;
+	opacity: 0;
+	transform: translateX(-40px);
+	animation: slideLeft 0.8s ease forwards;
 }
 
-@keyframes slideLeft {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+@
+keyframes slideLeft {to { opacity:1;
+	transform: translateX(0);
 }
 
+}
 .slide-right {
-  opacity: 0;
-  transform: translateX(40px);
-  animation: slideRight 0.8s ease forwards;
+	opacity: 0;
+	transform: translateX(40px);
+	animation: slideRight 0.8s ease forwards;
 }
 
-@keyframes slideRight {
-  to {
-    opacity: 1;
-    transform: translateX(0);
-  }
+@
+keyframes slideRight {to { opacity:1;
+	transform: translateX(0);
+}
+
+}
+.one {
+	color: #7A2C00;
+	margin: 20px 0;
 }
 
 /* モーダル */
 .modal {
-    display: flex;
-    position: fixed;
-    z-index: 9999;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-
-    background-color: rgba(0,0,0,0.5); /* 背景暗く */
-    justify-content: center;
-    align-items: center;
+	display: flex;
+	position: fixed;
+	z-index: 9999;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.5); /* 背景暗く */
+	justify-content: center;
+	align-items: center;
 }
 
 /* モーダル中身 */
 .modal-content {
-    background: #fff;
-    padding: 20px 30px;
-    border-radius: 10px;
-    text-align: center;
-    
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+	background: #fff;
+	padding: 20px 30px;
+	border-radius: 10px;
+	text-align: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
 
 /* ボタン */
 .modal-content button {
-    margin-top: 15px;
-    padding: 8px 16px;
-    background: orange;
-    border: none;
-    border-radius: 6px;
-    color: white;
-    cursor: pointer;
+	margin-top: 15px;
+	padding: 8px 16px;
+	background: orange;
+	border: none;
+	border-radius: 6px;
+	color: white;
+	cursor: pointer;
 }
 
 .modal-content button:hover {
-    background: #ff8c00;
+	background: #ff8c00;
 }
 
 /* レスポンシブデザイン */
-@media (max-width: 480px){
+@media ( max-width : 480px) {
 	img {
 		display: none;
 	}
 	main h2 {
 		font-size: 30px;
 	}
-		
 	.center {
 		margin: 0;
-        padding: 0;
+		padding: 0;
 	}
-	
-	.center form{
+	.center form {
 		padding: 40px 20px;
 		margin: 10px 45px;
 	}
-	
 	.center form input[type="text"], .center form input[type="password"] {
 		text-align: center;
 		max-width: 80%;
@@ -217,34 +224,29 @@ a:hover {
 		margin: 10px 20px;
 	}
 	.login {
-		margin:30px 70px;
+		margin: 30px 70px;
 	}
-	
 	.Toregist {
 		margin: 0 40px;
 	}
 }
 
-
-@media(min-width: 481px)and(max-width: 768px){
+@media ( min-width : 481px) and (max-width: 767px) {
 	img {
 		display: none;
 	}
 	main h2 {
 		font-size: 30px;
 	}
-		
 	.center {
 		margin: 0;
-        padding: 0;
+		padding: 0;
 	}
-	
-	.center form{
+	.center form {
 		max-width: 100%;
 		padding: 60px 30px;
 		margin: 10px 0;
 	}
-	
 	.center form input[type="text"], .center form input[type="password"] {
 		text-align: center;
 		max-width: 80%;
@@ -252,17 +254,33 @@ a:hover {
 		margin: 10px 20px;
 	}
 	.login {
-		margin:30px 70px;
+		margin: 30px 70px;
 	}
-	
 	.Toregist {
 		margin: 0px 40px;
 	}
 }
 
-@media(min-width: 1024spx){
+@media ( min-width : 768px) and (max-width: 1023px) {
 	img {
+		display: none;
+	}
+	.center form {
+		padding: 40px 65px;
+		margin: 40px auto;
+		max-width: 100%;
+	}
+}
+
+@media ( min-width : 1024px) and (max-width: 1025px) { /* iPad Pro のみ */
+	.center {
+		margin: auto 0;
+	}
+	.left, .right {
+		margin: auto 0;
 		display: block;
+		height: 30%;
+		max-width: 25%;
 	}
 }
 
@@ -270,20 +288,21 @@ a:hover {
 .contain { /* コンテンツ全体 */
 	display: flex; /* 横並び */
 	flex: nowrap;
-	justify-content: center;
 	overflow: hidden;
+	margin: 0 20px;
+	padding: 0;
 }
 
- /* 左コンテンツ */	
+/* 左コンテンツ */
 .notice {
 	font-size: 20px;
 	color: #7A2C00;
 	padding: 0 40px 0 0px;
-	margin: 0 120px 0 80px;
+	margin: 0 10px 0 80px;
 }
 
- /* 「はじめまして！」 */
-.first{
+/* 「はじめまして！」 */
+.first {
 	display: flex;
 	padding: 0 0 20px 0;
 }
@@ -294,30 +313,30 @@ p {
 	margin: 15px 0;
 }
 
- /* 左画像 */
-.tip{
+/* 左画像 */
+.tip {
 	padding: 0 50px;
 }
 
 /*　右コンテンツ */
 .regist {
-	text-align: left;
+	width: 100%;
+	text-align: center;
 	flex: 1;
-	margin: 0 80px 0 0 ;
+	margin: 0 20px;
 	padding: 10px 20px;
 }
 
- /* 「会員登録」 */
+/* 「会員登録」 */
 .second {
 	display: flex;
 	padding: 0 0 20px;
 }
 
- /* 右コンテンツ内部 */
-.register{
-	text-align:center;
+/* 右コンテンツ内部 */
+.register {
 	flex: 0 1 auto;
-	min-width: 400px;
+	min-width: 480px;
 	margin: 0 20px;
 	background: #fef263;
 	padding: 30px 60px;
@@ -326,28 +345,26 @@ p {
 }
 
 .fadein {
-  opacity: 0;
-  animation: fadein 1s ease forwards;
+	opacity: 0;
+	animation: fadein 1s ease forwards;
 }
 
-@keyframes fadein {
-  to {
-    opacity: 1;
-  }
+@keyframes fadein {to { opacity:1;
+	transform: translateX(0);
 }
 
-
+}
 .register input[name="userId"] {
 	text-align: center;
 	font-size: 15px;
 }
 
 .register p#text {
-	margin: 15px 10px 0 ;
+	margin: 15px 10px 0;
 }
 
 /* パスワード設定条件説明 */
-.rule{
+.rule {
 	text-align: left;
 	font-size: 15px;
 	color: #7A2C00;
@@ -355,7 +372,7 @@ p {
 }
 
 /* 登録ボタン */
-.reg{
+.reg {
 	font-size: 16px;
 	color: #FFF3E0;
 	padding: 8px 14px 10px;
@@ -371,6 +388,7 @@ p {
 .reg:hover {
 	background-color: #FF8C00;
 }
+
 .reg:active {
 	transform: translateY(3px);
 	background-color: #dd7900;
@@ -378,10 +396,9 @@ p {
 
 /* ログイン画面へ */
 .Tologin {
-	justify-content: center;
+	text-align: center;
 	text-decoration: none;
 	padding: 0 10px;
-	margin: 0 140px;
 	border: solid 1px #7A2C00;
 	border-radius: 5px;
 	background: #FAFAD2;
@@ -389,35 +406,31 @@ p {
 }
 
 /* レスポンシブデザイン */
-@media(max-width: 480px){
-	
+@media ( max-width : 480px) {
 	.contain {
 		display: block;
 		margin: 20px 0 0 0;
 	}
-	
 	.notice {
 		padding: 0;
 		margin: 0;
 	}
-	
-	.first{
+	.first {
 		font-size: 25px;
-		margin: 0 30px;
+		margin: 0 33px;
 	}
-	
-	p {
-		font-size: 15px;
-		margin: 0px 55px 20px;
+	.notice p {
+		font-size: 16px;
+		margin: 20px 45px;
 	}
-	
-	.second{
-		margin: 20px 15px 0 ;
+	.second {
+		margin: 20px 15px 0;
 		font-size: 30px;
 	}
-	
 	.regist {
-		width: 340px;
+		text-align: center;
+		margin: 0;
+		max-width: 80%;
 	}
 	.register {
 		min-width: auto;
@@ -425,28 +438,80 @@ p {
 		margin: 0 18px;
 		font-size: 13px;
 	}
-	
-	.register input[type="text"], input[type="password"] {
+	.register input[type="text"] {
 		max-width: 80%;
 		height: 25px;
 		margin: 10px 20px;
 	}
-	
 	.rule {
 		font-size: 12px;
 		margin: 20px 10px;
 	}
-	
-	.reg{
-		margin: 0 0 20px 0;
+	.reg {
+		margin: 0 auto 20px;
 	}
-	
 	.Tologin {
-		text-align: center;
-		margin: 0 95px;
+		margin: 0 0 0 35px;
 	}
 }
 
-@media(min-width: 481px)and(max-width: 768px){
+@media ( min-width : 481px)and(max-width: 767px) {
 }
 
+@media ( min-width : 768px) and (max-width: 1023px) {
+	.contain {
+		display: block;
+	}
+	.tip {
+		display: none;
+	}
+	p {
+		margin: 18px auto;
+	}
+	.second {
+		margin: 20px 60px;
+	}
+	.regist {
+		text-align: center;
+	}
+	.register {
+		max-width: 60%;
+		padding: 30px 45px;
+		margin: 25px auto;
+	}
+	.register input[type="text"] {
+		max-width: 80%;
+	}
+}
+
+@media ( min-width : 1024px) and (max-width: 1025px) { /* iPad Pro のみ */
+	.contain {
+		text-align: center;
+		padding: 0 0 20px;
+		margin: 0 auto;
+		width: 100%;
+	}
+	.notice {
+		padding: 0;
+		margin: 0 0 0 20px;
+	}
+	.first {
+		width: 100%;
+		padding: 0 auto;
+	}
+	p {
+		padding: 0;
+		margin: 10px 0;
+	}
+	.tip {
+		margin: 40px 0 0 0;
+	}
+	.regist {
+		margin: 0 auto;
+		padding: 0;
+		margin: 20px 60px;
+	}
+	.register {
+		
+	}
+}

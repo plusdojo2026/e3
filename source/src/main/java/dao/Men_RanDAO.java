@@ -30,12 +30,8 @@ public class Men_RanDAO {
 			// case、endはMySQLのif文みたいなもの、耐用年数が0だった場合価格をそのまま表示することでゼロ除算を回避
 			// ROUND()で四捨五入
 			// 改行は単なる視認性の確保
-			String updateSql = "UPDATE shouhin "
-				    		  + "SET day_price = CASE "
-				    		  + "WHEN life = 0 THEN NULL "
-				    		  + "ELSE ROUND(price / (life * 365)) "
-				    		  + "END "
-				    		  + "WHERE userid = ?";
+			String updateSql = "UPDATE shouhin " + "SET day_price = CASE " + "WHEN life = 0 THEN NULL "
+					+ "ELSE ROUND(price / (life * 365)) " + "END " + "WHERE userid = ?";
 			// uStmtは、pStmtとの被り回避
 			PreparedStatement uStmt = conn.prepareStatement(updateSql);
 			uStmt.setString(1, loginuser.getUserid());
@@ -93,7 +89,7 @@ public class Men_RanDAO {
 			conn = DriverManager.getConnection(URL, USER, PASS);
 
 			// 保証期間まで30日以内である愛称を検索する
-			String sql = "SELECT nickname " + "FROM shouhin " + "WHERE userid = ? " + "AND nickname IS NOT NULL "
+			String sql = "SELECT id, nickname " + "FROM shouhin " + "WHERE userid = ? " + "AND nickname IS NOT NULL "
 					+ "AND nickname <> '' " + "AND DATE_ADD(buy_date, INTERVAL wperiod YEAR) >= CURRENT_DATE "
 					+ "AND DATEDIFF( " + "    DATE_ADD(buy_date, INTERVAL wperiod YEAR), " + "    CURRENT_DATE "
 					+ ") <= 30 " + "ORDER BY id";
@@ -101,14 +97,13 @@ public class Men_RanDAO {
 			// SQL文をprepareStatement（インジェクション対策）で実行
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 			pStmt.setString(1, loginuser.getUserid());
-			System.out.println(sql);
-			System.out.println(loginuser.getUserid());
-			
+
 			// selectを実行、ResultSet型の変数rsに受け取る
 			ResultSet rs = pStmt.executeQuery();
 
 			while (rs.next()) {
 				CommonDTO dto = new CommonDTO();
+				dto.setId(rs.getInt("id"));
 				dto.setNickname(rs.getString("nickname"));
 				list.add(dto);
 			}
@@ -134,8 +129,106 @@ public class Men_RanDAO {
 		return list;
 	}
 
+	// ランダムにアイコンを表示する
+	public List<CommonDTO> getRandomImg(Loginuser loginuser) {
+		Connection conn = null;
+		List<CommonDTO> img = new ArrayList<>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// データベースへ接続する
+			conn = DriverManager.getConnection(URL, USER, PASS);
+
+			// shouhinDBから、ランダムに選ばれた画像を表示する
+			String sql = "SELECT img FROM shouhin WHERE userid = ? AND img IS NOT NULL AND nickname IS NOT NULL AND nickname <> '' ORDER BY RAND() LIMIT 1";
+
+			// SQL文をprepareStatement（インジェクション対策）で実行
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, loginuser.getUserid());
+
+			// selectを実行、ResultSet型の変数rsに受け取る
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				CommonDTO dto = new CommonDTO();
+				dto.setImg(rs.getBytes("img"));
+				img.add(dto);
+			}
+
+			// 後処理
+			rs.close();
+			pStmt.close();
+
+		} catch (Exception e) {
+			// 例外処理
+			e.printStackTrace();
+		} finally {
+			try {
+				// connectionがnullじゃない時だけclose()を試みる
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// 例外処理
+				e.printStackTrace();
+			}
+		}
+
+		return img;
+	}
+
+	// 保証期間メッセージがない場合に、ランダムな愛称でメッセージを表示する
+	public List<CommonDTO> getRandomNickname(Loginuser loginuser) {
+		Connection conn = null;
+		List<CommonDTO> nickname_random = new ArrayList<>();
+
+		try {
+			// JDBCドライバを読み込む
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			// データベースへ接続する
+			conn = DriverManager.getConnection(URL, USER, PASS);
+
+			// shouhinDBから、ランダムに選ばれた愛称を表示する
+			String sql = "SELECT id, nickname FROM shouhin WHERE userid = ? AND nickname IS NOT NULL AND nickname <> '' ORDER BY RAND() LIMIT 3";
+
+			// SQL文をprepareStatement（インジェクション対策）で実行
+			PreparedStatement pStmt = conn.prepareStatement(sql);
+			pStmt.setString(1, loginuser.getUserid());
+			System.out.println(sql);
+
+			// selectを実行、ResultSet型の変数rsに受け取る
+			ResultSet rs = pStmt.executeQuery();
+
+			while (rs.next()) {
+				CommonDTO dto = new CommonDTO();
+				dto.setId(rs.getInt("id"));
+				dto.setNickname(rs.getString("nickname"));
+				nickname_random.add(dto);
+			}
+
+			// 後処理
+			rs.close();
+			pStmt.close();
+
+		} catch (Exception e) {
+			// 例外処理
+			e.printStackTrace();
+		} finally {
+			try {
+				// connectionがnullじゃない時だけclose()を試みる
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+				// 例外処理
+				e.printStackTrace();
+			}
+		}
+
+		return nickname_random;
+	}
+
 	// ソート条件に応じたランキング情報の取得
-	public List<CommonDTO> getRanking(String sort,Loginuser loginuser) {
+	public List<CommonDTO> getRanking(String sort, Loginuser loginuser) {
 
 		// ランキング結果を格納するリスト
 		List<CommonDTO> rankingList = new ArrayList<>();
@@ -175,7 +268,7 @@ public class Men_RanDAO {
 
 				// ページ遷移後最初に表示する1日の固定費の昇順(高い順)
 
-				sql = "SELECT nickname, shouhin, day_price, progress FROM rireki WHERE userid = ? ORDER BY buy_date ASC LIMIT 10";
+				sql = "SELECT nickname, shouhin, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY buy_date ASC LIMIT 10";
 			}
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -197,6 +290,7 @@ public class Men_RanDAO {
 				dto.setProgress(rs.getInt("progress"));
 				dto.setDay_price(rs.getInt("day_price"));
 				dto.setShouhin(rs.getString("shouhin"));
+				dto.setImg(rs.getBytes("img"));
 
 				// CommonDTOにランキングリストを追加
 				rankingList.add(dto);

@@ -57,8 +57,10 @@ public class DiagnosisServlet extends HttpServlet {
 
 		// ---診断結果リストの一覧表示---
 		DiagnosisDAO dao = new DiagnosisDAO();
-		List<CommonDTO> diagnosisList = dao.findAll(); // 変数の宣言
+		
+		List<CommonDTO> diagnosisList = dao.findAll(loginuser); // 変数の宣言
 		// dao.findAll();
+		
 
 		// 診断結果をリクエストスコープに格納する
 		request.setAttribute("diagnosisList", diagnosisList);
@@ -75,6 +77,9 @@ public class DiagnosisServlet extends HttpServlet {
 	// doPost
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		HttpSession session = request.getSession();
+		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+		
 		// フォームから値を受け取る(getParameter) Integer.parseInt();でint型に直す
 		request.setCharacterEncoding("UTF-8");
 		// インスタンス生成 (データベース処理を行う専用のクラス)
@@ -85,10 +90,11 @@ public class DiagnosisServlet extends HttpServlet {
 			String shouhin = request.getParameter("shouhin");
 			int money = Integer.parseInt(request.getParameter("money"));
 			int use_year = Integer.parseInt(request.getParameter("use_year"));
+			//String userid = request.getParameter("userid");
 
 			// ---登録---
 			// DAOの呼び出し DBに登録
-			dao.register(shouhin, money, use_year);
+			dao.register(shouhin, money, use_year, loginuser);
 		} else {
 
 			// ---削除---

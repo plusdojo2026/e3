@@ -11,6 +11,11 @@
 	top: -50px;
 }
 
+.logo {
+	width: 200px;
+	height: 200px;
+}
+
 /* speechクラス全体 */
 .speech {
 	display: flex;
@@ -55,6 +60,27 @@
 	font-size: 20px;
 	color: #7A2C00;
 }
+
+.speechText a:link {
+	color: #7A2C00;
+	text-decoration: under-line;
+}
+
+.speechText a:visited {
+	color: #7A2C00;
+	text-decoration: under-line;
+}
+
+.speechText a:hover {
+	color: #ff823e;
+	text-decoration: under-line;
+}
+
+.speechText a:active {
+	color: #7A2C00;
+	text-decoration: none;
+}
+
 .notspeechText {
 	padding: 55px 0 0 20px;
 	height: 50px;
@@ -62,44 +88,54 @@
 	color: #7A2C00;
 }
 
-/* 吹き出しのしっぽ（外側） */
-.speechBubble::before {
-	content: "";
-	position: absolute;
-	left: -10px;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 0;
-	height: 0;
-	border-top: 8px solid transparent;
-	border-bottom: 8px solid transparent;
-	border-right: 10px solid #7A2C00;
-}
+/* 吹き出しのしっぽ
+.tail {
+    position: relative;
 
-.speechBubble::after {
-	content: "";
-	position: absolute;
-	left: -8px;
-	top: 50%;
-	transform: translateY(-50%);
-	width: 0;
-	height: 0;
-	border-top: 7px solid transparent;
-	border-bottom: 7px solid transparent;
-	border-right: 9px solid #fff;
+    width: 16px;
+    height: 16px;
+
+    margin-right: -6px;
+    background-color: #FFFFFF;
 }
+.tail::before {
+    content: "";
+    position: absolute;
+
+    width: 16px;
+    height: 2px;
+    background: #7A2C00;
+
+    top: 50%;
+    left: 0;
+
+    transform: translateY(-6px) rotate(-40deg);
+}
+.tail::after {
+    content: "";
+    position: absolute;
+
+    width: 16px;
+    height: 2px;
+    background: #7A2C00;
+
+    top: 50%;
+    left: 0;
+
+    transform: translateY(6px) rotate(40deg);
+}*/
 
 /* 「スライド」ボタン */
 .backbutton {
 	position: absolute;
 	right: 150px;
-	top: 30px;
+	top: 50px;
 }
 
 .nextbutton {
 	position: absolute;
 	right: 150px;
-	top: 90px;
+	top: 110px;
 }
 
 /* テレビ全体 */
@@ -134,8 +170,8 @@
 }
 
 /* ボタンは右寄せのまま */
-.sort_button {
-	width: 80px;
+.sort_buttonbutton {
+	width: 60px;
 	cursor: pointer;
 }
 
@@ -190,14 +226,17 @@
 	align-items: center;
 }
 
-.icon {
+.icon img {
 	width: 130px;
-	height: 130px;
+	height: auto;
 }
 
-.plete {
-	color: #7A2C00;
-	background: #ffbf00;
+.plate {
+	width: 100px;
+	text-align: center;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
 }
 
 .medal {
@@ -241,12 +280,21 @@
 	text-align: center;
 }
 
+table {
+	table-layout: fixed;
+	width: 100%;
+}
+
 .info th, .info td {
 	padding: 10px 12px;
 	border: none;
 	border-bottom: 1.5px solid #C75000;
 	vertical-align: middle;
 	color: #7A2C00;
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
 
 .info th {
@@ -274,10 +322,18 @@
 	max-width: 560px;
 	margin: 48px auto;
 	background: #ffffff;
-	border-radius: 16px;
 	padding: 1.5rem 3rem;
+	border: 2px solid #dcdcdc;
+	border-radius: 15px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
+.card {
+	width: 90%;
+	max-width: 560px;
+	padding: 1rem;
+	box-sizing: border-box;
+}
 /*モバイル対応 */
 @media screen and ( max-width : 600px) {
 	body {
@@ -304,7 +360,8 @@
 	}
 	.logo {
 		margin-left: 0;
-		width: 70px;
+		width: 80px;
+		height: 80px
 	}
 	.logo img {
 		width: 100%;
@@ -316,7 +373,7 @@
 	}
 	.speechText {
 		padding-left: 5px;
-		font-size: 15px;
+		font-size: 10px;
 	}
 	.backbutton {
 		width: 20%;
@@ -366,8 +423,23 @@
 		right: 0;
 	}
 	/* ランキング */
+	.backalbum {
+		transform: translate(10%, 70%);
+		margin-bottom: 70px;
+	}
+	.backalbum a {
+		text-decoration: none;
+		transition: color 0.3s;
+		color: #C75000;
+	}
+	.backalbum a:hover {
+		color: #7A2C00;
+	}
 	.card {
-		margin: 10px 0px;
+		width: 90%;
+		max-width: 560px;
+		padding: 1rem;
+		box-sizing: border-box;
 	}
 	.info {
 		font-size: 12px;
@@ -378,17 +450,19 @@
 }
 
 @media screen and ( max-width : 550px) {
-.wrapper {
+	.wrapper {
 		gap: 3px;
+		flex-wrap: wrap;
+		justify-content: center;
 	}
 	.stand {
 		width: 100px;
 		border-radius: 6px;
 		box-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
 	}
-	.icon {
+	.icon img {
 		width: 80px;
-		height: 80px;
+		height: auto;
 	}
 	.first  .stand {
 		height: 88px;
@@ -402,5 +476,22 @@
 	.medal {
 		width: 23px;
 		height: 23px;
+	}
+	.sort_button {
+		width: 50px;
+		cursor: pointer;
+	}
+	.plate {
+		width: 80px;
+		font-size: 12px;
+	}
+	.drop_down {
+		right: 0;
+		left: auto;
+		width: 180px;
+	}
+	html, body {
+		overflow-x: hidden;
+		width: 100%;
 	}
 }

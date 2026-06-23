@@ -33,7 +33,7 @@
 				<a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
 				<a href="${pageContext.request.contextPath}/AlbumListServlet">アルバム</a>
 				<a href="${pageContext.request.contextPath}/OperationServlet">機能説明</a>
-				<a href="${pageContext.request.contextPath}/LoginServlet">ログアウト</a>
+				<a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a>
 			</div>
 		</nav>
 	</header>
@@ -42,7 +42,7 @@
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
-				<P>${rirekiinfo.nickname}</P>
+				<P><span class="cellText">${rirekiinfo.nickname}</span></P>
 				<c:choose>
 					<c:when test="${not empty rirekiinfo.base64Image}">
 						<img src="data:image/jpeg;base64,${rirekiinfo.base64Image}"
@@ -65,29 +65,29 @@
 			<table class="information">
 				<tr>
 					<th>ジャンル</th>
-					<td colspan="3">${rirekiinfo.genre}</td>
+					<td colspan="3"><span class="cellText">${rirekiinfo.genre}</span></td>
 				</tr>
 				<tr>
 					<th>商品名</th>
-					<td>${rirekiinfo.shouhin}</td>
+					<td><span class="cellText">${rirekiinfo.shouhin}</span></td>
 					<th>メーカー</th>
-					<td>${rirekiinfo.maker}</td>
+					<td><span class="cellText">${rirekiinfo.maker}</span></td>
 				</tr>
 				<tr>
 					<th>購入日</th>
-					<td>${rirekiinfo.buy_date}</td>
+					<td><span class="cellText">${rirekiinfo.buy_date}</span></td>
 					<th>価格</th>
-					<td>${rirekiinfo.price}<span>円</span></td>
+					<td><span class="cellText">${rirekiinfo.price}</span><span class="tanni">円</span></td>
 				</tr>
 				<tr>
 					<th>保証期間</th>
-					<td>${rirekiinfo.wperiod}<span>年</span></td>
+					<td><span class="cellText">${rirekiinfo.wperiod}</span><span class="tanni">年</span></td>
 					<th>耐用年数</th>
-					<td>${rirekiinfo.life}<span>年</span></td>
+					<td><span class="cellText">${rirekiinfo.life}</span><span class="tanni">年</span></td>
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td>${rirekiinfo.day_priceInt}<span>円</span></td>
+					<td><span class="cellText">${rirekiinfo.day_priceInt}</span><span class="tanni">円</span></td>
 					<th>目標達成</th>
 					<td><c:choose>
 							<c:when test="${rirekiinfo.goal <= 0}">

@@ -40,7 +40,7 @@
             <a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
             <a href="${pageContext.request.contextPath}/AlbumListServlet">アルバム</a>
             <a href="${pageContext.request.contextPath}/OperationServlet">機能説明</a>
-            <a href="${pageContext.request.contextPath}/LoginServlet">ログアウト</a>
+            <a href="${pageContext.request.contextPath}/LogoutServlet">ログアウト</a>
         </div>
     </nav>
 </header>
@@ -48,6 +48,10 @@
 <main>
 
 <h2><b>▶ ランキング</b></h2>
+<div class="backalbum">
+			<a href="${pageContext.request.contextPath}/AlbumListServlet">◀
+				アルバムに戻る</a>
+		</div>
 
 <!-- 上位ランキング -->
 <div class="wrapper">
@@ -80,7 +84,18 @@
             </p>
 
             <!-- アイコン -->
-            <img src="images/chara_logo.png" class="icon">
+            <div class="icon">
+				<P>${rirekiinfo.nickname}</P>
+				<c:choose>
+					<c:when test="${not empty item.base64Image}">
+						<img src="data:image/jpeg;base64,${item.base64Image}"
+							alt="商品画像">
+					</c:when>
+					<c:otherwise>
+						<img src="images/chara_logo.png">
+					</c:otherwise>
+				</c:choose>
+			</div>
 
             <!-- stand -->
             <div class="stand">
@@ -117,6 +132,8 @@
 </div>
 
 <!-- 一覧テーブル -->
+<c:choose>
+    <c:when test="${not empty rankingList}">
 <div class="card">
 
 <table class="info">
@@ -147,6 +164,12 @@
 </table>
 
 </div>
+</c:when>
+
+    <c:otherwise>
+        <p class="no-data">ランキングデータがありません</p>
+    </c:otherwise>
+</c:choose>
 
 </main>
 

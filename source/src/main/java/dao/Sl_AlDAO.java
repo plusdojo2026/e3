@@ -61,7 +61,7 @@ public class Sl_AlDAO {
 				CommonDTO dto = new CommonDTO(rs.getInt("id"), rs.getString("shouhin"), rs.getDouble("day_price"),
 						rs.getString("genre"), rs.getString("buy_date"), rs.getInt("price"), rs.getInt("wperiod"),
 						rs.getString("maker"), rs.getInt("life"), rs.getInt("progress"), rs.getInt("goal"),
-						rs.getString("nickname"), rs.getBytes("img"));
+						rs.getString("nickname"), rs.getBytes("img"), rs.getInt("frame"));
 				list.add(dto); // listに１行ずつ格納する
 			}
 

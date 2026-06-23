@@ -8,10 +8,18 @@
 	align-items: center;
 }
 
-.shouhinimg img {
+/* .shouhinimg img {
 	width: 300px;
 	height: 300px;
+} */
+.shouhinimg p {
+	max-width: 200px;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	margin: 0 0 4px;
 }
+
 /* 吹き出し */
 .speechBubble {
 	position: relative;
@@ -30,117 +38,235 @@
 }
 
 .speechBubble::before {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  border-style: solid;
-  border-width: 16px 16px 0 0;
-  border-color: transparent #7A2C00 transparent transparent;
-  translate: -100% -50%;
-  transform: skew(0, -10deg);
-  transform-origin: right;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	border-style: solid;
+	border-width: 16px 16px 0 0;
+	border-color: transparent #7A2C00 transparent transparent;
+	translate: -100% -50%;
+	transform: skew(0, -10deg);
+	transform-origin: right;
 }
+
 .speechBubble::after {
-  content: "";
-  position: absolute;
-  top: 50%;
-  left: 0;
-  border-style: solid;
-  border-width: 11.2px 11.2px 0 0;
-  border-color: transparent #ffffff transparent transparent;
-  translate: -100% calc(-50% + 0.4px);
-  transform: skew(0, -10deg);
-  transform-origin: right;
+	content: "";
+	position: absolute;
+	top: 50%;
+	left: 0;
+	border-style: solid;
+	border-width: 11.2px 11.2px 0 0;
+	border-color: transparent #ffffff transparent transparent;
+	translate: -100% calc(-50% + 0.4px);
+	transform: skew(0, -10deg);
+	transform-origin: right;
 }
 
 .iconSpeech {
-  margin-top:100px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+	margin-top: 100px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }
 
+/* フレーム調整 */
+.frameWrap {
+	position: relative;
+	width: 300px;
+	height: 300px;
+}
+
+.itemImage {
+	position: absolute;
+	top: 87px;
+	left: 40px;
+	width: 220px;
+	height: 200px;
+	object-fit: cover;
+	z-index: 1;
+}
+
+.frameImage {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 300px;
+	height: 300px;
+	z-index: 2;
+}
 /* 商品詳細テーブル */
 .information {
-  width: 100%;
-  max-width: 560px;
-  margin: 0 auto;
-  border-collapse: collapse;
-  font-size: 15px;
-  text-align: center;
+	width: 100%;
+	max-width: 560px;
+	margin: 0 auto;
+	border-collapse: collapse;
+	font-size: 15px;
+	text-align: center;
+	table-layout: fixed;
 }
-.information th,
-.information td {
-  padding: 10px 12px;
-  border: none;
-  border-bottom: 1.5px solid #C75000;
-  vertical-align: middle;
-  color: #7A2C00;
+
+.information th, .information td {
+	padding: 10px 12px 10px 0;
+	border: none;
+	border-bottom: 1.5px solid #C75000;
+	vertical-align: middle;
+	color: #7A2C00;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
 }
+
+.information th .cellText, .information td .cellText {
+	padding: 10px 12px 10px 0;
+	border: none;
+	border-bottom: 1.5px solid #C75000;
+	vertical-align: middle;
+	color: #7A2C00;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.information th .cellText, .information td .cellText {
+	display: inline-block;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+	max-width: 70%;
+	vertical-align: bottom;
+}
+
+.tanni {
+	display: inline-block;
+	white-space: nowrap;
+	vertical-align: bottom;
+}
+
 .information th {
-  color: #C75000;
-  font-weight: 500;
-  font-size: 13px;
-  width: 22%;
+	color: #C75000;
+	font-weight: 500;
+	font-size: 13px;
+	width: 22%;
+	text-align: left;
 }
+
+.nickname {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.nickname {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+.nickname {
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
 .information td {
-  width: 28%;
+	width: 28%;
+	text-align: left;
 }
-.information tr:last-child th,
-.information tr:last-child td {
-  border-bottom: none;
+
+.information tr:last-child th, .information tr:last-child td {
+	border-bottom: none;
 }
-.information span {
-  color: #888;
-  font-size: 13px;
-  margin-left: 2px;
+
+.tanni {
+	color: #888;
+	font-size: 13px;
+	margin-left: 2px;
 }
 
 /* カード型背景 */
 .card {
-  max-width: 560px;
-  margin: 48px auto;
-  background: #ffffff;
-  padding: 1.5rem 3rem;
-  border: 2px solid #dcdcdc;
-  border-radius: 15px;
-  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	max-width: 560px;
+	margin: 48px auto;
+	background: #ffffff;
+	padding: 1.5rem 3rem;
+	border: 2px solid #dcdcdc;
+	border-radius: 15px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 /* ボタン位置設定 */
 .buttons {
-  text-align: center;
-  margin-top: 50px;
+	text-align: center;
+	margin-top: 50px;
 }
+
 .deleteButton {
-  margin-left: 64px;
+	margin-left: 64px;
 }
+
 .backlist {
-  text-align: center;
-  margin-top: 100px;
+	text-align: center;
+	margin-top: 100px;
 }
+
 .backlist a {
-  text-decoration: none;
-  transition: color 0.3s;
-  color: #C75000;
+	text-decoration: none;
+	transition: color 0.3s;
+	color: #C75000;
 }
+
 .backlist a:hover {
-  color: #7A2C00;
+	color: #7A2C00;
 }
 /* メディアクエリ */
-@media (max-width: 700px) {
+@media ( max-width : 700px) {
 	/* 画像サイズ調整 */
-	.shouhinimg img  {
+	.shouhinimg img {
 		width: 100%;
 		max-width: 300px;
 		height: auto;
-		padding-bottom:10px;
+		padding-bottom: 10px;
 	}
 	.iconSpeech {
 		flex-direction: column;
 		align-items: center;
 	}
+	.speechBubble::before, .speechBubble::after {
+		display: none;
+	}
+	/* カード背景画面外はみだし対策 */
+	.card {
+		padding: 1rem;
+		width: 90%;
+	}
+	/* テーブルを縦一列に、またそれに伴う調整 */
+	.information tr, .information th, .information td {
+		display: block;
+		width: 100%;
+		box-sizing: border-box;
+		white-space: nowrap;
+	}
+	.information th {
+		border-bottom: none;
+		padding-bottom: 2px;
+	}
+	.information td {
+		border-bottom: 1.5px solid #C75000;
+		padding-top: 2px;
+		text-align: center;
+	}
+	.information tr:last-child td:last-child {
+		border-bottom: none;
+	}
+	/* ボタン位置調整 */
+	.buttons button {
+		margin: 6px;
+	}
+	.deleteButton {
+		margin-left: 0;
+	}
+}
 
 .speechBubble::before, .speechBubble::after {
 	display: none;
@@ -148,35 +274,35 @@
 /* カード背景画面外はみだし対策 */
 .card {
 	padding: 1rem;
-	width:90%;
+	width: 90%;
 }
 /* テーブルを縦一列に、またそれに伴う調整 */
 .information tr, .information th, .information td {
-    display: block;
-    width: 100%;
-    box-sizing: border-box;
-    white-space: normal;
-  }
+	display: block;
+	width: 100%;
+	box-sizing: border-box;
+	white-space: nowrap;
+}
 
-  .information th {
-    border-bottom: none;
-    padding-bottom: 2px;
-  }
+.information th {
+	border-bottom: none;
+	padding-bottom: 2px;
+}
 
-  .information td {
-    border-bottom: 1.5px solid #C75000;
-    padding-top: 2px;
-  }
+.information td {
+	border-bottom: 1.5px solid #C75000;
+	padding-top: 2px;
+	text-align: center;
+}
 
-  .information tr:last-child td:last-child {
-    border-bottom: none;
-  }
-  /* ボタン位置調整 */
-  .buttons button {
-    margin: 6px;
-  }
+.information tr:last-child td:last-child {
+	border-bottom: none;
+}
+/* ボタン位置調整 */
+.buttons button {
+	margin: 6px;
+}
 
-  .deleteButton {
-    margin-left: 0;
-  }
+.deleteButton {
+	margin-left: 0;
 }

@@ -104,6 +104,13 @@ public class EditServlet extends HttpServlet {
 		dto.setMaker(request.getParameter("maker"));
 		dto.setLife(Integer.parseInt(request.getParameter("life")));
 		
+		String frame = request.getParameter("frame");
+		if(frame == null) {
+			dto.setFrame(0);
+		} else {
+			dto.setFrame(Integer.parseInt(frame));
+		}
+		
 		int progress =
 			    (int) ChronoUnit.DAYS.between(
 			        LocalDate.parse(dto.getBuy_date()),
