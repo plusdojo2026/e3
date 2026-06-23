@@ -128,7 +128,7 @@ public boolean insertRireki(int id) {
 		conn = DriverManager.getConnection(URL, USER, PASS);
 
 		String sql = "INSERT INTO rireki "
-				+ "(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid) "
+				+ "(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, frame, userid) "
 				+ " SELECT genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img , frame, userid "
 				+ "FROM shouhin WHERE id = ?";
 
