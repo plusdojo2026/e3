@@ -40,10 +40,10 @@ public class MenuServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
 		
-		/*if (loginuser == null) {
+		if (loginuser == null) {
 			response.sendRedirect("/e3/LoginServlet");
 			return;
-		}*/
+		}
 
 		// DAO,DTO呼び出し、使用
 		Men_RanDAO dao = new Men_RanDAO();
@@ -69,15 +69,4 @@ public class MenuServlet extends HttpServlet {
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/menu.jsp");
 		dispatcher.forward(request, response);
 	}
-
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
-	}
-
 }
