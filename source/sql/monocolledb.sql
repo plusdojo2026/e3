@@ -150,7 +150,7 @@ UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Up
 SELECT id, LENGTH(img) FROM shouhin WHERE id = 1;
 
 /* 画像登録後はこのSELECT文を実行すればOK */
-SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, userid, frame FROM shouhin;
+SELECT id, genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, LENGTH(img), userid, frame FROM shouhin;
 
 
 
