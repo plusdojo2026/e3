@@ -40,10 +40,10 @@ public class MenuServlet extends HttpServlet {
 		HttpSession session = request.getSession();
 		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
 		
-		if (loginuser == null) {
+		/*if (loginuser == null) {
 			response.sendRedirect("/e3/LoginServlet");
 			return;
-		}
+		}*/
 
 		// DAO,DTO呼び出し、使用
 		Men_RanDAO dao = new Men_RanDAO();
