@@ -42,53 +42,40 @@
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-<<<<<<< HEAD
-				<P>${shouhininfo.nickname}</P>
-=======
-=======
->>>>>>> 2f5014674337ecc514e62ab2fe2d600d89ba7d14
-=======
->>>>>>> 2f5014674337ecc514e62ab2fe2d600d89ba7d14
-=======
->>>>>>> 2f5014674337ecc514e62ab2fe2d600d89ba7d14
-=======
->>>>>>> 2f5014674337ecc514e62ab2fe2d600d89ba7d14
-=======
->>>>>>> 2f5014674337ecc514e62ab2fe2d600d89ba7d14
-			<P><span class="cellText">${shouhininfo.nickname}</span></P>
-							<c:choose>
-								<c:when test="${not empty shouhininfo.base64Image}">
-									<img src="data:image/jpeg;base64,${shouhininfo.base64Image}" alt="商品画像">
-								</c:when>
-								<c:otherwise>
-									<img src="images/chara_logo.png">
-								</c:otherwise>
-							</c:choose>
-						</div>
->>>>>>> 2f5014674337ecc514e62ab2fe2d600d89ba7d14
 
-				<div class="frameWrap">
-					<c:choose>
-						<c:when test="${not empty shouhininfo.base64Image}">
-							<img class="itemImage"
-								src="data:image/jpeg;base64,${shouhininfo.base64Image}"
-								alt="商品画像">
-						</c:when>
-						<c:otherwise>
-							<img class="itemImage" src="images/chara_logo.png">
-						</c:otherwise>
-					</c:choose>
-					<img class="frameImage" id="previewFrame" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=">
-				
+				<P>
+					<span class="cellText">${shouhininfo.nickname}</span>
+				</P>
+				<c:choose>
+					<c:when test="${not empty shouhininfo.base64Image}">
+						<img src="data:image/jpeg;base64,${shouhininfo.base64Image}"
+							alt="商品画像">
+					</c:when>
+					<c:otherwise>
+						<img src="images/chara_logo.png">
+					</c:otherwise>
+				</c:choose>
+			</div>
+
+
+			<div class="frameWrap">
+				<c:choose>
+					<c:when test="${not empty shouhininfo.base64Image}">
+						<img class="itemImage"
+							src="data:image/jpeg;base64,${shouhininfo.base64Image}"
+							alt="商品画像">
+					</c:when>
+					<c:otherwise>
+						<img class="itemImage" src="images/chara_logo.png">
+					</c:otherwise>
+				</c:choose>
+				<img class="frameImage" id="previewFrame"
+					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=">
 
 
 
-		</div>
+
+			</div>
 		</div>
 
 		<div class="speechBubble">
@@ -96,7 +83,6 @@
 				僕の一日あたりの価格は${shouhininfo.day_priceInt}円だよ！<br>
 				${shouhininfo.progress}日使ったよ！<br> あと${shouhininfo.goal}日で目標達成♪
 			</p>
-		</div>
 		</div>
 		<div class="card">
 			<!-- 商品情報 -->
@@ -115,19 +101,24 @@
 					<th>購入日</th>
 					<td><span class="cellText">${shouhininfo.buy_date}</span></td>
 					<th>価格</th>
-					<td><span class="cellText">${shouhininfo.price}</span><span class="tanni">円</span></td>
+					<td><span class="cellText">${shouhininfo.price}</span><span
+						class="tanni">円</span></td>
 				</tr>
 				<tr>
 					<th>保証期間</th>
-					<td><span class="cellText">${shouhininfo.wperiod}</span><span class="tanni">年</span></td>
+					<td><span class="cellText">${shouhininfo.wperiod}</span><span
+						class="tanni">年</span></td>
 					<th>耐用年数</th>
-					<td><span class="cellText">${shouhininfo.life}</span><span class="tanni">年</span></td>
+					<td><span class="cellText">${shouhininfo.life}</span><span
+						class="tanni">年</span></td>
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td><span class="cellText">${shouhininfo.day_priceInt}</span><span class="tanni">円</span></td>
+					<td><span class="cellText">${shouhininfo.day_priceInt}</span><span
+						class="tanni">円</span></td>
 					<th>目標達成まで</th>
-					<td><span class="cellText">${shouhininfo.goal}</span><span class="tanni">日</span></td>
+					<td><span class="cellText">${shouhininfo.goal}</span><span
+						class="tanni">日</span></td>
 				</tr>
 			</table>
 		</div>
