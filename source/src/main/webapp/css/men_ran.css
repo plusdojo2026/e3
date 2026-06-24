@@ -161,7 +161,11 @@
 }
 
 /*ranking*/
-
+.nextAD {
+	text-decoration: none;
+	color: inherit;
+	cursor: pointer;
+}
 /* sort_ 全体を右寄せ */
 .sort_ {
 	width: 80%;
