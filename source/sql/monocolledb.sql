@@ -16,6 +16,8 @@ CREATE TABLE login (
 id int (50) AUTO_INCREMENT PRIMARY KEY,
 password varchar (50) NOT NULL
 );
+/*追加 ユーザーIDは数字8桁表示*/
+ALTER TABLE login AUTO_INCREMENT = 10000000;
 
 /* TODO: テストデータとしてINSERT文を複数作成する必要あり */
 /* PW:8文字以上(数字、大文字、小文字から 2 つ以上) */
