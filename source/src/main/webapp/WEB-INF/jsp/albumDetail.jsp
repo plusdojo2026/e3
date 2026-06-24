@@ -106,13 +106,13 @@
 					<th>1日あたりの価格</th>
 					<td><span class="cellText">${rirekiinfo.day_priceInt}</span><span
 						class="tanni">円</span></td>
-					<th><span class="cellText">目標達成</span></th>
+					<th>目標達成</th>
 					<td><c:choose>
 							<c:when test="${rirekiinfo.goal <= 0}">
-            ○
+            <span class="cellText">○</span>
         </c:when>
 							<c:otherwise>
-            ✕
+            <span class="cellText">✕</span>
         </c:otherwise>
 						</c:choose></td>
 				</tr>
