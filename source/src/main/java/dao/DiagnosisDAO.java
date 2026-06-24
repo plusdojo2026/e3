@@ -55,8 +55,14 @@ public class DiagnosisDAO {
 				result = true;
 			}
 			
-			// 50件を越えたときに古いデータを削除する
-		
+			// 50件を越えたときに古いデータを削除する　　OFFSETは0から数える
+			String sql2 = "DELETE FROM diagnosis WHERE id<(SELECT id FROM diagnosis ORDER BY id DESC LIMIT 1 OFFSET 49)";
+			// SQLインジェクション対策
+			PreparedStatement pStmt2 = conn.prepareStatement(sql2);
+
+			// 削除を実行する
+			pStmt2.executeUpdate();
+			
 			
 			// 例外処理
 		} catch (Exception e) {

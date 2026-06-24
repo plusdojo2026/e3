@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LoginServlet
  */
-@WebServlet("/MenuServlet")
+@WebServlet("/MyPageServlet")
 public class MyPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -31,10 +31,16 @@ public class MyPageServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
+	
+		ItemDAO itemDao = new ItemDAO();
+		Diagnosis2DAO diagnosisDao = new Diagnosis2DAO();
 		
+		int itemCount = dao.count();
+		int diagnosis2Count = dao.count();
 		
-		
-		
+		//JSPへ渡す
+		request.setAttribute("itemCount", itemCount);	
+		request.setAttribute("diagnosis2Count", diagnosis2Count);
 		
 		// フォワード
 				RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");

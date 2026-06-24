@@ -85,7 +85,7 @@
 
 		<div class="card">
 			<h3>診断結果</h3>
-			<br>
+			<p>最大50件まで登録できます。50件を越えた場合は、古いものから自動で削除されます。</p>
 			<table class="diagnosis_result" id="diagnosis_result">
 				<!-- 枠はCSS? -->
 

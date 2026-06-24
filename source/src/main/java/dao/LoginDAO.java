@@ -29,7 +29,7 @@ public class LoginDAO {
 			ps.setString(2, login.getPassword());
 
 			ResultSet rs = ps.executeQuery();
-
+	
 			rs.next();
 			if (rs.getInt("count(*)") == 1) {
 				loginResult = true;
