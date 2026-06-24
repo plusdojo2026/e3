@@ -62,12 +62,12 @@
 				</label>
 			</div>
 			<div class="diagnosis">
-				<label>価格<br> <input type="number" name="money">
+				<label>価格<br> <input type="number" name="money" min=1>
 				</label>
 				<p class="tanni">円</p>
 			</div>
 			<div class="diagnosis">
-				<label>想定年数<br> <input type="number" name="use_year">
+				<label>想定年数<br> <input type="number" name="use_year" min=1>
 				</label>
 				<p class="tanni">年使用</p>
 			</div>
