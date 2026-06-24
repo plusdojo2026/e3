@@ -16,7 +16,7 @@ public class DiagnosisDAO {
 	// ---登録---
 	private static final String URL = "jdbc:mysql://localhost:3306/e3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
 	private static final String USER = "e3";
-	private static final String PASS = "password";
+	private static final String PASS = "9PSp2kThXYGG8mC5";
 
 	public boolean register(String shouhin, int money, int use_year, Loginuser loginuser) { // 引数。day_priceは計算で出す。
 		Connection conn = null; // 最初はnull・後で DriverManager.getConnection()で接続

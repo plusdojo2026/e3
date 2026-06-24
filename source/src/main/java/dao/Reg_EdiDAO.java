@@ -11,7 +11,7 @@ import dto.CommonDTO;
 public class Reg_EdiDAO {
 	private static final String URL = "jdbc:mysql://localhost:3306/e3?characterEncoding=utf8&useSSL=false&serverTimezone=GMT%2B9&rewriteBatchedStatements=true&allowPublicKeyRetrieval=true";
 	private static final String USER = "e3";
-	private static final String PASS = "password";
+	private static final String PASS = "9PSp2kThXYGG8mC5";
 	
 	//登録
 	public boolean insert(CommonDTO dto) {
