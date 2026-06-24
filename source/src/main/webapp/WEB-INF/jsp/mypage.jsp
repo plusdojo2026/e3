@@ -29,29 +29,45 @@
 		<button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
 			<span></span><span></span><span></span>
 		</button>
+		<!-- ヘッダー（ここまで） -->
+
+		<main class="contain">
+
+			<div class="notice">
+				<h2 class="first slide-left">パスワードを変更します！</h2>
+				<p>
+					ここから <strong>パスワードの変更</strong>を行うことが出来ます。
+				</p>
+				<p>ここから、あなただけのコレクションを始めていきましょう。</p>
+
+				<img class="tip" src="images/loginRegister1.png" width="430"
+					height="400" alt="">
+			</div>
+
+			<div class="change">
+				<h2 class="second slide-right">パスワード変更</h2>
+				<!-- エラー表示 -->
+				<c:if test="${not empty error}">
+					<p style="color: red;">${error}</p>
+				</c:if>
+				<form class="register fadein" method="POST"
+					action="/e3/MyPageServlet">
+					<p id="text">ユーザーID</p>
+					<input type="text" name="userId"><br>
+					<p id="text">変更後パスワード</p>
+					<input type="text" name="password"><br>
+					<p id="text">変更後パスワード(確認用)</p>
+					<input type="text" name="passwordConfirm"><br>
+					<p class="rule">パスワードには8文字（英数字、大文字、小文字から２つ以上を含む）を設定してください。</p>
+					<input class="chan" type="submit" name="change" value="変更"><br>
+				</form>
+				<br> <a class="Tomenu" href="/e3/MenuServlet">メニューに戻る</a>
+			</div>
+		</main>
 
 
 
 	</header>
-	<!-- ヘッダー（ここまで） -->
-	<main>
-		<h2>
-			<b>▶ マイページ</b>
-		</h2>
-
-		<p>登録商品数</p>
-
-		<p>合計診断回数</p>
-
-		<form action="LogoutServlet" method="post">
-			<button type="submit">ログアウト</button>
-		</form>
-
-		<br> <a href="MenuServlet">メニューへ戻る</a>
-
-
-
-
 
 	</main>
 

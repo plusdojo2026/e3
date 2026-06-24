@@ -58,8 +58,8 @@
 				</c:choose></span>
 		</h2>
 		<div class="backalbum">
-			<a href="${pageContext.request.contextPath}/AlbumListServlet">◀
-				アルバムに戻る</a>
+			<a href="${pageContext.request.contextPath}/AlbumListServlet">
+				◀アルバムに戻る </a>
 		</div>
 
 		<!-- 上位ランキング -->
@@ -69,61 +69,63 @@
 
 				<c:if test="${st.count <= 3}">
 
-					<div
-						class="item
-            ${st.count == 1 ? 'first' : ''}
-            ${st.count == 2 ? 'second' : ''}
-            ${st.count == 3 ? 'third' : ''}">
+					<a
+						href="${pageContext.request.contextPath}/AlbumDetailServlet?shouhinid=${item.id}"
+						class="nextAD">
+						<div
+							class="item
+        ${st.count == 1 ? 'first' : ''}
+        ${st.count == 2 ? 'second' : ''}
+        ${st.count == 3 ? 'third' : ''}">
 
-						<!-- メダル -->
-						<c:choose>
-							<c:when test="${st.count == 1}">
-								<img src="images/金メダルアイコン .png" class="medal">
-							</c:when>
-							<c:when test="${st.count == 2}">
-								<img src="images/銀メダルアイコン.png" class="medal">
-							</c:when>
-							<c:when test="${st.count == 3}">
-								<img src="images/銅メダルアイコン.png" class="medal">
-							</c:when>
-						</c:choose>
-
-						<!-- 名前 -->
-						<p class="plate">${empty item.nickname ? item.shouhin : item.nickname}
-						</p>
-
-						<!-- アイコン -->
-						<div class="icon">
-							<P>${rirekiinfo.nickname}</P>
+							<!-- メダル -->
 							<c:choose>
-								<c:when test="${not empty item.base64Image}">
-									<img src="data:image/jpeg;base64,${item.base64Image}"
-										alt="商品画像">
+								<c:when test="${st.count == 1}">
+									<img src="images/金メダルアイコン .png" class="medal">
 								</c:when>
-								<c:otherwise>
-									<img src="images/chara_logo.png">
-								</c:otherwise>
+								<c:when test="${st.count == 2}">
+									<img src="images/銀メダルアイコン.png" class="medal">
+								</c:when>
+								<c:when test="${st.count == 3}">
+									<img src="images/銅メダルアイコン.png" class="medal">
+								</c:when>
 							</c:choose>
-						</div>
 
-						<!-- 表彰台 -->
-						<div class="stand">
-							<c:choose>
-								<c:when
-									test="${empty param.sort_ or param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
-        ${item.buy_date}
-    </c:when>
-								<c:when
-									test="${param.sort_ eq 'progressAsc' or param.sort_ eq 'progressDesc'}">
-        ${item.progress}日
-    </c:when>
-								<c:otherwise>
-        ${item.day_priceInt}円/日
-    </c:otherwise>
-							</c:choose>
-						</div>
+							<!-- 名前 -->
+							<p class="plate">${empty item.nickname ? item.shouhin : item.nickname}</p>
 
-					</div>
+							<!-- アイコン -->
+							<div class="icon">
+								<c:choose>
+									<c:when test="${not empty item.base64Image}">
+										<img src="data:image/jpeg;base64,${item.base64Image}"
+											alt="商品画像">
+									</c:when>
+									<c:otherwise>
+										<img src="images/chara_logo.png">
+									</c:otherwise>
+								</c:choose>
+							</div>
+
+							<!-- 表彰台 -->
+							<div class="stand">
+								<c:choose>
+									<c:when
+										test="${empty param.sort_ or param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
+							${item.buy_date}
+						</c:when>
+									<c:when
+										test="${param.sort_ eq 'progressAsc' or param.sort_ eq 'progressDesc'}">
+							${item.progress}日
+						</c:when>
+									<c:otherwise>
+							${item.day_priceInt}円/日
+						</c:otherwise>
+								</c:choose>
+							</div>
+
+						</div>
+					</a>
 
 				</c:if>
 
@@ -162,23 +164,22 @@
 
 						<c:forEach var="item" items="${rankingList}" varStatus="status">
 
-							<tr>
+							<tr class="nextAD"
+								onclick="location.href='${pageContext.request.contextPath}/AlbumDetailServlet?shouhinid=${item.id}'">
 								<th>${status.count}</th>
-
 								<th>${empty item.nickname ? item.shouhin : item.nickname}</th>
-
 								<td><c:choose>
 										<c:when
 											test="${empty param.sort_ or param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
-        ${item.buy_date}
-    </c:when>
+					${item.buy_date}
+				</c:when>
 										<c:when
 											test="${param.sort_ eq 'progressAsc' or param.sort_ eq 'progressDesc'}">
-        ${item.progress}日
-    </c:when>
+					${item.progress}日
+				</c:when>
 										<c:otherwise>
-        ${item.day_priceInt}円/日
-    </c:otherwise>
+					${item.day_priceInt}円/日
+				</c:otherwise>
 									</c:choose></td>
 							</tr>
 

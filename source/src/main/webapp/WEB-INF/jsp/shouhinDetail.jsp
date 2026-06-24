@@ -42,35 +42,42 @@
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
-<div class="imageArea">
-				<P>
-					<span class="cellText">${shouhininfo.nickname}</span>
-				</P>
-			</div>
+				<div class="imageArea">
+					<P>
+						<span class="cellText">${shouhininfo.nickname}</span>
+					</P>
+				</div>
 
 
-			<div class="frameWrap">
-				<c:choose>
-					<c:when test="${not empty shouhininfo.base64Image}">
-						<img class="itemImage"
-							src="data:image/jpeg;base64,${shouhininfo.base64Image}"
-							alt="商品画像">
-					</c:when>
-					<c:otherwise>
-						<img class="itemImage" src="images/chara_logo.png">
-					</c:otherwise>
-				</c:choose>
-				<img class="frameImage" id="previewFrame"
-					src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=">
+				<div class="frameWrap">
+					<c:choose>
+						<c:when test="${not empty shouhininfo.base64Image}">
+							<img class="itemImage"
+								src="data:image/jpeg;base64,${shouhininfo.base64Image}"
+								alt="商品画像">
+						</c:when>
+						<c:otherwise>
+							<img class="itemImage" src="images/chara_logo.png">
+						</c:otherwise>
+					</c:choose>
+					<img class="frameImage" id="previewFrame"
+						src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=">
 
-</div>
+				</div>
 			</div>
 			<div class="speechBubble">
 				<p>
 					僕の一日あたりの価格は${shouhininfo.day_priceInt}円だよ！<br>
-					${shouhininfo.progress}日使ったよ！<br> あと${shouhininfo.goal}日で目標達成♪
+					${shouhininfo.progress}日使ったよ！<br>
+					<c:choose>
+						<c:when test="${shouhininfo.goal <= 0}">
+			目標達成したよ！おめでとう♪
+		</c:when>
+						<c:otherwise>
+			あと${shouhininfo.goal}日で目標達成♪
+		</c:otherwise>
+					</c:choose>
 				</p>
-
 			</div>
 		</div>
 
@@ -108,8 +115,15 @@
 					<td><span class="cellText">${shouhininfo.day_priceInt}</span><span
 						class="tanni">円</span></td>
 					<th>目標達成まで</th>
-					<td><span class="cellText">${shouhininfo.goal}</span><span
-						class="tanni">日</span></td>
+					<td><c:choose>
+							<c:when test="${shouhininfo.goal <= 0}">
+								<span class="cellText">達成!</span>
+							</c:when>
+							<c:otherwise>
+								<span class="cellText">${shouhininfo.goal}</span>
+								<span class="tanni">日</span>
+							</c:otherwise>
+						</c:choose></td>
 				</tr>
 			</table>
 		</div>

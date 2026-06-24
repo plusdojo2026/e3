@@ -3,6 +3,8 @@ package servlet;
 import java.io.IOException;
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -18,13 +20,13 @@ import dao.Reg_EdiDAO;
 import dto.CommonDTO;
 import dto.Loginuser;
 
-/**
- * Servlet implementation class RegisterServlet
- */
-@WebServlet("/RegisterServlet")
-@MultipartConfig
-public class RegisterServlet extends HttpServlet {
-	private static final long serialVersionUID = 1L;
+	/**
+	 * Servlet implementation class RegisterServlet
+	 */
+	@WebServlet("/RegisterServlet")
+	@MultipartConfig
+	public class RegisterServlet extends HttpServlet {
+		private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
@@ -64,44 +66,156 @@ public class RegisterServlet extends HttpServlet {
 			    (Loginuser) session.getAttribute("userid");
 
 			String userid = loginUser.getUserid();
+			
 		request.setCharacterEncoding("UTF-8");
 
+		List<String> errors = new ArrayList<>();
+		
 	    // フォームの値取得
 	    String genre = request.getParameter("genre");
 	    String shouhin = request.getParameter("shouhin");
 	    String buyDate = request.getParameter("buy_date");
+	    
+	   //未来の日付の入力不可
+	    if(buyDate != null && !buyDate.isEmpty()) {
+	    	
+	    	LocalDate date = LocalDate.parse(buyDate);
+	    	
+	    	if(date.isAfter(LocalDate.now())) {
+	    		errors.add("未来の日付は入力できません");
+	    	}
+	    }
 	    String maker = request.getParameter("maker");
 	    String nickname = request.getParameter("nickname");
 	    
+	    
+	    //愛称チェック 未入力な場合はエラーメッセージをerrorに追加する
+	    if (nickname == null || nickname.trim().isEmpty()) {
+	    	errors.add("愛称を入力してください");
+	    }
+	    
+	   //フレーム
 	    String frameStr = request.getParameter("frame");
 	   
 	    int frame = 0;
 
-	    if(frameStr != null && !frameStr.isEmpty()){
-	        frame = Integer.parseInt(frameStr);
+	    try {
+	    	if(frameStr != null && !frameStr.isEmpty()){
+		        frame = Integer.parseInt(frameStr);
+		    }
+	    } catch(NumberFormatException e) {
+	    	errors.add("フレームの値が不正です。");
+	    }
+	   
+	    //価格
+	    int price = 0;
+	    String priceStr = request.getParameter("price");
+	    
+	    if(priceStr == null || priceStr.isEmpty()) {
+	    	errors.add("価格を入力してください");
+	    	
+	    } else {
+	    	try {
+		    	if(priceStr.contains(".")) {
+		    		double d = Double.parseDouble(priceStr);
+		    		
+		    		int round = (int)Math.round(d);        //四捨五入
+		    		
+		    		request.setAttribute(
+		    				"suggest",   
+		    				"価格に小数が含まれています。\n"
+		    				+ round
+		    				+"円として登録します");
+		    		
+		    		price = round;
+		    		
+		    	} else {
+		    		price = Integer.parseInt(priceStr);
+		    	}
+		    	
+		    	if(price <= 0) {
+		    		errors.add("価格は1以上で入力してください");
+		    	}
+		    	
+		    } catch(NumberFormatException e) {
+		    	errors.add("価格の値が不正です");
+		    }
+
 	    }
 	    
+	    	    
+	    //寿命 マイナスや0の登録の防止
+	    int life = 0;
+	    String lifeStr = request.getParameter("life");
 	    
-	    int price = Integer.parseInt(request.getParameter("price"));
-	    int life = Integer.parseInt(request.getParameter("life"));
+	    if(lifeStr == null || lifeStr.isEmpty()) {
+	    	errors.add("寿命を入力してください");
+	    	
+	    } else {
+	    	try {
+		    	if(lifeStr.contains(".")) {
+		    		errors.add("寿命は整数で入力してください");
+		    	}
+		    	life = Integer.parseInt(lifeStr);
+		    	
+		    	if(life <= 0) {
+		    		errors.add("寿命は1以上で入力してください");
+		    	}
+		    	
+		    } catch(NumberFormatException e) {
+		    	errors.add("寿命の値が不正です");
+		    }
+	    }
+	    	
+	    
 
+	    //保証期間　　　　マイナスの値が入力されないように
 	    String wperiodStr = request.getParameter("wperiod");
 	    //未入力を防ぐため初期値に0を設定
 	    int wperiod = 0;
 	    //保証期間が入力されているときのみ数値の変換を行う
 	    if (wperiodStr != null && !wperiodStr.isEmpty()) {
-	        wperiod = Integer.parseInt(wperiodStr);
+	    	try {
+	    		wperiod = Integer.parseInt(wperiodStr);
+	    		
+	    		if(wperiod < 0) {
+	    			errors.add("保証期間は0以上で入力してください");
+	    		}
+	    		
+	    	} catch(NumberFormatException e) {
+	    		errors.add("保証期間が不正です");
+	    	}
+	        
 	    }
 	    
-	    //画像取得
+	    //画像　　画像ファイル以外の登録不可
 	    Part file  = request.getPart("itemImage");
 	    
+	    if (file != null && file.getSize() > 0) {
+	    	String contentType = file.getContentType();
+	    	
+	    	if(contentType == null || !contentType.startsWith("image/")) {
+	    		errors.add("画像ファイルを選択してください");
+	    	}
+	    }
 	    
-	    
+	    //画像データ取得
 	    byte[] imageData = null;
 	    
 	    if(file != null && file.getSize() > 0) {
 	    	imageData = file.getInputStream().readAllBytes();
+	    }
+	    
+	    //エラーが一つでもあれば登録処理の中断
+	    if(!errors.isEmpty()) {
+	    	
+	    	request.setAttribute("errors", errors);
+	    	
+	    	RequestDispatcher dispatcher = 
+	    			request.getRequestDispatcher("/WEB-INF/jsp/register.jsp");
+	    	
+	    	dispatcher.forward(request, response);
+	    	return;
 	    }
 	    
 	    // DTOへ格納
