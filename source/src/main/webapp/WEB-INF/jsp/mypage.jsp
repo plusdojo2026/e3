@@ -29,13 +29,32 @@
 		<button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
 			<span></span><span></span><span></span>
 		</button>
-		
-		
-		
-		</header>
+
+
+
+	</header>
 	<!-- ヘッダー（ここまで） -->
-	
-	
+	<main>
+		<h2>
+			<b>▶ マイページ</b>
+		</h2>
+
+		<p>登録商品数</p>
+
+		<p>合計診断回数</p>
+
+		<form action="LogoutServlet" method="post">
+			<button type="submit">ログアウト</button>
+		</form>
+
+		<br> <a href="MenuServlet">メニューへ戻る</a>
+
+
+
+
+
+	</main>
+
 	<!--　フッター　-->
 	<footer>
 		<p class="copyright">&copy; Copyright 404. All rights reserved.</p>
@@ -43,7 +62,7 @@
 	<!-- フッターここまで　-->
 
 	<script src="${pageContext.request.contextPath}/js/common.js"></script>
-	
-	
-	</body>
+
+
+</body>
 </html>
