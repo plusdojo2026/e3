@@ -97,10 +97,10 @@
 							<p>${s.shouhin}</p>
 						</div>
 						<div class="progress">
-							<p>${s.progress}</p>
+							<p>${s.progress}日経過</p>
 						</div>
 						<div class="day_price">
-							<p>${s.day_price}</p>
+							<p>${s.day_price}円/日</p>
 						</div>
 					</a>
 				</div>
