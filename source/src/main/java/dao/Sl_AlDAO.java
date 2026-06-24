@@ -49,7 +49,14 @@ public class Sl_AlDAO {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			conn = DriverManager.getConnection(URL, USER, PASS);
 
-			String sql = "SELECT * FROM " + sortTable + " WHERE userid = ? ORDER BY " + sortColumn + " " + sortOrder; // サーブレットから受け取った値に応じてSQL文を変化させる
+			//経過日数、目標、１日当たりの固定費を計算して抽出する
+			String sql = "SELECT " + "id, shouhin, " + "CASE "
+					+ "    WHEN DATEDIFF(CURDATE(), buy_date) = 0 THEN price "
+					+ "    ELSE ROUND(price / DATEDIFF(CURDATE(), buy_date)) " + "END AS day_price, "
+					+ "genre, buy_date, price, wperiod, maker, life, " + "DATEDIFF(CURDATE(), buy_date) AS progress, "
+					+ "GREATEST((life * 365) - DATEDIFF(CURDATE(), buy_date), 0) AS goal, " + "nickname, img, frame "
+					+ "FROM " + sortTable + " " + "WHERE userid = ? " + "ORDER BY " + sortColumn + " " + sortOrder;
+
 			PreparedStatement pStmt = conn.prepareStatement(sql);
 
 			pStmt.setString(1, loginuser.getUserid());

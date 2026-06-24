@@ -86,9 +86,9 @@
 										</c:if>
 									</c:forEach>
 								</div>
-							</c:forEach>
+							</c:forEach>						
 						</c:when>
-						<c:when test="${empty nickname}">
+						<c:when test="${empty nickname and not empty nickname_random}">
 							<c:forEach var="k" begin="0" end="${nickname_random.size() - 1}"
 								step="3">
 								<div class="speechPage">
@@ -111,12 +111,14 @@
 					</c:choose>
 				</div>
 			</div>
-
-			<button type="button" class="backbutton" id="backbutton">前の3件</button>
-			<button type="button" class="nextbutton" id="nextbutton">次の3件</button>
-
+			
+			<c:if test="${(not empty nickname and nickname.size() > 3) or (empty nickname and nickname_random.size() > 3)}">
+			    <button type="button" class="backbutton" id="backbutton">前の3件</button>
+			    <button type="button" class="nextbutton" id="nextbutton">次の3件</button>
+			</c:if>
+			
 		</div>
-
+		
 		<!-- テレビ画像 -->
 		<div class="tv" align="center">
 			<img src="images/tv.png" alt="テレビ">
