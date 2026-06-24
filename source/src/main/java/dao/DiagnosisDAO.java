@@ -34,18 +34,6 @@ public class DiagnosisDAO {
 
 			// 一日当たり価格の計算
 			int day_price = money;
-			/* 0除算対策 */
-			if (!(use_year <= 0)) {
-				/* (キャスト) Math.round四捨五入でint型に */
-				day_price = (int) Math.round(money / (use_year * 365));
-			} else if (!(use_year == 0)) {
-				day_price = 0;
-			}
-
-			
-
-			// 一日当たり価格の計算
-			day_price = money;
 
 			/* 0除算対策 */
 			if (use_year > 0) {
@@ -66,6 +54,10 @@ public class DiagnosisDAO {
 			if (pStmt.executeUpdate() == 1) {
 				result = true;
 			}
+			
+			// 50件を越えたときに古いデータを削除する
+		
+			
 			// 例外処理
 		} catch (Exception e) {
 			e.printStackTrace(); // エラー内容をコンソールに出す

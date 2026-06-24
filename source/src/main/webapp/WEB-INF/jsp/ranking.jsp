@@ -47,7 +47,17 @@
 
 <main>
 
-<h2><b>▶ ランキング</b></h2>
+<h2>
+<b>▶ ランキング</b>
+<span class="sort-label">：<c:choose>
+        <c:when test="${param.sort_ eq 'buyDateAsc'}">購入日が古い順</c:when>
+        <c:when test="${empty param.sort_ or param.sort_ eq 'buyDateDesc'}">購入日が新しい順</c:when>
+        <c:when test="${param.sort_ eq 'progressAsc'}">使用日数が短い順</c:when>
+        <c:when test="${param.sort_ eq 'progressDesc'}">使用日数が長い順</c:when>
+        <c:when test="${param.sort_ eq 'dayPriceAsc'}">１日当たりの固定費が少ない順</c:when>
+        <c:when test="${param.sort_ eq 'dayPriceDesc'}">１日当たりの固定費が多い順</c:when>
+    </c:choose></span>
+    </h2>
 <div class="backalbum">
 			<a href="${pageContext.request.contextPath}/AlbumListServlet">◀
 				アルバムに戻る</a>
@@ -97,16 +107,19 @@
 				</c:choose>
 			</div>
 
-            <!-- stand -->
+            <!-- 表彰台 -->
             <div class="stand">
                 <c:choose>
-                    <c:when test="${param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
-                        ${item.progress}日
-                    </c:when>
-                    <c:otherwise>
-                        ${item.day_priceInt}円/日
-                    </c:otherwise>
-                </c:choose>
+    <c:when test="${empty param.sort_ or param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
+        ${item.buy_date}
+    </c:when>
+    <c:when test="${param.sort_ eq 'progressAsc' or param.sort_ eq 'progressDesc'}">
+        ${item.progress}日
+    </c:when>
+    <c:otherwise>
+        ${item.day_priceInt}円/日
+    </c:otherwise>
+</c:choose>
             </div>
 
         </div>
@@ -123,8 +136,10 @@
 
     <div class="drop_down">
 
-        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateAsc">経過日数が長い順</a>
-        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateDesc">経過日数が短い順</a>
+        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateAsc">購入日が古い順</a>
+        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateDesc">購入日が新しい順</a>
+        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=progressDesc">使用日数が長い順</a>
+        <a href="${pageContext.request.contextPath}/RankingServlet?sort_=progressAsc">使用日数が短い順</a>
         <a href="${pageContext.request.contextPath}/RankingServlet?sort_=dayPriceDesc">１日当たりの固定費が多い順</a>
         <a href="${pageContext.request.contextPath}/RankingServlet?sort_=dayPriceAsc">１日当たりの固定費が少ない順</a>
 
@@ -149,13 +164,16 @@
 
     <td>
         <c:choose>
-            <c:when test="${param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
-                ${item.progress}日
-            </c:when>
-            <c:otherwise>
-                ${item.day_priceInt}円/日
-            </c:otherwise>
-        </c:choose>
+    <c:when test="${empty param.sort_ or param.sort_ eq 'buyDateAsc' or param.sort_ eq 'buyDateDesc'}">
+        ${item.buy_date}
+    </c:when>
+    <c:when test="${param.sort_ eq 'progressAsc' or param.sort_ eq 'progressDesc'}">
+        ${item.progress}日
+    </c:when>
+    <c:otherwise>
+        ${item.day_priceInt}円/日
+    </c:otherwise>
+</c:choose>
     </td>
 </tr>
 
@@ -167,7 +185,7 @@
 </c:when>
 
     <c:otherwise>
-        <p class="no-data">ランキングデータがありません</p>
+        <p class="no-data">データがありません</p>
     </c:otherwise>
 </c:choose>
 
