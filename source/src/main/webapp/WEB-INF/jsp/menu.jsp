@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 
 <!DOCTYPE html>
 <html>
@@ -64,7 +65,7 @@
 					<img src="images/noimage.png" class="logo" alt="キャラ画像" />
 				</c:otherwise>
 			</c:choose>
-			
+
 			<!-- 通知を３件ずつ分けて表示 -->
 			<!-- <div class="tail"></div> -->
 			<div class="speechBubble">
@@ -86,7 +87,7 @@
 										</c:if>
 									</c:forEach>
 								</div>
-							</c:forEach>						
+							</c:forEach>
 						</c:when>
 						<c:when test="${empty nickname and not empty nickname_random}">
 							<c:forEach var="k" begin="0" end="${nickname_random.size() - 1}"
@@ -112,13 +113,14 @@
 				</div>
 			</div>
 			
-			<c:if test="${(not empty nickname and nickname.size() > 3) or (empty nickname and nickname_random.size() > 3)}">
-			    <button type="button" class="backbutton" id="backbutton">前の3件</button>
-			    <button type="button" class="nextbutton" id="nextbutton">次の3件</button>
+			<c:if
+				test="${(not empty nickname and fn:length(nickname) > 3) or (empty nickname and fn:length(nickname_random) > 3)}">
+				<button type="button" class="backbutton" id="backbutton">前の3件</button>
+				<button type="button" class="nextbutton" id="nextbutton">次の3件</button>
 			</c:if>
-			
+
 		</div>
-		
+
 		<!-- テレビ画像 -->
 		<div class="tv" align="center">
 			<img src="images/tv.png" alt="テレビ">
