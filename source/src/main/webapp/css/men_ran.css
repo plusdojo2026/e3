@@ -170,7 +170,7 @@
 }
 
 /* ボタンは右寄せのまま */
-.sort_buttonbutton {
+.sort_button {
 	width: 60px;
 	cursor: pointer;
 }
@@ -334,8 +334,32 @@ table {
 	padding: 1rem;
 	box-sizing: border-box;
 }
+
+.backalbum {
+	margin-bottom: 70px;
+	margin-left: 20px;
+	margin-top: 70px;
+}
+
+.backalbum a {
+	text-decoration: none;
+	transition: color 0.3s;
+	color: #C75000;
+}
+
+.backalbum a:hover {
+	color: #7A2C00;
+}
+
+.mediabr {
+	display: none;
+}
+
 /*モバイル対応 */
 @media screen and ( max-width : 600px) {
+	.mediabr {
+		display: inline;
+	}
 	body {
 		margin: 0;
 		padding: 0;
@@ -423,18 +447,6 @@ table {
 		right: 0;
 	}
 	/* ランキング */
-	.backalbum {
-		transform: translate(10%, 70%);
-		margin-bottom: 70px;
-	}
-	.backalbum a {
-		text-decoration: none;
-		transition: color 0.3s;
-		color: #C75000;
-	}
-	.backalbum a:hover {
-		color: #7A2C00;
-	}
 	.card {
 		width: 90%;
 		max-width: 560px;
