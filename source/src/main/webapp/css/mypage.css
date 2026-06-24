@@ -1,0 +1,23 @@
+@charset "UTF-8";
+
+/* 前頁共通部分*/
+/*背景色をクリーム色に*/
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+	background-color: #FFF3E0;
+	margin: 0;
+    padding: 0;
+}
+
+/*タイトルロゴのサイズ・位置設定*/
+h1.title {
+	margin: 0;
+	padding: 0;
+	line-height: 1;
+}
+
+
