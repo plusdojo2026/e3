@@ -1,6 +1,7 @@
 package servlet;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.RequestDispatcher;
@@ -39,7 +40,7 @@ public class MenuServlet extends HttpServlet {
 
 		HttpSession session = request.getSession();
 		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
-		
+
 		if (loginuser == null) {
 			response.sendRedirect("/e3/LoginServlet");
 			return;
@@ -54,11 +55,21 @@ public class MenuServlet extends HttpServlet {
 		List<CommonDTO> nickname_random = dao.getRandomNickname(loginuser);
 		int total = dao.getTotalDayPrice(loginuser);
 
-		//imgを一件だけにする
-		if(!imglist.isEmpty()) {
+		// imgを一件だけにする
+		if (!imglist.isEmpty()) {
 			img = imglist.get(0);
 		}
-		
+
+		// 愛称データがない場合は空にする
+		if (nickname_random == null) {
+			nickname_random = new ArrayList<>();
+		}
+
+		// 愛称データがない場合は空にする
+		if (list == null) {
+			list = new ArrayList<>();
+		}
+
 		// JSPに渡す
 		request.setAttribute("nickname", list);
 		request.setAttribute("nickname_random", nickname_random);

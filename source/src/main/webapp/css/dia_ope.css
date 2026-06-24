@@ -82,6 +82,9 @@
 .card{
 	color: #C75000;
 }
+.card p{
+	text-align: center;
+}
 .diagnosis_result {
 	/*border-spacing: 0px 0px;
 	margin: 0 auto 20px auto;*/

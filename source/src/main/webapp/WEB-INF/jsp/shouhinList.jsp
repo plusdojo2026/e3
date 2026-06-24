@@ -50,6 +50,10 @@
 			<b>▶ 一覧 </b>： 登録した<strong>モノ</strong>たちを見てみよう！
 		</h2>
 
+		<!-- ランキング画面へ -->
+		<div class="nextrank">
+		</div>
+		
 		<!-- 並び替えボタン -->
 		<div class="sort">
 			<img src="images/sortbutton.png" alt="並び替え" class="sortbutton">
