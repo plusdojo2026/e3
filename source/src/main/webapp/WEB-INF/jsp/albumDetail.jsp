@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>モノカチコレクション | アルバム詳細</title>
+<title>モノカチコレクション | 商品詳細</title>
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
@@ -42,24 +42,38 @@
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">
-				<P><span class="cellText">${rirekiinfo.nickname}</span></P>
-				<c:choose>
-					<c:when test="${not empty rirekiinfo.base64Image}">
-						<img src="data:image/jpeg;base64,${rirekiinfo.base64Image}"
-							alt="商品画像">
-					</c:when>
-					<c:otherwise>
-						<img src="images/chara_logo.png">
-					</c:otherwise>
-				</c:choose>
-			</div>
+				<div class="imageArea">
+					<P>
+						<span class="cellText">${rirekiinfo.nickname}</span>
+					</P>
+				</div>
 
+
+				<div class="frameWrap">
+					<c:choose>
+						<c:when test="${not empty rirekiinfo.base64Image}">
+							<img class="itemImage"
+								src="data:image/jpeg;base64,${rirekiinfo.base64Image}"
+								alt="商品画像">
+						</c:when>
+						<c:otherwise>
+							<img class="itemImage" src="images/chara_logo.png">
+						</c:otherwise>
+					</c:choose>
+					<img class="frameImage" id="previewFrame"
+						src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=">
+
+				</div>
+			</div>
 			<div class="speechBubble">
 				<p>
 					${rirekiinfo.progress}日使ったよ！<br> 大事に使ってくれてありがとう♪
 				</p>
+
 			</div>
 		</div>
+
+
 		<div class="card">
 			<!-- 商品情報 -->
 			<table class="information">
@@ -77,18 +91,22 @@
 					<th>購入日</th>
 					<td><span class="cellText">${rirekiinfo.buy_date}</span></td>
 					<th>価格</th>
-					<td><span class="cellText">${rirekiinfo.price}</span><span class="tanni">円</span></td>
+					<td><span class="cellText">${rirekiinfo.price}</span><span
+						class="tanni">円</span></td>
 				</tr>
 				<tr>
 					<th>保証期間</th>
-					<td><span class="cellText">${rirekiinfo.wperiod}</span><span class="tanni">年</span></td>
+					<td><span class="cellText">${rirekiinfo.wperiod}</span><span
+						class="tanni">年</span></td>
 					<th>耐用年数</th>
-					<td><span class="cellText">${rirekiinfo.life}</span><span class="tanni">年</span></td>
+					<td><span class="cellText">${rirekiinfo.life}</span><span
+						class="tanni">年</span></td>
 				</tr>
 				<tr>
 					<th>1日あたりの価格</th>
-					<td><span class="cellText">${rirekiinfo.day_priceInt}</span><span class="tanni">円</span></td>
-					<th>目標達成</th>
+					<td><span class="cellText">${rirekiinfo.day_priceInt}</span><span
+						class="tanni">円</span></td>
+					<th><span class="cellText">目標達成</span></th>
 					<td><c:choose>
 							<c:when test="${rirekiinfo.goal <= 0}">
             ○
@@ -130,6 +148,30 @@
 				return false;
 			}
 		}
+   
+   //ラジオボタンの選択が変更されたときに実行
+ //プレビュー用のフレーム画像の取得
+ 	const previewFrame = 
+ 		document.getElementById("previewFrame");
+ 	
+ 	//選択されたフレームによって表示するフレームを切り替える
+ 	const selectedFrame = "${rirekiinfo.frame}";
+ 	if(selectedFrame === "1") {
+ 		//うさぎフレーム
+ 		previewFrame.src = "${pageContext.request.contextPath}/images/frame_usagi2.png"
+ 	} else if(selectedFrame === "2") {
+ 		//ねこフレーム
+ 		previewFrame.src = "${pageContext.request.contextPath}/images/frame_neko2.png"
+ 	} else if(selectedFrame === "3") {
+ 		//くまフレーム
+ 		previewFrame.src = "${pageContext.request.contextPath}/images/frame_panda2.png"
+ 	} else if(selectedFrame === "4") {
+ 		//いぬフレーム
+ 		previewFrame.src = "${pageContext.request.contextPath}/images/frame_dog2.png"
+ 	} else if(selectedFrame === "5") {
+ 		//とりフレーム
+ 		previewFrame.src = "${pageContext.request.contextPath}/images/frame_buta2.png"
+ 	}
 	</script>
 </body>
 </html>

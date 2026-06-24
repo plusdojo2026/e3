@@ -246,29 +246,34 @@ public class Men_RanDAO {
 			String sql;
 
 			// ソート条件に応じてSQLを切り替える
-			if ("buyDateAsc".equals(sort)) {
+			if ("progressAsc".equals(sort)) {
 
-				// 購入日の昇順（古い順）
-				sql = "SELECT nickname, shouhin, day_price, progress FROM rireki WHERE userid = ? ORDER BY buy_date ASC LIMIT 10";
-			} else if ("buyDateDesc".equals(sort)) {
+				// 使用日数の昇順（短い順）
+				sql = "SELECT nickname, shouhin, buy_date, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY progress ASC LIMIT 10";
+			} else if ("progressDesc".equals(sort)) {
 
-				// 購入日の降順（新しい順）
+				// 使用日数の降順（長い順）
 
-				sql = "SELECT nickname, shouhin, day_price, progress FROM rireki WHERE userid = ? ORDER BY buy_date DESC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY progress DESC LIMIT 10";
 			} else if ("dayPriceAsc".equals(sort)) {
 
 				// 1日の固定費の昇順(安い順)
-				sql = "SELECT nickname, shouhin, day_price, progress FROM rireki WHERE userid = ? ORDER BY day_price ASC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY day_price ASC LIMIT 10";
 			} else if ("dayPriceDesc".equals(sort)) {
 
 				// 1日の固定費の降順(高い順)
 
-				sql = "SELECT nickname, shouhin, day_price, progress FROM rireki WHERE userid = ? ORDER BY day_price DESC LIMIT 10";
-			} else {
+				sql = "SELECT nickname, shouhin, buy_date, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY day_price DESC LIMIT 10";
+			} else if ("buyDateAsc".equals(sort)) {
 
-				// ページ遷移後最初に表示する1日の固定費の昇順(高い順)
+				// 購入日の昇順(古い順)
 
-				sql = "SELECT nickname, shouhin, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY buy_date ASC LIMIT 10";
+				sql = "SELECT nickname, shouhin, buy_date, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY buy_date ASC LIMIT 10";
+			}  else {
+
+				// ページ遷移後最初に表示する購入日の降順(新しい順)
+
+				sql = "SELECT nickname, shouhin, buy_date, day_price, progress, img FROM rireki WHERE userid = ? ORDER BY buy_date Desc LIMIT 10";
 			}
 
 			PreparedStatement pStmt = conn.prepareStatement(sql);
@@ -287,6 +292,7 @@ public class Men_RanDAO {
 
 				// 愛称、購入日、1日当たりの固定費の値を取得
 				dto.setNickname(rs.getString("nickname"));
+				dto.setBuy_date(rs.getString("buy_date"));
 				dto.setProgress(rs.getInt("progress"));
 				dto.setDay_price(rs.getInt("day_price"));
 				dto.setShouhin(rs.getString("shouhin"));
