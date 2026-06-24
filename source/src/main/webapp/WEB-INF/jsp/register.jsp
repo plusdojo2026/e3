@@ -194,6 +194,31 @@
 <script src="${pageContext.request.contextPath}/js/common.js"></script>
 <script>
 
+
+	//入力エラー表示
+	<c:if test="${not empty errors}">
+	
+	//ポップアップに表示するメッセージ
+	let msg = "入力エラー\n\n";
+	
+	//エラー内容を1行ずつ表示
+	<c:forEach var="err" items="${errors}">
+	msg += "・${err}\n";
+	</c:forEach>
+	
+	//エラーメッセージ表示
+	alert(msg);
+	
+	</c:if>
+	
+	// 小数入力時の近似値提案
+	<c:if test="${not empty suggest}">
+
+	// サーブレットで設定した提案メッセージを表示
+	alert("${suggest}");
+
+	</c:if>
+
 	//耐用年数自動入力
 	const genreRadios =document.querySelectorAll("input[name='genre']");
 	const life = document.getElementById("life");
@@ -312,12 +337,23 @@
 	//入力欄に文字が入力されるたびに実行
 	nickname.addEventListener("input", function() {
 		//入力された文字の前後を削除し空か確認、空でなければtrue、空であればfalse
-		const enable = this.value.trim() !== "";
+		const enable = this.value.trim() !== "";        
 		
 		//各ラジオボタンごとに処理
 		frameRadios.forEach(radio => {
-			radio.disabled = !enable;
+			radio.disabled = !enable;　　　　　　　//愛称が未入力ならフレーム選択を無効化
+			
+	    // 愛称が空になったら選択解除
+	    if (!enable) {
+	        radio.checked = false;
+	        }
 		});
+		
+		 // フレームプレビューを消す
+	    if (!enable) {
+	        document.getElementById("previewFrame").src =
+	            "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8z8AARwMCAp7YfWQAAAAASUVORK5CYII=";
+	    }
 	});
 	//必須項目に不足あればエラーメッセージの表示
 	document.getElementById("form").addEventListener("submit", function(event) {
