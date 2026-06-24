@@ -12,7 +12,7 @@
 <link rel="stylesheet"
 	href="<%=request.getContextPath()%>/css/style.css">
 <link rel="stylesheet"
-	href="<%=request.getContextPath()%>/css/men_ran.css">
+	href="<%=request.getContextPath()%>/css/mypage.css">
 </head>
 
 <body>
@@ -34,9 +34,8 @@
 		<nav class="side-menu" id="sideMenu">
 			<div class="menu-header">モノカチコレクション</div>
 			<div class="menu-nav">
-				<a href="${pageContext.request.contextPath}/MenuServlet">メニュー</a> 
-				<a href="${pageContext.request.contextPath}/MyPageServlet">マイページ</a>
-				<a
+				<a href="${pageContext.request.contextPath}/MenuServlet">メニュー</a> <a
+					href="${pageContext.request.contextPath}/MyPageServlet">マイページ</a> <a
 					href="${pageContext.request.contextPath}/DiagnosisServlet">購入診断</a>
 				<a href="${pageContext.request.contextPath}/ShouhinListServlet">一覧表示</a>
 				<a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
@@ -53,39 +52,40 @@
 
 
 		<div class="theme">
-			<h2 class="first slide-left">パスワードを変更します！</h2>
+			<h2 class="first2">パスワードを変更します！</h2>
 			<p>
 				ここから <strong>パスワードの変更</strong>を行うことが出来ます。
 			</p>
 
-			<img class="tip" src="images/loginRegister1.png" width="430"
+			<img class="mine" src="images/mypagelogo.png" width="400"
 				height="400" alt="">
 		</div>
 
 		<div class="change">
-			<h2 class="second slide-right">パスワード変更</h2>
+			<h2 class="second2">パスワード変更</h2>
 			<!-- エラー表示 -->
 			<c:if test="${not empty error}">
 				<p style="color: red;">${error}</p>
 			</c:if>
-			<form class="register fadein" method="POST"
+			<form class="change2" method="POST"
 				action="/e3/MyPageServlet">
 				<p id="text">ユーザーID</p>
 				<input type="text" name="userId"><br>
-				<p id="text">変更後パスワード</p>
+				<p id="text">変更用パスワード</p>
 				<input type="text" name="password"><br>
-				<p id="text">変更後パスワード(確認用)</p>
+				<p id="text">変更用パスワード(確認用)</p>
 				<input type="text" name="passwordConfirm"><br>
-				<p class="rule">パスワードには8文字（英数字、大文字、小文字から２つ以上を含む）を設定してください。</p>
+				<p class="rule2">パスワードには8文字（英数字、大文字、小文字から２つ以上を含む）を設定してください。</p>
 				<input class="chan" type="submit" name="change" value="変更"><br>
 			</form>
 			<br> <a class="Tomenu" href="/e3/MenuServlet">メニューに戻る</a>
+
 		</div>
 	</main>
 
 
 
-	
+
 
 	<!--　フッター　-->
 	<footer>

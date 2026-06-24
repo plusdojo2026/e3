@@ -21,3 +21,115 @@ h1.title {
 }
 
 
+.most { /* コンテンツ全体 */
+	display: flex; /* 横並び */
+	flex: nowrap;
+	overflow: hidden;
+	margin: 0 20px;
+	padding: 0;
+}
+
+/* 左コンテンツ */
+.theme {
+	font-size: 20px;
+	color: #7A2C00;
+	padding: 0 40px 0 0px;
+	margin: 0 10px 0 80px;
+}
+
+/* 「パスワードを変更します！」 */
+.first2{
+	display: flex;
+	padding: 0 0 20px 0;
+}
+
+/* 紹介文 */
+p {
+	font-size: 18px;
+	margin: 15px 0;
+}
+
+/* 左画像 */
+.mine {
+	width: 400px;
+	padding: 0 40px;
+}
+
+/*　右コンテンツ */
+.change {
+	width: 100%;
+	text-align: center;
+	color: #7A2C00;
+	flex: 1;
+	margin: 0 20px;
+	padding: 10px 20px;
+}
+
+/* 「パスワード変更」 */
+.second2 {
+	font-size: 35px;
+	display: flex;
+	padding: 0 0 20px;
+}
+
+/* 右コンテンツ内部 */
+.change2 {
+	flex: 0 1 auto;
+	min-width: 480px;
+	margin: 0 20px;
+	background: #fef263;
+	padding: 30px 60px;
+	border: solid 6px orange;
+	border-radius: 30px;
+}
+
+.change2 input[name="userId"] {
+	text-align: center;
+	font-size: 15px;
+}
+
+.change2 p#text {
+	margin: 15px 10px 0;
+}
+
+/* パスワード設定条件説明 */
+.rule2 {
+	text-align: left;
+	font-size: 15px;
+	color: #7A2C00;
+	opacity: 0.5;
+}
+
+/* 登録ボタン */
+.chan {
+	font-size: 16px;
+	color: #FFF3E0;
+	padding: 8px 14px 10px;
+	margin: 20px;
+	border: solid 2px　 #FFF3E0;
+	border-radius: 8px;
+	background: orange;
+	transition: 0.2s;
+	box-shadow: 0px 5px #FF4500;
+}
+
+/* 登録ボタンの効果 */
+.chan:hover {
+	background-color: #FF8C00;
+}
+
+.chan:active {
+	transform: translateY(3px);
+	background-color: #dd7900;
+}
+
+/* ログイン画面へ */
+.Tomenu {
+	text-align: center;
+	text-decoration: none;
+	padding: 0 10px;
+	border: solid 1px #7A2C00;
+	border-radius: 5px;
+	background: #FAFAD2;
+	transition: 0.2s;
+}
