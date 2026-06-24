@@ -68,8 +68,9 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         
-        // 数値チェック
+        // 数値チェック　★修正6/24テスト後
         try {
+        	Integer.parseInt(userid); // ★追加
         } catch (NumberFormatException e) {
         	request.setAttribute("error", "IDは数値で入力してください。");
             request.getRequestDispatcher("/WEB-INF/jsp/login.jsp").forward(request, response);

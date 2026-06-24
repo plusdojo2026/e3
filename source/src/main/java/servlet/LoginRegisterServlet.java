@@ -87,7 +87,14 @@ public class LoginRegisterServlet extends HttpServlet {
 			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
 			return;
 		}
-
+		
+		//使用可能文字チェック（記号除外した英数字のみ）★追加6/24テスト後
+		if (!password.matches("^[a-zA-Z0-9]+$")) {
+			request.setAttribute("error", "パスワードは英数字のみ使用できます");
+			request.getRequestDispatcher("/WEB-INF/jsp/loginRegister.jsp").forward(request, response);
+			return;
+		} //★追加ここまで)
+		
 		// 文字種チェック（数字・大文字・小文字のうち2種類以上）
 		boolean hasDigit = password.matches(".*[0-9].*");
 		boolean hasUpper = password.matches(".*[A-Z].*");
