@@ -94,7 +94,7 @@ p {
 
 /* パスワード設定条件説明 */
 .rule2 {
-	text-align: left;
+	text-align: center;
 	font-size: 15px;
 	color: #7A2C00;
 	opacity: 0.5;
