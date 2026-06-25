@@ -67,8 +67,8 @@ INSERT INTO diagnosis (shouhin, money, use_year, day_price, userid)
 INSERT INTO diagnosis (shouhin, money, use_year, day_price, userid) 
 	VALUES('エアサーキュレーター', 7480, 5, 7480/(5*365), 10000000);
 
-/* useridを8桁にする */
-UPDATE diagnosis SET userid=userid+9999999
+--/* useridを8桁にする */
+--UPDATE diagnosis SET userid=userid+9999999;
 
 /* 商品詳細DB */
 create table shouhin (
@@ -101,7 +101,7 @@ INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_p
 	VALUES ('家電', '電子レンジ', '2026-06-13', 5000, 1, 'アイリスオオウチ', 5, 10000/(5*365), 3, 200, 'アタメル', NULL, 10000001, 2);
 
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame) 
-	VALUES ('家電', '掃除機', '2026-06-15', 50000, 1, 'ダイサン', 5, 50000/(5*365), 3, 200, 'すいすい君', NULL, 10000000, 3);
+	VALUES ('家電', '掃除機', '2026-06-15', 50000, 1, 'ダイサン', 5, 50000/(5*365), 3, 200, 'バキューム', NULL, 10000000, 3);
 	
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame) 
 	VALUES ('家電', '扇風機', '2026-06-18', 30000, 1, '風力研究所', 5, 30000/(5*365), 3, 200, '風神', NULL, 10000001, 4);
@@ -136,8 +136,8 @@ INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_p
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame) 
 	VALUES('日用品', '自転車', '2023-04-12', 19800, 1, 'スピードライン工業', 8, 19800/(8*365), 1130, 1790, 'チャリリン・モンロー', NULL, 10000001, 3);
 
-/* useridを8桁にする */
-UPDATE shouhin SET userid=userid+9999999
+--/* useridを8桁にする */
+--UPDATE shouhin SET userid=userid+9999999;
 
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
@@ -182,29 +182,26 @@ SELECT * FROM rireki;
 
 /* userid最後尾に追加バージョン */
 /* ジャンル・商品名・購入日・価格・保証期間(年)・メーカー・耐用年数・一日あたり価格・経過日数・(目標達成〇✖)・愛称 */
-/*INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame) 
-	VALUES ('家電', '扇風機', '2026-06-12', 100000, 90, '風力研究所', 5, 2.0, 3, 200, '風ちゃん', NULL, 10000000, 1);
+INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
+	VALUES ('家電', 'コーヒーメーカー', '2026-06-12', 10000, 1, 'ネフレ', 5, 10000/(5*365), 500, 200, 'カフェちゃん', NULL, 10000001, 2);
 	
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	VALUES ('家電', 'コーヒーメーカー', '2026-06-12', 100000, 90, 'ネフレ', 5, 2.0, 3, 200, 'カフェちゃん', NULL, 10000001, 2);
+	VALUES ('家電', 'PC', '2026-06-12', 300000, 3, 'ガレリオ', 5, 300000/(5*365), 600, 200, '必需品', NULL, 10000000, 3);
 	
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	VALUES ('家電', 'PC', '2026-06-12', 100000, 90, 'ガレリオ', 5, 2.0, 3, 200, '必需品', NULL, 10000000, 3);
+	VALUES ('家電', 'ホットカーペット', '2026-10-06', 15000, 2, 'アイリスオーヤマ', 5, 15000/(5*365), 700, 200, '暖地面', NULL, 10000001, 4);
 	
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	VALUES ('家電', 'テスター', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, '試験君', NULL, 10000001, 4);
+	VALUES ('家電', '電卓機', '2023-06-20', 2000, 1, 'アイリスオーヤマ', 5, 2000/(5*365), 50, 200, '計算さん', NULL, 10000000, 5);
 	
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	VALUES ('家電', '電卓機', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, '計算さん', NULL, 10000000, 5);
-	
-INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	VALUES ('家電', 'ガレリアPC', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 2.0, 3, 200, 'ハイスペック', NULL, 10000001, 3);*/
+	VALUES ('家電', 'ノートPC', '2025-12-12', 300000, 3, '富士山通', 5, 300000/(5*365), 100, 200, 'ハイスペック', NULL, 10000001, 3);
 
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	 VALUES ('家電', '扇風機', '2026-06-12', 100000, 90, 'アイリスオーヤマ', 5, 10000/(5*365), 200, 200,  '風ちゃん', NULL, 10000000, 1);
+	 VALUES ('家電', '扇風機', '2026-06-12', 100000, 1, 'アイリスオーヤマ', 5, 10000/(5*365), 200, 200,  '風ちゃん', NULL, 10000000, 1);
 
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
-	VALUES ('家電', '冷蔵庫', '2016-04-12', 105000,5 , 'クールテック', 10, 105000/(10*365), 3950, 3950, 'ひやりん', NULL, 10000001, 1);
+	VALUES ('家電', '冷蔵庫', '2016-04-12', 105000, 5, 'クールテック', 10, 105000/(10*365), 3950, 3950, 'ひやりん', NULL, 10000001, 1);
 
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
 	VALUES ('家電', '電子レンジ', '2017-03-09', 29800, 1, 'ヒートウェーブ', 8, 29800/(8*365), 3350, 3350, 'マイク', NULL, 10000000, 2);
@@ -227,8 +224,8 @@ INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_pr
 INSERT INTO rireki(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame)
 	VALUES ('ぬいぐるみ', 'モフモフベア', '2017-12-10',2400, 0 , '縫い工房', 12, 2400/(12*365), 1080 , 1080 ,'もふぃ', NULL, 10000000, 5);
 
-/* useridを8桁にする */
-UPDATE rireki SET userid=userid+9999999
+--/* useridを8桁にする */
+--UPDATE rireki SET userid=userid+9999999;
 
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
