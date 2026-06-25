@@ -35,8 +35,8 @@
 		<nav class="side-menu" id="sideMenu">
 			<div class="menu-header">モノカチコレクション</div>
 			<div class="menu-nav">
-				<a href="${pageContext.request.contextPath}/MenuServlet">メニュー</a> <a
-					href="${pageContext.request.contextPath}/DiagnosisServlet">購入診断</a>
+				<a href="${pageContext.request.contextPath}/MenuServlet">メニュー</a>
+				<a href="${pageContext.request.contextPath}/DiagnosisServlet">購入診断</a>
 				<a href="${pageContext.request.contextPath}/ShouhinListServlet">一覧表示</a>
 				<a href="${pageContext.request.contextPath}/RegisterServlet">登録</a>
 				<a href="${pageContext.request.contextPath}/AlbumListServlet">アルバム</a>
