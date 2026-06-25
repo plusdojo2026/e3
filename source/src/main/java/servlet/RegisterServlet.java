@@ -90,10 +90,10 @@ import dto.Loginuser;
 	    
 	    
 	    //愛称チェック 未入力な場合はエラーメッセージをerrorに追加する
-	    if (nickname == null || nickname.trim().isEmpty()) {
-	    	errors.add("愛称を入力してください");
-	    }
-	    
+		/*
+		 * if (nickname == null || nickname.trim().isEmpty()) {
+		 * errors.add("愛称を入力してください"); }
+		 */
 	   //フレーム
 	    String frameStr = request.getParameter("frame");
 	   
@@ -197,6 +197,7 @@ import dto.Loginuser;
 	    	if(contentType == null || !contentType.startsWith("image/")) {
 	    		errors.add("画像ファイルを選択してください");
 	    	}
+	    	
 	    }
 	    
 	    //画像データ取得

@@ -216,29 +216,29 @@
 <script>
 
 
-//入力エラー表示
-<c:if test="${not empty errors}">
+	//入力エラー表示
+	<c:if test="${not empty errors}">
+	
+	//ポップアップに表示するメッセージ
+	let msg = "入力エラー\n\n";
+	
+	//エラー内容を1行ずつ表示
+	<c:forEach var="err" items="${errors}">
+	msg += "・${err}\n";
+	</c:forEach>
+	
+	//エラーメッセージ表示
+	alert(msg);
+	
+	</c:if>
+	
+	// 小数入力時の近似値提案
+	<c:if test="${not empty suggest}">
 
-//ポップアップに表示するメッセージ
-let msg = "入力エラー\n\n";
+	// サーブレットで設定した提案メッセージを表示
+	alert("${suggest}");
 
-//エラー内容を1行ずつ表示
-<c:forEach var="err" items="${errors}">
-msg += "・${err}\n";
-</c:forEach>
-
-//エラーメッセージ表示
-alert(msg);
-
-</c:if>
-
-// 小数入力時の近似値提案
-<c:if test="${not empty suggest}">
-
-// サーブレットで設定した提案メッセージを表示
-alert("${suggest}");
-
-</c:if>
+	</c:if>
 	//耐用年数自動入力
 	const genreRadios =document.querySelectorAll("input[name='genre']");
 	const life = document.getElementById("life");
