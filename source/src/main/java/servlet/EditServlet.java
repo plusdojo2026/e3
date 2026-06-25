@@ -95,17 +95,30 @@ public class EditServlet extends HttpServlet {
     	// エラー格納用
     	List<String> errors = new ArrayList<>();
 
-    	String nickname = request.getParameter("nickname");
+  
     	String priceStr = request.getParameter("price");
     	String lifeStr = request.getParameter("life");
     	String buyDate = request.getParameter("buy_date");
-    	String wperiodStr = request.getParameter("wperiod");
     	
-    	// 愛称
-    	if(nickname == null || nickname.trim().isEmpty()){
-    	    errors.add("愛称を入力してください");
-    	}
-
+    	//保証期間　　　　マイナスの値が入力されないように
+	    //未入力を防ぐため初期値に0を設定
+    	String wperiodStr = request.getParameter("wperiod");
+	    int wperiod = 0;
+	    //保証期間が入力されているときのみ数値の変換を行う
+	    if (wperiodStr != null && !wperiodStr.isEmpty()) {
+	    	try {
+	    		wperiod = Integer.parseInt(wperiodStr);
+	    		
+	    		if(wperiod < 0) {
+	    			errors.add("保証期間は0以上で入力してください");
+	    		}
+	    		
+	    	} catch(NumberFormatException e) {
+	    		errors.add("保証期間が不正です");
+	    	}
+	        
+	    }
+    	
     	// 未来日付
     	if(buyDate != null && !buyDate.isEmpty()){
     	    LocalDate date = LocalDate.parse(buyDate);
@@ -163,42 +176,41 @@ public class EditServlet extends HttpServlet {
     	    }
     	}
 
-    	// 保証期間
-    	if(wperiodStr != null && !wperiodStr.isEmpty()){
-
-    	    try{
-
-    	        int wperiod = Integer.parseInt(wperiodStr);
-
-    	        if(wperiod < 0){
-    	            errors.add("保証期間は0以上で入力してください");
-    	        }
-
-    	    }catch(NumberFormatException e){
-    	        errors.add("保証期間が不正です");
-    	    }
-    	}
     	
-    	if(!errors.isEmpty()){
+    	//画像　　画像ファイル以外の登録不可
+	    Part file  = request.getPart("itemImage");
+	    
+	    if (file != null && file.getSize() > 0) {
+	    	String contentType = file.getContentType();
+	    	
+	    	if(contentType == null || !contentType.startsWith("image/")) {
+	    		errors.add("画像ファイルを選択してください");
+	    	}
+	    }
+	    
+	  //エラーが1つでもあれば更新処理中断
+	    if (!errors.isEmpty()) {
 
-    	    request.setAttribute("errors", errors);
+	        request.setAttribute("errors", errors);
 
-    	    Reg_EdiDAO dao = new Reg_EdiDAO();
+	        //編集画面で必要なDTOを再取得
+	        Reg_EdiDAO dao = new Reg_EdiDAO();
 
-    	    CommonDTO dto =
-    	        dao.selectById(
-    	            Integer.parseInt(request.getParameter("id"))
-    	        );
+	        CommonDTO dto =
+	            dao.selectById(
+	                Integer.parseInt(request.getParameter("id"))
+	            );
 
-    	    request.setAttribute("dto", dto);
+	        request.setAttribute("dto", dto);
 
-    	    RequestDispatcher rd =
-    	        request.getRequestDispatcher("/WEB-INF/jsp/edit.jsp");
+	        RequestDispatcher rd =
+	            request.getRequestDispatcher("/WEB-INF/jsp/edit.jsp");
 
-    	    rd.forward(request, response);
-    	    return;
-    	}
+	        rd.forward(request, response);
+	        return;
+	    }
 		
+	    
 		//DTO作成
 		CommonDTO dto  = new CommonDTO();
 		
@@ -210,12 +222,12 @@ public class EditServlet extends HttpServlet {
 		dto.setShouhin(request.getParameter("shouhin"));
 		dto.setBuy_date(request.getParameter("buy_date"));
 		dto.setPrice(Integer.parseInt(request.getParameter("price")));
-		dto.setWperiod(Integer.parseInt(request.getParameter("wperiod")));
+		dto.setWperiod(wperiod);
 		dto.setMaker(request.getParameter("maker"));
 		dto.setLife(Integer.parseInt(request.getParameter("life")));
 		
 		String frame = request.getParameter("frame");
-		if(frame == null) {
+		if(frame == null || frame.isEmpty()) {
 			dto.setFrame(0);
 		} else {
 			dto.setFrame(Integer.parseInt(frame));
@@ -238,28 +250,27 @@ public class EditServlet extends HttpServlet {
 			dto.setDay_price(dayPrice);
 		 
 		dto.setNickname(request.getParameter("nickname"));
-		Part file = request.getPart("itemImage");
-		
-		if(file != null && file.getSize() > 0){
+		//画像処理
+		if (file != null && file.getSize() > 0) {
 
-		    String contentType = file.getContentType();
+		    //新しい画像を登録
+		    byte[] imageData =
+		        file.getInputStream().readAllBytes();
 
-		    if(contentType == null ||
-		       !contentType.startsWith("image/")){
-
-		        errors.add("画像ファイルを選択してください");
-		    }
-		}
-
-		if(file != null && file.getSize() > 0){
-		    byte[] imageData = file.getInputStream().readAllBytes();
 		    dto.setImg(imageData);
+
 		} else {
-			Reg_EdiDAO dao = new Reg_EdiDAO();
-			CommonDTO OldDto = dao.selectById(dto.getId());
-			
-			dto.setImg(OldDto.getImg());
+
+		    //画像未選択なら既存画像を保持
+		    Reg_EdiDAO dao = new Reg_EdiDAO();
+
+		    CommonDTO oldDto =
+		        dao.selectById(dto.getId());
+
+		    dto.setImg(oldDto.getImg());
 		}
+
+		
 		
 		
 		//DAO生成
