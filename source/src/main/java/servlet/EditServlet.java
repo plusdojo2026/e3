@@ -95,7 +95,7 @@ public class EditServlet extends HttpServlet {
     	// エラー格納用
     	List<String> errors = new ArrayList<>();
 
-    	String nickname = request.getParameter("nickname");
+  
     	String priceStr = request.getParameter("price");
     	String lifeStr = request.getParameter("life");
     	String buyDate = request.getParameter("buy_date");
