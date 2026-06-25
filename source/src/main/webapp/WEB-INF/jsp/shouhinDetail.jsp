@@ -39,6 +39,9 @@
 	</header>
 	<!-- ヘッダーここまで　-->
 	<main>
+	<h2 class="title">
+			<b>▶ 一覧 </b>： <br class ="mediabr">登録した<strong>モノ</strong>たちを見てみよう！
+		</h2>
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
 			<div class="shouhinimg">

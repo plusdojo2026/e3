@@ -1,6 +1,11 @@
 @charset "UTF-8";
 /*menu*/
 /* キービジュアル */
+.title {
+	z-index: 1;
+	margin-left: 10%;
+}
+
 .hero {
 	width: 100%;
 	height: auto;
@@ -468,6 +473,11 @@ table {
 }
 
 @media screen and ( max-width : 550px) {
+	.title {
+		font-size: 15px;
+		text-align: center;
+		margin-left: 0;
+	}
 	.wrapper {
 		gap: 3px;
 		flex-wrap: wrap;
