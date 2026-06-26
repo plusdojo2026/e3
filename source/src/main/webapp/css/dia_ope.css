@@ -157,6 +157,10 @@
 	text-align: right;
 }
 
+.mediabr {
+		display: inline;
+	}
+	
 /* 各項目名の中央配置
 .explane strong{
 	display: block;
