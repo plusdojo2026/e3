@@ -2,7 +2,7 @@
 
 /* スタイルシート */
 /* 購入診断 */
-.listtitle {
+.stitle {
 	z-index: 1;
 	margin-left: 10%;
 }
@@ -171,7 +171,7 @@
 		display: inline;
 	}
 	
-	.title {
+	.stitle {
 		font-size: 15px;
 		text-align: center;
 		margin-left: 0;

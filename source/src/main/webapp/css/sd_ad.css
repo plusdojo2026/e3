@@ -1,7 +1,7 @@
 @charset "UTF-8";
 
 /* albumDetail */
-.title {
+.stitle {
 	z-index: 1;
 	margin-left: 10%;
 }
@@ -239,7 +239,7 @@
 /* メディアクエリ */
 @media ( max-width : 700px) {
 	/* 画像サイズ調整 */
-	.title {
+	.stitle {
 		font-size: 15px;
 		text-align: center;
 		margin-left: 0;

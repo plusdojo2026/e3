@@ -19,7 +19,7 @@ main {
 footer {
 	margin-top: auto;
 }
-.title {
+.stitle {
 	z-index: 1;
 	margin-left: 10%;
 }
@@ -491,7 +491,7 @@ table {
 }
 
 @media screen and ( max-width : 550px) {
-	.title {
+	.stitle {
 		font-size: 15px;
 		text-align: center;
 		margin-left: 0;

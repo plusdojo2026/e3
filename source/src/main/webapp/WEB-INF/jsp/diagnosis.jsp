@@ -48,7 +48,7 @@
 	<main>
 
 
-		<h2 class="title">
+		<h2 class="stitle">
 			▶ 購入診断 :<br class="mediabr"> 気になる商品を比較して <strong>カチ</strong> のある買い物をしよう！
 		</h2>
 		<br>
