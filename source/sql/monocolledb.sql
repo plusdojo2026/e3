@@ -122,7 +122,7 @@ INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_p
 	VALUES('ぬいぐるみ', 'サメぬい', '2024-12-24', 1600, 0, '縫い工房', 12, 1600/(12*365), 543, 3837, 'トンカチ頭', NULL, 10000000, 1);
 
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame) 
-	VALUES('車', '76', '2022-08-05', 1620000, 5, '東洋ターボ', 12, 1620000/(12*365), 1414, 2966, 'ナナロク', NULL, 10000001, 5);
+	VALUES('その他', '76', '2022-08-05', 1620000, 5, '東洋ターボ', 12, 1620000/(12*365), 1414, 2966, 'ナナロク', NULL, 10000001, 5);
 
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame) 
 	VALUES('家電', '扇風機', '2024-07-12', 4200, 1, 'エアフロー技研', 6, 4200/(6*365), 708, 1482, '寒太郎', NULL, 10000000, 1);
@@ -134,20 +134,25 @@ INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_p
 	VALUES('家電', 'スマートフォン', '2024-10-08', 26800, 1, 'モバイルリンク', 5, 26800/(5*365), 620, 1205, '相棒', NULL, 10000000, 2);
 
 INSERT INTO shouhin(genre, shouhin, buy_date, price, wperiod, maker, life, day_price, progress, goal, nickname, img, userid, frame) 
-	VALUES('日用品', '自転車', '2023-04-12', 19800, 1, 'スピードライン工業', 8, 19800/(8*365), 1130, 1790, 'チャリリン・モンロー', NULL, 10000001, 3);
+	VALUES('その他', '自転車', '2023-04-12', 19800, 1, 'スピードライン工業', 8, 19800/(8*365), 1130, 1790, 'チャリリン・モンロー', NULL, 10000001, 3);
 
 --/* useridを8桁にする */
 --UPDATE shouhin SET userid=userid+9999999;
 
 /* ファイルパスはエスケープする必要あり(\を二重にする) */
 UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 1;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_himono_kansouki.png') WHERE id = 2;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_microwave.png') WHERE id = 3;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\energy_lemon_denchi_battery.png') WHERE id = 4;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\jiko_kaji_stove_syukka.png') WHERE id = 5;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_senpuki.png') WHERE id = 6;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_soujiki_stick.png') WHERE id = 7;
-UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kinoko1.jpg') WHERE id = 8;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_microwave.png') WHERE id = 2;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_soujiki_stick.png') WHERE id = 3;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_senpuki.png') WHERE id = 4;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_toaster.png') WHERE id = 5;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_soujiki_stick.png') WHERE id = 6;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\bg_lounge.png') WHERE id = 7;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kodai_same_helicoprion.png') WHERE id = 8;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kinoko1.jpg') WHERE id = 9;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_senpuki.png') WHERE id = 10;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\clock_1230.png') WHERE id = 11;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\smartphone.png') WHERE id = 12;
+UPDATE shouhin SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\bicycle_black.png') WHERE id = 13;
 
 /* 画像の長さが返ってくれば登録できている(SELECT * FROM shouhin;をすると、とんでもないことになるのでNG！) */
 SELECT id, LENGTH(img) FROM shouhin WHERE id = 1;
@@ -237,6 +242,11 @@ UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Upl
 UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_reizouko.png') WHERE id = 7;
 UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_microwave.png') WHERE id = 8;
 UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_soujiki_stick.png') WHERE id = 9;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_sentakuki.png') WHERE id = 10;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\cooking_toaster.png') WHERE id = 11;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\bg_lounge.png') WHERE id = 12;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\kaden_airconditioner.png') WHERE id = 13;
+UPDATE rireki SET img = LOAD_FILE('C:\\ProgramData\\MySQL\\MySQL Server 8.0\\Uploads\\nuigurumi_bear_boroboro.png') WHERE id = 14;
 
 /* 画像の長さが返ってくれば登録できている(SELECT * FROM shouhin;をすると、とんでもないことになるのでNG！) */
 SELECT id, LENGTH(img) FROM rireki WHERE id = 1;
