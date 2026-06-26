@@ -54,8 +54,8 @@
 					<c:when test="${empty param.sort_ or param.sort_ eq 'buyDateDesc'}">購入日が新しい順</c:when>
 					<c:when test="${param.sort_ eq 'progressAsc'}">使用日数が短い順</c:when>
 					<c:when test="${param.sort_ eq 'progressDesc'}">使用日数が長い順</c:when>
-					<c:when test="${param.sort_ eq 'dayPriceAsc'}">１日当たりの固定費が少ない順</c:when>
-					<c:when test="${param.sort_ eq 'dayPriceDesc'}">１日当たりの固定費が多い順</c:when>
+					<c:when test="${param.sort_ eq 'dayPriceAsc'}">１日あたりの価格が少ない順</c:when>
+					<c:when test="${param.sort_ eq 'dayPriceDesc'}">１日あたりの価格が多い順</c:when>
 				</c:choose></span>
 		</h2>
 		<div class="backalbum">
