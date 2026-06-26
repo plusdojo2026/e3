@@ -21,8 +21,10 @@
 		<div class="header-in">
 			<div class="header-spacer"></div>
 			<h1 class="title">
-				<img src="images/タイトルロゴ.png" alt="サイトタイトル">
-			</h1>
+    <a href="${pageContext.request.contextPath}/MenuServlet">
+        <img src="${pageContext.request.contextPath}/images/タイトルロゴ.png" alt="サイトタイトル">
+    </a>
+</h1>
 		</div>
 
 		<button class="hamburger-btn" id="menuBtn" aria-label="メニューを開く">
