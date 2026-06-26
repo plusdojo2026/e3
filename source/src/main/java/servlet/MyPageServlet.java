@@ -116,6 +116,7 @@ public class MyPageServlet extends HttpServlet {
 			return;
 		} else {	//登録失敗
 			request.setAttribute("error", "登録に失敗しました。");
+			request.setAttribute("userid", userId);
 			request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp").forward(request, response);
 			return;
 		}
