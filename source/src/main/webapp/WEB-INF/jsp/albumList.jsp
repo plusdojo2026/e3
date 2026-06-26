@@ -103,7 +103,7 @@
 							<p>${s.progress}日使用</p>
 						</div>
 						<div class="day_price">
-							<p>${s.day_price}円/日</p>
+							<p>${s.day_priceInt}円/日</p>
 						</div>
 					</a>
 				</div>
