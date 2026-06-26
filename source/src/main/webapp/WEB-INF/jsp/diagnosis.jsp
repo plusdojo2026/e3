@@ -48,9 +48,9 @@
 	<main>
 
 
-		<p>
-			▶ 購入診断 : 気になる商品を比較して <strong>カチ</strong> のある買い物をしよう！
-		</p>
+		<h2 class="title">
+			▶ 購入診断 :<br class="mediabr"> 気になる商品を比較して <strong>カチ</strong> のある買い物をしよう！
+		</h2>
 		<br>
 		<!-- 診断フォーム -->
 		<form class="diagnosis_form" id="diagnosis_form" method="POST"

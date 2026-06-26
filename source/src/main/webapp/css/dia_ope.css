@@ -2,7 +2,10 @@
 
 /* スタイルシート */
 /* 購入診断 */
-/*
+.listtitle {
+	z-index: 1;
+	margin-left: 10%;
+}
 
 	/* form配置 */
 .diagnosis_form{
@@ -164,6 +167,15 @@
 
 /* モバイル対応 */
 @media(max-width: 912px){ /* SurfacePro7(912px)まで入れた */
+	.mediabr {
+		display: inline;
+	}
+	
+	.title {
+		font-size: 15px;
+		text-align: center;
+		margin-left: 0;
+	}
 	/* 診断ボタン */
 	.diagnosis_form input[type = "submit"]{
 		margin: 35px 0 0 0;
