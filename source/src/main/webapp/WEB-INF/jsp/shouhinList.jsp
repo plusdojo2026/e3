@@ -48,7 +48,7 @@
 	<main>
 
 		<h2 class="listtitle">
-			<b>▶ 一覧 </b>： 登録した<strong>モノ</strong>たちを見てみよう！
+			<b>▶ 一覧 </b>：<br class="mediabr"> 登録した<strong>モノ</strong>たちを見てみよう！
 		</h2>
 
 		<!-- ランキング画面へ -->

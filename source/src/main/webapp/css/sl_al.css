@@ -19,6 +19,10 @@ footer {
 	margin-top: auto;
 }
 
+.mediabr {
+	display: none;
+}
+
 .shouhinlist {
 	display: grid;
 	grid-template-columns: repeat(3, minmax(0, 400px));
@@ -217,6 +221,9 @@ footer {
 		font-size: 15px;
 		text-align: center;
 		margin-left: 0;
+	}
+	.mediabr {
+		display: inline;
 	}
 	.shouhinlist {
 		grid-template-columns: repeat(2, minmax(0, 160px));

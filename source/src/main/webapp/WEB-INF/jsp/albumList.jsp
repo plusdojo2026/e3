@@ -48,7 +48,7 @@
 	<main>
 
 		<h2 class="listtitle">
-			<b>▶ アルバム一覧 </b>： 使い終わった<strong>モノ</strong>たちを見てみよう！
+			<b>▶ アルバム一覧 </b>：<br class="mediabr"> 使い終わった<strong>モノ</strong>たちを見てみよう！
 		</h2>
 
 		<!-- ランキング画面へ -->
