@@ -159,12 +159,12 @@
     'use strict';
     
     function rirekicheck(id){
-        if (window.confirm('商品を履歴に登録しますか？履歴に登録した商品は復元できません。')) {
-            alert('履歴への登録が完了しました。');
+        if (window.confirm('商品をアルバムに送りますか？アルバムに送った商品は復元できません。')) {
+            alert('商品をアルバムに送りました。');
             location.href = '<%=request.getContextPath()%>/ShouhinDetailServlet?action=rireki&shouhinid=' + id;
 			return true;
 		} else {
-			alert('履歴への登録がキャンセルされました。');
+			alert('キャンセルされました。');
 			return false;
 		}
 	}
