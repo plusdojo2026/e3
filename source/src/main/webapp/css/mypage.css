@@ -29,6 +29,38 @@ h1.title {
 	padding: 0;
 }
 
+.change2 {
+    flex: 0 1 auto;
+    min-width: 480px;
+    margin: 0 20px;
+    background: #fef263;
+    padding: 30px 60px;
+    border: solid 6px orange;
+    border-radius: 30px;
+    box-shadow: 0 0 3px 4px rgba(0,0,0,0.2);
+}
+
+.change2 input[type="text"],
+.change2 input[type="password"]{
+    width:100%;
+    max-width:250px;
+    height:30px;
+    background:gold;
+    color:#7A2C00;
+    border:solid 2px #7A2C00;
+    border-radius:5px;
+}
+
+.change2 p#text{
+    margin:15px 10px 0;
+}
+
+.rule2{
+    text-align:left;
+    font-size:15px;
+    color:#7A2C00;
+    opacity:.5;
+}
 /* 左コンテンツ */
 .theme {
 	font-size: 20px;

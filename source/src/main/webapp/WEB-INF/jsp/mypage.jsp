@@ -70,9 +70,9 @@
 			<form class="change2" method="POST"
 				action="/e3/MyPageServlet">
 				<p id="text">ユーザーID</p>
-				<input type="text" name="userId" value="${userid}" readonly><br>
+				<input type="password" name="userId" value="${userid}" readonly><br>
 				<p id="text">変更前パスワード</p>
-				<input type="text" name="passwordNow"><br>
+				<input type="password" name="passwordNow"><br>
 				<p id="text">変更後パスワード</p>
 				<input type="text" name="passwordNew"><br>
 				<p class="rule2">パスワードには8文字（英数字、大文字、小文字から２つ以上を含む）を設定してください。</p>
