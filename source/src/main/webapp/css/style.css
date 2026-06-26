@@ -1,13 +1,5 @@
 @charset "UTF-8";
 
-/* 前頁共通部分*/
-html, body {
-	height: 100%;
-}
-
-main {
-	flex: 1;
-}
 /*背景色をクリーム色に*/
 body {
 	background-color: #FFF3E0;
