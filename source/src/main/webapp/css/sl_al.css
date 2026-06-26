@@ -156,6 +156,7 @@ footer {
 }
 
 .sortbutton {
+	margin-bottom:20px;
 	width: 60px;
 	cursor: pointer;
 	z-index: 1;
