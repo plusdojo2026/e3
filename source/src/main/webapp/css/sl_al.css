@@ -15,10 +15,6 @@ main {
 	flex-grow: 1;
 }
 
-footer {
-	margin-top: auto;
-}
-
 .mediabr {
 	display: none;
 }

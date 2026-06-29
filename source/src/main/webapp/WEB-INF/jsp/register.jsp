@@ -44,7 +44,9 @@
 </header>
 	<!-- ヘッダーここまで　-->
 	
-<h2>▶ 登録</h2>
+<h2 class="stitle">
+			<b>▶ アルバム一覧 </b>：<br class="mediabr"> 購入した<strong>モノ</strong>を登録しよう！
+		</h2>
 
 <div class="form-container">
 <form id="form" action="${pageContext.request.contextPath}/RegisterServlet"
