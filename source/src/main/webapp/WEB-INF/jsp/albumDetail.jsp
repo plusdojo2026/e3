@@ -43,7 +43,7 @@
 	<!-- ヘッダーここまで　-->
 	<main>
 	<h2 class="stitle">
-			<b>▶ アルバム詳細 </b>：<br class = "mediabr"> 使い終わった<strong>モノ</strong>を見てみよう！
+			<b>▶ アルバム </b>：<br class = "mediabr"> 使い終わった<strong>モノ</strong>を見てみよう！
 		</h2>
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
