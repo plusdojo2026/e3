@@ -79,6 +79,14 @@
 		</div>
 
 		<!-- 商品一覧を表示 -->
+		<c:choose>
+    <c:when test="${empty list}">
+        <div class="nodata">
+            <p>データがありません</p>
+        </div>
+    </c:when>
+
+    <c:otherwise>
 		<div class="shouhinlist">
 			<c:forEach var="s" items="${list}">
 				<div class="shouhin">
@@ -111,7 +119,8 @@
 				</div>
 			</c:forEach>
 		</div>
-
+</c:otherwise>
+</c:choose>
 	</main>
 </body>
 

@@ -77,10 +77,18 @@
 		</div>
 
 		<!-- 商品一覧を表示 -->
-		<div class="shouhinlist">
-			<c:forEach var="s" items="${list}">
-				<div class="shouhin">
-					<a
+		<c:choose>
+    <c:when test="${empty list}">
+        <div class="nodata">
+            <p>データがありません</p>
+        </div>
+    </c:when>
+
+    <c:otherwise>
+        <div class="shouhinlist">
+            <c:forEach var="s" items="${list}">
+                <div class="shouhin">
+                <a
 						href="${pageContext.request.contextPath}/ShouhinDetailServlet?shouhinid=${s.id}">
 						<img src="images/shouhinList_bg.png">
 						<div class="nickname">
@@ -107,9 +115,10 @@
 						</div>
 					</a>
 				</div>
-			</c:forEach>
-		</div>
-
+            </c:forEach>
+        </div>
+    </c:otherwise>
+</c:choose>
 	</main>
 </body>
 
