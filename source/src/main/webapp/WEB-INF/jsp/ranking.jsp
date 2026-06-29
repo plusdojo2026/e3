@@ -143,9 +143,9 @@
 			<div class="drop_down">
 
 				<a
-					href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateAsc">購入日が古い順</a>
-				<a
 					href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateDesc">購入日が新しい順</a>
+				<a
+					href="${pageContext.request.contextPath}/RankingServlet?sort_=buyDateAsc">購入日が古い順</a>				
 				<a
 					href="${pageContext.request.contextPath}/RankingServlet?sort_=progressDesc">使用日数が長い順</a>
 				<a
