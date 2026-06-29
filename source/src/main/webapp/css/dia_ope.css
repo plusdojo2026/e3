@@ -221,7 +221,8 @@
 		
 	}
 	.card {
-		padding: 20px 50px;
+	margin: 48px 10px 48px;
+	padding: 20px 50px;
 	}
 	.diagnosis_result td{
 		height: 40px;
@@ -244,9 +245,8 @@
 }
 
 	/* 操作説明 */
-	.explane{
+	.explane {
+		margin: 48px 10px 48px;
 		padding: 20px 50px;
 	}
-	
 }
-
