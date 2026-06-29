@@ -62,17 +62,17 @@
 			<img src="images/sortbutton.png" alt="並び替え" class="sortbutton">
 			<div class="dropdown">
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=id_desc">登録が新しい順</a>
+					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=id_desc">購入日が新しい順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=id_asc">登録が古い順</a>
+					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=id_asc">購入日が古い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=progress_desc">経過日数が長い順</a>
+					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=progress_desc">使用日数が長い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=progress_asc">経過日数が短い順</a>
+					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=progress_asc">使用日数が短い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_desc">1日当たりの固定費が多い順</a>
+					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_desc">１日あたりの価格が多い順</a>
 				<a
-					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_asc">1日当たりの固定費が少ない順</a>
+					href="${pageContext.request.contextPath}/ShouhinListServlet?sort=day_price_asc">１日あたりの価格が少ない順</a>
 			</div>
 		</div>
 
