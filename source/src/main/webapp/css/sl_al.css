@@ -15,6 +15,10 @@ main {
 	flex-grow: 1;
 }
 
+footer {
+	margin-top: auto;
+}
+
 .mediabr {
 	display: none;
 }
@@ -215,6 +219,12 @@ main {
 	color: #7A2C00;
 }
 
+@media screen and (max-width:1100px) {
+.shouhinlist {
+		grid-template-columns: repeat(2, minmax(0, 1600px));
+	margin: 60px 5px 0 5px;
+	}
+}
 @media screen and (max-width:600px) {
 	.listtitle {
 		font-size: 15px;
