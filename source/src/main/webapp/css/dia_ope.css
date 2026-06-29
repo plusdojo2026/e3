@@ -70,7 +70,7 @@
 /* sd_ad.cssから拝借 */
 .card {
   max-width: 750px;
-  margin: 48px 10px 48px;
+  margin: 48px auto 48px;
   padding: 20px 100px;
   background: #ffffff;
   border: 2px solid #dcdcdc;
@@ -138,7 +138,7 @@
 /* 使い方リスト */
 .explane{
   max-width: 750px;
-  margin: 48px 10px 48px;
+  margin: 48px auto 48px;
   background: #ffffff;
   padding: 20px 100px;
   color: #C75000;
