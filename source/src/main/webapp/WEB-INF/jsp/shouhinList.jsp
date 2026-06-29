@@ -79,7 +79,7 @@
 		<!-- 商品一覧を表示 -->
 		<c:choose>
     <c:when test="${empty list}">
-        <div class="nodata">
+        <div class="no-data">
             <p>データがありません</p>
         </div>
     </c:when>

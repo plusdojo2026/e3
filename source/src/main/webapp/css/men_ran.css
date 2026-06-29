@@ -385,6 +385,10 @@ table {
 	display: none;
 }
 
+.no-data{
+	text-align:center;
+}
+
 /*モバイル対応 */
 @media screen and ( max-width : 600px) {
 	.mediabr {
