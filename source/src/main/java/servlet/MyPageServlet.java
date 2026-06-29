@@ -31,8 +31,16 @@ public class MyPageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		HttpSession session = request.getSession();
 		Loginuser loginuser = (Loginuser) session.getAttribute("userid");
+		if (loginuser == null) {
+    		response.sendRedirect("/e3/LoginServlet");
+    		return;
+    	}
+		
 		String userId = loginuser.getUserid();
 		request.setAttribute("userid", userId);
+		
+		
+		
 
 		// フォワード
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp");
@@ -50,6 +58,7 @@ public class MyPageServlet extends HttpServlet {
 		// 全部 未入力
 		if ((passwordNow == null || passwordNow.isEmpty()) && (passwordNew == null || passwordNew.isEmpty())) {
 			request.setAttribute("error", "変更前パスワード・変更後パスワードを入力してください。");
+			request.setAttribute("userid", userId);
 			request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp").forward(request, response);
 			return;
 		}
@@ -57,6 +66,7 @@ public class MyPageServlet extends HttpServlet {
 		// へんパスワード 未入力
 		if (passwordNow == null || passwordNow.isEmpty()) {
 			request.setAttribute("error", "変更前パスワードを入力してください。");
+			request.setAttribute("userid", userId);
 			request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp").forward(request, response);
 			return;
 		}
@@ -64,6 +74,7 @@ public class MyPageServlet extends HttpServlet {
 		// 確認用パスワード 未入力
 		if (passwordNew == null || passwordNew.isEmpty()) {
 			request.setAttribute("error", "変更後パスワードを入力してください。");
+			request.setAttribute("userid", userId);
 			request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp").forward(request, response);
 			return;
 		}
@@ -72,6 +83,7 @@ public class MyPageServlet extends HttpServlet {
 		// 8文字以上チェック
 		if (passwordNew.length() < 8) {
 			request.setAttribute("error", "変更後パスワードは8文字以上で入力してください。");
+			request.setAttribute("userid", userId);
 			request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp").forward(request, response);
 			return;
 		}
@@ -79,6 +91,7 @@ public class MyPageServlet extends HttpServlet {
 		//使用可能文字チェック（記号除外した英数字のみ）★追加6/24テスト後
 		if (!passwordNew.matches("^[a-zA-Z0-9]+$")) {
 			request.setAttribute("error", "変更後パスワードは英数字のみ使用できます");
+			request.setAttribute("userid", userId);
 			request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp").forward(request, response);
 			return;
 		} //★追加ここまで)
@@ -99,6 +112,7 @@ public class MyPageServlet extends HttpServlet {
 		// パスワード文字種チェック
 		if (typeCount < 2) {
 			request.setAttribute("error", "変更後パスワードには文字種を2種類以上含めて下さい。");
+			request.setAttribute("userid", userId);
 			request.getRequestDispatcher("/WEB-INF/jsp/mypage.jsp").forward(request, response);
 			return;
 		}
