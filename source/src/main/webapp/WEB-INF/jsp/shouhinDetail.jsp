@@ -43,7 +43,7 @@
 	<!-- ヘッダーここまで　-->
 	<main>
 	<h2 class="stitle">
-			<b>▶ 一覧 </b>：<br class ="mediabr"> 登録した<strong>モノ</strong>たちを見てみよう！
+			<b>▶ 一覧 </b>：<br class ="mediabr"> 登録した<strong>モノ</strong>を見てみよう！
 		</h2>
 		<!-- キャラクター + 吹き出し -->
 		<div class="iconSpeech">
