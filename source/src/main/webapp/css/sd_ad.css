@@ -257,11 +257,6 @@
 	.speechBubble::before, .speechBubble::after {
 		display: none;
 	}
-	/* カード背景画面外はみだし対策 */
-	.card {
-		padding: 1rem;
-		width: 90%;
-	}
 	/* テーブルを縦一列に、またそれに伴う調整 */
 	.information tr, .information th, .information td {
 		display: block;
@@ -295,7 +290,7 @@
 /* カード背景画面外はみだし対策 */
 .card {
 	padding: 1rem;
-	width: 90%;
+	width: 85%;
 }
 /* テーブルを縦一列に、またそれに伴う調整 */
 .information tr, .information th, .information td {
